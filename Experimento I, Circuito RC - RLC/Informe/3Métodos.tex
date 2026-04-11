@@ -1,0 +1,40 @@
+\section{Materiales y métodos}
+
+    Se estudió la respuesta en frecuencia de un circuito en serie que permitía alternar entre configuraciones RC y RLC mediante un interruptor que puenteaba al inductor. El circuito RC visto desde la resistencia funciona como un filtro de frecuencias por encima de los \(15\) kHz, en cambio, visto desde el capacitor filtra un rango de frecuencias de hasta \SI{1300}{\hertz}. En esta experiencia, se contó con una resistencia de \SI{1}{\kilo\ohm}, un capacitor de \SI{100}{\nano\farad} y un inductor $L$ de inductancia desconocida. 
+Se utilizó como fuente una señal sinusoidal de amplitud constante mediante un generador, variando su frecuencia en un rango de [0,1, 50] \SI{}{\kilo\hertz}. Tanto la señal de entrada (CH1) como la de salida (CH2) se registraron a través de un osciloscopio $Tektronix$ modelo TDS 220 \cite{TDS200}, que permitió medir las diferencias de potencial sobre ambos elementos simultáneamente, colocando el negativo de ambos sobre un punto común (ver \autoref{fig:circuito}). 
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{gráficos/Circuito.png}
+    \caption{Esquema del circuito RLC en serie conectado al generador de señal y al osciloscopio. Se obtiene la configuración RC del circuito al cerrar el interruptor, mientras que si el interruptor está abierto se trata de la configuración RLC del mismo. En el canal uno (CH1) se conectó a la fuente, mientras que el canal dos (CH2) se conectó a la salida.}
+    \label{fig:circuito}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+    Para la configuración RC (interruptor cerrado), se realizaron medidas de la tensión de salida tanto sobre la resistencia como sobre el capacitor, permitiendo estudiar el filtro pasa-altos y el pasa-bajos, respectivamente. Para la configuración RLC (interruptor abierto), las mediciones se hicieron únicamente sobre la resistencia. 
+    Para cada frecuencia se determinaron las amplitudes de las señales de entrada y salida. El desfasaje \(\varphi\) entre ambas señales se obtuvo a partir de la relación \(\varphi = 2\pi f \Delta t\), siendo $f$ la frecuencia de la fuente y $\Delta t$ la diferencia temporal entre ellas.  A partir de los datos obtenidos se calculó el módulo de la función de transferencia $H(\omega)$, como el cociente entre las amplitudes de entrada y salida, y la tangente del desfasaje $\varphi$ dado por las ecuaciones \eqref{RC resistencia} y \eqref{RC capacitor}. 
+\end{minipage}
+\end{figure}
+
+%\begin{figure}[H]
+ %  \includegraphics[width=0.5\linewidth]{Circuito.png}
+  % \caption{Esquema del circuito RLC en serie conectado al generador de señal y al osciloscopio, el interruptor cerrado indica la configuración RC del circuito, mientras que abierto significaría la configuración RLC del mismo. En el canal uno (CH1) se conectó a la fuente, mientras que el canal dos (CH2) se conectó a la salida.}
+   % \label{fig:circuito}
+%\end{figure}
+
+%Para la configuración RC (interruptor cerrado), se realizaron medidas de la tensión de salida tanto sobre la resistencia como sobre el capacitor, permitiendo estudiar el filtro pasa-altos y el pasa-bajos, respectivamente. Para la configuración RLC (interruptor abierto), las mediciones se hicieron únicamente sobre la resistencia. 
+%Para cada frecuencia se determinaron las amplitudes de las señales de entrada y salida y su desfasaje. Este último se cálculo midiendo la diferencia temporal $\Delta t$ entre las señales utilizando los cursores del osciloscopio y sabiendo la frecuencia de la fuente, de manera que el desfasaje (\(\phi\)) se cálculo como \(\phi = 2\pi f \Delta t\) . A partir de los datos obtenidos se calculó el módulo de la función de transferencia $H(\omega)$, como el cociente entre las amplitudes de entrada y salida, y la tangente del desfasaje $\varphi$ dado por las ecuaciones \eqref{RC resistencia} y \eqref{RC capacitor}. 
+
+Para el circuito RC, se estimó la frecuencia característica del circuito dada por el producto $\tau = RC$, realizando un barrido de frecuencias que abarcó aproximadamente una década por debajo y una por encima de ese valor. En el caso del circuito RLC, se efectuó un barrido de frecuencias en el rango de [0, 50] \SI{}{\kilo\hertz}, donde se identificó la frecuencia de resonancia experimentalmente como aquella en la que el modulo de la función de transferencia $H(\omega)$ alcanza un máximo. 
+
+%$\tau$ = \SI{1600}{\hertz
+%Se estimó la frecuencia característica del circuito dada por el producto $\tau = RC$, realizando entonces un barrido de frecuencias que abarcó aproximadamente una década por debajo y una por encima de este valor. En el caso del circuito RLC, se efectuó un barrido de frecuencias en el mismo rango. En esta configuración se identificó la frecuencia de resonancia experimentalmente como aquella en la que el modulo de la función de transferencia $H(\omega)$ alcanza un máximo. Se realizó un barrido de frecuencias de una década por encima y por debajo de la frecuencia característica de
+
+
+Mediante una rutina de $Python$ se construyeron, para ambas configuraciones, diagramas de Nyquist a partir de la gráfica de las componentes $H(\omega)$ en el plano complejo. Siendo $Re(H)=H\cos(\varphi)$ y $Im(H)=H\sin(\varphi)$.
+
+ Para el circuito RC se buscó determinar la frecuencia de corte $\omega_c$, definida como aquella para la cual d la función de transferencia cumple $|H(\omega_c)|= \frac{1}{\sqrt{2}}$, lo que corresponde a una disminución de la potencia a la mitad, dado que $P\propto |H|^2$. Utilizando un análisis tipo Bode se aprovechó que en los regímenes de bajas y altas frecuencias la función $H(\omega)$ presenta comportamientos simples, aproximadamente constante en uno de los extremos y proporcional a una potencia de $\omega$ ($\omega$ para el pasa altos, $\omega^{-1}$ para el pasa bajos) en el otro, lo que se traduce en rectas en escala logarítmica. Por esto se representó el $\text{log}(H)$ en función del $\text{log}(\omega)$ y se realizaron ajustes lineales en las dos regiones diferenciadas. Estimando la frecuencia de corte a partir de la intersección de dichas rectas, pues es una buena aproximación al punto donde la función $H(\omega)$ alcanza el valor $\frac{1}{\sqrt{2}}$.  
+
+ Por otro lado, para la configuración RLC del circuito, se construyó un gráfico de $|H(\omega)|$ en función de $\omega$ donde se hizo un ajuste según la ecuación \eqref{imp RCL}, cuyo máximo corresponde a la frecuencia de corte. Fue a partir de esto que se determinó la inductancia del circuito según $\omega_r=\frac{1}{\sqrt{LC}}$.

@@ -1,0 +1,68 @@
+\section{Resultados y discusión}
+Se realizó un análisis de la respuesta de circuitos RC y RLC a partir de variar la frecuencia de la señal de entrada. De esta manera, se caracterizó un circuito RC a partir de dos series de mediciones, registrando la diferencia de potencial en ambos componentes, y la diferencia de tiempo entre la señal de entrada y la de se salida (señal generada por la resistencia o el capacitor, según corresponda). Por otro lado, para el circuito RLC se midió únicamente la diferencia de potencial sobre la resistencia, junto a la diferencia de tiempo de esta con respecto a la señal de entrada.
+
+\subsubsection{Circuito RC}
+
+A partir de medir la diferencia de potencial de entrada y de salida (de la resistencia o del capacitor, según correspondiera), se realizaron dos diagramas de Bode, graficando el logaritmo del módulo de la función de transferencia $H(\omega)$ según \eqref{eq:2}, en función del logaritmo de la frecuencia de la señal de entrada, dada por \(\omega = 2\pi f\). Para determinar la frecuencia de corte característica del circuito, se identificó el punto de intersección entre dos rectas, las cuales fueron ajustadas con pendiente libre o fijada a cero, según el rango de frecuencias dado por el filtro pasa-altos o pasa-bajos. Tales ajustes se presentan en la \autoref{fig:rectasRC}, donde la incerteza en ambas variables vienen dadas por la propagación de errores del $\text{log}(H)$ y $\text{log}(\omega)$, según la variación de la amplitud registrada para el potencial de entrada y de salida, y la variación registrada en la frecuencia de la señal de entrada respectivamente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{gráficos/rectas_RC.png}
+    \caption{Diagrama de Bode realizado para el filtro pasa-altos (izq.), correspondiente a la tensión de salida vista desde la resistencia, y para el filtro pasa-bajos (der.), correspondiente a la tensión de salida vista desde el capacitor. En naranja, se presentan las rectas ajustadas con pendiente $m$ = 0, en violeta, las rectas ajustadas con pendiente $m$ libre. El punto de intersección entre las dos rectas se indica en rojo, el cual se asigna a la  frecuencia de corte $\omega_0$.}
+    \label{fig:rectasRC}
+\end{figure}
+
+Para el filtro pasa-altos se obtuvo una frecuencia de corte de \SI{11630(1107)}{\radian\per\second}, mientras que para el filtro pasa-bajos, la frecuencia obtenida fue de \SI{9811(1648)}{\radian\per\second}. Finalmente, se calculó el promedio ponderado utilizando ambas magnitudes, obteniendo como frecuencia de corte $\omega_0$ = \SI{11063(919)}{\radian\per\second}.
+
+En pos de verificar que tan adecuada resulta la determinación de $\omega_0$ utilizando rectas en escala logarítmica, se ajustó una función arcotangente según la relación dada para el filtro pasa-altos \eqref{eq:3} y pasa-bajos \eqref{eq:4}, dejando como parámetro libre $\tau $ (\autoref{fig:tau_RC.png}). La incerteza en la variable dependiente proviene de la propagación de errores aplicada a la función \(\phi = 2 \pi f \Delta t\), donde se le asignó el 5\% de la medida como error a \(\Delta t\), mientras que para la variable independiente, la incerteza proviene de la propagación de errores sobre \(\omega = 2\pi f\). 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{gráficos/tau_RC.png}
+    \caption{Ajustes realizados para la determinación de $\tau$, sobre el filtro pasa-altos (izq.) y pasa-bajos (der.). En gris se indican los datos experimentales, mientras que en violeta y naranja, el ajuste correspondiente.}
+    \label{fig:tau_RC.png}
+\end{figure}
+Se obtuvieron $\tau$$'$$s$ congruentes entre sí, siendo para el filtro pasa-altos de \SI{87.9(3.3)}{\micro\second}, y para el pasa-bajos de \SI{87.6(2.9)}{\micro\second}. Se calculó el promedio ponderado, obteniendo $\tau$ = \SI{87.7 (2.2)}{\micro\second}, lo cual concluye en una frecuencia de corte $\omega_0 = \frac{1}{\tau}$ = \SI{11397(284)}{\radian\per\second}, congruente con la determinada a través del ajuste de rectas en escala logarítmica.
+
+\begin{figure}[H]
+\noindent
+\begin{minipage}{0.40\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{gráficos/nyquist_RC.png}
+    \caption{Diagrama de Nyquist realizado para los datos obtenidos con el filtro pasa-altos, indicados en naranja, y con el filtro pasa-bajos, indicados en violeta.}
+    \label{fig:nyquist_RC}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+   Por último, se realizó un diagrama de Nyquist, graficando \(Im(H)\) en función de \(Re(H)\), tanto para el filtro pasa-altos como para el pasa-bajos, reflejando el pasa-bajos respecto al eje x, cosa de ver un circulito (\autoref{fig:nyquist_RC}).
+\end{minipage}
+\end{figure}
+
+\subsubsection{Circuito RLC}
+
+A partir de medir la diferencia de potencial de entrada y de salida (cuyo potencial de salida se midió únicamente sobre la resistencia), se graficó el módulo de $H(\omega)$ en función de la frecuencia de la señal de entrada $\omega$, obteniendo la frecuencia de resonancia $\omega_r$ a partir del ajuste de la expresión \eqref{eq:5}.  Se realizaron dos ajustes, dejando el parámetro $\tau$ libre, caracterizado como un $\tau$ efectivo del sistema, y fijando $\tau$ al obtenido experimentalmente por el promedio ponderado del los ajustes del circuito RC. Ambos ajustes se presentan superpuestos en la \autoref{fig:tau_RLC}, donde la linea azul corresponde al ajuste con $\tau_{ef}$ como parámetro libre, mientras que la línea roja al ajuste con $\tau_{exp}$ = \SI{87.7 (2.2)}{\micro\second} como parámetro fijo. La incerteza de ambos ejes proviene de su respectiva propagación de errores, considerando un error del 5\% de la medida.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{gráficos/tau_RLC.png}
+    \label{fig:tau_RLC}
+    \caption{Ajustes realizados para la determinación de $\omega_r$, donde se indica en rojo el ajuste con $\tau_{exp}$ fijo. Por otro lado, en azul se presenta el ajuste con $\tau_{ef}$ como parámetro libre, junto a una línea vertical punteada del mismo color, la cual indica la posición de $\omega_r$ correspondiente al ajuste con $\tau_{ef}$. Cerca de la línea punteada es posible observar como la curva correspondiente al ajuste de $\tau_{exp}$ se aleja de los datos experimentales.}
+    \label{fig:placeholder}
+\end{figure}
+Para el ajuste con $\tau_{ef}$ se obtuvo una frecuencia de resonancia de \SI{20794(149)}{\radian\per\second}, mientras que para el ajuste con $\tau_{exp}$ la frecuencia obtenida fue de \SI{21604 (292)} {\radian\per\second}. Los valores obtenidos para $\omega_r$ tienen una discrepancia de 2,5 $\sigma$, que, a pesar de la calidad de ambos ajustes, se puede apreciar como la curva del ajuste para $\tau_{exp}$ pasa por encima de los datos experimentales en la región cercana a $\omega_r$, lo cual resulta de gran interés. Este fenómeno se debe a como se comporta el inductor cerca de la frecuencia de resonancia, debido a que, cuando $\omega=\omega_r$, la reactancia capacitiva e inductiva se igualan y la impedancia es mínima. En esta región, el inductor actúa como un cable conductor el cual tiene una resistencia $R_L$ que incrementa $\tau=RC$. El $\tau_{exp}$ obtenido mediante el circuito RC es distinto al $\tau$ de un circuito RLC, y su discrepancia resulta mayor cerca de la frecuencia de resonancia, debido a la resistencia interna del inductor. Asumiendo el valor de la resistencia como conocida, y calculando la capacitancia a partir del $\tau_{exp}$, fue posible cuantificar el valor de $R_{L}$ = \SI{157(9)}{\ohm}. 
+El valor de la inductancia desconocida se obtuvo a partir del ajuste con $\tau_{ef}$, siendo $L$ = 2,6 \(\times 10^{-2}\) SI{}{\henrios}
+
+\begin{figure}[H]
+\noindent
+\hfill
+\begin{minipage}{0.40\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{gráficos/nyquist RLC.png}
+    \caption{Diagrama de Nyquist realizado para los datos obtenidos con el circuito RLC.}
+    \label{fig:nyquist_RLC}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+Se realizó un diagrama de Nyquist graficando \(Im(H)\) en función de \(Re(H)\),  (\autoref{fig:nyquist_RLC}), lo cual nos completó el circulito visto desde la resistencia del circuito RC. 
+\end{minipage}
+\end{figure}
