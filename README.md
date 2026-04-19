@@ -61,4 +61,3 @@ experimentos-em-2026/
 ## 📄 Licencia
 
 Uso académico — materia **Experimentos Electromagnéticos, 2026**.
-    hola2.0
