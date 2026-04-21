@@ -1,0 +1,77 @@
+\section{Apéndice} 
+\subsection{Expresiones teóricas de $H(\omega)$}
+Los circuitos RC y RLC son sistemas LIT, por lo que si se los alimenta con una señal sinusoidal de frecuencia $\omega$ y amplitud $\text{A}$ de la forma 
+
+\begin{equation}
+    V_e=Ae^{i\omega t}
+    \label{eq:1}
+\end{equation}
+la señal de salida será \cite{sistemasLIT}
+\begin{equation}
+    V_S=H(\omega)V_E
+    \label{eq:2}
+\end{equation}
+donde la función de transferencia dependerá de la componente sobre la que se mida. 
+    Aplicando la Ley de Kirchoff  para el circuito RC, se puede obtener la ecuación diferencial para el voltaje sobre la resistencia o sobre el capacitor\cite{kip1969}. Se obtiene entonces para el voltaje de salida de la resistencia
+\begin{equation}
+    V_e=V_R+\frac{1}{\tau}\int V_Rdt
+\end{equation}
+siendo $\tau=RC$ la constante de tiempo del circuito. Aplicando lo conocido sobre sistemas LIT se obtiene
+\begin{equation}
+    V_e=H(\omega)V_e + \frac{H(\omega)}{\tau}\int V_edt
+\end{equation}
+donde $H(\omega)$ es constante al ser el sistema invariante en el tiempo. Integrando $V_e$ se llega a la expresión
+\begin{equation}
+    V_e=H(\omega)V_e+\frac{H(\omega)V_e}{i\omega\tau}
+\end{equation}
+o lo que es equivalente
+\begin{equation}
+    H(\omega)(1+\frac{1}{i\omega\tau})=1
+\end{equation}
+y por lo tanto se tiene que el módulo de la función de transferencia es
+\begin{equation}
+    |H_r(\omega)|=\frac{\omega\tau}{\sqrt{1+(\omega\tau)^2}}
+    \label{eq:moduloRC}
+\end{equation}
+y su desfasaje con respecto al voltaje de entrada
+    \begin{equation}
+    \varphi_r=\arctan(\frac{1}{\omega\tau})
+    \label{eq:3}
+\end{equation}
+De la misma manera se puede demostrar para el capacitor el modulo de la función de transferencia es
+\begin{equation}
+    |H_C(\omega)|=\frac{1}{\sqrt{1+(\omega\tau)^2}}
+\end{equation}
+y el desfasaje entre el voltaje de entrada y el del capacitor es
+\begin{equation}
+    \varphi_c=\arctan(- \omega\tau)
+    \label{eq:4}
+\end{equation}
+    Por otro lado, si se tiene circuito RLC en serie (figura \ref{fig:RLC}) y se le 
+aplica un voltaje de entrada $V_e$, la ecuación de la ley de Kirchoff queda
+\begin{equation}
+    V_e=V_R+\frac{1}{\tau\omega_0^2}\frac{dV_R}{dt}+\frac{1}{\tau}\int V_Rdt
+\end{equation}
+    donde se definió $\omega_0=\frac{1}{\sqrt{LC}}$ la frecuencia resonante del sistema. Aplicando los mismos conceptos que para el circuito RC, se obtiene que el módulo de la función de transferencia, cuando se mide sobre la resistencia, es
+\begin{equation}
+    |H(\omega)|= \frac{\omega\tau}{\sqrt{(\omega\tau)^2+(1-(\frac{\omega}{\omega_0})^2)^2}}
+    \label{eq:moduloRLC}
+\end{equation}
+y el desfasaje con respecto al voltaje de entrada
+\begin{equation}
+    \tan(\varphi)=\frac{(\frac{\omega}{\omega_0})^2-1}{\omega\tau}
+    \label{eq:desfasajeRLC}
+\end{equation}
+    A su vez, al ser el voltaje de la resistencia directamente proporcional a la corriente del circuito, es posible hallar el módulo y el argumento de la impedancia del sistema a partir de la relación
+    \begin{equation}
+        V_R=IR \ \ \ \ \ \ V_e=IZ(\omega) \Longrightarrow V_R=\frac{V_eR}{|Z(\omega)|}e^{-i\varphi}
+    \end{equation}
+    donde el argumento $-\varphi$ debe ser igual al de $H(\omega)$ anteriormente encontrado, ya que el voltaje de la resistencia se encuentra en fase con la corriente del sistema. Finalmente $\frac{R}{|Z(\omega)|}$ debe ser igual a $|H(\omega)|$ por igualdad de módulos de números complejos, obteniendo así que el módulo de $Z(\omega)$ es
+    \begin{equation}
+        |Z(\omega)|=\frac{R}{\omega\tau} \sqrt{(\omega\tau)^2+\left(1-\left(\frac{\omega}{\omega_0}\right)^2\right)^2}
+        \label{imp RCL}
+    \end{equation}
+      
+
+
+

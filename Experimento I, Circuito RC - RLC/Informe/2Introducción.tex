@@ -1,76 +1,27 @@
 \section{Introducción}
-    El análisis frecuencial trata de estudiar como un sistema responde ante diferentes señales con frecuencias dentro de un intervalo determinado. Los sistemas más fáciles de estudiar son aquellos llamados lineales invariantes en el tiempo (LIT), es decir, aquellos sistemas que cumplan linealidad con respecto a la señal de entrada y salida, y además que no cambien sus propiedades con el pasar del tiempo. 
-    Un ejemplo clásico de sistema LIT es el del amortiguador de un auto al que se lo excita con un pulso determinado.Aplicando la ley de Newton y agregando el término forzado del pulso, se puede demostrar fácilmente que se obtiene una EDO lineal sobre el desplazamiento del amortiguador. Sin embargo, para no tener la necesidad de construir físicamente un amortiguador para poder estudiarlo, se pueden utilizar distintas configuraciones de circuitos eléctricos que se comporten de la misma manera que el sistema que se quería estudiar, permitiendo así estudiar un sistema más barato y de mayor manejabilidad para luego aplicar los resultados en el sistema más complejo. 
-    Analizando un circuito LRC, se pueden encontrar las similitudes entre los diferentes componentes del amortiguador y los del circuito. El inductor hace las veces de la inercia (o masa) del sistema, el capacitor se comporta como el resorte y la resistencia es el término amortiguado que hace que se libere energía en forma de calor. 
+    El análisis frecuencial es un método de estudio de sistemas basado en observar la respuesta de los mismos frente a señales de diferentes frecuencias. Los sistemas más fáciles de estudiar son aquellos llamados lineales invariantes en el tiempo (LIT), es decir, aquellos sistemas que cumplan linealidad con respecto a la señal de entrada, y además, cumplan invarianza temporal.
     
-    
+    Un ejemplo mecánico de sistema LIT es el del sistema de suspensión de un auto (Figura \ref{fig:amortiguador}). Las ecuaciones de movimiento obtenidas para este sistema resultan en una ecuación diferencial lineal\footnote{Nótese que la linealidad de la ecuación diferencial es la que determina que el sistema sea considerado LIT.} sobre el desplazamiento $x(t)$ con la fuerza aplicada $f(t)$  como término inhomogéneo \cite{oppenheim1997signals}. En este contexto, la fuerza representa la señal de entrada, mientras que el desplazamiento representa la respuesta del sistema ante dicha señal. La desventaja de estudiar un sistema como este es no solo el costo de su fabricación, sino también la dificultad de su manejo en el laboratorio. Por eso es que resulta más práctico estudiar sistemas de menor complejidad, pero que se comporten de la misma manera, y luego trasladar los resultados al problema del amortiguador.
 
-
-
-
-   
-    Típicamente, los circuitos RC y LRC son sistemas lineales, es decir, la ecuación diferencial característica de cada uno es lineal con respecto al voltaje de salida. Si se tiene un circuito RC en serie como se ve en la figura \ref{fig:RC}, y se lo alimenta con una señal sinusoidal de frecuencia $\omega$ y amplitud $\text{A}$ de la forma 
-\begin{equation}
-    V_e=Ae^{i\omega t}
-    \label{eq:1}
-\end{equation}
-la señal de salida será 
-\begin{equation}
-    V_S=H(\omega)V_E
-    \label{eq:2}
-\end{equation}
-donde la función de transferencia dependerá de la componente sobre la que se mida. 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}{0.4\textwidth}
+    \begin{subfigure}{0.4\textwidth} 
         \centering
-        \includegraphics[width=0.8\linewidth]{gráficos/RC serie.png}
-        \caption{Circuito RC en serie alimentado por una fuente de corriente alterna de voltaje $V_e$. }
-        \label{fig:RC}
+        \includegraphics[width=0.5\linewidth]{Amortiguador.jpg}  
+        \caption{Diagrama de la suspensión de un auto. Se representa como un resorte de constante $K$ y un amortiguador sujetos a una masa $M$ a la cual se le aplica una fuerza externa $f(t)$, resultando en un desplazamiento $x(t)$. }
+        \label{fig:amortiguador}
     \end{subfigure}
-    \hspace{2.2cm}
+    \hspace{0.3cm}
     \begin{subfigure}{0.4\textwidth}
         \centering
-        \includegraphics[width=0.6\linewidth]{gráficos/RLC_series_circuit.png}
-        \caption{Circuito RLC en serie alimentado por una fuente de corriente alterna $V$.$\text{V}_\text{R}$ es la diferencia de potencial de la resistencia.}
+        \includegraphics[width=0.5\linewidth]{RLC_serie.png}
+        \caption{Circuito RLC en serie alimentado por una fuente de tensión alterna $V_e$.}
         \label{fig:RLC}
     \end{subfigure}
-    \caption{Diagramas de circuitos RC y RLC en serie.}
+    \caption{Diagramas de los sistemas LIT utilizados para la comparación.}
     \label{fig:dos_imagenes}
 \end{figure}
 
-    Aplicando la Ley de Kirchoff , fácilmente se puede obtener esta función tanto para cuando se mide sobre el capacitor como para cuando se mide sobre la resistencia \cite{kip1969}. Se obtiene entonces para el voltaje de salida de la resistencia
-\begin{equation}
-   H_R(\omega)=|H_R(\omega)|e^{i\varphi_r} \implies |H_R(\omega)|= \frac{\omega\tau}{\sqrt{1+(\omega\tau)^2}}  \ \ \ \   \tan(\varphi_r)=\frac{1}{\omega\tau}
-   \label{RC resistencia}
-\end{equation}
-siendo $\tau=RC$ la constante de tiempo del circuito. De esta manera, el valor del ángulo de desfasaje $\phi_r$ entre el potencial de entrada y el de la resistencia viene dado por
-\begin{equation}
-    \phi_r=\arctan(\frac{1}{\omega\tau})
-    \label{eq:3}
-\end{equation}
-Luego, para el capacitor se tiene que
-\begin{equation}
-    H_C(\omega)=|H_C(\omega)|e^{i\varphi_c} \implies |H_C(\omega)|= \frac{1}{\sqrt{1+(\omega\tau)^2}}  \ \ \ \   \tan(\varphi_c)=-\omega\tau
-    \label{RC capacitor}
-\end{equation}
-De manera que el ángulo de desfasaje entre el potencial de entrada y el del capacitor es
-\begin{equation}
-    \phi_c=\arctan(- \omega\tau)
-    \label{eq:4}
-\end{equation}
-    Por otro lado, si se alimenta un circuito RLC (figura \ref{fig:RLC}) con una señal de la misma manera que para el RC, la función de transferencia será
-    \begin{equation}
-        H(\omega)=|H(\omega)|e^{i\varphi} \implies |H(\omega)|= \frac{\omega\tau}{\sqrt{(\omega\tau)^2+(1-(\frac{\omega}{\omega_0})^2)^2}}  \ \ \ \   \tan(\varphi)=\frac{(\frac{\omega}{\omega_0})^2-1}{\omega\tau}
-        \label{eq:5}
-    \end{equation}
-    donde se definió $\omega_0=\frac{1}{\sqrt{LC}}$ la frecuencia resonante del sistema. Notar que, al ser el voltaje de la resistencia directamente proporcional a la corriente del circuito, se puede encontrar el módulo y el argumento de la impedancia del sistema a partir de la relación
-    \begin{equation}
-        V_R=IR \ \ \ \ \ \ V_e=IZ(\omega) \Longrightarrow V_R=\frac{V_eR}{|Z(\omega)|}e^{-i\phi}
-    \end{equation}
-    donde el argumento $-\phi$ debe ser igual al de $H(\omega)$ anteriormente encontrado, ya que el voltaje de la resistencia se encuentra en fase con la corriente del sistema. Finalmente $\frac{R}{|Z(\omega)|}$ debe ser igual a $|H(\omega)|$ por igualdad de módulos de números complejos, obteniendo así que el módulo de $Z(\omega)$ es
-    \begin{equation}
-        |Z(\omega)|=\frac{R}{\omega\tau} \sqrt{(\omega\tau)^2+\left(1-\left(\frac{\omega}{\omega_0}\right)^2\right)^2}
-        \label{imp RCL}
-    \end{equation}
-        En este trabajo se realizó un análisis frecuencial de circuitos RC y RLC, midiendo en resistencia y capacitor para el primero, y sobre resistencia para el segundo.
+    Un ejemplo de esto es un circuito RLC en serie (Ver  \ref{fig:RLC}). Al aplicar las leyes de Kirchoff, se obtiene una ecuación diferencial para la carga $Q(t)$ del capacitor \cite{kip1969}, análoga a la obtenida para el desplazamiento del resorte.  Esto permite ver que a cada componente del circuito se le puede asignar su equivalente en el sistema mecánico: el capacitor se comporta como el resorte, la resistencia como el amortiguador, el inductor como masa inercial, la carga como el desplazamiento, y el voltaje de entrada como fuerza aplicada. 
+
+    Con el objetivo de caracterizar circuitos RC y RLC, se midió para ambos la tensión de la señal de entrada y la señal de salida, así como el desfasaje entre ellas. En el caso del RC se tomó tanto la señal sobre la resistencia como sobre el capacitor, mientas que en el RLC se tomó únicamente sobre la resistencia.
