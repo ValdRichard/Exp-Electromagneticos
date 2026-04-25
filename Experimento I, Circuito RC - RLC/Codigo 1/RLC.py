@@ -1,7 +1,4 @@
 import numpy as np
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.odr import ODR, Model, RealData
 
 C = 100e-9 #F
 R = 1000 #ohm
@@ -52,8 +49,12 @@ errIm = np.sqrt((errH*np.sin(phi))**2 + (H*np.cos(phi)*errphi)**2)
 tau1 = 87.73878e-6
 errtau1= 2.18809e-6
 print(errtau)
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.odr import ODR, Model, RealData
 
-
+err_cap = 4.90234188189095e-09
+cap = 8.773877927430522e-08
 def modelo_rlc_tau_fijo(p, x):
     w0, A, tau_ef = p[0], p[1], p[2]
 
@@ -83,8 +84,6 @@ chi2_obs = np.sum(((H - y_fit) / errH)**2)
 dof = len(w) - 3
 chi2_red = chi2_obs / dof
 
-err_cap = 4.90234188189095e-09
-cap = 8.773877927430522e-08
 # --- NUEVO: CÁLCULO DE R2 ---
 residuos = H - y_fit
 ss_res = np.sum(residuos**2)
@@ -124,9 +123,17 @@ print(f"R² del ajuste: {r2_rlc:.5f}")
 print(f"Chi-cuadrado reducido: {chi2_red:.4f}")
 
 
+
 rl = (tau_ef_fit - tau1)/cap
 err_rl = np.sqrt( ((tau1*err_tau_ef_fit)/cap)**2 + ((tau_ef_fit*errtau1) / cap )**2 + (((tau_ef_fit - tau1)*err_cap)/cap**2)**2 )
 print(f"Resistencia agregada por el inductor: {rl:.2f} ± {err_rl:.3f}")
+
+
+print(f"tau Fijo {tau1}")
+print(f"error tau fijo {errtau1}")
+print(f"tau ef fit {tau_ef_fit}")
+print(f"err tau ef fit {err_tau_ef_fit}")
+
 
 # --- CONFIGURACIÓN DEL SEGUNDO AJUSTE (TAU ESTRICTAMENTE FIJO) ---
 tau_fijo_val = 87.73878e-6  # El valor experimental (tau1) que mencionaste
@@ -165,7 +172,7 @@ errL_fijo = L_fijo * np.sqrt((err_cap/cap)**2 + (2 * err_w0_f / w0_f_fit)**2)
 plt.figure(figsize=(9, 6.5))
 
 # 1. Datos experimentales al frente (zorder alto)
-plt.errorbar(w, H, xerr=errw, yerr=errH, fmt='ko', alpha=0.2, label='Datos', zorder=5)
+plt.errorbar(w, H, xerr=errw, yerr=errH, fmt='ko', alpha=0.5, label='Datos', zorder=5)
 
 w_linea = np.linspace(min(w), max(w), 1000)
 
@@ -193,7 +200,7 @@ plt.legend(fontsize=12.5, loc='upper right', frameon=True, shadow=True)
 plt.grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('tau_RLC.png', dpi=300)
+plt.savefig('tau_RLC.png', dpi=500)
 plt.show()
 
 # --- REPORTES ---
@@ -206,7 +213,6 @@ print(f"Amplitud A:   {A_f_fit:.3f} ± {err_A_f:.3f}")
 print(f"Inductancia L: {L_fijo:.6f} ± {errL_fijo:.6f} H")
 print(f"R² del ajuste: {r2_fijo:.6f}")
 print(f"{'='*50}")
-
 
 # --- CONFIGURACIÓN DEL GRÁFICO HORIZONTAL ---
 # (Ancho=12, Alto=6 para que sea bien apaisado)
@@ -241,6 +247,15 @@ plt.axvline(0, color='black', linewidth=1, alpha=0.5) # Eje Imaginario
 plt.tight_layout()
 
 # Guardar en alta resolución para el informe
-plt.savefig("nyquist RLC.png", dpi=300, bbox_inches='tight')
+plt.savefig("nyquist RLC.png", dpi=500, bbox_inches='tight')
 
 plt.show()
+
+
+# Imprimir los w0 obtenidos en todos los ajustes y pasarlos a hz con su error 
+print(f"Frecuencia de resonancia (tau libre): {w0_fit/(2*np.pi):.2f} ± {err_w0/(2*np.pi):.2f} Hz")
+print(f"Frecuencia de resonancia (tau fijo): {w0_f_fit/(2*np.pi):.2f} ± {err_w0_f/(2*np.pi):.2f} Hz")
+
+# Imprimir los w0 en rad/s con su error
+print(f"Frecuencia de resonancia (tau libre): {w0_fit:.2f} ± {err_w0:.2f} rad/s")
+print(f"Frecuencia de resonancia (tau fijo): {w0_f_fit:.2f} ± {err_w0_f:.2f} rad/s")
