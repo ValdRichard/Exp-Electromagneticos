@@ -2,16 +2,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 from scipy import odr
-from scipy.odr import ODR, Model, RealData
+import numpy as np
 
 #RESISTENCIA
 R = 1000
 C = 100e-9
 fref = 1/(2 * np.pi * R * C)
-
+wref = 1/(R*C)
 tau = R*C
 errC = 10e-9
 errR = R*0.05
+errwref = wref * np.sqrt((errR/R)**2 + (errC/C)**2)
+print(f"Frecuencia angular teorica: {wref:.2f} Hz")
+print(f"Error de frecuencia angular: {errwref:.2f} Hz")
 errtau = np.sqrt((R*errC)**2 + (C*errR)**2)
 
 
@@ -56,16 +59,6 @@ err_Hc = Hc * np.sqrt((errAfemc / Afemc)**2 + (errAc / Ac)**2)
 err_phic = np.abs(phic) * np.sqrt((errfc / fc)**2 + (errdeltatc / deltatc)**2)
 err_wc = 2*np.pi*errfc
 
-# errfr = fr*0.05
-# errAfemr = Afemr*0.05
-# errAr = Ar*0.05
-# errdeltatr = deltatr*0.05
-
-# errfc = fc*0.05
-# errAfemc = Afemc*0.05
-# errAc = Ac*0.05
-# errdeltatc = deltatc*0.05
-
 #NYQUIST con cos-sen
 
 Re_Hr = Hr * np.cos(phir)
@@ -76,6 +69,7 @@ Re_Hc = Hc * np.cos(phic_)
 Im_Hc = Hc * np.sin(phic_)
 err_Re_Hc = np.sqrt((np.cos(phic_) * err_Hc)**2 + (Hc * np.sin(phic_) * err_phic)**2)
 err_Im_Hc = np.sqrt((np.sin(phic_) * err_Hc)**2 + (Hc * np.cos(phic_) * err_phic)**2)
+
 # # NYQUIST con wtau
 
 # Re_Hc = 1 / (1 + (wc*tau)**2)
@@ -116,9 +110,12 @@ ax.grid(True, linestyle='--', alpha=0.6)
 ax.legend(fontsize=13, frameon=True, shadow=True)
 
 plt.tight_layout()
-plt.savefig("nyquist_RC.png", dpi=300)
-plt.show()
+plt.savefig("nyquist_RC.png", dpi=500)
+# plt.show()
 
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import odr
 
 def ajustar_recta(x, y, err_x, err_y, r, fix_m=None):
     x_r = x[r]
@@ -139,7 +136,7 @@ def ajustar_recta(x, y, err_x, err_y, r, fix_m=None):
         beta0 = [fix_m, 0.0]
         odr_inst = odr.ODR(datos, modelo, beta0=beta0)
         odr_inst.set_job(fit_type=0)
-        odr_inst.ifixb = [0, 1] # 0 fijo (m), 1 libre (b)
+        odr_inst.ifixb = [0, 1]
 
     out = odr_inst.run()
     B = out.beta
@@ -153,6 +150,7 @@ def ajustar_recta(x, y, err_x, err_y, r, fix_m=None):
     r2 = 1 - (ss_res / ss_tot)
 
     return B, errB, r2
+
 def analizar_bode(w, H, err_w, err_H, r1, r2, m1_f=None, m2_f=None, titulo="Bode", ax=None,
                   label_w0=None, label_m_libre=None, label_m_fija=None):
     x_log = np.log10(w)
@@ -169,17 +167,16 @@ def analizar_bode(w, H, err_w, err_H, r1, r2, m1_f=None, m2_f=None, titulo="Bode
     x_int = (b2[1] - b1[1]) / (b1[0] - b2[0])
     w_0 = 10**x_int
 
-    # Lógica para identificar cuál es la libre y cuál la fija para los labels
-    if m1_f is None: # La primera es libre
+    if m1_f is None:
         l1 = label_m_libre if label_m_libre else f"Ajuste lineal ($R^2$={r2_1:.3f})"
         l2 = label_m_fija if label_m_fija else "Pendiente fija (m=0)"
         color1, color2 = 'indigo', 'darkorange'
-    else: # La segunda es libre (o ambas fijas, pero tomamos este caso)
+    else:
         l1 = label_m_fija if label_m_fija else "Pendiente fija (m=0)"
         l2 = label_m_libre if label_m_libre else f"Ajuste lineal ($R^2$={r2_2:.3f})"
         color1, color2 = 'darkorange', 'indigo'
 
-    # 3. Cálculo de error w0 (se mantiene igual)
+    # 3. Cálculo de error w0
     if m2_f == 0:
         m, errm, B1, errB1, B2, errB2 = b1[0], eb1[0], b1[1], eb1[1], b2[1], eb2[1]
     else:
@@ -187,9 +184,27 @@ def analizar_bode(w, H, err_w, err_H, r1, r2, m1_f=None, m2_f=None, titulo="Bode
     err_x_int = np.sqrt((errB2/m)**2 + (errB1/m)**2 + ((B2-B1)*errm/m**2)**2)
     err_w0 = w_0 * np.log(10) * err_x_int
 
-    # 4. Gráfico
+    # 4. Gráfico con colores diferenciados por tramo
     if ax is None: fig, ax = plt.subplots(figsize=(12, 7))
-    ax.errorbar(x_log, y_log, xerr=err_x, yerr=err_y, fmt='o', color='black', markersize=7, alpha=0.3, label='Datos')
+
+    # Identificar índices que no están en r1 ni en r2 para dejarlos en gris
+    indices = np.arange(len(x_log))
+    idx_r1 = indices[r1]
+    idx_r2 = indices[r2]
+    idx_resto = np.setdiff1d(indices, np.concatenate([idx_r1, idx_r2]))
+
+    # Graficar puntos del Tramo 1 (color de la recta 1)
+    ax.errorbar(x_log[r1], y_log[r1], xerr=err_x[r1], yerr=err_y[r1],
+                fmt='o', color=color1, markersize=7, alpha=0.4)
+
+    # Graficar puntos del Tramo 2 (color de la recta 2)
+    ax.errorbar(x_log[r2], y_log[r2], xerr=err_x[r2], yerr=err_y[r2],
+                fmt='o', color=color2, markersize=7, alpha=0.4)
+
+    # Graficar el resto de los puntos (Gris)
+    if len(idx_resto) > 0:
+        ax.errorbar(x_log[idx_resto], y_log[idx_resto], xerr=err_x[idx_resto], yerr=err_y[idx_resto],
+                    fmt='o', color='gray', markersize=7, alpha=0.2)
 
     x_f = np.linspace(min(x_log), max(x_log), 100)
     ax.plot(x_f, b1[0]*x_f + b1[1], ls='--', color=color1, lw=2.2, label=l1)
@@ -201,7 +216,7 @@ def analizar_bode(w, H, err_w, err_H, r1, r2, m1_f=None, m2_f=None, titulo="Bode
     ax.set_title(titulo, fontsize=16)
     ax.set_xlabel(r"$\log_{10}(\omega)$", fontsize=14)
     ax.set_ylabel(r"$\log_{10}(H)$", fontsize=14)
-    ax.legend(loc='best', fontsize=13 , frameon=True, shadow=True)
+    ax.legend(loc='best', fontsize=13, frameon=True, shadow=True) # ncol=2 para que no sea tan larga la leyenda
     ax.grid(True, alpha=0.2)
 
     return w_0, err_w0, r2_1, r2_2
@@ -239,8 +254,8 @@ w0_c, err_w0_c, r2_c1, r2_c2 = analizar_bode(wc, Hc, err_wc, err_Hc,
                                              label_m_fija=lab_f_c)
 
 plt.tight_layout()
-plt.savefig("rectas_RC.png", dpi=400)
-plt.show()
+plt.savefig("rectas_RC.png", dpi=500)
+# plt.show()
 
 # Prints finales (calculando f_0 a partir de w_0)
 f0_r, ef0_r = w0_r/(2*np.pi), err_w0_r/(2*np.pi)
@@ -266,7 +281,6 @@ f0_prom = (f0_r * w_r + f0_c * w_c) / (w_r + w_c)
 # Error del promedio pesado
 ef0_prom = np.sqrt(1 / (w_r + w_c))
 
-print(f"\nPromedio pesado: {f0_prom:.2f} ± {ef0_prom:.2f} Hz")
 
 
 # --- CÁLCULO DE PROMEDIOS PESADOS ---
@@ -290,7 +304,7 @@ print(f"Frecuencia (f0):  {f0_prom:.2f} ± {ef0_prom:.2f} Hz")
 print(f"Angular (w0):     {w0_prom:.2f} ± {ew0_prom:.2f} rad/s")
 
 
-
+from scipy.odr import ODR, Model, RealData
 
 # --- 1. MODELOS TEÓRICOS PARA ODR ---
 def modelo_fase_r(p, w):
@@ -351,8 +365,8 @@ ax2.set_xscale('log')
 ax2.legend(fontsize=13, frameon=True, shadow=True)
 
 plt.tight_layout()
-plt.savefig("tau_RC.png", dpi=400)
-plt.show()
+plt.savefig("tau_RC.png", dpi=500)
+# plt.show()
 
 # --- 5. REPORTE DE RESULTADOS ---
 print(f"Valor teórico de tau (R*C): {tau*1e6:.2f} \u00b1 {errtau*1e6:.2f} \u03bcs")
@@ -400,3 +414,51 @@ print(f"Coeficientes de determinación (R²):")
 print(f"{'-'*35}")
 print(f"Pasa altos (Resistencia): {r2_resistencia:.5f}")
 print(f"Pasa bajos (Capacitor):   {r2_capacitor:.5f}")
+
+import numpy as np
+#Promedio ponderado del método de ajuste con phi y de rectas
+# Datos
+x1 = 11397
+s1 = 284
+
+x2 = 11063
+s2 = 919
+
+# Pesos
+w1 = 1 / s1**2
+w2 = 1 / s2**2
+
+# Promedio ponderado
+x_bar = (w1 * x1 + w2 * x2) / (w1 + w2)
+
+# Error del promedio
+s_bar = np.sqrt(1 / (w1 + w2))
+
+print("Promedio ponderado:", x_bar)
+print("Incertidumbre:", s_bar)
+
+
+
+# Imprimir todos los valores de las frecuencias obtenidas pasadas a Hz junto con su error que es multiplicar por 2*pi el error de w0
+f0_r_hz = w0_r / (2 * np.pi)        
+ef0_r_hz = err_w0_r / (2 * np.pi)
+f0_c_hz = w0_c / (2 * np.pi)
+ef0_c_hz = err_w0_c / (2 * np.pi)
+
+print(f"\nFrecuencia de corte Resistencia: {f0_r_hz:.2f} ± {ef0_r_hz:.2f} Hz")
+print(f"Frecuencia de corte Capacitor:   {f0_c_hz:.2f} ± {ef0_c_hz:.2f} Hz")
+
+# Imprimir los resultados del w0 y su error en rad/s
+print(f"\nFrecuencia de corte Resistencia: {w0_r:.2f} ± {err_w0_r:.2f} rad/s")      
+print(f"Frecuencia de corte Capacitor:   {w0_c:.2f} ± {err_w0_c:.2f} rad/s")
+ 
+
+# Imprimir el promedio ponderado de las frecuencias de corte en Hz y en rad/s
+f0_prom_hz = x_bar / (2 * np.pi)  
+ef0_prom_hz = s_bar / (2 * np.pi)
+print(f"\nPromedio ponderado de frecuencia de corte: {f0_prom_hz:.2f} ± {ef0_prom_hz:.2f} Hz")
+print(f"Promedio ponderado de frecuencia de corte: {x_bar:.2f} ± {s_bar:.2f} rad/s")
+
+
+print(f"\nPromedio pesado: {f0_prom:.2f} ± {ef0_prom:.2f} Hz")
+print(f"Promedio pesado: {w0_prom:.2f} ± {ew0_prom:.2f} rad/s")
