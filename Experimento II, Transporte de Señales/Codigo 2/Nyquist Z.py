@@ -8,6 +8,7 @@ url = 'https://docs.google.com/spreadsheets/d/1UOEOFKQLhlWB2_Yebj6ubf3RC3mSYtyYf
 df = pd.read_csv(url)
 
 R = 2700
+errR = 0.05 * R
 Vf = df['Vf'].values
 Vr = df['Vr'].values
 Z = R * Vf/Vr
@@ -20,18 +21,21 @@ ImZ = Z * np.sin(phi)
 # Incertezas
 errVf = 0.03 * Vf + 0.1 * 5 + 0.001
 errVr = 0.03 * Vr + 0.1 * 2 + 0.001
-errZ = Z * np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2)
+errZ = Z * np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2 + (errR/R)**2)
 errZ2 = np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2)
 errdeltat = np.array([0.005/5] * 1 + [0.0025/5] * 1 + [0.001/5] * 2 + [0.0005/5] * 5 + [0.00025/5] * 3)
 errf = 0.05 * df['f'].values
 errw = 2 * np.pi * errf
-errphi = np.sqrt((w * errdeltat) ** 2 + (deltat * errw) ** 2)
-errRez = Z * np.sqrt((np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2) * np.cos(phi))**2 + (np.sin(phi) * errphi)**2)
-errImZ = Z * np.sqrt((np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2) * np.sin(phi))**2 + (np.cos(phi) * errphi)**2)
+errphi = phi * np.sqrt((errdeltat/deltat) ** 2 + (errw/w) ** 2)
+errRez = Z * np.sqrt((np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2 + (errR/R)**2) * np.cos(phi))**2 + (np.sin(phi) * errphi)**2)
+errImZ = Z * np.sqrt((np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2 + (errR/R)**2) * np.sin(phi))**2 + (np.cos(phi) * errphi)**2)
 
-print(errphi)
-print(np.sqrt((np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2) * np.sin(phi))**2 + (np.cos(phi) * errphi)**2))
-print(np.sqrt((np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2) * np.cos(phi))**2 + (np.sin(phi) * errphi)**2))
+
+#print(f"lo que me esta rompiendo las bolas: {np.sqrt((w * errdeltat) ** 2)}")
+#print(f"errphi: {errphi}")
+
+
+
 
 # Gráfico de Nyquist de Z
 fig, ax = plt.subplots(figsize=(10, 6))
