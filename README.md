@@ -36,7 +36,6 @@ experimentos-em-2026/
 |----|--------|------|
 | 01 | — | Experimento RC -RLC |
 | 02 | — | Propagación de señales | 
-| 03 | — | Efecto Skin |
 
 ---
 
