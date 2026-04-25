@@ -9,7 +9,7 @@
 
 Este repositorio contiene los informes, datos y scripts correspondientes  
 a los experimentos realizados a lo de la materia.  
-Cada carpeta de experimento contendrá el informe, con su código que permitió el análisis de datos.
+Cada carpeta de experimento contendrá el informe, con el código que permitió el análisis de datos.
 
 ---
 
