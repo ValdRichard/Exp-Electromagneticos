@@ -281,7 +281,6 @@ f0_prom = (f0_r * w_r + f0_c * w_c) / (w_r + w_c)
 # Error del promedio pesado
 ef0_prom = np.sqrt(1 / (w_r + w_c))
 
-print(f"\nPromedio pesado: {f0_prom:.2f} ± {ef0_prom:.2f} Hz")
 
 
 # --- CÁLCULO DE PROMEDIOS PESADOS ---
@@ -452,10 +451,14 @@ print(f"Frecuencia de corte Capacitor:   {f0_c_hz:.2f} ± {ef0_c_hz:.2f} Hz")
 # Imprimir los resultados del w0 y su error en rad/s
 print(f"\nFrecuencia de corte Resistencia: {w0_r:.2f} ± {err_w0_r:.2f} rad/s")      
 print(f"Frecuencia de corte Capacitor:   {w0_c:.2f} ± {err_w0_c:.2f} rad/s")
-
+ 
 
 # Imprimir el promedio ponderado de las frecuencias de corte en Hz y en rad/s
 f0_prom_hz = x_bar / (2 * np.pi)  
 ef0_prom_hz = s_bar / (2 * np.pi)
 print(f"\nPromedio ponderado de frecuencia de corte: {f0_prom_hz:.2f} ± {ef0_prom_hz:.2f} Hz")
 print(f"Promedio ponderado de frecuencia de corte: {x_bar:.2f} ± {s_bar:.2f} rad/s")
+
+
+print(f"\nPromedio pesado: {f0_prom:.2f} ± {ef0_prom:.2f} Hz")
+print(f"Promedio pesado: {w0_prom:.2f} ± {ew0_prom:.2f} rad/s")

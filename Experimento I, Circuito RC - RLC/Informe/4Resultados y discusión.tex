@@ -1,7 +1,7 @@
 \section{Resultados y discusión}
 Con el objetivo de determinar la frecuencia de corte $\omega_0$ y la frecuencia de resonancia $\omega_r$, se estudió la respuesta de circuitos RC y RLC para distintas frecuencias como señal de entrada, utilizando una rutina de $Python$ \cite{github}. Se caracterizó un circuito RC a partir de dos series de mediciones: registrando la diferencia de potencial de la señal de entrada y de salida (sobre la resistencia o el capacitor, según correspondiera), junto al desfasaje entre ambas señales. Para el circuito RLC, se registró la diferencia de potencial de la señal de entrada junto al de la resistencia, midiendo la diferencia de fase en cada medida.
 
-\subsubsection{Circuito RC}
+\subsection{Circuito RC}
 
 A partir de medir la diferencia de potencial de entrada y de salida (de la resistencia o del capacitor), se graficó el logaritmo del módulo de la función de transferencia $H(\omega)$ según \eqref{eq:2}, en función del logaritmo de la frecuencia de la señal de entrada, dada por \(\omega = 2\pi f\). Para determinar la frecuencia de corte característica del circuito, se identificó el punto de intersección entre dos rectas, las cuales fueron ajustadas con pendiente libre o fijada a cero, según el rango de frecuencias dado por el filtro pasa-altos o pasa-bajos. Tales ajustes se presentan en la \autoref{fig:rectasRC}, donde la incerteza en ambas variables vienen dadas por la propagación de errores del $\text{log}(H)$ y $\text{log}(\omega)$, según la variación de la amplitud registrada para el potencial de entrada y de salida, y la variación registrada en la frecuencia de la señal de entrada, respectivamente.
 

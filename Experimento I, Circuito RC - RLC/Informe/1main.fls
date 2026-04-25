@@ -423,6 +423,7 @@ INPUT C:\Users\chimu\AppData\Local\MiKTeX\fonts\tfm\public\rsfs\rsfs10.tfm
 INPUT E:\MikTex2\fonts\vf\adobe\times\zptmcm7y.vf
 INPUT E:\MikTex2\fonts\tfm\public\cm\cmsy10.tfm
 INPUT C:\Users\chimu\AppData\Local\MiKTeX\fonts\tfm\public\rsfs\rsfs10.tfm
+INPUT E:\MikTex2\fonts\tfm\adobe\times\ptmb7t.tfm
 INPUT .\gráficos\rectas_RC.png
 INPUT .\gráficos\rectas_RC.png
 INPUT .\gráficos\rectas_RC.png
@@ -453,6 +454,8 @@ INPUT .\gráficos\tau_RLC.png
 INPUT .\gráficos\tau_RLC.png
 INPUT .\gráficos\tau_RLC.png
 INPUT E:\MikTex2\fonts\vf\adobe\times\ptmr8c.vf
+INPUT E:\MikTex2\fonts\vf\adobe\times\ptmb7t.vf
+INPUT E:\MikTex2\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT .\gráficos\nyquist_RC.png
 INPUT .\gráficos\nyquist_RC.png
 INPUT .\gráficos\nyquist_RC.png
@@ -477,7 +480,6 @@ INPUT .\6Apéndice.tex
 INPUT .\6Apéndice.tex
 INPUT .\6Apéndice.tex
 INPUT 6Apéndice.tex
-INPUT E:\MikTex2\fonts\tfm\adobe\times\ptmb7t.tfm
 INPUT E:\MikTex2\fonts\tfm\adobe\times\zptmcm7t.tfm
 INPUT E:\MikTex2\fonts\tfm\adobe\times\zptmcm7m.tfm
 INPUT E:\MikTex2\fonts\tfm\adobe\times\zptmcm7y.tfm
@@ -487,8 +489,6 @@ INPUT E:\MikTex2\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT E:\MikTex2\fonts\tfm\public\amsfonts\euler\eurm10.tfm
 INPUT E:\MikTex2\fonts\tfm\adobe\times\ptmri7t.tfm
 INPUT E:\MikTex2\fonts\tfm\public\amsfonts\euler\eurb10.tfm
-INPUT E:\MikTex2\fonts\vf\adobe\times\ptmb7t.vf
-INPUT E:\MikTex2\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT E:\MikTex2\fonts\vf\adobe\times\zptmcm7m.vf
 INPUT E:\MikTex2\fonts\tfm\adobe\times\psyro.tfm
 INPUT E:\MikTex2\fonts\tfm\public\cm\cmmi10.tfm

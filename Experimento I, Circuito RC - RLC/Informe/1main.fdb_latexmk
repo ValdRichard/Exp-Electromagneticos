@@ -1,22 +1,22 @@
 # Fdb version 4
-["biber 1main"] 1776132955.09715 "1main.bcf" "1main.bbl" "1main" 1777128360.67248 0
-  "1main.bcf" 1777128360 109061 f087382521441d687146d9bbdc6b54e4 "pdflatex"
+["biber 1main"] 1776132955.09715 "1main.bcf" "1main.bbl" "1main" 1777131281.2691 0
+  "1main.bcf" 1777131280 109061 f087382521441d687146d9bbdc6b54e4 "pdflatex"
   "bibliografia.bib" 1776129513 2098 1f6f824a2200f1faaf2cf6d8b5bd8f71 ""
   (generated)
   "1main.bbl"
   "1main.blg"
   (rewritten before read)
-["pdflatex"] 1777128353.06273 "e:/Fisica2026/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1777128360.67355 0
+["pdflatex"] 1777131273.97101 "e:/Fisica2026/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1777131281.27055 0
   "0librerias.tex" 1776128237 895 a8e548334a223204d6fe6235dd8a95f4 ""
-  "1main.aux" 1777128360 9314 39cbc366abde41db58a5787f12249e41 "pdflatex"
+  "1main.aux" 1777131280 9304 a476ce9507378a688f0a6d056d7e654c "pdflatex"
   "1main.bbl" 1776132957 11420 1f51dd6a96b41033c465d52ed83ac37a "biber 1main"
-  "1main.out" 1777128360 1252 c59d3a0d1964f3cf782f9a04148ca87b "pdflatex"
-  "1main.run.xml" 1777128360 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
-  "1main.tex" 1777128344 1368 ceb23581bec2eefcccb1066a7d713ed0 ""
+  "1main.out" 1777131280 1237 46aa82bf79dd0e9964a896ce5de3088f "pdflatex"
+  "1main.run.xml" 1777131280 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
+  "1main.tex" 1777131273 1368 ceb23581bec2eefcccb1066a7d713ed0 ""
   "2Introducción.tex" 1776133901 3076 36ae5853bed90b10c38b39dc0cf9b46e ""
   "3Métodos.tex" 1776133916 5498 30c74f07a8671d6174c187a3dde5884c ""
-  "4Resultados y discusión.tex" 1777127889 8242 bb191b934ed85b419bc89e954bf8972d ""
-  "5Conclusiones.tex" 1776131961 2349 1e08b123597f1ec16467a7733cd7e953 ""
+  "4Resultados y discusión.tex" 1777131274 8239 bf7b32d3b5b4007b38bfae80a04a30a5 ""
+  "5Conclusiones.tex" 1777131273 2349 1e08b123597f1ec16467a7733cd7e953 ""
   "6Apéndice.tex" 1776133958 3690 218ccf7f2b00212bf459010ac3478a77 ""
   "Amortiguador.jpg" 1776128237 29800 aad2990cab74a8dfa3b9e211b51149c2 ""
   "C:/Users/chimu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1775928226 82507 a9eef8696c92627b87e9975edea03b2a ""
@@ -164,7 +164,7 @@
   "E:/MikTex2/tex/latex/wrapfig/wrapfig.sty" 1044403200 26220 3701aebf80ccdef248c0c20dd062fea9 ""
   "E:/MikTex2/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "RLC_serie.png" 1776128237 8057 68af78d2ad0b427d00fa80d52b232b6b ""
-  "e:/Fisica2026/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" 1777128344 1368 ceb23581bec2eefcccb1066a7d713ed0 ""
+  "e:/Fisica2026/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" 1777131273 1368 ceb23581bec2eefcccb1066a7d713ed0 ""
   "gráficos/Circuito.png" 1776128237 465240 db067bbd42bccfc41fae12bdc28f4ebc ""
   "gráficos/nyquist RLC.png" 1776128237 30167 80ee118ccd7b529dbd9b474e85c04eb5 ""
   "gráficos/nyquist_RC.png" 1776132272 181312 d555a5f77d512d04d55697d2cb6246a4 ""
