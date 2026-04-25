@@ -111,7 +111,7 @@ ax.legend(fontsize=13, frameon=True, shadow=True)
 
 plt.tight_layout()
 plt.savefig("nyquist_RC.png", dpi=500)
-plt.show()
+# plt.show()
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -255,7 +255,7 @@ w0_c, err_w0_c, r2_c1, r2_c2 = analizar_bode(wc, Hc, err_wc, err_Hc,
 
 plt.tight_layout()
 plt.savefig("rectas_RC.png", dpi=500)
-plt.show()
+# plt.show()
 
 # Prints finales (calculando f_0 a partir de w_0)
 f0_r, ef0_r = w0_r/(2*np.pi), err_w0_r/(2*np.pi)
@@ -367,7 +367,7 @@ ax2.legend(fontsize=13, frameon=True, shadow=True)
 
 plt.tight_layout()
 plt.savefig("tau_RC.png", dpi=500)
-plt.show()
+# plt.show()
 
 # --- 5. REPORTE DE RESULTADOS ---
 print(f"Valor teórico de tau (R*C): {tau*1e6:.2f} \u00b1 {errtau*1e6:.2f} \u03bcs")
@@ -455,7 +455,7 @@ print(f"Frecuencia de corte Capacitor:   {w0_c:.2f} ± {err_w0_c:.2f} rad/s")
 
 
 # Imprimir el promedio ponderado de las frecuencias de corte en Hz y en rad/s
-f0_prom_hz = w0_prom / (2 * np.pi)  
-ef0_prom_hz = ew0_prom / (2 * np.pi)
+f0_prom_hz = x_bar / (2 * np.pi)  
+ef0_prom_hz = s_bar / (2 * np.pi)
 print(f"\nPromedio ponderado de frecuencia de corte: {f0_prom_hz:.2f} ± {ef0_prom_hz:.2f} Hz")
-print(f"Promedio ponderado de frecuencia de corte: {w0_prom:.2f} ± {ew0_prom:.2f} rad/s")
+print(f"Promedio ponderado de frecuencia de corte: {x_bar:.2f} ± {s_bar:.2f} rad/s")
