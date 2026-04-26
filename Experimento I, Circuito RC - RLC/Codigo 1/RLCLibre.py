@@ -132,7 +132,7 @@ plt.xlabel("$\omega$ [rad/s]", fontsize=14)
 plt.ylabel("H", fontsize=14)
 plt.legend(fontsize=13)
 plt.grid(True, alpha=0.3)
-plt.show()
+#plt.show()
 
 # ======================
 # REPORTE
@@ -206,7 +206,7 @@ plt.ylabel("Transferencia H", fontsize=14)
 plt.title("Comparación de modelos RLC (Frecuencia de Resonancia)", fontsize=15)
 plt.legend(fontsize=11, frameon=True, shadow=True)
 plt.grid(True, alpha=0.3)
-plt.show()
+#plt.show()
 
 # --- REPORTES ---
 print(f"{'='*50}")

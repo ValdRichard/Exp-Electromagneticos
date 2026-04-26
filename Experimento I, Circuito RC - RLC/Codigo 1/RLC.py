@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib.pyplot as plt
+from scipy.odr import ODR, Model, RealData
 
 C = 100e-9 #F
 R = 1000 #ohm
@@ -49,12 +51,11 @@ errIm = np.sqrt((errH*np.sin(phi))**2 + (H*np.cos(phi)*errphi)**2)
 tau1 = 87.73878e-6
 errtau1= 2.18809e-6
 print(errtau)
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.odr import ODR, Model, RealData
 
 err_cap = 4.90234188189095e-09
 cap = 8.773877927430522e-08
+
+
 def modelo_rlc_tau_fijo(p, x):
     w0, A, tau_ef = p[0], p[1], p[2]
 
@@ -111,7 +112,8 @@ plt.xlabel("$\omega$ [rad/s]", fontsize=14)
 plt.ylabel("H", fontsize=14)
 plt.legend(fontsize=13, frameon=True, shadow=True)
 plt.grid(True, alpha=0.3)
-plt.show()
+#plt.show()
+
 
 # REPORTES
 print(f"--- RESULTADOS (TAU FIJO = {tau1:.2e} s) ---")
@@ -201,7 +203,7 @@ plt.grid(True, alpha=0.3)
 
 plt.tight_layout()
 plt.savefig('tau_RLC.png', dpi=500)
-plt.show()
+#plt.show()
 
 # --- REPORTES ---
 
@@ -249,7 +251,7 @@ plt.tight_layout()
 # Guardar en alta resolución para el informe
 plt.savefig("nyquist RLC.png", dpi=500, bbox_inches='tight')
 
-plt.show()
+#plt.show()
 
 
 # Imprimir los w0 obtenidos en todos los ajustes y pasarlos a hz con su error 

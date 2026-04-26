@@ -1,15 +1,15 @@
-import numpy as np
 import matplotlib.pyplot as plt
 import math
 from scipy import odr
 import numpy as np
+from funciones import analizar_bode, modelo_fase_r, modelo_fase_c, ajustar_fase
 
 #RESISTENCIA
 R = 1000
 C = 100e-9
 fref = 1/(2 * np.pi * R * C)
 wref = 1/(R*C)
-tau = R*C
+tau0 = R*C
 errC = 10e-9
 errR = R*0.05
 errwref = wref * np.sqrt((errR/R)**2 + (errC/C)**2)
@@ -70,20 +70,6 @@ Im_Hc = Hc * np.sin(phic_)
 err_Re_Hc = np.sqrt((np.cos(phic_) * err_Hc)**2 + (Hc * np.sin(phic_) * err_phic)**2)
 err_Im_Hc = np.sqrt((np.sin(phic_) * err_Hc)**2 + (Hc * np.cos(phic_) * err_phic)**2)
 
-# # NYQUIST con wtau
-
-# Re_Hc = 1 / (1 + (wc*tau)**2)
-# Im_Hc = - (wc*tau) / (1 + (wc*tau)**2)
-# err_Re_Hc = np.sqrt(((2*wc*tau**2*err_wc)/(1+(wc*tau)**2)**2)**2 + ((2*wc**2*tau*errtau)/(1+(wc*tau)**2)**2)**2)
-# err_Im_Hc = ((1-(wc*tau)**2/(1+(wc*tau)**2)**2) * np.sqrt((tau*err_wc)**2 + (wc*errtau)**2))
-
-# Re_Hr = (wr*tau)**2 / (1 + (wr*tau)**2)
-# Im_Hr = (wr*tau) / (1 + (wr*tau)**2)
-# x = wr * tau
-
-# err_Re_Hr = (2 * wr * tau / (1 + x**2)**2) * np.sqrt((tau * err_wr)**2 + (wr * errtau)**2)
-
-# err_Im_Hr = ((1-(wr*tau)**2/(1+(wr*tau)**2)**2) * np.sqrt((tau*err_wr)**2 + (wr*errtau)**2))
 
 # --- CREACIÓN DEL GRÁFICO ---
 fig, ax = plt.subplots(figsize=(7, 7))
@@ -111,127 +97,20 @@ ax.legend(fontsize=13, frameon=True, shadow=True)
 
 plt.tight_layout()
 plt.savefig("nyquist_RC.png", dpi=500)
-# plt.show()
+#plt.show()
 
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy import odr
-
-def ajustar_recta(x, y, err_x, err_y, r, fix_m=None):
-    x_r = x[r]
-    y_r = y[r]
-    sx_r = err_x[r]
-    sy_r = err_y[r]
-
-    def f(B, x):
-        return B[0]*x + B[1]
-
-    modelo = odr.Model(f)
-    datos = odr.RealData(x_r, y_r, sx=sx_r, sy=sy_r)
-
-    if fix_m is None:
-        beta0 = [1.0, 0.0]
-        odr_inst = odr.ODR(datos, modelo, beta0=beta0)
-    else:
-        beta0 = [fix_m, 0.0]
-        odr_inst = odr.ODR(datos, modelo, beta0=beta0)
-        odr_inst.set_job(fit_type=0)
-        odr_inst.ifixb = [0, 1]
-
-    out = odr_inst.run()
-    B = out.beta
-    errB = out.sd_beta
-
-    # Cálculo de R2
-    y_pred = B[0] * x_r + B[1]
-    residuos = y_r - y_pred
-    ss_res = np.sum(residuos**2)
-    ss_tot = np.sum((y_r - np.mean(y_r))**2)
-    r2 = 1 - (ss_res / ss_tot)
-
-    return B, errB, r2
-
-def analizar_bode(w, H, err_w, err_H, r1, r2, m1_f=None, m2_f=None, titulo="Bode", ax=None,
-                  label_w0=None, label_m_libre=None, label_m_fija=None):
-    x_log = np.log10(w)
-    y_log = np.log10(H)
-
-    err_x = (1 / (w * np.log(10))) * err_w
-    err_y = (1 / (H * np.log(10))) * err_H
-
-    # 1. Ajustes ODR
-    b1, eb1, r2_1 = ajustar_recta(x_log, y_log, err_x, err_y, r1, fix_m=m1_f)
-    b2, eb2, r2_2 = ajustar_recta(x_log, y_log, err_x, err_y, r2, fix_m=m2_f)
-
-    # 2. Intersección y Errores
-    x_int = (b2[1] - b1[1]) / (b1[0] - b2[0])
-    w_0 = 10**x_int
-
-    if m1_f is None:
-        l1 = label_m_libre if label_m_libre else f"Ajuste lineal ($R^2$={r2_1:.3f})"
-        l2 = label_m_fija if label_m_fija else "Pendiente fija (m=0)"
-        color1, color2 = 'indigo', 'darkorange'
-    else:
-        l1 = label_m_fija if label_m_fija else "Pendiente fija (m=0)"
-        l2 = label_m_libre if label_m_libre else f"Ajuste lineal ($R^2$={r2_2:.3f})"
-        color1, color2 = 'darkorange', 'indigo'
-
-    # 3. Cálculo de error w0
-    if m2_f == 0:
-        m, errm, B1, errB1, B2, errB2 = b1[0], eb1[0], b1[1], eb1[1], b2[1], eb2[1]
-    else:
-        m, errm, B1, errB1, B2, errB2 = b2[0], eb2[0], b2[1], eb2[1], b1[1], eb1[1]
-    err_x_int = np.sqrt((errB2/m)**2 + (errB1/m)**2 + ((B2-B1)*errm/m**2)**2)
-    err_w0 = w_0 * np.log(10) * err_x_int
-
-    # 4. Gráfico con colores diferenciados por tramo
-    if ax is None: fig, ax = plt.subplots(figsize=(12, 7))
-
-    # Identificar índices que no están en r1 ni en r2 para dejarlos en gris
-    indices = np.arange(len(x_log))
-    idx_r1 = indices[r1]
-    idx_r2 = indices[r2]
-    idx_resto = np.setdiff1d(indices, np.concatenate([idx_r1, idx_r2]))
-
-    # Graficar puntos del Tramo 1 (color de la recta 1)
-    ax.errorbar(x_log[r1], y_log[r1], xerr=err_x[r1], yerr=err_y[r1],
-                fmt='o', color=color1, markersize=7, alpha=0.4)
-
-    # Graficar puntos del Tramo 2 (color de la recta 2)
-    ax.errorbar(x_log[r2], y_log[r2], xerr=err_x[r2], yerr=err_y[r2],
-                fmt='o', color=color2, markersize=7, alpha=0.4)
-
-    # Graficar el resto de los puntos (Gris)
-    if len(idx_resto) > 0:
-        ax.errorbar(x_log[idx_resto], y_log[idx_resto], xerr=err_x[idx_resto], yerr=err_y[idx_resto],
-                    fmt='o', color='gray', markersize=7, alpha=0.2)
-
-    x_f = np.linspace(min(x_log), max(x_log), 100)
-    ax.plot(x_f, b1[0]*x_f + b1[1], ls='--', color=color1, lw=2.2, label=l1)
-    ax.plot(x_f, b2[0]*x_f + b2[1], ls='--', color=color2, lw=2.2, label=l2)
-    ax.plot(x_int, b1[0]*x_int + b1[1], 's', color='crimson', markersize=8, zorder=5, label=label_w0)
-
-    ax.tick_params(axis='both', labelsize=12)
-    ax.set_ylim(-1.3, 0.1)
-    ax.set_title(titulo, fontsize=16)
-    ax.set_xlabel(r"$\log_{10}(\omega)$", fontsize=14)
-    ax.set_ylabel(r"$\log_{10}(H)$", fontsize=14)
-    ax.legend(loc='best', fontsize=13, frameon=True, shadow=True) # ncol=2 para que no sea tan larga la leyenda
-    ax.grid(True, alpha=0.2)
-
-    return w_0, err_w0, r2_1, r2_2
 
 # --- CONFIGURACIÓN MANUAL DE LEYENDAS ---
 
 # Pasa-altos (Resistencia)
 lab_w0_r = r'$\omega_0 = 1,2(1) \times 10^4$ rad/s'
 lab_m_r = r'Ajuste lineal $R^2$=0,99 (m libre)' # Recta de subida
-lab_f_r = r'Ajuste lineal (m=0)'  # Recta horizontal
+lab_f_r = r'Ajuste lineal $R^2$=0,99 (m=0)'  # Recta horizontal
 
 # Pasa-bajos (Capacitor)
 lab_w0_c = r'$\omega_0 = 1,0(2) \times 10^4$ rad/s'
 lab_m_c = r'Ajuste lineal $R^2$=0,99 (m libre)' # Recta de caída
-lab_f_c = r'Ajuste lineal (m=0)'  # Recta horizontal
+lab_f_c = r'Ajuste lineal $R^2$=0,99 (m=0)'  # Recta horizontal
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 6.5))
 
@@ -255,7 +134,7 @@ w0_c, err_w0_c, r2_c1, r2_c2 = analizar_bode(wc, Hc, err_wc, err_Hc,
 
 plt.tight_layout()
 plt.savefig("rectas_RC.png", dpi=500)
-# plt.show()
+#plt.show()
 
 # Prints finales (calculando f_0 a partir de w_0)
 f0_r, ef0_r = w0_r/(2*np.pi), err_w0_r/(2*np.pi)
@@ -304,35 +183,9 @@ print(f"Frecuencia (f0):  {f0_prom:.2f} ± {ef0_prom:.2f} Hz")
 print(f"Angular (w0):     {w0_prom:.2f} ± {ew0_prom:.2f} rad/s")
 
 
-from scipy.odr import ODR, Model, RealData
-
-# --- 1. MODELOS TEÓRICOS PARA ODR ---
-def modelo_fase_r(p, w):
-    # p[0] es tau
-    return np.arctan(1 / (w * p[0]))
-
-def modelo_fase_c(p, w):
-    # p[0] es tau
-    return np.arctan(-w * p[0])
-
-# --- 2. FUNCION PARA AJUSTE ODR ---
-def ajustar_fase(w, phi, err_w, err_phi, tipo='resistencia'):
-    # Creamos el modelo según el componente
-    func = modelo_fase_r if tipo == 'resistencia' else modelo_fase_c
-    mdl = Model(func)
-
-    # Preparamos los datos
-    data = RealData(w, phi, sx=err_w, sy=err_phi)
-
-    # Inicializamos con tu valor de tau calculado (R*C)
-    my_odr = ODR(data, mdl, beta0=[tau])
-    out = my_odr.run()
-
-    return out.beta[0], out.sd_beta[0], out
-
 # --- 3. EJECUCIÓN DE LOS AJUSTES ---
-tau_r_fit, err_tau_r, res_r = ajustar_fase(wr, phir, err_wr, err_phir, 'resistencia')
-tau_c_fit, err_tau_c, res_c = ajustar_fase(wc, phic, err_wc, err_phic, 'capacitor')
+tau_r_fit, err_tau_r, res_r = ajustar_fase(wr, phir, err_wr, err_phir, tau0, 'resistencia')
+tau_c_fit, err_tau_c, res_c = ajustar_fase(wc, phic, err_wc, err_phic, tau0, 'capacitor')
 
 # --- 4. GRÁFICOS COMPARATIVOS ---
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 6.5))
@@ -366,10 +219,10 @@ ax2.legend(fontsize=13, frameon=True, shadow=True)
 
 plt.tight_layout()
 plt.savefig("tau_RC.png", dpi=500)
-# plt.show()
+#plt.show()
 
 # --- 5. REPORTE DE RESULTADOS ---
-print(f"Valor teórico de tau (R*C): {tau*1e6:.2f} \u00b1 {errtau*1e6:.2f} \u03bcs")
+print(f"Valor teórico de tau (R*C): {tau0*1e6:.2f} \u00b1 {errtau*1e6:.2f} \u03bcs")
 print("-" * 50)
 print(f"Tau ajustado (Resistencia): {tau_r_fit*1e6:.2f} \u00b1 {err_tau_r*1e6:.2f} \u03bcs")
 print(f"Tau ajustado (Capacitor):   {tau_c_fit*1e6:.2f} \u00b1 {err_tau_c*1e6:.2f} \u03bcs")
@@ -415,7 +268,6 @@ print(f"{'-'*35}")
 print(f"Pasa altos (Resistencia): {r2_resistencia:.5f}")
 print(f"Pasa bajos (Capacitor):   {r2_capacitor:.5f}")
 
-import numpy as np
 #Promedio ponderado del método de ajuste con phi y de rectas
 # Datos
 x1 = 11397
