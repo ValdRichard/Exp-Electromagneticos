@@ -85,10 +85,10 @@ ax.errorbar(Re_Hc, Im_Hc, xerr=err_Re_Hc, yerr=err_Im_Hc,
             elinewidth=1.5, capsize=3, label='Pasa-bajos', markersize=5)
 
 # Configuraciones visuales
-ax.tick_params(axis='both', which='major', labelsize=12)
+ax.tick_params(axis='both', which='major', labelsize=14)
 ax.set_title("", fontsize=16)
-ax.set_xlabel(r"$Re(H)$", fontsize=14)
-ax.set_ylabel(r"$Im(H)$", fontsize=14)
+ax.set_xlabel(r"$Re(H)$", fontsize=16)
+ax.set_ylabel(r"$Im(H)$", fontsize=16)
 
 ax.axhline(0, color='black', linewidth=1, alpha=0.5)
 ax.axvline(0, color='black', linewidth=1, alpha=0.5)
@@ -97,20 +97,20 @@ ax.legend(fontsize=13, frameon=True, shadow=True)
 
 plt.tight_layout()
 plt.savefig("nyquist_RC.png", dpi=500)
-#plt.show()
+##plt.show()
 
 
 # --- CONFIGURACIÓN MANUAL DE LEYENDAS ---
 
 # Pasa-altos (Resistencia)
-lab_w0_r = r'$\omega_0 = 1,2(1) \times 10^4$ rad/s'
-lab_m_r = r'Ajuste lineal $R^2$=0,99 (m libre)' # Recta de subida
-lab_f_r = r'Ajuste lineal $R^2$=0,99 (m=0)'  # Recta horizontal
+lab_w0_r = r'$f_0$ = 1,8(2) kHz'
+lab_m_r = r'Ajuste lineal $R^2$ = 0,99 (m libre)' # Recta de subida
+lab_f_r = r'Ajuste lineal $R^2$ = 0,99 (m = 0)'  # Recta horizontal
 
 # Pasa-bajos (Capacitor)
-lab_w0_c = r'$\omega_0 = 1,0(2) \times 10^4$ rad/s'
-lab_m_c = r'Ajuste lineal $R^2$=0,99 (m libre)' # Recta de caída
-lab_f_c = r'Ajuste lineal $R^2$=0,99 (m=0)'  # Recta horizontal
+lab_w0_c = r'$f_0$ = 1,5(2) kHz'
+lab_m_c = r'Ajuste lineal $R^2$ = 0,99 (m libre)' # Recta de caída
+lab_f_c = r'Ajuste lineal $R^2$ = 0,99 (m = 0)'  # Recta horizontal
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 6.5))
 
@@ -125,7 +125,7 @@ w0_r, err_w0_r, r2_r1, r2_r2 = analizar_bode(wr, Hr, err_wr, err_Hr,
 
 # Ejecución Capacitor
 w0_c, err_w0_c, r2_c1, r2_c2 = analizar_bode(wc, Hc, err_wc, err_Hc,
-                                             r1=slice(0, 5), r2=slice(11, 15),
+                                             r1=slice(0, 5), r2=slice(10, 15),
                                              m1_f=0.0, m2_f=None,
                                              titulo="Pasa-bajos", ax=ax2,
                                              label_w0=lab_w0_c,
@@ -192,10 +192,10 @@ fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 6.5))
 
 # Configuración común de estilo
 for ax in [ax1, ax2]:
-    ax.tick_params(axis='both', labelsize=12)
+    ax.tick_params(axis='both', labelsize=14)
     ax.grid(True, alpha=0.3, linestyle='--')
-    ax.set_xlabel(r'$\omega$ [rad/s]', fontsize=14)
-    ax.set_ylabel(r'$\phi$ [rad]', fontsize=14)
+    ax.set_xlabel(r'$\omega$ [rad/s]', fontsize=16)
+    ax.set_ylabel(r'$\phi$ [rad]', fontsize=16)
 
 # Subplot 1: Resistencia (Pasa-Altos)
 ax1.errorbar(wr, phir, xerr=err_wr, yerr=err_phir, fmt='o', color='black', markersize=7,
@@ -203,9 +203,8 @@ ax1.errorbar(wr, phir, xerr=err_wr, yerr=err_phir, fmt='o', color='black', marke
 w_smooth_r = np.linspace(min(wr), max(wr), 500)
 ax1.plot(w_smooth_r, modelo_fase_r([tau_r_fit], w_smooth_r), color='indigo', lw=2,
          label=fr'Ajuste $R^2$ = 0,99' + f'\n$\\tau$ = {tau_r_fit*1e6:.0f}({err_tau_r*1e6:.0f}) $\mu$s')
-ax1.set_title("Pasa-altos", fontsize=16)
 ax1.set_xscale('log')
-ax1.legend(fontsize=13, frameon=True, shadow=True)
+ax1.legend(fontsize=16, frameon=True, shadow=True)
 
 # Subplot 2: Capacitor (Pasa-Bajos)
 ax2.errorbar(wc, phic, xerr=err_wc, yerr=err_phic, fmt='o', color='black', markersize=7,
@@ -213,9 +212,8 @@ ax2.errorbar(wc, phic, xerr=err_wc, yerr=err_phic, fmt='o', color='black', marke
 w_smooth_c = np.linspace(min(wc), max(wc), 500)
 ax2.plot(w_smooth_c, modelo_fase_c([tau_c_fit], w_smooth_c), color='darkorange', lw=2,
          label=fr'Ajuste $R^2$ = 0,99' + f'\n$\\tau$ = {tau_c_fit*1e6:.0f}({err_tau_c*1e6:.0f}) $\mu$s')
-ax2.set_title("Pasa-bajos", fontsize=16)
 ax2.set_xscale('log')
-ax2.legend(fontsize=13, frameon=True, shadow=True)
+ax2.legend(fontsize=16, frameon=True, shadow=True)
 
 plt.tight_layout()
 plt.savefig("tau_RC.png", dpi=500)
@@ -245,6 +243,17 @@ print (tau_prom)
 print (err_tau_prom)
 print(f"Tau Promedio Ponderado: {tau_prom*1e6:.5f} ± {err_tau_prom*1e6:.5f} μs")
 
+# --- Cálculo de fc y su error ---
+# 1. Valor central en Hz
+fc_prom = 1 / (2 * np.pi * tau_prom)
+
+# 2. Error de fc (Propagación: |df/dtau| * err_tau)
+# También se puede expresar como fc_prom * (err_tau_prom / tau_prom)
+err_fc_prom = fc_prom * (err_tau_prom / tau_prom)
+
+# --- Prints de control ---
+print(f"Frecuencia de corte promedio (f0): {fc_prom:.2f} ± {err_fc_prom:.2f} Hz")
+
 # --- CÁLCULO DE R^2 POR SEPARADO ---
 
 def calcular_r2_manual(obs, pred):
@@ -273,8 +282,8 @@ print(f"Pasa bajos (Capacitor):   {r2_capacitor:.5f}")
 x1 = 11397
 s1 = 284
 
-x2 = 11063
-s2 = 919
+x2 = 10796
+s2 = 843
 
 # Pesos
 w1 = 1 / s1**2

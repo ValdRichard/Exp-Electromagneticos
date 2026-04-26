@@ -1,14 +1,14 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is '1main.blg'
-[113] biber-MSWIN64:342> INFO - === 
-[146] Biber.pm:421> INFO - Reading '1main.bcf'
-[260] Biber.pm:1002> INFO - Found 7 citekeys in bib section 0
-[276] Biber.pm:4487> INFO - Processing section 0
-[287] Biber.pm:4678> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
-[326] bibtex.pm:1713> INFO - LaTeX decoding ...
-[338] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
-[417] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[417] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[418] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'es-ES'
-[431] bbl.pm:676> INFO - Writing '1main.bbl' with encoding 'UTF-8'
-[435] bbl.pm:779> INFO - Output to 1main.bbl
+[341] biber-MSWIN64:342> INFO - === 
+[482] Biber.pm:421> INFO - Reading '1main.bcf'
+[693] Biber.pm:1002> INFO - Found 7 citekeys in bib section 0
+[722] Biber.pm:4487> INFO - Processing section 0
+[752] Biber.pm:4678> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
+[850] bibtex.pm:1713> INFO - LaTeX decoding ...
+[868] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
+[1032] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1033] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1033] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'es-ES'
+[1089] bbl.pm:676> INFO - Writing '1main.bbl' with encoding 'UTF-8'
+[1095] bbl.pm:779> INFO - Output to 1main.bbl

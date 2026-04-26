@@ -101,18 +101,18 @@ errL = L_fit * np.sqrt((err_cap / cap)**2 + (2 * err_w0 / w0_fit)**2)
 
 # 6. GRÁFICO (Agregamos R2 a la leyenda del ajuste)
 plt.figure(figsize=(9, 6.5))
-plt.errorbar(w, H, xerr=errw, yerr=errH, fmt='ko', alpha=0.3, label='Datos')
+plt.errorbar(w, H, xerr=errw, yerr=errH, fmt='ko', markersize=8, alpha=0.3, label='Datos')
 
 w_curva = np.linspace(min(w), max(w), 1000)
 plt.plot(w_curva, modelo_rlc_tau_fijo([w0_fit, A_fit, tau_ef_fit], w_curva), color='darkslateblue', ls='-',
          label=f'Ajuste $R^2$={r2_rlc:.2f}')
 plt.axvline(w0_fit, color='crimson', ls='--', label=f'$\omega_0$ = {w0_fit:.0f}({err_w0:.0f}) rad/s')
 
-plt.xlabel("$\omega$ [rad/s]", fontsize=14)
-plt.ylabel("H", fontsize=14)
-plt.legend(fontsize=13, frameon=True, shadow=True)
+plt.xlabel("$\omega$ [rad/s]", fontsize=16)
+plt.ylabel("H", fontsize=16)
+plt.legend(fontsize=16, frameon=True, shadow=True)
 plt.grid(True, alpha=0.3)
-#plt.show()
+##plt.show()
 
 
 # REPORTES
@@ -174,31 +174,31 @@ errL_fijo = L_fijo * np.sqrt((err_cap/cap)**2 + (2 * err_w0_f / w0_f_fit)**2)
 plt.figure(figsize=(9, 6.5))
 
 # 1. Datos experimentales al frente (zorder alto)
-plt.errorbar(w, H, xerr=errw, yerr=errH, fmt='ko', alpha=0.5, label='Datos', zorder=5)
+plt.errorbar(w, H, xerr=errw, yerr=errH, fmt='ko', markersize=8, alpha=0.4, label='Datos', zorder=5)
 
 w_linea = np.linspace(min(w), max(w), 1000)
 
 
 plt.plot(w_linea, modelo_rlc_solo_w0_A([w0_f_fit, A_f_fit], w_linea),
          color='crimson', ls='-', lw=2.5, zorder=3,
-         label=f'Ajuste $\\tau_{{exp}}$ = 0,88(2) $\\times10^{{-4}}$ s' + f'\n$R^2$= 0,99')
+         label=f'Ajuste $R^2$ = 0,99' + r' - $\tau_{exp}$ = 0,88(2) $\times 10^{-4}$ s')
 
 plt.plot(w_linea, modelo_rlc_tau_fijo([w0_fit, A_fit, tau_ef_fit], w_linea),
          color='darkslateblue', ls='-', lw=2.5, zorder=4,
-         label=f'Ajuste $\\tau_{{ef}}$ = 1,0(1) $\\times10^{{-4}}$ s' + f'\n$R^2$= 0,99')
+         label=f'Ajuste $R^2$ = 0,99' + r' - $\tau_{ef}$ = 1,0(1) $\times 10^{-4}$ s')
 
 plt.axvline(w0_fit, color='darkslateblue', ls='--', zorder=4, lw=1.8,
-            label=f'$\omega_r$ = 20,8(1) $\\times10^3$ rad/s')
+            label=f'$f_r$ = 3,31(2) kHz')
 
 #plt.axvline(w0_f_fit, color='forestgreen', ls=':', alpha=0.8, zorder=3,
             #label=f'$\omega_{{0, fijo}}$ = {w0_f_fit:.1f} rad/s')
 
 # Configuración estética
-plt.tick_params(axis='both', which='major', labelsize=12)
-plt.xlabel("$\omega$ [rad/s]", fontsize=14)
-plt.ylabel("H", fontsize=14)
+plt.tick_params(axis='both', which='major', labelsize=14)
+plt.xlabel("$\omega$ [rad/s]", fontsize=16)
+plt.ylabel("H", fontsize=16)
 plt.title("", fontsize=15)
-plt.legend(fontsize=12.5, loc='upper right', frameon=True, shadow=True)
+plt.legend(fontsize=14, loc='upper right', frameon=True, shadow=True)
 plt.grid(True, alpha=0.3)
 
 plt.tight_layout()
@@ -251,7 +251,7 @@ plt.tight_layout()
 # Guardar en alta resolución para el informe
 plt.savefig("nyquist RLC.png", dpi=500, bbox_inches='tight')
 
-#plt.show()
+##plt.show()
 
 
 # Imprimir los w0 obtenidos en todos los ajustes y pasarlos a hz con su error 

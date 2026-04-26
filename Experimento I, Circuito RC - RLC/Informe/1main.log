@@ -1,15 +1,15 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.4.11)  25 APR 2026 12:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.4.26)  26 APR 2026 13:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"e:/Fisica2026/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex"
-(e:/Fisica2026/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex
+**"d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex"
+(d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
-(E:\MikTex2\tex/latex/base\article.cls
+(C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
-(E:\MikTex2\tex/latex/base\size10.clo
+(C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
 File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count275
@@ -23,7 +23,7 @@ File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen148
-) (0librerias.tex (E:\MikTex2\tex/generic/babel\babel.sty
+) (0librerias.tex (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
 Package: babel 2025/12/11 v25.17 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
 \babel@savecnt=\count283
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2068.
@@ -35,7 +35,7 @@ LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) o
 LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2101.
 \U@D=\dimen149
 \l@unhyphenated=\language79
- (E:\MikTex2\tex/generic/babel\txtbabel.def)
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count284
 Package babel Info: Configuration files are deprecated, as
@@ -45,12 +45,12 @@ Package babel Info: Configuration files are deprecated, as
 *************************************
 * Local config file bblopts.cfg used
 *
-(E:\MikTex2\tex/latex/arabi\bblopts.cfg
+(C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
-) (E:\MikTex2\tex/generic/babel/locale/es\babel-spanish.tex)
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/es\babel-spanish.tex)
 Package babel Info: Importing font and identification data for spanish
 (babel)             from babel-es.ini. Reported on input line 4320.
- (E:\MikTex2\tex/latex/babel-spanish\spanish.ldf
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/babel-spanish\spanish.ldf
 Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
 \es@quottoks=\toks17
 \es@quotdepth=\count285
@@ -61,14 +61,14 @@ Package babel Info: Making > an active character on input line 722.
 ))
 LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1) on input line 2.
 LaTeX Encoding Info:    Redeclaring text command \guillemotright (encoding OT1) on input line 2.
- (E:\MikTex2\tex/latex/geometry\geometry.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2026/03/07 v6.0 Page Geometry
- (E:\MikTex2\tex/latex/graphics\keyval.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks18
-) (E:\MikTex2\tex/generic/iftex\ifvtex.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (E:\MikTex2\tex/generic/iftex\iftex.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
 \Gm@cnth=\count286
@@ -83,24 +83,24 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layouthoffset=\dimen156
 \Gm@layoutvoffset=\dimen157
 \Gm@dimlist=\toks19
- (E:\MikTex2\tex/latex/geometry\geometry.cfg)) (E:\MikTex2\tex/latex/graphics\graphicx.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
- (E:\MikTex2\tex/latex/graphics\graphics.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
- (E:\MikTex2\tex/latex/graphics\trig.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-) (E:\MikTex2\tex/latex/graphics-cfg\graphics.cfg
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
- (E:\MikTex2\tex/latex/graphics-def\pdftex.def
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen158
 \Gin@req@width=\dimen159
-) (E:\MikTex2\tex/latex/amsfonts\amssymb.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (E:\MikTex2\tex/latex/amsfonts\amsfonts.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks20
 \symAMSa=\mathgroup4
@@ -108,9 +108,9 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (E:\MikTex2\tex/latex/caption\caption.sty
+)) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
- (E:\MikTex2\tex/latex/caption\caption3.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@tempdima=\dimen160
 \captionmargin=\dimen161
@@ -124,14 +124,14 @@ Package caption Info: Standard document class detected.
 )
 \c@caption@flags=\count289
 \c@continuedfloat=\count290
-) (E:\MikTex2\tex/latex/caption\subcaption.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package caption Info: New subtype `subfigure' on input line 238.
 \c@subfigure=\count291
 Package caption Info: New subtype `subtable' on input line 238.
 \c@subtable=\count292
-) (E:\MikTex2\tex/latex/siunitx\siunitx.sty
-Package: siunitx 2026-03-26 v3.5.1 A comprehensive (SI) units package
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx.sty
+Package: siunitx 2026-04-09 v3.5.3 A comprehensive (SI) units package
 \l__siunitx_number_uncert_offset_int=\count293
 \l__siunitx_number_exponent_fixed_int=\count294
 \l__siunitx_number_min_decimal_int=\count295
@@ -144,24 +144,24 @@ Package: siunitx 2026-03-26 v3.5.1 A comprehensive (SI) units package
 \l__siunitx_number_group_min_int=\count302
 \l__siunitx_number_group_minimum_int=\count303
 \l__siunitx_compound_count_int=\count304
- (E:\MikTex2\tex/latex/translations\translations.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/translations\translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
- (E:\MikTex2\tex/latex/etoolbox\etoolbox.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count305
-) (E:\MikTex2\tex/generic/pdftexcmds\pdftexcmds.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
- (E:\MikTex2\tex/generic/infwarerr\infwarerr.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
-) (E:\MikTex2\tex/generic/ltxcmds\ltxcmds.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-)) (E:\MikTex2\tex/latex/amsmath\amstext.sty
+)) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
- (E:\MikTex2\tex/latex/amsmath\amsgen.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks21
 \ex@=\dimen168
@@ -182,7 +182,7 @@ File: amsgen.sty 1999/11/30 v2.0 generic functions
 \l__siunitx_sexagesimal_tmp_dim=\dimen173
 \l__siunitx_sexagesimal_marker_box=\box59
 \l__siunitx_sexagesimal_unit_box=\box60
- (E:\MikTex2\tex/latex/tools\array.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \col@sep=\dimen174
 \ar@mcellbox=\box61
@@ -191,20 +191,20 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \extratabsurround=\skip51
 \backup@length=\skip52
 \ar@cellbox=\box62
-)) (E:\MikTex2\tex/latex/float\float.sty
+)) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count309
 \float@exts=\toks23
 \float@box=\box63
 \@float@everytoks=\toks24
 \@floatcapt=\box64
-) (E:\MikTex2\tex/latex/was\upgreek.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/was\upgreek.sty
 Package: upgreek 2003/02/12 v2.0 (WaS)
 Package upgreek Info: Using Euler Roman for upright Greek on input line 31.
 \symugrf@m=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `ugrf@m' in version `bold'
 (Font)                  U/eur/m/n --> U/eur/b/n on input line 38.
-) (E:\MikTex2\tex/latex/psnfss\mathptmx.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\mathptmx.sty
 Package: mathptmx 2020/03/25 PSNFSS-v9.3 Times w/ Math, improved (SPQR, WaS) 
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -239,7 +239,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 35.
 LaTeX Info: Redefining \hbar on input line 50.
-) (E:\MikTex2\tex/latex/tools\bm.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/tools\bm.sty
 Package: bm 2025/10/21 v1.2g Bold Symbol Support (DPC/FMi)
 Package bm Info: No bold for \OT1/ztmcm/m/n, using \pmb.
 Package bm Info: No bold for \OML/ztmcm/m/it, using \pmb.
@@ -250,7 +250,7 @@ Package bm Info: No bold for \U/msb/m/n, using \pmb.
 \symboldugrf@m=\mathgroup9
 Package bm Info: No bold for \OT1/ptm/bx/n, using \pmb.
 Package bm Info: No bold for \OT1/ptm/m/it, using \pmb.
-) (E:\MikTex2\tex/latex/enumitem\enumitem.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
 \labelindent=\skip53
 \enit@outerparindent=\dimen176
@@ -258,13 +258,13 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enit@inbox=\box65
 \enit@count@id=\count310
 \enitdp@description=\count311
-) (E:\MikTex2\tex/latex/xcolor\xcolor.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
- (E:\MikTex2\tex/latex/graphics-cfg\color.cfg
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
- (E:\MikTex2\tex/latex/graphics\mathcolor.ltx)
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -274,24 +274,24 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-) (E:\MikTex2\tex/latex/base\inputenc.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks26
 \inpenc@posthook=\toks27
-) (E:\MikTex2\tex/latex/biblatex\biblatex.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.sty
 Package: biblatex 2025/07/10 v3.21 programmable bibliographies (PK/MW)
- (E:\MikTex2\tex/latex/kvoptions\kvoptions.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
- (E:\MikTex2\tex/latex/kvsetkeys\kvsetkeys.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-)) (E:\MikTex2\tex/latex/logreq\logreq.sty
+)) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
 \lrq@indent=\count312
- (E:\MikTex2\tex/latex/logreq\logreq.def
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
-)) (E:\MikTex2\tex/latex/base\ifthen.sty
+)) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
-) (E:\MikTex2\tex/latex/url\url.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -354,7 +354,7 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \c@mincompwidth=\count358
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
- (E:\MikTex2\tex/latex/biblatex\blx-dm.def
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-dm.def
 File: blx-dm.def 2025/07/10 v3.21 biblatex datamodel (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex custom data model...
@@ -443,12 +443,12 @@ Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \localshorteditorwidth=\skip75
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
- (E:\MikTex2\tex/latex/biblatex\blx-compat.def
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-compat.def
 File: blx-compat.def 2025/07/10 v3.21 biblatex compatibility (PK/MW)
 )
 Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
- (E:\MikTex2\tex/latex/biblatex\biblatex.def
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
 File: biblatex.def 2025/07/10 v3.21 biblatex compatibility (PK/MW)
 \c@textcitecount=\count427
 \c@textcitetotal=\count428
@@ -466,18 +466,18 @@ File: biblatex.def 2025/07/10 v3.21 biblatex compatibility (PK/MW)
 )
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
- (E:\MikTex2\tex/latex/biblatex/bbx\numeric.bbx
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric.bbx
 File: numeric.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
- (E:\MikTex2\tex/latex/biblatex/bbx\standard.bbx
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
 File: standard.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
 \c@bbx:relatedcount=\count436
 \c@bbx:relatedtotal=\count437
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
- (E:\MikTex2\tex/latex/biblatex/cbx\numeric.cbx
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric.cbx
 File: numeric.cbx 2025/07/10 v3.21 biblatex citation style (PK/MW)
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
@@ -493,14 +493,14 @@ Package biblatex Info: Redefining '\smartcites'.
 )
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
- (E:\MikTex2\tex/latex/biblatex\biblatex.cfg
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.cfg
 File: biblatex.cfg 
 )
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Document encoding is UTF8 ....
- (E:\MikTex2\tex/latex/l3kernel\expl3.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
 Package: expl3 2025-12-24 L3 programming layer (loader) 
- (E:\MikTex2\tex/latex/l3backend\l3backend-pdftex.def
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count438
 ))
@@ -508,41 +508,41 @@ Package biblatex Info: ... and expl3
 (biblatex)             2025-12-24 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
- (E:\MikTex2\tex/latex/biblatex\blx-case-expl3.sty (E:\MikTex2\tex/latex/l3packages/xparse\xparse.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-case-expl3.sty (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
 Package: xparse 2025-10-09 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2025/07/10 v3.21 expl3 case changing code for biblatex
-)) (E:\MikTex2\tex/latex/hyperref\hyperref.sty
+)) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
- (E:\MikTex2\tex/generic/kvdefinekeys\kvdefinekeys.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (E:\MikTex2\tex/generic/pdfescape\pdfescape.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-) (E:\MikTex2\tex/latex/hycolor\hycolor.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (E:\MikTex2\tex/latex/hyperref\nameref.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
- (E:\MikTex2\tex/latex/refcount\refcount.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (E:\MikTex2\tex/generic/gettitlestring\gettitlestring.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count439
-) (E:\MikTex2\tex/generic/stringenc\stringenc.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
 \@linkdim=\dimen177
 \Hy@linkcounter=\count440
 \Hy@pagecounter=\count441
- (E:\MikTex2\tex/latex/hyperref\pd1enc.def
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-) (E:\MikTex2\tex/generic/intcalc\intcalc.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count442
- (E:\MikTex2\tex/latex/hyperref\puenc.def
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
@@ -557,9 +557,9 @@ Package hyperref Info: Bookmarks ON on input line 4462.
 \c@Hy@tempcnt=\count443
 LaTeX Info: Redefining \url on input line 4801.
 \XeTeXLinkMargin=\dimen178
- (E:\MikTex2\tex/generic/bitset\bitset.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (E:\MikTex2\tex/generic/bigintcalc\bigintcalc.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
 \Fld@menulength=\count444
@@ -577,26 +577,26 @@ Package hyperref Info: PDF/A mode OFF on input line 6108.
 \c@Hfootnote=\count447
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
- (E:\MikTex2\tex/latex/hyperref\hpdftex.def
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
 \Fld@listcount=\count448
 \c@bookmark@seq@number=\count449
- (E:\MikTex2\tex/latex/rerunfilecheck\rerunfilecheck.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
- (E:\MikTex2\tex/generic/uniquecounter\uniquecounter.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
 )
 \Hy@SectionHShift=\skip76
-) (E:\MikTex2\tex/latex/wrapfig\wrapfig.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/wrapfig\wrapfig.sty
 \wrapoverhang=\dimen181
 \WF@size=\dimen182
 \c@WF@wrappedlines=\count450
 \WF@box=\box66
 \WF@everypar=\toks28
 Package: wrapfig 2003/01/31  v 3.6
-) (E:\MikTex2\tex/latex/booktabs\booktabs.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen183
 \lightrulewidth=\dimen184
@@ -615,29 +615,29 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count453
 \@lastruleclass=\count454
 \@thisrulewidth=\dimen195
-) (E:\MikTex2\tex/latex/multirow\multirow.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip77
 \multirow@cntb=\count455
 \multirow@dima=\skip78
 \bigstrutjot=\dimen196
-) (E:\MikTex2\tex/latex/preprint\authblk.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/preprint\authblk.sty
 Package: authblk 2001/02/27 1.3 (PWD)
 \affilsep=\skip79
 \@affilsep=\skip80
 \c@Maxaffil=\count456
 \c@authors=\count457
 \c@affil=\count458
-) (E:\MikTex2\tex/latex/amsmath\amsmath.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2025/07/09 v2.17z AMS math features
 \@mathmargin=\skip81
 
 For additional information on amsmath, use the `?' option.
-(E:\MikTex2\tex/latex/amsmath\amsbsy.sty
+(C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 LaTeX Info: Redefining \boldsymbol on input line 28.
 \pmbraise@=\dimen197
-) (E:\MikTex2\tex/latex/amsmath\amsopn.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count459
@@ -705,7 +705,7 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 \@quotelevel=\count471
 \@quotereset=\count472
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 4.
-(E:\MikTex2\tex/latex/psnfss\ot1ptm.fd
+(C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 
@@ -775,7 +775,7 @@ LaTeX Info: Redefining \% on input line 4.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(E:\MikTex2\tex/context/base/mkii\supp-pdf.mkii
+(C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count473
 \scratchdimen=\dimen261
@@ -788,16 +788,16 @@ LaTeX Info: Redefining \% on input line 4.
 \MPnumerator=\count477
 \makeMPintoPDFobject=\count478
 \everyMPtoPDFconversion=\toks34
-) (E:\MikTex2\tex/latex/epstopdf-pkg\epstopdf-base.sty
+) (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
- (E:\MikTex2\tex/latex/grfext\grfext.sty
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
 Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 504.
- (E:\MikTex2\tex/latex/00miktex\epstopdf-sys.cfg
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package caption Info: Begin \AtBeginDocument code.
@@ -805,13 +805,13 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
- (E:\MikTex2\tex/latex/translations/dicts\translations-basic-dictionary-spanish.trsl
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\translations-basic-dictionary-spanish.trsl
 File: translations-basic-dictionary-spanish.trsl (spanish translation file `translations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' for `spanish'. on input line 4.
 Package biblatex Info: Trying to load language 'spanish'...
 Package biblatex Info: ... file 'spanish.lbx' found.
- (E:\MikTex2\tex/latex/biblatex/lbx\spanish.lbx
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\spanish.lbx
 File: spanish.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
 )
 Package biblatex Info: Input encoding 'utf8' detected.
@@ -830,19 +830,19 @@ Package hyperref Info: Link coloring ON on input line 4.
 \openout4 = `1main.out'.
 
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line 14.
- (E:\MikTex2\tex/latex/psnfss\ot1ztmcm.fd
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line 14.
- (E:\MikTex2\tex/latex/psnfss\omlztmcm.fd
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line 14.
- (E:\MikTex2\tex/latex/psnfss\omsztmcm.fd
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line 14.
- (E:\MikTex2\tex/latex/psnfss\omxztmcm.fd
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
@@ -872,52 +872,43 @@ Package pdftex.def Info: RLC_serie.png  used on input line 17.
 (pdftex.def)             Requested size: 93.89265pt x 54.00096pt.
 ) [1
 
-{C:/Users/chimu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{E:/MikTex2/fonts/enc/dvips/base/8r.enc} <./Amortiguador.jpg> <./RLC_serie.png>] (3Métodos.tex
+{C:/Users/maria/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./Amortiguador.jpg> <./RLC_serie.png>] (3Métodos.tex
 <gráficos/Circuito.png, id=67, 1541.76pt x 1027.84pt>
 File: gráficos/Circuito.png Graphic file (type png)
 <use gráficos/Circuito.png>
 Package pdftex.def Info: gráficos/Circuito.png  used on input line 10.
 (pdftex.def)             Requested size: 234.73524pt x 156.49051pt.
 ) (4Resultados y discusión.tex [2 <./gráficos/Circuito.png (PNG copy)>]
-<gráficos/rectas_RC.png, id=78, 1300.86pt x 469.755pt>
+<gráficos/rectas_RC.png, id=77, 1300.86pt x 469.755pt>
 File: gráficos/rectas_RC.png Graphic file (type png)
 <use gráficos/rectas_RC.png>
 Package pdftex.def Info: gráficos/rectas_RC.png  used on input line 10.
 (pdftex.def)             Requested size: 469.47049pt x 169.5274pt.
-<gráficos/tau_RC.png, id=82, 1300.86pt x 469.755pt>
+<gráficos/tau_RC.png, id=81, 1300.86pt x 469.755pt>
 File: gráficos/tau_RC.png Graphic file (type png)
 <use gráficos/tau_RC.png>
 Package pdftex.def Info: gráficos/tau_RC.png  used on input line 21.
 (pdftex.def)             Requested size: 469.47049pt x 169.5274pt.
- [3 <./gráficos/rectas_RC.png>]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 25.
- (E:\MikTex2\tex/latex/psnfss\ts1ptm.fd
+ (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-
-Package caption Warning: \label without proper reference on input line 34.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:tau_RLC' on page 4 undefined on input line 29.
-
+) [3 <./gráficos/rectas_RC.png> <./gráficos/tau_RC.png>]
 <gráficos/tau_RLC.png, id=96, 650.43pt x 469.755pt>
 File: gráficos/tau_RLC.png Graphic file (type png)
 <use gráficos/tau_RLC.png>
 Package pdftex.def Info: gráficos/tau_RLC.png  used on input line 33.
 (pdftex.def)             Requested size: 234.73524pt x 169.5274pt.
-[4 <./gráficos/tau_RC.png> <./gráficos/tau_RLC.png>]
-<gráficos/nyquist_RC.png, id=107, 505.89pt x 505.89pt>
+<gráficos/nyquist_RC.png, id=98, 505.89pt x 505.89pt>
 File: gráficos/nyquist_RC.png Graphic file (type png)
 <use gráficos/nyquist_RC.png>
-Package pdftex.def Info: gráficos/nyquist_RC.png  used on input line 48.
+Package pdftex.def Info: gráficos/nyquist_RC.png  used on input line 47.
 (pdftex.def)             Requested size: 211.26028pt x 211.26042pt.
-<gráficos/nyquist RLC.png, id=108, 497.2176pt x 495.2904pt>
+<gráficos/nyquist RLC.png, id=99, 497.2176pt x 495.2904pt>
 File: gráficos/nyquist RLC.png Graphic file (type png)
 <use gráficos/nyquist RLC.png>
-Package pdftex.def Info: gráficos/nyquist RLC.png  used on input line 55.
+Package pdftex.def Info: gráficos/nyquist RLC.png  used on input line 54.
 (pdftex.def)             Requested size: 211.26028pt x 210.4465pt.
-) (5Conclusiones.tex) (6Apéndice.tex [5 <./gráficos/nyquist_RC.png> <./gráficos/nyquist RLC.png>]
+) [4 <./gráficos/tau_RLC.png>] (5Conclusiones.tex) (6Apéndice.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 
@@ -933,7 +924,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 2.
 
-[6]) [7] (1main.aux
+[5 <./gráficos/nyquist_RC.png> <./gráficos/nyquist RLC.png>]) [6] [7] (1main.aux
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
@@ -942,28 +933,24 @@ LaTeX Info: Redefining \% on input line 16.
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `1main.out' has not changed.
-(rerunfilecheck)             Checksum: 46AA82BF79DD0E9964A896CE5DE3088F;1237.
+(rerunfilecheck)             Checksum: FBF9DE7A29357A54DA5111B622E3A472;1227.
 Package logreq Info: Writing requests to '1main.run.xml'.
 \openout1 = `1main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26219 strings out of 467871
- 506261 string characters out of 5434790
- 1331708 words of memory out of 5000000
+ 26218 strings out of 467870
+ 514586 string characters out of 5418355
+ 1331472 words of memory out of 5000000
  54710 multiletter control sequences out of 15000+600000
  695320 words of font info for 188 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 78i,9n,83p,1611b,1846s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<E:/MikTex2/fonts/type1/public/amsfonts/cm/cmex10.pfb><E:/MikTex2/fonts/type1/public/amsfonts/cm/cmmi10.pfb><E:/MikTex2/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/MikTex2/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/MikTex2/fonts/type1/public/amsfonts/cm/cmtt10.pfb><E:/MikTex2/fonts/type1/urw/symbol/usyr.pfb><E:/MikTex2/fonts/type1/urw/symbol/usyr.pfb><E:/MikTex2/fonts/type1/urw/times/utmb8a.pfb><E:/MikTex2/fonts/type1/urw/times/utmr8a.pfb><E:/MikTex2/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 1main.pdf (7 pages, 2193274 bytes).
+ 78i,9n,83p,1623b,2074s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on 1main.pdf (7 pages, 2190160 bytes).
 PDF statistics:
- 210 PDF objects out of 1000 (max. 8388607)
+ 209 PDF objects out of 1000 (max. 8388607)
  47 named destinations out of 1000 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
