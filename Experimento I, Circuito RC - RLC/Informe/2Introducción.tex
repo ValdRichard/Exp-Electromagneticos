@@ -1,14 +1,22 @@
 \section{Introducción}
-    El análisis frecuencial es un método de estudio de sistemas basado en observar la respuesta de los mismos frente a señales de diferentes frecuencias. Los sistemas más fáciles de estudiar son aquellos llamados lineales invariantes en el tiempo (LIT), es decir, aquellos sistemas que cumplan linealidad con respecto a la señal de entrada, y además, cumplan invarianza temporal.
+    El análisis frecuencial es un método de estudio de sistemas basado en observar la respuesta de los mismos frente a señales de diferentes frecuencias.
+     Los sistemas más fáciles de estudiar son aquellos llamados lineales invariantes en el tiempo (LIT), es decir, aquellos sistemas que cumplan linealidad
+      con respecto a la señal de entrada, y además, cumplan invarianza temporal.
     
-    Un ejemplo mecánico de sistema LIT es el del sistema de suspensión de un auto (Figura \ref{fig:amortiguador}). Las ecuaciones de movimiento obtenidas para este sistema resultan en una ecuación diferencial lineal\footnote{Nótese que la linealidad de la ecuación diferencial es la que determina que el sistema sea considerado LIT.} sobre el desplazamiento $x(t)$ con la fuerza aplicada $f(t)$  como término inhomogéneo \cite{oppenheim1997signals}. En este contexto, la fuerza representa la señal de entrada, mientras que el desplazamiento representa la respuesta del sistema ante dicha señal. La desventaja de estudiar un sistema como este es no solo el costo de su fabricación, sino también la dificultad de su manejo en el laboratorio. Por eso es que resulta más práctico estudiar sistemas de menor complejidad, pero que se comporten de la misma manera, y luego trasladar los resultados al problema del amortiguador.
+    Un ejemplo mecánico de sistema LIT es el del sistema de suspensión de un auto (Figura \ref{fig:amortiguador}). Las ecuaciones de movimiento obtenidas 
+    para este sistema resultan en una ecuación diferencial lineal
+     sobre el desplazamiento $x(t)$ con
+     la fuerza aplicada $f(t)$  como término inhomogéneo \cite{oppenheim1997signals}. En este contexto, la fuerza representa la señal de entrada, mientras que el 
+     desplazamiento representa la respuesta del sistema ante dicha señal. La desventaja de estudiar un sistema como este es no solo el costo de su fabricación, 
+     sino también la dificultad de su manejo en el laboratorio. Por eso es que resulta más práctico estudiar sistemas de menor complejidad, pero que se comporten 
+     de la misma manera, y luego trasladar los resultados al problema del amortiguador.
 
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}{0.4\textwidth} 
         \centering
         \includegraphics[width=0.5\linewidth]{Amortiguador.jpg}  
-        \caption{Diagrama de la suspensión de un auto. Se representa como un resorte de constante $K$ y un amortiguador sujetos a una masa $M$ a la cual se le aplica una fuerza externa $f(t)$, resultando en un desplazamiento $x(t)$. }
+        \caption{Esquematización de un sistema de suspensión amortiguada. Se representa como un resorte de constante $K$ y un amortiguador sujetos a una masa $M$ a la cual se le aplica una fuerza externa $f(t)$, resultando en un desplazamiento $x(t)$. }
         \label{fig:amortiguador}
     \end{subfigure}
     \hspace{0.3cm}
