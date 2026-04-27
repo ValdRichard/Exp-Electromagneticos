@@ -29,16 +29,16 @@ errlnH = errH / df['H'].values
 errphi = np.sqrt((w * errdeltat) ** 2 + (deltat * errw) ** 2)
 
 #Ajuste lineal para ln(H) vs z
-pendienteH, ordenadaH, err_pendienteH, err_ordenadaH, r_squaredH, varianza_residualH = ajuste_gráfico_curvefit(z, lnH, errlnH, r'$z$ [1]', r'$ln(H)$ [1]', 'ln(H) vs z')
+pendienteH, err_pendienteH, r_squaredH, varianza_residualH = ajuste_gráfico_curvefit(z, lnH, errlnH, r'$z$ [1]', r'$ln(H)$ [1]', 'ln(H) vs z')
 
 tauH = 2/w * pendienteH**2
 errtauH = tauH * 2 * err_pendienteH / np.abs(pendienteH)
 
-#Ajuste lineal para phi vs z
-pendientePhi, ordenadaPhi, err_pendientePhi, err_ordenadaPhi, r_squaredPhi, varianza_residualPhi = ajuste_gráfico_curvefit(z, phi, errphi, r'$z$ [1]', r'$\varphi$ [rad]', 'phi vs z')
+"""#Ajuste lineal para phi vs z
+pendientePhi, err_pendientePhi, r_squaredPhi, varianza_residualPhi = ajuste_gráfico_curvefit(z, phi, errphi, r'$z$ [1]', r'$\varphi$ [rad]', 'phi vs z')
 
 tauPhi = 2/w * pendientePhi**2
-errtauPhi = tauPhi * 2 * err_pendientePhi / pendientePhi
+errtauPhi = tauPhi * 2 * err_pendientePhi / pendientePhi"""
 
 R = 2700
 C = 220e-9
@@ -47,7 +47,7 @@ errC = C*0.05
 errR = R*0.05
 errtauref = np.sqrt((R*errC)**2 + (C*errR)**2)
 print(f'RC_ref = {tauref:.2e} ± {errtauref:.2e} s')
-print(f'RC_phi = {tauPhi:.2e} ± {errtauPhi:.2e} s')
+#print(f'RC_phi = {tauPhi:.2e} ± {errtauPhi:.2e} s')
 print(f'RC_H = {tauH:.2e} ± {errtauH:.2e} s')
 
 

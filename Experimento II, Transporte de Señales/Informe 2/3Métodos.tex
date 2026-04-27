@@ -1,0 +1,30 @@
+\section{Materiales y métodos}
+Se estudió la propagación de un pulso sinusoidal en un arreglo RC en escalera que consta de 16 nodos de resistencias de \SI{2700(135)}{\ohm} y capacitores de \SI{220(22)}{\nano\farad}
+, para obtener la impedancia caracteristica del circuito y determinar la constante \(RC\). Para ello se observó la diferencia de potencial de distintos nodos dejando la frecuencia de la fuente constante, y también se varió la frecuencia midiendo la caída de tensión en el nodo 6. Además, se midió la impedancia del circuito midiendo la señal de la primer resistencia y la fuente. 
+
+Se utilizó como fuente una señal sinusoidal de amplitud constante mediante un generador de funciones $Sinometer$ modelo VC2002 \cite{VC2002} , variando su frecuencia en un rango de [0, 500] \SI{}{\hertz}. Tanto la señal de entrada (CH1) como la de salida (CH2) se registraron a través de un osciloscopio $Tektronix$ modelo TDS 220 \cite{TDS200}, que permitió medir las diferencias de potencial sobre ambos elementos simultáneamente, colocando el negativo de ambos sobre un punto común (ver \autoref{fig:circuito}). En primera instancia, se establecio una frecuencia constante de la señal a \(50\) \SI{}{\hertz} y luego se varió la salida del CH2 en los 16 nodos del circuito, de manera que utilizando la relación (Falta buscar ref)
+\begin{equation}
+    V(z,t) = V_0 e^{-\sqrt{\frac{\omega RC}{2}}z} e^{i(\omega t - \sqrt{\frac{\omega RC}{2}}z)}
+    \label{eq:voltajePulso}
+\end{equation}
+Siendo \(V_0\) la amplitud del pulso, $RC$ constante de tiempo a determinar, \(z\) el nodo donde se mide y \(\omega\) la frecuencia de la fuente. 
+Posteriormente, se fijo el CH2 en el nodo 6 mientras se variaba la frecuencia, de manera de utilizar la misma ecuación \ref{eq:voltajePulso} y obtener la constante del pulso. Paulatinamente, se midió el desfasaje entre las señales para obtener un diagrama de Nyquist. Para obtener la impedancia se midió la diferencia de potencial entre la fuente y la primer resistencia, y a su vez se registró el desfasaje entre las señales. De manera que conociendo la relación con la corriente del circuito \(Z = V/I\) y utilizando la ley de Ohm se determina la impedancia caracteristica del circuito. 
+
+Por otro lado, se midió la respuesta de un cable coaxial \(RG-58\)  variando la impedancia de carga del sistema en tres situaciones distintas tal que \(Z_L = \infty\), dejando el circuito abierto y por ende la impedancia es la del aire,  \(Z_L = 0\) puenteando el circuito, y \(Z_L =Z_C\) siendo \(Z_C = 50\) $\Omega$ la impedancia caracteristica del circuito el cual es proveído por el fabricante. De manera que se espera ver para cada situación la onda reflejada la cual es determinada por el coeficiente de reflexión tal que 
+\(
+\Gamma = \frac{Z_L - Z_C}{Z_L+Z_C}
+\)
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{gráficos/ConfiguracionF.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{gráficos/Impedancia.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}

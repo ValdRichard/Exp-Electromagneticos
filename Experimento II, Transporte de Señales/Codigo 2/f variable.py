@@ -36,25 +36,26 @@ errphi = np.sqrt((w * errdeltat) ** 2 + (deltat * errw) ** 2)
 
 
 # Bode para H y gráfico de phi vs sqrt(w)
-fig, ax1 = plt.subplots(figsize=(12, 6))
+"""fig, ax1 = plt.subplots(figsize=(12, 6))
 ax1.errorbar(x = raizw, y = lnH, yerr=errlnH, xerr=errraizw,  color='#a200ed', label=r'Datos experimentales de ln(H)', fmt= 'o', ecolor="#a200ed", elinewidth=1.5, capsize=2.5)
 ax1.set_xlabel(r'$\sqrt{\omega} $ [Hz$^{1/2}$]', size=14)
-ax1.set_ylabel(r'$ln(H)$ [1]', size=14, color='#a200ed')
+ax1.set_ylabel(r'$ln(H)$ [1]', size=14)#, color='#a200ed')
 ax2 = ax1.twinx()
 ax2.errorbar(x = raizw, y = phi, yerr=errphi, xerr=errraizw, color='darkorange', label=r'Datos experimentales de $\varphi$', fmt= 'o', ecolor='darkorange', elinewidth=1.5, capsize=2.5)
-ax2.set_ylabel(r'$\varphi$ [radianes]', size=14, color='darkorange')
+ax2.set_ylabel(r'$\varphi$ [radianes]', size=14)#, color='darkorange')
 ax1.set_title(f'Diagrama de Bode de $H(\omega)$')
 ax1.grid(True, linestyle='--', alpha=0.7)
 fig.legend(loc='upper right', bbox_to_anchor=(0.89, 0.85), shadow= True, fontsize=12)
-plt.savefig(f'Figuras2/Bode_H_phi.png', dpi=300, bbox_inches='tight')
-plt.show()
+plt.savefig(f'Figuras2/Bode_H_phi(sincolores).png', dpi=300, bbox_inches='tight')
+plt.show()"""
 
-"""# Ajuste lineal para ln(H) vs sqrt(w)
-pendienteH, ordenadaH, err_pendienteH, err_ordenadaH, r_squaredH, varianza_residualH = ajuste_gráfico_ODR(raizw, lnH, errraizw, errlnH, r'$\sqrt{\omega}$ [Hz$^{1/2}$]', r'$ln(H)$ [1]', 'lnH_vs_raizw')
+# Ajuste lineal para ln(H) vs sqrt(w)
+"""pendienteH, ordenadaH, err_pendienteH, err_ordenadaH, r_squaredH, varianza_residualH = ajuste_gráfico_ODR(raizw, lnH, errraizw, errlnH, r'$\sqrt{\omega}$ [Hz$^{1/2}$]', r'$ln(H)$ [1]', 'lnH_vs_raizw', r'$\tau_H =$ 6.67(95) x 10$^{-4}$ s', 0.05, 0.15)
 z = 7
+
 errz = 1
 tauH = ((pendienteH/z)**2 ) * 2
-errtauH = tauH * np.sqrt((2*err_pendienteH/pendienteH)**2 + (errz/z)**2)
+errtauH = tauH * np.sqrt((2*err_pendienteH/pendienteH)**2 + (errz/z)**2)"""
 
 
 # Ajuste lineal para phi vs sqrt(w)
@@ -73,4 +74,4 @@ errR = R*0.05
 errtauref = np.sqrt((R*errC)**2 + (C*errR)**2)
 print(f'RC_ref = {tauref:.2e} ± {errtauref:.2e} s')
 print(f'RC_phi = {tauPhi:.2e} ± {errtauPhi:.2e} s')
-print(f'RC_H = {tauH:.2e} ± {errtauH:.2e} s')"""
+#print(f'RC_H = {tauH:.2e} ± {errtauH:.2e} s')

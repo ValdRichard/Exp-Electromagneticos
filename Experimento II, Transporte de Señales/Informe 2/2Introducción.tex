@@ -1,0 +1,51 @@
+\section{Introducción}
+%Una línea de transmisión es un medio físico por el cual se propaga una señal eléctrica desde un emisor a un receptor. En su forma más usual, consiste en dos hilos conductores paralelos, llamada línea \textit{bifiliar}, o dos conductores cilíndricos concéntricos, lo que corresponde a una línea \textit{coaxial}. 
+
+%Es posible modelar una línea de transmisión como un conjunto de elementos \textit{concentrados} o de elementos \textit{distribuidos}, según la relación existente entre las dimensiones del circuito y la longitud de onda de la señal. En un modelo de elementos concentrados, los componentes característicos de un circuito (como lo es la inductancia, capacitancia y resistencia) se encuentran localizados en una pequeña fracción del espacio (o de la línea?), la cual resulta despreciable respecto a la longitud de onda de la señal que se propaga.  Por otro lado, en un modelo de elementos distribuidos, los componentes se distribuyen de manera continua a lo largo de la línea, lo cual permite el estudio de señales con longitudes de onda comparable a las dimensiones del circuito. 
+
+Una línea de transmisión es un medio físico por el cual se propaga una señal eléctrica desde un emisor a un receptor. A diferencia de un circuito eléctrico, el cual supone que las dimensiones físicas de la red son mucho menores que la longitud de onda que se propaga (modelo de elementos \textit{concentrados}), las líneas de transmisión se modelan como elementos \textit{distribuidos}, permitiendo el análisis de señales con longitud de onda comparable a las dimensiones del circuito. \cite{pozar2012}
+
+En su forma más usual, una línea de transmisión consiste en un hilo conductor concéntrico a una lámina cilíndrica también conductora, llamada línea coaxial (Ver \autoref{fig:cable_coaxial}). La corriente que circula por el hilo conductor genera un campo magnético, el cual se modela como una inductancia $L$ en el circuito de la \autoref{fig:cable_coaxial_circuito}, debido a que el cable no es ideal, se le coloca una resistencia $R$ en serie. Por otro lado, entre el hilo conductor y la lámina cilíndrica existe una diferencia de potencial $V$, la cual puede modelarse como una capacitancia $C$ en paralelo a una conductancia $G$. La capacitancia representa el almacenamiento de energía del campo eléctrico existente entre ambos conductores, mientras que la conductancia simula las pérdidas asociadas a la conductividad del aire que las separa, el cual actúa como dieléctrico. 
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{gráficos/image.png}
+    \caption{}
+    \label{fig:cable_coaxial}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{gráficos/image1.png}
+    \label{fig:cable_coaxial_circuito}
+    \caption{}
+\end{subfigure}
+\caption{Diagrama de un cable coaxial (a) junto a su circuito equivalente (b).}
+\label{fig:coaxial_comparación}
+\end{figure}
+Las tensiones y corrientes pueden variar tanto en magnitud como en fase a lo largo de la longitud de la línea, por lo que deben describirse como funciones de la posición. De esta manera, cada componente de la red eléctrica ($R$, $L$, $G$ y $C$) se define por unidad de longitud $\Delta z$, obteniendo una ecuación diferencial de segundo orden del potencial $V$ respecto a $z$  \cite{preston1991} para el circuito de la \autoref{fig:cable_coaxial_circuito} como
+
+\begin{equation}
+    \frac{\partial^2 V}{\partial z^2} = RGV + (RC + LG)\,\frac{\partial V}{\partial t} + LC\,\frac{\partial^2 V}{\partial t^2}
+   
+    \label{eq:difV}
+\end{equation} 
+
+A partir de la impedancia característica del circuito $Z_c$ y la impedancia de carga de la línea $Z_L$, es posible obtener el coeficiente de reflexión $\Gamma$ según \cite{preston1991}
+\begin{equation}
+    \Gamma = \frac{Z_L -Z_c}{Z_L + Z_c}
+    \label{eq:coef_reflexion}
+\end{equation}
+Si $Z_L$ = $Z_c$, el coeficiente $\Gamma$ será nulo y no habrá onda reflejada. Si $Z_L$ = 0, el valor de $\Gamma$ será -1, mientras que si $Z_L$ = $\infty$, $\Gamma$ tomará el valor 1,  donde la amplitud de la onda reflejada es máxima.  
+
+%revisar esto!!!
+
+A frecuencias bajas, la conductancia generada por el aire entre ambos conductores resulta despreciable, y al establecer $L$ = 0, se reobtiene la ecuación \eqref{eq:difV} como 
+\begin{equation}
+      \frac{\partial^2 V}{\partial z^2} = LC\,\frac{\partial^2 V}{\partial t^2}
+\end{equation}
+donde se aproxima $G$ = 0.
+
+y aca podría poner un grafico del circuito RC, o no.
+
