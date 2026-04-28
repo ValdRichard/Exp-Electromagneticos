@@ -1,1 +1,16 @@
 \section{Resultados y discusión}
+Se presentan los resultados obtenidos a partir de las medidas de voltaje y desfasaje realizadas en el circuito RC en escalera, así como la respuesta del cable coaxial bajo tres condicions de impedancia diferentes. En primer lugar, se realizaron diagramas de bode con los datos obtenidos de la configuracion en escalera de RC, tanto para las medidas realizadas variando el nodo del circuito a una frecuencia constante, como para las medidas realizadas variando la frecuencia con nodo fijo. A partir de estos diagramas se obtuvo la constante característica del circuito \(\tau\). Asimismo se realizo un diagrama de Nyquist a partir de medidas realizadas sobre el primer nodo, variando la frecuencia, con el objetivo de comprobar el comportamiento del arreglo. 
+
+\subsection{Circuito RC en escalera}
+\subsubsection{Medidas a frecuencia constante}
+ Con el objetivo de obtener la constante \(\tau\) del circuito, se realizó un diagrama de Bode de la función de transferencia del circuito como se ve
+     en la \autoref{bodecte}. Con base en las ecuaciones \eqref{moduloH} y \eqref{desfaseH}, se realizaron ajustes lineales sobre los datos de módulo
+      y desfasaje respectivamente, lo que permitió obtener la constante buscada(?) a partir de la pendiente. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{gráficos/Bode_z.png}
+    \caption{Diagrama de Bode a frecuencia constante.}
+    \label{bodecte}
+\end{figure}
+

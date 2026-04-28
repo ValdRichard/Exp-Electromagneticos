@@ -38,15 +38,16 @@ errImZ = Z * np.sqrt((np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2 + (errR/R)**2) * np.
 
 
 # Gráfico de Nyquist de Z
-"""fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(10, 6))
 ax.errorbar(ReZ, ImZ, xerr=errReZ, yerr=errImZ, fmt='o', color='darkorange', ecolor='darkorange', elinewidth=1.5, capsize=2.5)
 ax.set_xlabel(r'Re($Z$) [Ω]', size=14)
 ax.set_ylabel(r'Im($Z$) [Ω]', size=14)
 ax.set_title('Diagrama de Nyquist de $Z$', size=16)
 ax.grid(True, linestyle='--', alpha=0.7)
-plt.show()"""
+plt.savefig(f'Figuras2/Nyquist_Z.png', dpi=300, bbox_inches='tight')
+plt.show()
 
-pendiente, ordenada, err_pendiente, err_ordenada, r_squared, varianza_residual = f.ajuste_gráfico_ODR(ReZ, ImZ, errReZ, errImZ, 'Re(Z) [Ω]', 'Im(Z) [Ω]', 'ajuste_Nyquist_Z.png')
+"""pendiente, ordenada, err_pendiente, err_ordenada, r_squared, varianza_residual = f.ajuste_gráfico_ODR(ReZ, ImZ, errReZ, errImZ, 'Re(Z) [Ω]', 'Im(Z) [Ω]', 'ajuste_Nyquist_Z.png')
 print(f"Pendiente: {pendiente:.4f} ± {err_pendiente:.4f}")
 print(f"Ordenada: {ordenada:.4f} ± {err_ordenada:.4f}")
-print(f"R²: {r_squared:.4f}")
+print(f"R²: {r_squared:.4f}")"""

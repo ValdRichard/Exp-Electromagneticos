@@ -45,8 +45,8 @@ ax2.errorbar(x = raizw, y = phi, yerr=errphi, xerr=errraizw, color='darkorange',
 ax2.set_ylabel(r'$\varphi$ [radianes]', size=14)#, color='darkorange')
 ax1.set_title(f'Diagrama de Bode de $H(\omega)$')
 ax1.grid(True, linestyle='--', alpha=0.7)
-fig.legend(loc='upper right', bbox_to_anchor=(0.89, 0.85), shadow= True, fontsize=12)
-plt.savefig(f'Figuras2/Bode_H_phi(sincolores).png', dpi=300, bbox_inches='tight')
+fig.legend(loc='upper right', bbox_to_anchor=(0.65, 0.85), shadow= True, fontsize=12)
+plt.savefig(f'Figuras2/Bode_H_phi_w.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # Ajuste lineal para ln(H) vs sqrt(w)
