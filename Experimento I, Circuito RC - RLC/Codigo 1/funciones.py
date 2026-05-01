@@ -137,6 +137,77 @@ def analizar_bode(w, H, err_w, err_H, r1, r2, m1_f=None, m2_f=None, titulo="Bode
 
     return w_0, err_w0, r2_1, r2_2
 
+def analizar_bode_final(w, H, err_w, err_H, phi, err_phi, r1, r2, tau0, 
+                        m1_f=None, m2_f=None, tipo='resistencia', titulo="Bode", ax=None):
+    
+    if ax is None: fig, ax1 = plt.subplots(figsize=(12, 8))
+    else: ax1 = ax
+
+    # --- 1. MÓDULO EN DECIBELES (dB) ---
+    G_db = 20 * np.log10(H)
+    # Propagación: ΔG = |20 / (H * ln(10))| * ΔH
+    err_G_db = (20 / (H * np.log(10))) * err_H
+    
+    x_log = np.log10(w)
+    err_x_log = (1 / (w * np.log(10))) * err_w
+
+    # Ajustes ODR: dB vs log10(w)
+    b1, eb1, r2_1 = ajustar_recta(x_log, G_db, err_x_log, err_G_db, r1, fix_m=m1_f)
+    b2, eb2, r2_2 = ajustar_recta(x_log, G_db, err_x_log, err_G_db, r2, fix_m=m2_f)
+
+    # Intersección para w0
+    x_int = (b2[1] - b1[1]) / (b1[0] - b2[0])
+    w_0 = 10**x_int
+
+    # --- CÁLCULO DE INCERTIDUMBRE w0 (Módulo) ---
+    if m2_f is not None: 
+        m, errm, B1, errB1, B2, errB2 = b1[0], eb1[0], b1[1], eb1[1], b2[1], eb2[1]
+    else: 
+        m, errm, B1, errB1, B2, errB2 = b2[0], eb2[0], b2[1], eb2[1], b1[1], eb1[1]
+    
+    err_x_int = np.sqrt((errB2/m)**2 + (errB1/m)**2 + ((B2-B1)*errm/m**2)**2)
+    err_w0 = w_0 * np.log(10) * err_x_int
+
+    # --- 2. FASE (Ajuste No Lineal) ---
+    ax2 = ax1.twinx()
+    tau_fit, err_tau, _ = ajustar_fase(w, phi, err_w, err_phi, tau0, tipo=tipo)
+    w0_fase = 1 / tau_fit
+    err_w0_fase = err_tau / (tau_fit**2)
+
+    # --- 3. GRÁFICO ---
+    w_f = np.logspace(min(x_log), max(x_log), 500)
+    
+    # Módulo (dB) en ax1
+    ax1.errorbar(w, G_db, xerr=err_w, yerr=err_G_db, fmt='o', color='black', alpha=0.5, label='Datos G (dB)')
+    ax1.plot(w_f, b1[0]*np.log10(w_f) + b1[1], 'b--', alpha=0.8)
+    ax1.plot(w_f, b2[0]*np.log10(w_f) + b2[1], 'b--', alpha=0.8, label='Asíntotas')
+    
+    # Fase (rad) en ax2
+    phi_fit = np.arctan(1/(w_f*tau_fit)) if tipo=='resistencia' else np.arctan(-w_f*tau_fit)
+    ax2.errorbar(w, phi, xerr=err_w, yerr=err_phi, fmt='o', color='green', alpha=0.6, label='Datos Fase (rad)')
+    ax2.plot(w_f, phi_fit, 'g-', lw=2, label='Ajuste Fase')
+
+    # Configuración de ejes y escalas
+    ax1.set_xscale('log')
+    ax1.set_ylabel("20log(H) [dB]", color='blue', fontsize=14)
+    ax1.set_ylim(-20, 2)
+    ax1.set_xlabel(r"Frecuencia angular $\omega$ [rad/s]", fontsize=14)
+    ax2.set_ylabel(r"Fase $\phi$ [rad]", color='green', fontsize=14)
+    
+    # Estética de los ejes
+    ax1.tick_params(axis='y', labelcolor='blue')
+    ax2.tick_params(axis='y', labelcolor='green')
+    ax1.grid(True, which="both", ls="-", alpha=0.2)
+
+    # Unificación de leyendas
+    lines1, labels1 = ax1.get_legend_handles_labels()
+    lines2, labels2 = ax2.get_legend_handles_labels()
+    ax1.legend(lines1 + lines2, labels1 + labels2, loc='best', shadow=True)
+
+    plt.title(titulo)
+    
+    return w_0, err_w0, w0_fase, err_w0_fase, r2_1, r2_2
+
     # --- 1. MODELOS TEÓRICOS PARA ODR ---
 def modelo_fase_r(p, w):
     # p[0] es tau

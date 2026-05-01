@@ -1,21 +1,21 @@
 # Fdb version 4
-["biber 1main"] 1777221983.49162 "1main.bcf" "1main.bbl" "1main" 1777222248.2746 0
-  "1main.bcf" 1777222247 109061 f087382521441d687146d9bbdc6b54e4 "pdflatex"
+["biber 1main"] 1777221983.49162 "1main.bcf" "1main.bbl" "1main" 1777222539.11795 0
+  "1main.bcf" 1777222538 109061 f087382521441d687146d9bbdc6b54e4 "pdflatex"
   "bibliografia.bib" 1777154638 2156 1f6f824a2200f1faaf2cf6d8b5bd8f71 ""
   (generated)
   "1main.bbl"
   "1main.blg"
   (rewritten before read)
-["pdflatex"] 1777222237.48098 "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1777222248.27567 0
+["pdflatex"] 1777222527.91072 "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1777222539.11904 0
   "0librerias.tex" 1777154637 936 a8e548334a223204d6fe6235dd8a95f4 ""
-  "1main.aux" 1777222247 8820 d3a35285199b101bc51fb0043c0e0365 "pdflatex"
+  "1main.aux" 1777222538 8820 d3a35285199b101bc51fb0043c0e0365 "pdflatex"
   "1main.bbl" 1777221993 11420 1f51dd6a96b41033c465d52ed83ac37a "biber 1main"
-  "1main.out" 1777222247 1227 fbf9de7a29357a54da5111b622e3a472 "pdflatex"
-  "1main.run.xml" 1777222247 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
+  "1main.out" 1777222538 1227 fbf9de7a29357a54da5111b622e3a472 "pdflatex"
+  "1main.run.xml" 1777222538 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
   "1main.tex" 1777154638 1396 ceb23581bec2eefcccb1066a7d713ed0 ""
   "2Introducción.tex" 1777154638 3102 36ae5853bed90b10c38b39dc0cf9b46e ""
   "3Métodos.tex" 1777154638 5524 30c74f07a8671d6174c187a3dde5884c ""
-  "4Resultados y discusión.tex" 1777222225 6589 38af302ec5e54ee44b68367c8763b4a1 ""
+  "4Resultados y discusión.tex" 1777222526 6590 32be9e8c5b12293e713a4ff148ec8688 ""
   "5Conclusiones.tex" 1777154638 2354 1e08b123597f1ec16467a7733cd7e953 ""
   "6Apéndice.tex" 1777154638 3767 218ccf7f2b00212bf459010ac3478a77 ""
   "Amortiguador.jpg" 1777154638 29800 aad2990cab74a8dfa3b9e211b51149c2 ""
