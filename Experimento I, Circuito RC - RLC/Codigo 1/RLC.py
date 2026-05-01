@@ -251,7 +251,7 @@ plt.tight_layout()
 # Guardar en alta resolución para el informe
 plt.savefig("nyquist RLC.png", dpi=500, bbox_inches='tight')
 
-##plt.show()
+#plt.show()
 
 
 # Imprimir los w0 obtenidos en todos los ajustes y pasarlos a hz con su error 

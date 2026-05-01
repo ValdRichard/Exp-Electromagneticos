@@ -73,40 +73,41 @@ lab_f_c = r'Ajuste lineal $R^2$ = 0,99 (m = 0)'  # Recta horizontal
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 6.5))
 
 
-# --- EJECUCIÓN Y PRINT DE RESULTADOS ---
+# --- EJECUCIÓN Y CAPTURA DE RESULTADOS ---
 
-# Ejecución Resistencia
-w0_m_r, dw0_m_r, w0_f_r, dw0_f_r, r2_r1, r2_r2 = analizar_bode_final(
+# Para la Resistencia (Pasa-altos)
+res_r = analizar_bode_final(
     wr, Hr, err_wr, err_Hr, phir, err_phir, 
     r1=slice(0, 4), r2=slice(10, 14), tau0=tau0, 
     m1_f=None, m2_f=0.0, tipo='resistencia', titulo="Pasa-altos", ax=ax1
 )
+# Desempaquetamos los 6 valores devueltos
+w0m_r, dw0m_r, w0f_r, dw0f_r, r2_r1, r2_r2 = res_r
 
-# Ejecución Capacitor
-w0_m_c, dw0_m_c, w0_f_c, dw0_f_c, r2_c1, r2_c2 = analizar_bode_final(
+# Para el Capacitor (Pasa-bajos)
+res_c = analizar_bode_final(
     wc, Hc, err_wc, err_Hc, phic, err_phic, 
     r1=slice(0, 5), r2=slice(10, 15), tau0=tau0, 
     m1_f=0.0, m2_f=None, tipo='capacitor', titulo="Pasa-bajos", ax=ax2
 )
+# Desempaquetamos los 6 valores devueltos
+w0m_c, dw0m_c, w0f_c, dw0f_c, r2_c1, r2_c2 = res_c
 
-plt.tight_layout()
-plt.savefig("rectas_RC_Bode.png", dpi=500)
+# --- BLOQUE DE PRINT (Esto es lo que vas a ver en la terminal) ---
+print("\n" + "="*50)
+print(f"{'RESULTADOS DEL EXPERIMENTO RC':^50}")
+print("="*50)
+
+# Reporte Resistencia
+print(f"\n>>> FILTRO PASA-ALTOS (R)")
+print(f"  - w0 Módulo:  ({w0m_r:.2f} +/- {dw0m_r:.2f}) rad/s  | R2_r1: {r2_r1:.4f}, R2_r2: {r2_r2:.4f}")
+print(f"  - w0 Fase:    ({w0f_r:.2f} +/- {dw0f_r:.2f}) rad/s")
+
+# Reporte Capacitor
+print(f"\n>>> FILTRO PASA-BAJOS (C)")
+print(f"  - w0 Módulo:  ({w0m_c:.2f} +/- {dw0m_c:.2f}) rad/s  | R2_c1: {r2_c1:.4f}, R2_c2: {r2_c2:.4f}")
+print(f"  - w0 Fase:    ({w0f_c:.2f} +/- {dw0f_c:.2f}) rad/s")
+
+print("\n" + "="*50)
+
 plt.show()
-
-def imprimir_reporte(nombre, w0m, dw0m, w0f, dw0f, r2_1, r2_2):
-    print(f"\n{'='*40}")
-    print(f" REPORTES DE AJUSTE: {nombre}")
-    print(f"{'='*40}")
-    print(f"MÓDULO (Asíntotas):")
-    print(f"  w0 calculado: {w0m:.3f} ± {dw0m:.3f} rad/s")
-    print(f"  R² Recta 1:   {r2_1:.5f}")
-    print(f"  R² Recta 2:   {r2_2:.5f}")
-    print(f"{'-'*40}")
-    print(f"FASE (Arctan):")
-    print(f"  w0 calculado: {w0f:.3f} ± {dw0f:.3f} rad/s")
-    print(f"  (Ajuste no lineal realizado con ODR/LeastSq)")
-    print(f"{'='*40}\n")
-
-# Printear ambos resultados
-imprimir_reporte("FILTRO PASA-ALTOS (R)", w0_m_r, dw0_m_r, w0_f_r, dw0_f_r, r2_r1, r2_r2)
-imprimir_reporte("FILTRO PASA-BAJOS (C)", w0_m_c, dw0_m_c, w0_f_c, dw0_f_c, r2_c1, r2_c2)
