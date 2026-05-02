@@ -1,17 +1,16 @@
 # Fdb version 4
-["biber 1main"] 1777221983.49162 "1main.bcf" "1main.bbl" "1main" 1777222539.11795 0
-  "1main.bcf" 1777222538 109061 f087382521441d687146d9bbdc6b54e4 "pdflatex"
-  "bibliografia.bib" 1777154638 2156 1f6f824a2200f1faaf2cf6d8b5bd8f71 ""
+["biber 1main"] 1777754232.02943 "1main.bcf" "1main.bbl" "1main" 1777754293.06754 2
+  "1main.bcf" 0 -1 0 "pdflatex"
   (generated)
   "1main.bbl"
   "1main.blg"
   (rewritten before read)
-["pdflatex"] 1777222527.91072 "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1777222539.11904 0
+["pdflatex"] 1777222527.91072 "d:/Experimentos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1777222539.11904 0
   "0librerias.tex" 1777154637 936 a8e548334a223204d6fe6235dd8a95f4 ""
-  "1main.aux" 1777222538 8820 d3a35285199b101bc51fb0043c0e0365 "pdflatex"
-  "1main.bbl" 1777221993 11420 1f51dd6a96b41033c465d52ed83ac37a "biber 1main"
-  "1main.out" 1777222538 1227 fbf9de7a29357a54da5111b622e3a472 "pdflatex"
-  "1main.run.xml" 1777222538 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
+  "1main.aux" 0 -1 0 "pdflatex"
+  "1main.bbl" 1777754292 0 d41d8cd98f00b204e9800998ecf8427e "biber 1main"
+  "1main.out" 0 -1 0 "pdflatex"
+  "1main.run.xml" 0 -1 0 "pdflatex"
   "1main.tex" 1777154638 1396 ceb23581bec2eefcccb1066a7d713ed0 ""
   "2Introducción.tex" 1777154638 3102 36ae5853bed90b10c38b39dc0cf9b46e ""
   "3Métodos.tex" 1777154638 5524 30c74f07a8671d6174c187a3dde5884c ""
@@ -165,6 +164,7 @@
   "C:/Users/maria/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "RLC_serie.png" 1777154638 8057 68af78d2ad0b427d00fa80d52b232b6b ""
   "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" 1777154638 1396 ceb23581bec2eefcccb1066a7d713ed0 ""
+  "d:/Experimentos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" 0 -1 0 ""
   "gráficos/Circuito.png" 1777154638 465240 db067bbd42bccfc41fae12bdc28f4ebc ""
   "gráficos/nyquist RLC.png" 1775927130 30167 80ee118ccd7b529dbd9b474e85c04eb5 ""
   "gráficos/nyquist_RC.png" 1777154638 181312 d555a5f77d512d04d55697d2cb6246a4 ""

@@ -1,21 +1,23 @@
 \section{Resultados y discusión}
 Se presentan los resultados obtenidos a partir de las medidas de voltaje y desfasaje realizadas en el circuito RC en escalera, así como la respuesta del cable coaxial bajo tres condicions de impedancia diferentes. En primer lugar, se realizaron diagramas de bode con los datos obtenidos de la configuracion en escalera de RC, tanto para las medidas realizadas variando el nodo del circuito a una frecuencia constante, como para las medidas realizadas variando la frecuencia con nodo fijo. A partir de estos diagramas se obtuvo la constante característica del circuito \(\tau\). Asimismo se realizo un diagrama de Nyquist a partir de medidas realizadas sobre el primer nodo, variando la frecuencia, con el objetivo de comprobar el comportamiento del arreglo. 
-#A partir de las mediciones realizadas sobre el circuito RC en escalera, se construyeron diagramas de Bode y de Nyquist con el objetivo de caracterizar la propagación de la señal y determinar la constante de tiempo $\tau$ del sistema. 
+A partir de las mediciones realizadas sobre el circuito RC en escalera, se construyeron diagramas de Bode con el objetivo de caracterizar la propagación de la señal y determinar la constante de tiempo $\tau$ del sistema. 
 De acuerdo con la ecuación \eqref{eq:voltajePulso}, la amplitud de la señal decae exponencialmente con el nodo (?) como $e^{kz}$ y presenta un corrimiento de fase proporcional a $z$, con $k = \sqrt{\frac{\omega RC}{2}}$. Esto implica que el logaritmo del módulo y la fase deben depender linealmente tanto de $z$ como de $\sqrt{\omega}$, lo cual permite obtener $RC$ a partir de ajustes lineales.    
 
 \subsection{Circuito RC en escalera}
 
 \subsubsection{Medidas a frecuencia constante}
- Con el objetivo de obtener la constante \(\tau\) del circuito, se realizó un diagrama de Bode de la función de transferencia del circuito como se ve
-     en la \autoref{bodecte}. Con base en las ecuaciones \eqref{moduloH} y \eqref{desfaseH}, se realizaron ajustes lineales sobre los datos de módulo
-      y desfasaje respectivamente, lo que permitió obtener la constante buscada(?) a partir de la pendiente. 
-#En la \autoref{bodecte} se muestra el diagrama de Bode obtenido al variar el nodo a frecuencia fija. Se observa que $\ln(H)$ decrece linealmente con $z$, mientras que la fase $\varphi$ crece linealmente, en acuerdo a lo esperado teóricamente. Mediante ajustes lineales se obtuvo una pendiente $m_H= -0.307()$ para $\ln(H) vs z$ y una pendiente $m_\varphi = 0.302()$ para $\varphi vs z$, como se observa en \autoref{ajustes lineales en z}. A partir de estas pendientes se obtuvo una constante de tiempo $\SI{\tau_H=6.0(2)\times 10^{-4}}{\second}$ y $\SI{\tau_{\varphi}=6.2(2)\times 10^{-4}}{\second}$ consistentes con el valor teórico calculado a partir de los componentes del circuito, $\tau_{teo} = RC =  s$. La concordancia entre los valores obtenidos y la referencia teórica indica que el modelo utilizado describe adecuadamente la atenuación y el desfasaje de la señal en el sistema. (?)
+ En la \autoref{fig:bode_z} se muestra el diagrama de Bode obtenido al variar el nodo a frecuencia fija. Se observa que $\ln(H)$ decrece linealmente
+     con $z$, mientras que la fase $\varphi$ crece linealmente, en acuerdo a lo esperado teóricamente. Mediante ajustes lineales se obtuvo una 
+     pendiente $m_H= -0.307(4)$ para $\ln(H) vs z$ y una pendiente $m_\varphi = 0.302(6)$ para $\varphi vs z$, como se observa en 
+     \autoref{fig:ajustes lineales en z}. A partir de estas pendientes se obtuvo una constante de tiempo $\tau_H = 6.0(2)\times 10^{-4}$ \si{\second} y
+      $\tau_{\varphi}=6.2(2)\times 10^{-4}$\si{\second} consistentes con el valor teórico calculado a partir de los componentes del circuito,
+       $\tau_{\text{ref}} = \text{RC} = 5.9(4) \times 10^{-4}$ \si{\second}.  
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\linewidth]{gráficos/Bode_z.png}
-    \caption{Diagrama de Bode a frecuencia constante.}
-    \label{bodecte}
+    \caption{Diagrama de Bode a frecuencia constante. En violeta se muestran los datos correspondientes al logaritmo del módulo y en naranja los datos correspondientes a la fase en radianes. En ambos se observa un comportamiento lineal con respecto al nodo $z$.}
+    \label{fig:bode_z}
 \end{figure}
 
 \begin{figure}[h!]
@@ -35,33 +37,43 @@ De acuerdo con la ecuación \eqref{eq:voltajePulso}, la amplitud de la señal de
     \label{fig:ajustes lineales en z}
 \end{figure}
 
+En el caso de los datos del módulo, se puede observar que los puntos correspondientes a los nodos 15 y 16, es decir los
+ últimos nodos del circuito, presentan una tendencia a alejarse de la linealidad observada en los demás datos. Esto es 
+ de esperar ya que al llegar a los últimos nodos, la aproximación de que el circuito es infinito deja de ser válida. 
+
 \subsubsection{Medidas a nodo fijo}
-Al fijar el nodo (z=6) y variar la frecuencia, se obtuvieron diagramas de Bode en función de $\sqrt{\omega}$, como se muestra en la \autoref{bode_w}. Nuevamente se observa un comportamiento lineal tanto para el módulo como para la fase, en concordancia con la dependencia teórica. Los ajuste lineales permitieron obtener $\SI{\tau_H=6.7(9)\times 10^{-4}}{\second}$ y $\SI{\tau_{\varphi}=5.4(7)\times 10^{-4}}{\second}$, como se puede ver en \autoref{ajustes lineales en w}. Estos valores son consistentes con el valor teórico, lo que refuerza la validez del modelo utilizado para describir el comportamiento del circuito RC en escalera. En este caso las incertidumbres son mayores, lo cual puede atribuirse a errores en la medición de fase a distintas frecuencias y a limitaciones del instrumental.
+Al fijar el nodo (z=6) y variar la frecuencia, se obtuvieron diagramas de Bode en función de $\sqrt{\omega}$, como se muestra en la \autoref{fig:bode_w}.
+ Nuevamente se observa un comportamiento lineal tanto para el módulo como para la fase, en concordancia con la dependencia teórica. Los ajustes 
+ lineales permitieron obtener $\tau_H=6.7(9)\times 10^{-4}$\si{\second} y $\tau_{\varphi}=5.4(7)\times 10^{-4}$\si{\second}, como se puede ver en
+  \autoref{fig:ajustes lineales en w}. Estos valores son consistentes con el valor teórico, lo que refuerza la validez del modelo utilizado para
+   describir el comportamiento del circuito RC en escalera. En este caso las incertidumbres son mayores, lo cual puede atribuirse a errores en la
+    medición de fase a distintas frecuencias y a limitaciones del instrumental.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\linewidth]{gráficos/Bode_w.png}
     \caption{Diagrama de Bode nodo fijo.}
-    \label{bodecte}
+    \label{fig:bode_w}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
     \begin{subfigure}{0.45\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{gráficos/lnH_vs_raiz_w.png}
+        \includegraphics[width=\linewidth]{gráficos/lnH_vs_raizw.png}
         \caption{Módulo}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.45\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{gráficos/phi_vs_raiz_w.png}
+        \includegraphics[width=\linewidth]{gráficos/phi_vs_raizw.png}
         \caption{Fase}
     \end{subfigure}
     \caption{Ajustes lineales para obtener la constante \(\tau\) a partir de las medidas a frecuencia constante.}
     \label{fig:ajustes lineales en w}
 \end{figure}
+\subsubsection{Nyquist de Z}
+
 
 \subsection{Cable coaxial}
-\subsubsection{Nyquist}
 
