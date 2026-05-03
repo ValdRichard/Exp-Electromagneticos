@@ -60,38 +60,25 @@ err_phic = np.abs(phic) * np.sqrt((errfc / fc)**2 + (errdeltatc / deltatc)**2)
 err_wc = 2*np.pi*errfc
 
 
-# Pasa-altos (Resistencia)
-lab_w0_r = r'$f_0$ = 1,8(2) kHz'
-lab_m_r = r'Ajuste lineal $R^2$ = 0,99 (m libre)' # Recta de subida
-lab_f_r = r'Ajuste lineal $R^2$ = 0,99 (m = 0)'  # Recta horizontal
-
-# Pasa-bajos (Capacitor)
-lab_w0_c = r'$f_0$ = 1,5(2) kHz'
-lab_m_c = r'Ajuste lineal $R^2$ = 0,99 (m libre)' # Recta de caída
-lab_f_c = r'Ajuste lineal $R^2$ = 0,99 (m = 0)'  # Recta horizontal
-
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 6.5))
 
-
-# --- EJECUCIÓN Y CAPTURA DE RESULTADOS ---
-
-# Para la Resistencia (Pasa-altos)
+# --- EJECUCIÓN RESISTENCIA ---
+# No le pases etiquetas, la función las genera sola con los R2 reales
 res_r = analizar_bode_final(
     wr, Hr, err_wr, err_Hr, phir, err_phir, 
     r1=slice(0, 4), r2=slice(10, 14), tau0=tau0, 
-    m1_f=None, m2_f=0.0, tipo='resistencia', titulo="Pasa-altos", ax=ax1
+    m1_f=None, m2_f=0.0, tipo='resistencia', titulo="Pasa-altos", ax=ax1, loc_leyenda='center right'
 )
-# Desempaquetamos los 6 valores devueltos
 w0m_r, dw0m_r, w0f_r, dw0f_r, r2_r1, r2_r2 = res_r
 
-# Para el Capacitor (Pasa-bajos)
+# --- EJECUCIÓN CAPACITOR ---
 res_c = analizar_bode_final(
     wc, Hc, err_wc, err_Hc, phic, err_phic, 
     r1=slice(0, 5), r2=slice(10, 15), tau0=tau0, 
-    m1_f=0.0, m2_f=None, tipo='capacitor', titulo="Pasa-bajos", ax=ax2
+    m1_f=0.0, m2_f=None, tipo='capacitor', titulo="Pasa-bajos", ax=ax2, loc_leyenda='center left'
 )
-# Desempaquetamos los 6 valores devueltos
 w0m_c, dw0m_c, w0f_c, dw0f_c, r2_c1, r2_c2 = res_c
+
 
 # --- BLOQUE DE PRINT (Esto es lo que vas a ver en la terminal) ---
 print("\n" + "="*50)
