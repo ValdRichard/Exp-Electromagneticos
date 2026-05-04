@@ -134,7 +134,7 @@ w0_c, err_w0_c, r2_c1, r2_c2 = analizar_bode(wc, Hc, err_wc, err_Hc,
 
 plt.tight_layout()
 plt.savefig("rectas_RC.png", dpi=500)
-#plt.show()
+plt.show()
 
 # Prints finales (calculando f_0 a partir de w_0)
 f0_r, ef0_r = w0_r/(2*np.pi), err_w0_r/(2*np.pi)
