@@ -1,21 +1,21 @@
 # Fdb version 4
-["biber 1main"] 0 "1main.bcf" "1main.bbl" "1main" 1777760961.12754 -1
-  "1main.bcf" 1777760960 108871 fb714f95e1f6ad4debe0d1b78d03e894 "pdflatex"
+["biber 1main"] 1777941884.71554 "1main.bcf" "1main.bbl" "1main" 1777942337.77131 0
+  "1main.bcf" 1777942337 108871 fb714f95e1f6ad4debe0d1b78d03e894 "pdflatex"
   "bibliografia.bib" 1777256532 2461 9bfaec87863d5d9f009ab57fc987e6f5 ""
   (generated)
   "1main.bbl"
   "1main.blg"
   (rewritten before read)
-["pdflatex"] 1777760953.48752 "d:/Experimentos/Exp-Electromagneticos/Experimento II, Transporte de Señales/Informe 2/1main.tex" "1main.pdf" "1main" 1777760961.12927 0
+["pdflatex"] 1777942328.14306 "d:/Experimentos/Exp-Electromagneticos/Experimento II, Transporte de Señales/Informe 2/1main.tex" "1main.pdf" "1main" 1777942337.77286 0
   "0librerias.tex" 1777256532 895 a8e548334a223204d6fe6235dd8a95f4 ""
-  "1main.aux" 1777760960 5275 d2bdad83236363dbf1cc7b973fd26e24 "pdflatex"
-  "1main.bbl" 1777755215 5467 657de5a918c580c738f143a9b713207b "biber 1main"
-  "1main.out" 1777760960 1446 d36a486d5ddd7d9845f5fbe4c5f0e06f "pdflatex"
-  "1main.run.xml" 1777760960 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
+  "1main.aux" 1777942337 7344 893009d89935bce6fc88e9a4349922b1 "pdflatex"
+  "1main.bbl" 1777941895 5467 657de5a918c580c738f143a9b713207b "biber 1main"
+  "1main.out" 1777942337 1446 d36a486d5ddd7d9845f5fbe4c5f0e06f "pdflatex"
+  "1main.run.xml" 1777942337 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
   "1main.tex" 1777754355 594 b68f687ef363b5bbf4ebcd02cb44991f ""
   "2Introducción.tex" 1777755211 4636 bacfacf8edc046893d46330c7fc0dbfd ""
   "3Métodos.tex" 1777256532 3173 7d25793be61b93b1fdee22e713ad8398 ""
-  "4Resultados y discusión.tex" 1777760945 5348 ab189b8d034679dc542b2dba6dafb90f ""
+  "4Resultados y discusión.tex" 1777942317 9627 a9e1c8ba9924a2f151944279c527cc68 ""
   "5Conclusiones.tex" 1777753324 810 1633eee5981d8c32293b2c5428ad0167 ""
   "6Apéndice.tex" 1777256532 21 151720cc1351179a9b7321a8422ce190 ""
   "C:/Users/labor/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1777754511 82507 a9eef8696c92627b87e9975edea03b2a ""
@@ -162,6 +162,10 @@
   "gráficos/Bode_z.png" 1777328345 130533 0cc7e3928078b0050a5351d5976c6984 ""
   "gráficos/ConfiguracionF.png" 1777256532 29485 6183a672f0e3a1ed7825b4855db5356f ""
   "gráficos/Impedancia.png" 1777256532 24508 a9182231761553125687301c6f136af3 ""
+  "gráficos/Nyquist_Z.png" 1777328568 100483 a5573b3aa19efd1f055fd6a8d4126e1e ""
+  "gráficos/R_0.png" 1777934330 909697 0f45f3e5e52eb5b448390cac9095a4d8 ""
+  "gráficos/R_Z0.png" 1777934330 1024538 69e9f6014fb0d9ef0c18db42bb06fdfe ""
+  "gráficos/R_infinita.png" 1777934330 919841 54f85a04fec325a244b9fc9dbda979f1 ""
   "gráficos/image.png" 1777256532 29401 a93e1379d1c4e33896c169afe3e80df2 ""
   "gráficos/image1.png" 1777256532 20422 d07c2c8297b0e2baeb05c11dc3998b5d ""
   "gráficos/lnH_vs_raizw.png" 1777247475 148593 677306207ed3c8d628a5b8173dc0138c ""
