@@ -3,16 +3,15 @@
      Los sistemas más fáciles de estudiar son aquellos llamados lineales invariantes en el tiempo (LIT), es decir, aquellos sistemas que cumplan linealidad
       con respecto a la señal de entrada, y además, cumplan invarianza temporal.
     
-    Un ejemplo mecánico de sistema LIT es el del modelado de un sistema de suspensión de auto (Figura \ref{fig:amortiguador}). Las ecuaciones de movimiento obtenidas 
-    para este sistema resultan en una ecuación diferencial lineal
-     sobre el desplazamiento $x(t)$ con
-     la fuerza aplicada $f(t)$  como término inhomogéneo \cite{oppenheim1997signals}. En este contexto, la fuerza representa la señal de entrada, mientras que el 
+    Un ejemplo mecánico de sistema LIT es el del modelado de un sistema de suspensión de auto \autoref{fig:amortiguador}. Las ecuaciones de movimiento obtenidas 
+        para este sistema resultan en una ecuación diferencial lineal sobre el desplazamiento $x(t)$ con la fuerza aplicada $f(t)$  como término inhomogéneo
+     \cite{oppenheim1997signals}. En este contexto, la fuerza representa la señal de entrada, mientras que el 
      desplazamiento representa la respuesta del sistema ante dicha señal. La desventaja de estudiar un sistema como este es no solo el costo de su fabricación, 
      sino también la dificultad de su manejo en el laboratorio. Por eso es que resulta más práctico estudiar sistemas de menor complejidad, pero que se comporten 
-     de la misma manera, y luego trasladar los resultados al problema del amortiguador.Un ejemplo de esto es un circuito RLC en serie (Ver  \ref{fig:RLC}). Al aplicar
+     de la misma manera, y luego trasladar los resultados al problema del amortiguador.Un ejemplo de esto es un circuito RLC en serie \autoref{fig:RLC}. Al aplicar
       las leyes de Kirchoff, se obtiene una ecuación diferencial para la carga $Q(t)$ del capacitor \cite{kip1969}, análoga a la obtenida para el desplazamiento del resorte.  
       Esto permite ver que a cada componente del circuito se le puede asignar su equivalente en el sistema mecánico: el capacitor se comporta como el resorte, la resistencia como 
-      el amortiguador, el inductor como masa inercial, la carga como el desplazamiento, y el voltaje de entrada como fuerza aplicada. 
+      el amortiguador, el inductor como masa inercial, la carga como el desplazamiento, y el voltaje de entrada como fuerza aplicada.
 
 \begin{figure}[htbp]
     \centering
