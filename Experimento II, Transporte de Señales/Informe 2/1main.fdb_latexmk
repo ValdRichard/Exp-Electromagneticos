@@ -1,21 +1,21 @@
 # Fdb version 4
-["biber 1main"] 1778090222.35046 "1main.bcf" "1main.bbl" "1main" 1778091967.12975 0
-  "1main.bcf" 1778091966 108805 e8f170e392cb34ee72b209bd367bc5fe "pdflatex"
+["biber 1main"] 1778090222.35046 "1main.bcf" "1main.bbl" "1main" 1778098903.66216 0
+  "1main.bcf" 1778098903 108805 e8f170e392cb34ee72b209bd367bc5fe "pdflatex"
   "bibliografia.bib" 1777256532 2461 9bfaec87863d5d9f009ab57fc987e6f5 ""
   (generated)
   "1main.bbl"
   "1main.blg"
   (rewritten before read)
-["pdflatex"] 1778091957.25697 "d:/Experimentos/Exp-Electromagneticos/Experimento II, Transporte de Señales/Informe 2/1main.tex" "1main.pdf" "1main" 1778091967.13125 0
+["pdflatex"] 1778098894.92407 "d:/Experimentos/Exp-Electromagneticos/Experimento II, Transporte de Señales/Informe 2/1main.tex" "1main.pdf" "1main" 1778098903.66354 0
   "0librerias.tex" 1777256532 895 a8e548334a223204d6fe6235dd8a95f4 ""
-  "1main.aux" 1778091966 8086 977c18d3a900f41b6f868b13891e35a0 "pdflatex"
+  "1main.aux" 1778098903 8086 9a50b02f688f65b133a9f7d72c8737a4 "pdflatex"
   "1main.bbl" 1778090233 5467 657de5a918c580c738f143a9b713207b "biber 1main"
-  "1main.out" 1778091966 1446 d36a486d5ddd7d9845f5fbe4c5f0e06f "pdflatex"
-  "1main.run.xml" 1778091966 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
+  "1main.out" 1778098903 1446 d36a486d5ddd7d9845f5fbe4c5f0e06f "pdflatex"
+  "1main.run.xml" 1778098903 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
   "1main.tex" 1777754355 594 b68f687ef363b5bbf4ebcd02cb44991f ""
   "2Introducción.tex" 1778090218 3742 36d674ce9d3cf5e26402cc727d795eec ""
   "3Métodos.tex" 1778090218 3201 2700b191fb68d849a8a196421713e5c8 ""
-  "4Resultados y discusión.tex" 1778091956 9934 6ca1dc0029d1e9b31b74789a8684c21b ""
+  "4Resultados y discusión.tex" 1778098261 9934 6ca1dc0029d1e9b31b74789a8684c21b ""
   "5Conclusiones.tex" 1777753324 810 1633eee5981d8c32293b2c5428ad0167 ""
   "6Apéndice.tex" 1777256532 21 151720cc1351179a9b7321a8422ce190 ""
   "C:/Users/labor/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1777754511 82507 a9eef8696c92627b87e9975edea03b2a ""
@@ -160,8 +160,8 @@
   "Figuras2/R_0.png" 1778090218 909697 0f45f3e5e52eb5b448390cac9095a4d8 ""
   "Figuras2/R_infinita.png" 1778090218 919841 54f85a04fec325a244b9fc9dbda979f1 ""
   "d:/Experimentos/Exp-Electromagneticos/Experimento II, Transporte de Señales/Informe 2/1main.tex" 1777754355 594 b68f687ef363b5bbf4ebcd02cb44991f ""
-  "gráficos/Bode_w.png" 1777328382 137438 32cdf7866b6709c88d2e1d17b1c1f974 ""
-  "gráficos/Bode_z.png" 1777328345 130533 0cc7e3928078b0050a5351d5976c6984 ""
+  "gráficos/Bode_w.png" 1778098822 46366 531db868359fdacbccc519f5e3aca820 ""
+  "gráficos/Bode_z.png" 1778098884 43021 cf0110f9043b669c1e9328095559b1df ""
   "gráficos/ConfiguracionF.png" 1777256532 29485 6183a672f0e3a1ed7825b4855db5356f ""
   "gráficos/Impedancia.png" 1777256532 24508 a9182231761553125687301c6f136af3 ""
   "gráficos/Nyquist_Z.png" 1777328568 100483 a5573b3aa19efd1f055fd6a8d4126e1e ""

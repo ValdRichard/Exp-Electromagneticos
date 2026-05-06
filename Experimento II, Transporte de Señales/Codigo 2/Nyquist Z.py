@@ -15,9 +15,12 @@ Vr = df['Vr'].values
 Z = R * Vf/Vr
 deltat = df['Delta t'].values
 w = 2 * np.pi * df['f'].values
-phi = w * deltat
+phi = w * deltat 
 ReZ = Z * np.cos(phi)
 ImZ = Z * np.sin(phi)
+ReZteo = 2700/2 + 2700/(2 * np.sqrt(2)) * np.sqrt(4/(w * 2700 * 220e-9))
+ImZteo = 2700/(2 * np.sqrt(2)) * np.sqrt(4/(w * 2700 * 220e-9))
+
 
 # Incertezas
 errVf = 0.03 * Vf + 0.1 * 1 + 0.001
@@ -40,14 +43,15 @@ errImZ = Z * np.sqrt((np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2 + (errR/R)**2) * np.
 # Gráfico de Nyquist de Z
 fig, ax = plt.subplots(figsize=(10, 6))
 ax.errorbar(ReZ, ImZ, xerr=errReZ, yerr=errImZ, fmt='o', color='darkorange', ecolor='darkorange', elinewidth=1.5, capsize=2.5)
+ax.plot(ReZteo, ImZteo, color='indigo', label=f'Diagrama de Nyquist de $Z$ teórico')
 ax.set_xlabel(r'Re($Z$) [Ω]', size=14)
-ax.set_ylabel(r'Im($Z$) [Ω]', size=14)
-ax.set_title('Diagrama de Nyquist de $Z$', size=16)
+ax.set_ylabel(r'-Im($Z$) [Ω]', size=14)
 ax.grid(True, linestyle='--', alpha=0.7)
-plt.savefig(f'Figuras2/Nyquist_Z.png', dpi=300, bbox_inches='tight')
+
+#plt.savefig(f'Figuras2/Nyquist_Z.png', dpi=300, bbox_inches='tight')
 plt.show()
 
-"""pendiente, ordenada, err_pendiente, err_ordenada, r_squared, varianza_residual = f.ajuste_gráfico_ODR(ReZ, ImZ, errReZ, errImZ, 'Re(Z) [Ω]', 'Im(Z) [Ω]', 'ajuste_Nyquist_Z.png')
-print(f"Pendiente: {pendiente:.4f} ± {err_pendiente:.4f}")
-print(f"Ordenada: {ordenada:.4f} ± {err_ordenada:.4f}")
-print(f"R²: {r_squared:.4f}")"""
+# pendiente, ordenada, err_pendiente, err_ordenada, r_squared, varianza_residual = f.ajuste_gráfico_ODR(ReZ, ImZ, errReZ, errImZ, 'Re(Z) [Ω]', 'Im(Z) [Ω]')
+# print(f"Pendiente: {pendiente:.4f} ± {err_pendiente:.4f}")
+# print(f"Ordenada: {ordenada:.4f} ± {err_ordenada:.4f}")
+# print(f"R²: {r_squared:.4f}")

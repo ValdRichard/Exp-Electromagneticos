@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.2)  6 MAY 2026 15:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.2)  6 MAY 2026 17:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -883,11 +883,11 @@ File: gráficos/Impedancia.png Graphic file (type png)
 Package pdftex.def Info: gráficos/Impedancia.png  used on input line 26.
 (pdftex.def)             Requested size: 234.73524pt x 134.01358pt.
 ) (4Resultados y discusión.tex [2 <./gráficos/ConfiguracionF.png> <./gráficos/Impedancia.png>]
-<gráficos/Bode_z.png, id=88, 758.1123pt x 398.6895pt>
+<gráficos/Bode_z.png, id=88, 867.24pt x 433.62pt>
 File: gráficos/Bode_z.png Graphic file (type png)
 <use gráficos/Bode_z.png>
 Package pdftex.def Info: gráficos/Bode_z.png  used on input line 19.
-(pdftex.def)             Requested size: 234.73524pt x 123.44646pt.
+(pdftex.def)             Requested size: 234.73524pt x 117.36346pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
@@ -904,46 +904,37 @@ File: gráficos/phi_vs_z.png Graphic file (type png)
 <use gráficos/phi_vs_z.png>
 Package pdftex.def Info: gráficos/phi_vs_z.png  used on input line 34.
 (pdftex.def)             Requested size: 211.26028pt x 133.40242pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<gráficos/Bode_w.png, id=93, 758.1123pt x 400.8576pt>
+ [3 <./gráficos/Bode_z.png> <./gráficos/lnH_vs_z.png> <./gráficos/phi_vs_z.png>]
+<gráficos/Bode_w.png, id=102, 867.24pt x 433.62pt>
 File: gráficos/Bode_w.png Graphic file (type png)
 <use gráficos/Bode_w.png>
 Package pdftex.def Info: gráficos/Bode_w.png  used on input line 55.
-(pdftex.def)             Requested size: 234.73524pt x 124.11777pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<gráficos/lnH_vs_raizw.png, id=94, 614.0541pt x 385.1991pt>
+(pdftex.def)             Requested size: 234.73524pt x 117.36346pt.
+<gráficos/lnH_vs_raizw.png, id=103, 614.0541pt x 385.1991pt>
 File: gráficos/lnH_vs_raizw.png Graphic file (type png)
 <use gráficos/lnH_vs_raizw.png>
 Package pdftex.def Info: gráficos/lnH_vs_raizw.png  used on input line 64.
 (pdftex.def)             Requested size: 211.26028pt x 132.52353pt.
-<gráficos/phi_vs_raizw.png, id=95, 606.5862pt x 385.1991pt>
+<gráficos/phi_vs_raizw.png, id=104, 606.5862pt x 385.1991pt>
 File: gráficos/phi_vs_raizw.png Graphic file (type png)
 <use gráficos/phi_vs_raizw.png>
 Package pdftex.def Info: gráficos/phi_vs_raizw.png  used on input line 70.
 (pdftex.def)             Requested size: 211.26028pt x 134.15752pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<gráficos/Nyquist_Z.png, id=97, 636.6987pt x 402.0621pt>
+<gráficos/Nyquist_Z.png, id=106, 636.6987pt x 402.0621pt>
 File: gráficos/Nyquist_Z.png Graphic file (type png)
 <use gráficos/Nyquist_Z.png>
 Package pdftex.def Info: gráficos/Nyquist_Z.png  used on input line 87.
 (pdftex.def)             Requested size: 234.73524pt x 148.2269pt.
 
+
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[3 <./gráficos/Bode_z.png>]
-<Figuras2/R_infinita.png, id=109, 1453.43pt x 1090.0725pt>
+<Figuras2/R_infinita.png, id=108, 1453.43pt x 1090.0725pt>
 File: Figuras2/R_infinita.png Graphic file (type png)
 <use Figuras2/R_infinita.png>
 Package pdftex.def Info: Figuras2/R_infinita.png  used on input line 100.
 (pdftex.def)             Requested size: 234.73524pt x 176.04521pt.
- [4 <./gráficos/lnH_vs_z.png> <./gráficos/phi_vs_z.png> <./gráficos/Bode_w.png> <./gráficos/lnH_vs_raizw.png> <./gráficos/phi_vs_raizw.png>]
+[4 <./gráficos/Bode_w.png> <./gráficos/lnH_vs_raizw.png> <./gráficos/phi_vs_raizw.png>]
 <Figuras2/R_0.png, id=121, 1452.42625pt x 1091.07625pt>
 File: Figuras2/R_0.png Graphic file (type png)
 <use Figuras2/R_0.png>
@@ -980,13 +971,13 @@ Package logreq Info: Writing requests to '1main.run.xml'.
 Here is how much of TeX's memory you used:
  26158 strings out of 467870
  514600 string characters out of 5418356
- 1330205 words of memory out of 5000000
+ 1329205 words of memory out of 5000000
  54685 multiletter control sequences out of 15000+600000
  677637 words of font info for 146 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  78i,9n,83p,1072b,2072s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/labor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/labor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/labor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/labor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/labor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/labor/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/labor/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/labor/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/labor/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/labor/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 1main.pdf (7 pages, 3688437 bytes).
+Output written on 1main.pdf (7 pages, 3509510 bytes).
 PDF statistics:
  200 PDF objects out of 1000 (max. 8388607)
  36 named destinations out of 1000 (max. 500000)
