@@ -2,7 +2,7 @@
 
 Se presentan los resultados obtenidos a partir de las medidas de voltaje y desfasaje realizadas en el circuito RC en escalera, así como la respuesta del cable coaxial bajo tres condicions de impedancia diferentes. En primer lugar, se realizaron diagramas de bode con los datos obtenidos de la configuracion en escalera de RC, tanto para las medidas realizadas variando el nodo del circuito a una frecuencia constante, como para las medidas realizadas variando la frecuencia con nodo fijo. A partir de estos diagramas se obtuvo la constante característica del circuito \(\tau\). Asimismo se realizo un diagrama de Nyquist a partir de medidas realizadas sobre el primer nodo, variando la frecuencia, con el objetivo de comprobar el comportamiento del arreglo. 
 A partir de las mediciones realizadas sobre el circuito RC en escalera, se construyeron diagramas de Bode con el objetivo de caracterizar la propagación de la señal y determinar la constante de tiempo $\tau$ del sistema. 
-De acuerdo con la ecuación \eqref{eq:voltajePulso}, la amplitud de la señal decae exponencialmente con el nodo (?) como $e^{kz}$ y presenta un corrimiento de fase proporcional a $z$, con $k = \sqrt{\frac{\omega RC}{2}}$. Esto implica que el logaritmo del módulo y la fase deben depender linealmente tanto de $z$ como de $\sqrt{\omega}$, lo cual permite obtener $RC$ a partir de ajustes lineales.    
+De acuerdo con la ecuación \eqref{eq:voltajePulso}, la amplitud de la señal decae exponencialmente con el nodo como $e^{kz}$ y presenta un corrimiento de fase proporcional a $z$, con $k = \sqrt{\frac{\omega RC}{2}}$. Esto implica que el logaritmo del módulo y la fase deben depender linealmente tanto de $z$ como de $\sqrt{\omega}$, lo cual permite obtener $RC$ a partir de ajustes lineales.    
 
 \subsection{Circuito RC en escalera}
 
@@ -78,7 +78,7 @@ Finalmente, se realizó un promedio ponderado con los valores obtenidos de $\tau
 
 Con el objetivo de comprobar el comportamiento del circuito RC en escalera, se construyó un diagrama de Nyquist a partir de las medidas 
     realizadas sobre el primer nodo, variando la frecuencia en el mismo rango que las medidas realizadas en el nodo 6. Como se observa en la 
-    \autoref{fig:Nyquist}, los puntos experimentales tienden a seguir un comportamiento lineal, lo que resulta consistente con lo esperado teóricamente para este tipo de sistema. 
+    \autoref{fig:Nyquist}, los puntos experimentales tienden a seguir un comportamiento lineal, lo que resulta consistente con lo esperado teóricamente para este tipo de sistema. Sin embargo, al ser comparado con la recta teórica se puede ver que el modelo no se ajusta a los datos experimentales obtenidos para frecuencias altas, mientras que si lo hace para las frecuencias más bajas. Esto parece indicar que el módelo solo se aproxima al comportamiento a frecuencias bajas para un circuito finito y se aleja rápidamente de lo esperado al aumentar la frecuencia. 
 
     \begin{figure}[H]
     \centering
@@ -110,7 +110,7 @@ Bajo esta condición, la onda se refleja completamente hacia la fuente, pero con
     \label{fig:Coaxial_nulo}
 \end{figure}
 
-Finalmente, cuando la impedancia de la terminación es igual a la característica del cable (\(Z_C = 50\) $\Omega$), no se observa señal reflejada. En esta condición, toda la energía de la onda incidente es absorbida, minimizando las reflexiones, como se puede ver en la figura \autoref{fig:Coaxial_50}. Idealmente, para este caso, el coeficiente de reflexión es nulo. 
+Finalmente, cuando la impedancia de la terminación es igual a la característica del cable (\(Z_C = 50(3)\) $\Omega$), no se observa señal reflejada. En esta condición, toda la energía de la onda incidente es absorbida, minimizando las reflexiones, como se puede ver en la figura \autoref{fig:Coaxial_50}. Idealmente, para este caso, el coeficiente de reflexión es nulo. 
 
 \begin{figure}[H]
     \centering
