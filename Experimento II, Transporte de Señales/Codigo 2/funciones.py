@@ -10,7 +10,7 @@ def ajuste_gráfico_ODR(x, y, sx, sy, xlabel, ylabel, archivo):
         return B[0] * x + B[1]
     modelo = odr.Model(linear_model)
     data = odr.RealData(x, y, sx=sx, sy=sy)
-    ajuste = odr.ODR(data, modelo, beta0=[-1, 0], ifixb=[1, 0])
+    ajuste = odr.ODR(data, modelo, beta0=[-1, 0])
     output = ajuste.run()
     pendiente, ordenada = output.beta
     err_pendiente, err_ordenada = output.sd_beta
