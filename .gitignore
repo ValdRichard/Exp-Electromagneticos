@@ -1,0 +1,12 @@
+# No subir archivos caché del compilador de latex. 
+
+.aux
+.bbl
+.bcf
+.blg
+.fdb_latexmk
+.fls
+.log
+.out
+.run.xml
+.synctex.gz
