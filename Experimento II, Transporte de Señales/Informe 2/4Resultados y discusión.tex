@@ -9,7 +9,7 @@ De acuerdo con la ecuación \eqref{eq:voltajePulso}, la amplitud de la señal de
 \subsubsection{Medidas a frecuencia constante}
  En la \autoref{fig:bode_z} se muestra el diagrama de Bode obtenido al variar el nodo a frecuencia fija. Se observa que $\ln(H)$ decrece linealmente
      con $z$, mientras que la fase $\varphi$ crece linealmente, en acuerdo a lo esperado teóricamente. Mediante ajustes lineales se obtuvo una 
-     pendiente $m_H= -0.307(4)$ para $\ln(H) vs z$ y una pendiente $m_\varphi = 0.302(6)$ para $\varphi vs z$, como se observa en 
+     pendiente $m_H= -0.307(4)$ para las medidas sobre el módulo y una pendiente $m_\varphi = 0.302(6)$ para las del desfasaje, como se observa en 
      \autoref{fig:ajustes lineales en z}. A partir de estas pendientes se obtuvo una constante de tiempo $\tau_H = 6.0(2)\times 10^{-4}$ \si{\second} y
       $\tau_{\varphi}=6.2(2)\times 10^{-4}$\si{\second} consistentes con el valor teórico calculado a partir de los componentes del circuito,
        $\tau_{\text{ref}} = \text{RC} = 5.9(4) \times 10^{-4}$ \si{\second}.  
@@ -75,6 +75,17 @@ Al fijar el nodo (z=6) y variar la frecuencia, se obtuvieron diagramas de Bode e
 \end{figure}
 
 \subsubsection{Nyquist de Z}
+Con el objetivo de comprobar el comportamiento del circuito RC en escalera, se construyó un diagrama de Nyquist a partir de las medidas 
+    realizadas sobre el primer nodo, variando la frecuencia en el mismo rango que las medidas realizadas en el nodo 6. Como se puede observar en la 
+    \autoref{fig:Nyquist}, los puntos experimentales tienden a seguir un comportamiento lineal, lo cual es consistente con lo que se espera
+    de un arreglo RC en escalera (aca deberia haber una referencia a alguien q haya hecho esto antes).
+
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{gráficos/Nyquist_Z.png}
+    \caption{Diagrama de Nyquist para el circuito RC en escalera. Se observa un comportamiento lineal, consistente con lo esperado.}
+    \label{fig:Nyquist}
+\end{figure}
 
 
 \subsection{Cable coaxial}
@@ -102,7 +113,7 @@ Finalmente, cuando la impedancia de la terminación es igual a la característic
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{Figuras2/R_Z0.png}
+    \includegraphics[width=0.5\linewidth]{gráficos/R_Z0.png}
     \caption{Respuesta del cable coaxial con impedancia igual a la característica del cable. Se observa que no hay señal reflejada, indicando una absorción total de la onda incidente.}
     \label{fig:Coaxial_50}
 \end{figure}
