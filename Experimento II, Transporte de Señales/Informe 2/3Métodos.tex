@@ -1,12 +1,12 @@
 \section{Materiales y métodos}
-Se estudió la propagación de un pulso sinusoidal en un arreglo RC en escalera que consta de 16 nodos de resistencias de \SI{2700(135)}{\ohm} y capacitores de \SI{220(22)}{\nano\farad}, con el objetivo de obtener la impedancia caracteristica del circuito \(Z\) y determinar la constante temporal \(\tau=RC\). A su vez, se estudió la respuesta de un cable coaxil \(RG-58\) variando la impedancia de carga del sistema \(Z_L\) en tres situaciones distintas tal que \(Z_L = \infty\), dejando el circuito abierto,  \(Z_L = 0\) puenteando el circuito, y \(Z_L =Z_C\) siendo \(Z_C = 50\) \si{\Omega} la impedancia caracteristica del circuito \cite{RG58Cable}, de manera de ver la onda reflejada según el coeficiente de reflexión \( \Gamma = \frac{Z_L - Z_C}{Z_L+Z_C} \) \cite{Bobowski_2021}. 
+Se estudió la propagación de un pulso sinusoidal en una red de circuitos RC en escalera de 16 nodos, donde cada malla cuenta con una resistencia de \SI{2700(135)}{\ohm} y un capacitor de \SI{220(22)}{\nano\farad}, con el objetivo de obtener la impedancia caracteristica del arreglo RC \(Z\) y determinar la constante temporal \(\tau=RC\). A su vez, se estudió la respuesta de un cable coaxial \(RG-58\) variando la impedancia de carga del sistema \(Z_L\) en tres situaciones distintas tal que \(Z_L = \infty\), dejando el circuito abierto,  \(Z_L = 0\) puenteando el circuito, y \(Z_L = Z_C\) siendo \(Z_C = 50\) \si{\Omega} la impedancia caracteristica del circuito \cite{RG58Cable}, de manera de observar la onda reflejada según el coeficiente de reflexión \( \Gamma = \frac{Z_L - Z_C}{Z_L+Z_C} \) \cite{Bobowski_2021}.
 
-Para obtener \(Z\) se midió la señal de la primer resistencia y la fuente paulatinamente (Ver \autoref{fig:configNodoCte}), registrando el desfasaje entre las señales con el objetivo de realizar un diagrama de Nyquist. La obtención de \(\tau\) se realizó con dos métodos, por un lado se mantuvo la frecuencia de la fuente constante a $50$\si{\hertz} y se midió la caída de tensión en cada nodo, por otro lado se varió la frecuencia de la fuente en un rango de \([0,500]\)\si{\hertz} midiendo la caída de tensión en el nodo 6 únicamente (Ver \autoref{fig:configFCte}). En el margen de bajas frecuencias y sin inductores la ecuación del telegrafista \eqref{eq:difV} se reduce a
+Para obtener \(Z\) se midió la señal de la resistencia en el primer nodo y la fuente paulatinamente (Ver \autoref{fig:configNodoCte}), registrando el desfasaje entre las señales con el objetivo de realizar un diagrama de Nyquist. La obtención de \(\tau\) se realizó con dos métodos, por un lado se mantuvo la frecuencia de la fuente constante a $50(1)$ \si{\hertz} y se midió la caída de tensión en cada nodo, por otro lado se varió la frecuencia de la fuente en un rango de \([0,500]\) \si{\hertz} midiendo la caída de tensión en el nodo 6 únicamente (Ver \autoref{fig:configFCte}). En el margen de bajas frecuencias y sin inductores la ecuación \eqref{eq:difV} se reduce a
 \begin{equation}
     V(z,t) = V_0 e^{-\sqrt{\frac{\omega \tau}{2}}z} e^{i(\omega t - \sqrt{\frac{\omega \tau}{2}}z)}
     \label{eq:voltajePulso}
 \end{equation}
-Siendo \(V_0\) la amplitud del pulso, $\tau$ constante de tiempo a determinar, \(z\) el nodo donde se mide y \(\omega\) la frecuencia angular de la fuente. Se utilizó como fuente una señal sinusoidal de amplitud constante mediante un generador de funciones $Sinometer$ modelo VC2002 \cite{VC2002}. Tanto la señal de entrada (\(V_0\)) como la de salida (\(V_S\)) se registraron a través de un osciloscopio $Tektronix$ modelo TDS 220 \cite{TDS200} (ver \autoref{fig:ambosCircuitos}).
+Siendo \(V_0\) la amplitud del pulso, $\tau$ la constante de tiempo a determinar, \(z\) el nodo donde se mide y \(\omega\) la frecuencia angular de la fuente. Se utilizó como fuente una señal sinusoidal de amplitud constante mediante un generador de funciones $Sinometer$ modelo VC2002 \cite{VC2002}. Tanto la señal de entrada (\(V_0\)) como la de salida (\(V_S\)) se registraron a través de un osciloscopio $Tektronix$ modelo TDS 220 \cite{TDS200} (ver \autoref{fig:ambosCircuitos}).
 
 
 \begin{figure}[h!]
@@ -14,14 +14,14 @@ Siendo \(V_0\) la amplitud del pulso, $\tau$ constante de tiempo a determinar, \
     \begin{subfigure}[b]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{gráficos/ConfiguracionF.png}
-        \caption{ Configuración utilizada para obtener la constante de tiempo, donde para frecuencias fijas se midió cada nodo y para frecuencia constante se fijó el nodo 6.}
+        \caption{Configuración utilizada para obtener la constante de tiempo, donde para una frecuencia constante se midió cada nodo y para frecuencia variable se fijó el nodo 6.}
         \label{fig:configFCte}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.40\linewidth}
         \centering
         \includegraphics[width=\linewidth]{gráficos/Impedancia.png}
-        \caption{Configuración utilizada para obtener la impedancia del circuito, donde se midió la diferencia de potencial entre la fuente y la primer resistencia.}
+        \caption{Configuración utilizada para obtener la impedancia del circuito, donde se midió la diferencia de potencial entre la fuente y la resistencia del primer nodo.}
         \label{fig:configNodoCte}
     \end{subfigure}
     \caption{Esquemas del circuito utilizado para obtener la impedancia y la constante de tiempo del circuito.}
