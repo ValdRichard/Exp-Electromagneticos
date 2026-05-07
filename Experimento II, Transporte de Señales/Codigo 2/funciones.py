@@ -5,7 +5,7 @@ import pandas as pd
 from scipy.optimize import curve_fit
 
 # Ajuste lineal para ln(H) vs sqrt(w)
-def ajuste_gráfico_ODR(x, y, sx, sy, xlabel, ylabel, archivo):
+def ajuste_gráfico_ODR(x, y, sx, sy, xlabel, ylabel):
     def linear_model(B, x):
         return B[0] * x + B[1]
     modelo = odr.Model(linear_model)
@@ -20,12 +20,12 @@ def ajuste_gráfico_ODR(x, y, sx, sy, xlabel, ylabel, archivo):
     # Gráfico con el ajuste lineal
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.errorbar(x, y, yerr=sy, xerr=sx, fmt='o', color='darkorange',  ecolor='darkorange', elinewidth=1.5, capsize=2.5, label='Datos experimentales')
-    ax.plot(x, linear_model(output.beta, x), color='#00b2ed', label=f'Ajuste lineal: y = {pendiente:.3f}x \n' r'$\tau_{\varphi} =$ 5.43(78) x 10$^{-4}$ s' f'\n' f' $ R^2 = {r_squared:.4f} $')
+    ax.plot(x, linear_model(output.beta, x), color='#00b2ed', label=f'Ajuste lineal: y = {pendiente:.3f}x + {ordenada:.3f} \n' f'\n' f' $ R^2 = {r_squared:.4f} $')
     ax.set_xlabel(f'{xlabel}', size=14)
     ax.set_ylabel(f'{ylabel}', size=14)
     ax.legend(shadow=True, fontsize=12)
     ax.grid(True, linestyle='--', alpha=0.7)
-    plt.savefig(f'Figuras2/{archivo}.png', dpi=300, bbox_inches='tight')
+    #plt.savefig(f'Figuras2/{archivo}.png', dpi=300, bbox_inches='tight')
     plt.show()
 
     return pendiente, ordenada, err_pendiente, err_ordenada, r_squared, varianza_residual

@@ -29,16 +29,16 @@ errlnH = errH / df['H'].values
 errphi = np.sqrt((w * errdeltat) ** 2 + (deltat * errw) ** 2)
 
 #Ajuste lineal para ln(H) vs z
-pendienteH, err_pendienteH, r_squaredH, varianza_residualH = ajuste_gráfico_curvefit(z, lnH, errlnH, r'$z$ [1]', r'$ln(H)$ [1]', 'ln(H) vs z')
+# pendienteH, err_pendienteH, r_squaredH, varianza_residualH = ajuste_gráfico_curvefit(z, lnH, errlnH, r'$z$ [1]', r'$ln(H)$ [1]', 'ln(H) vs z')
 
-tauH = 2/w * pendienteH**2
-errtauH = tauH * 2 * err_pendienteH / np.abs(pendienteH)
+# tauH = 2/w * pendienteH**2
+# errtauH = tauH * 2 * err_pendienteH / np.abs(pendienteH)
 
-#Ajuste lineal para phi vs z
-pendientePhi, err_pendientePhi, r_squaredPhi, varianza_residualPhi = ajuste_gráfico_curvefit(z, phi, errphi, r'$z$ [1]', r'$\varphi$ [rad]', 'phi vs z')
+# #Ajuste lineal para phi vs z
+# pendientePhi, err_pendientePhi, r_squaredPhi, varianza_residualPhi = ajuste_gráfico_curvefit(z, phi, errphi, r'$z$ [1]', r'$\varphi$ [rad]', 'phi vs z')
 
-print(err_pendientePhi)
-print(err_pendienteH)
+# print(err_pendientePhi)
+# print(err_pendienteH)
 
 # tauPhi = 2/w * pendientePhi**2
 # errtauPhi = tauPhi * 2 * err_pendientePhi / pendientePhi
@@ -54,16 +54,15 @@ print(err_pendienteH)
 # print(f'RC_H = {tauH:.2e} ± {errtauH:.2e} s')
 
 
-# # Bode para H y gráfico de phi vs z
-# fig, ax1 = plt.subplots(figsize=(12, 6))
-# ax1.errorbar(x = z, y = lnH, yerr=errlnH,  color='#a200ed', label=r'Datos experimentales de ln(H)', fmt= 'o', ecolor="#a200ed", elinewidth=1.5, capsize=2.5)
-# ax1.set_xlabel(r'$z $ [1]', size=14)
-# ax1.set_ylabel(r'$ln(H)$ [1]', size=14)#, color='#a200ed')
-# ax2 = ax1.twinx()
-# ax2.errorbar(x = z, y = phi, yerr=errphi, color='darkorange', label=r'Datos experimentales de $\varphi$', fmt= 'o', ecolor='darkorange', elinewidth=1.5, capsize=2.5)
-# ax2.set_ylabel(r'$\varphi$ [radianes]', size=14)#, color='darkorange')
-# ax1.set_title(f'Diagrama de Bode de $H(z)$')
-# ax1.grid(True, linestyle='--', alpha=0.7)
-# fig.legend(loc='upper right', bbox_to_anchor=(0.65, 0.85), shadow= True, fontsize=12)
-# plt.savefig(f'Figuras2/Bode_H_phi_z.png', dpi=300, bbox_inches='tight')
-# plt.show()
+# Bode para H y gráfico de phi vs z
+fig, ax1 = plt.subplots(figsize=(12, 6))
+ax1.errorbar(x = z, y = lnH, yerr=errlnH,  color='#a200ed', label=r'Datos experimentales de ln(H)', fmt= 'o', ecolor="#a200ed", elinewidth=1.5, capsize=2.5)
+ax1.set_xlabel(r'$z $ [1]', size=14)
+ax1.set_ylabel(r'$ln(H)$ [1]', size=14)#, color='#a200ed')
+ax2 = ax1.twinx()
+ax2.errorbar(x = z, y = phi, yerr=errphi, color='darkorange', label=r'Datos experimentales de $\varphi$', fmt= 'o', ecolor='darkorange', elinewidth=1.5, capsize=2.5)
+ax2.set_ylabel(r'$\varphi$ [radianes]', size=14)#, color='darkorange')
+ax1.grid(True, linestyle='--', alpha=0.7)
+fig.legend(loc='upper right', bbox_to_anchor=(0.65, 0.85), shadow= True, fontsize=12)
+#plt.savefig(f'Figuras2/Bode_H_phi_z.png', dpi=300, bbox_inches='tight')
+plt.show()
