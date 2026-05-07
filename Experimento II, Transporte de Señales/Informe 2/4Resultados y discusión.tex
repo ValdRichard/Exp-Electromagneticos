@@ -5,7 +5,7 @@ Se presentan los resultados obtenidos a partir de las medidas de voltaje y desfa
 
 \subsection{Circuito RC en escalera}
 
-De acuerdo con la ecuación \eqref{eq:voltajePulso}, la amplitud de la señal decae exponencialmente con el nodo como $e^{kz}$ y presenta un corrimiento de fase proporcional a $kz$, con $k = \sqrt{\frac{\omega RC}{2}}$. Esto implica que el logaritmo del módulo y la fase deben depender linealmente tanto de $z$ como de $\sqrt{\omega}$, lo cual permite obtener $RC$ a partir de ajustes lineales. 
+De acuerdo con la ecuación \eqref{eq:voltajePulso}, la amplitud de la señal decae exponencialmente con el nodo como $e^{kz}$ y presenta un corrimiento de fase proporcional a $kz$, con $k = \sqrt{\frac{\omega RC}{2}}$. Esto implica que el logaritmo del módulo y la fase deben depender linealmente tanto de $z$ como de $\sqrt{\omega}$, lo cual permite obtener $\tau=RC$ a partir de ajustes lineales. 
 
 \subsubsection{Medidas a frecuencia constante}
 
@@ -92,7 +92,7 @@ Con el objetivo de comprobar el comportamiento del circuito RC en escalera, se c
 \subsection{Cable coaxial}
 
 En esta parte del experimento se analizó la propagación de pulsos en un cable coaxial bajo distintas condiciones de impedancia: Impedancia nula (cortocircuito), impedancia infinita (circuito abierto) e impedancia igual a la característica del cable. Las mediciones se realizaron con un osciloscopio, donde la señal superior corresponde a la señal de entrada (onda incidente) y la inferior a la señal de salida (onda reflejada).
-Como se observa en la figura \autoref{fig:Coaxial_infinito}, para el caso de resistencia infinita, la señal reflejada presenta la misma polaridad que la señal incidente. Es decir, el pulso reflejado coincide en forma con el pulso de entrada. Esto indica que el extremo del cable se comporta como un circuito abierto, donde no circula corriente. Bajo esta condición, la energía de la onda no puede disiparse, por lo que refleja completamente hacia la fuente idealmente con la misma amplitud, cosa que no es así pues el cable no es un elemento ideal y genera una disipación de energía. Este comportamiento es consistente con un coeficiente de reflexión igual a 1.
+Como se observa en la \autoref{fig:Coaxial_infinito}, para el caso de resistencia infinita, la señal reflejada presenta la misma polaridad que la señal incidente. Es decir, el pulso reflejado coincide en forma con el pulso de entrada. Esto indica que el extremo del cable se comporta como un circuito abierto, donde no circula corriente. Bajo esta condición, la energía de la onda no puede disiparse, por lo que refleja completamente hacia la fuente idealmente con la misma amplitud, cosa que no es así pues el cable no es un elemento ideal y genera una disipación de energía. Este comportamiento es consistente con un coeficiente de reflexión igual a 1.
 
 \begin{figure}[H]
     \centering
@@ -101,7 +101,7 @@ Como se observa en la figura \autoref{fig:Coaxial_infinito}, para el caso de res
     \label{fig:Coaxial_infinito}
 \end{figure}
 
-En el caso de resistencia nula, se advierte la presencia de una señal que presenta una polaridad opuesta a la señal incidente en el canal de entrada. Este pulso invertido indica la existencia de una reflexión en el extremos del cable, característica de una terminación en cortocircuito, como se observa en la figura \autoref{fig:Coaxial_nulo}. La diferencia temporal entre ambas señales corresponde al tiempo de propagación de ida y vuelta en la línea. 
+En el caso de resistencia nula, se advierte la presencia de una señal que presenta una polaridad opuesta a la señal incidente en el canal de entrada. Este pulso invertido indica la existencia de una reflexión en el extremos del cable, característica de una terminación en cortocircuito, como se observa en la \autoref{fig:Coaxial_nulo}. La diferencia temporal entre ambas señales corresponde al tiempo de propagación de ida y vuelta en la línea. 
 Bajo esta condición, la onda se refleja completamente hacia la fuente, pero con una inversión de fase de 180 grados, lo que resulta en una señal reflejada con polaridad opuesta a la señal incidente. Al igual que en el caso anterior, la amplitud de la señal reflejada no coincide exactamente con la señal incidente debido a las pérdidas energeticas en el cable. Este comportamiento concuerda con un coeficiente de reflexión igual a -1.
 \begin{figure}[H]
     \centering
@@ -110,7 +110,7 @@ Bajo esta condición, la onda se refleja completamente hacia la fuente, pero con
     \label{fig:Coaxial_nulo}
 \end{figure}
 
-Finalmente, cuando la impedancia de la terminación es igual a la característica del cable (\(Z_C = 50(3)\) $\Omega$), no se observa señal reflejada. En esta condición, toda la energía de la onda incidente es absorbida, minimizando las reflexiones, como se puede ver en la figura \autoref{fig:Coaxial_50}. Idealmente, para este caso, el coeficiente de reflexión es nulo. 
+Finalmente, cuando la impedancia de la terminación es igual a la característica del cable (\(Z_C = 50(3)\) $\Omega$), no se observa señal reflejada. En esta condición, toda la energía de la onda incidente es absorbida, minimizando las reflexiones, como se puede ver en la \autoref{fig:Coaxial_50}. Idealmente, para este caso, el coeficiente de reflexión es nulo. 
 
 \begin{figure}[H]
     \centering
