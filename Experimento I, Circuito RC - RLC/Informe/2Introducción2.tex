@@ -1,0 +1,18 @@
+\section{Introducción}
+    Los sistemas lineales invariantes en el tiempo (LIT) son fundamentales en la teoría de sistemas y el análisis de señales. Estos sistemas se caracterizan por su linealidad, lo que significa que la respuesta a una combinación lineal de señales de entrada es igual a la combinación lineal de las respuestas individuales a cada señal de entrada (????), y su invarianza temporal, es decir que sus propiedades no cambian con el tiempo. Analizar la respuesta de estos sistemas en función de la frecuencia de la señal de entrada es de gran ventaja, ya que si por ejemplo se estimulan con una señal sinusoidal, la respuesta será una señal de la misma forma pero con diferente amplitud y fase, siendo la forma en la que se modifica la señal dependiente de la frecuencia y de las características del sistema. En particular, los circuitos RC y RLC cumplen estas propiedades(cita).
+
+    El circuito RC consiste en una resistencia R y un capacitor C arreglados en serie. Aprovechando su carácter LIT, si se lo alimenta con una señal de corriente alterna sinusoidal \(V_e\) de frecuencia angular \(\omega\), la respuesta del circuito \(V_s\) será de la forma
+    \begin{equation}
+        V_s = H(\omega) V_e
+    \end{equation}
+    donde \(H(\omega)\) es típicamente un número complejo que depende de las caracterísicas del circuito y de la frecuencia de la señal de entrada. A este función se la conoce como función de transferencia del sistema. En el caso del circuito RC, este funciona como un filtro de frecuencias bajas visto desde la resistencia (filtro pasa altos) y como un filtro de frecuencias altas visto desde el capacitor (filtro pasa bajos), lo que implica que la función de transferencia tendrá una forma diferente dependiendo de donde se mida la señal de salida. Si se mide la tensión de salida en la resistencia, el módulo de la función de transferencia tendra la forma (cita)
+    \begin{equation}
+        |H(\omega)| = \frac{\omega \tau}{\sqrt{1 + (\omega \tau)^2}} 
+    \end{equation}
+    y su fase 
+    \begin{equation}
+        \tan(\phi) = \frac{1}{\omega \tau}
+    \end{equation}
+    donde se definió \(\tau = RC\) como la constante de tiempo del circuito.
+
+ 
