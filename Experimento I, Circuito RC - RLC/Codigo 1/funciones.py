@@ -249,3 +249,94 @@ def ajustar_fase(w, phi, err_w, err_phi, tau0, tipo='resistencia'):
     return tau_fit, err_tau, out                     
 
 
+
+# =========================================================
+# MODELO RLC - MODULO CON TAU LIBRE
+# =========================================================
+
+def modelo_rlc_tau_libre(p, x):
+
+    w0, A, tau_ef = p
+
+    denominador = np.sqrt(
+        (x * tau_ef)**2 +
+        (1 - (x / w0)**2)**2
+    )
+
+    return A * (x * tau_ef) / denominador
+
+
+# =========================================================
+# MODELO RLC - MODULO CON TAU FIJO
+# =========================================================
+
+def modelo_rlc_tau_fijo(p, x, tau_fijo):
+
+    w0, A = p
+
+    denominador = np.sqrt(
+        (x * tau_fijo)**2 +
+        (1 - (x / w0)**2)**2
+    )
+
+    return A * (x * tau_fijo) / denominador
+
+
+# =========================================================
+# MODELO DE FASE
+# =========================================================
+
+def modelo_fase(p, x):
+
+    w0, tau = p
+
+    return np.arctan2(
+        ((x / w0)**2 - 1),
+        (x * tau)
+    )
+
+# =========================================================
+# CALCULO DE H Y SU ERROR
+# =========================================================
+
+def calcular_H(Vr, Ve, errVr, errVe):
+
+    H = Vr / Ve
+
+    errH = H * np.sqrt(
+        (errVr / Vr)**2 +
+        (errVe / Ve)**2
+    )
+
+    return H, errH
+
+
+# =========================================================
+# CALCULO DE PHI Y SU ERROR
+# =========================================================
+
+def calcular_phi(w, dt, errw, errdt):
+
+    phi = np.unwrap(w*dt)
+
+    errphi = np.sqrt(
+        (dt * errw)**2 +
+        (w * errdt)**2
+    )
+
+    return phi, errphi
+
+
+# =========================================================
+# R2
+# =========================================================
+
+def calcular_r2(y, y_fit):
+
+    ss_res = np.sum((y - y_fit)**2)
+
+    ss_tot = np.sum(
+        (y - np.mean(y))**2
+    )
+
+    return 1 - ss_res / ss_tot

@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.odr import ODR, Model, RealData
+from matplotlib.lines import Line2D
+from funciones import ajustar_bode_rlc, modelo_rlc_modulo, modelo_rlc_fase
 
 C = 100e-9 #F
 R = 1000 #ohm
@@ -54,7 +56,6 @@ print(errtau)
 
 err_cap = 4.90234188189095e-09
 cap = 8.773877927430522e-08
-
 
 def modelo_rlc_tau_fijo(p, x):
     w0, A, tau_ef = p[0], p[1], p[2]
@@ -245,11 +246,14 @@ plt.legend(fontsize=13, loc='best', frameon=True, shadow=True)
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.axhline(0, color='black', linewidth=1, alpha=0.5) # Eje Real
 plt.axvline(0, color='black', linewidth=1, alpha=0.5) # Eje Imaginario
+
 plt.tight_layout()
 
 # Guardar en alta resolución para el informe
 plt.savefig("nyquist RLC.png", dpi=500, bbox_inches='tight')
+
 #plt.show()
+
 
 # Imprimir los w0 obtenidos en todos los ajustes y pasarlos a hz con su error 
 print(f"Frecuencia de resonancia (tau libre): {w0_fit/(2*np.pi):.2f} ± {err_w0/(2*np.pi):.2f} Hz")
