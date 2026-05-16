@@ -402,21 +402,25 @@ print(f"w0 = {w0_phi:.2f} ± {err_w0_phi:.2f} rad/s")
 print(f"tau = {tau_phi:.6e} ± {err_tau_phi:.6e} s")
 print(f"R² = {r2_phi:.5f}")
 
-#Hacer un promedio ponderado de los tau obtenidos por los ajustes de H y fase
-tau_ponderado = (tau_ef_fit / err_tau_ef**2 + tau_phi / err_tau_phi**2) / (1 / err_tau_ef**2 + 1 / err_tau_phi**2)
-err_tau_ponderado = np.sqrt(1 / (1 / err_tau_ef**2 + 1 / err_tau_phi**2))   
-# Printear el resultado del promedio ponderado y su error 
+# Printear las frecuencias en Hertz de resonancia obtenidas por cada ajuste
+f_resonancia_libre = w0_fit / (2 * np.pi)
+f_resonancia_phi = w0_phi / (2 * np.pi)
+
 print("")
 print("="*60)
-print("PROMEDIO PONDERADO")
+print("FRECUENCIAS DE RESONANCIA")
 print("="*60)
-print(f"tau_ponderado = {tau_ponderado:.6e} ± {err_tau_ponderado:.6e} s")
-#Calcular la frecuencia en hertz de resonancia a partir del tau ponderado 
-f_resonancia = 1 / (2 * np.pi * tau_ponderado)
-err_f_resonancia = (1 / (2 * np.pi * tau_ponderado**2)) * err_tau_ponderado
-#Printear la frecuencia de resonancia y su error
+print(f"f_resonancia (tau libre) = {f_resonancia_libre:.2f} ± {(err_w0/(2*np.pi)):.2f} Hz")
+print(f"f_resonancia (fase) = {f_resonancia_phi:.2f} ± {(err_w0_phi/(2*np.pi)):.2f} Hz")    
+
+#Hacer un promedio ponderado de las w obtenidss por los ajustes de H y fase
+w_resonancia_ponderada = (w0_fit / err_w0**2 + w0_phi / err_w0_phi**2) / (1 / err_w0**2 + 1 / err_w0_phi**2)
+err_w_resonancia_ponderada = np.sqrt(1 / (1 / err_w0**2 + 1 / err_w0_phi**2))
+
+f_resonancia_ponderada = w_resonancia_ponderada / (2 * np.pi)
+err_f_resonancia_ponderada = err_w_resonancia_ponderada / (2 * np.pi)
 print("")
 print("="*60)
-print("FRECUENCIA DE RESONANCIA")
+print("FRECUENCIA DE RESONANCIA PONDERADA")
 print("="*60)
-print(f"f_resonancia = {f_resonancia:.2f} ± {err_f_resonancia:.2f} Hz")
+print(f"f_resonancia ponderada = {f_resonancia_ponderada:.2f} ± {err_f_resonancia_ponderada:.2f} Hz")
