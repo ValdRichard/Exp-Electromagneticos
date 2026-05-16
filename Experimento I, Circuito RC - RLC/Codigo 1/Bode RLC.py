@@ -82,8 +82,8 @@ phi, errphi = calcular_phi(
 # TAU EXPERIMENTAL RC
 # =========================================================
 
-tau_exp = 87.73878e-6
-errtau_exp = 2.18809e-6
+tau_exp = 8.82e-5
+errtau_exp = 2.10e-6
 
 # =========================================================
 # AJUSTE H CON TAU LIBRE
@@ -401,3 +401,26 @@ print("="*60)
 print(f"w0 = {w0_phi:.2f} ± {err_w0_phi:.2f} rad/s")
 print(f"tau = {tau_phi:.6e} ± {err_tau_phi:.6e} s")
 print(f"R² = {r2_phi:.5f}")
+
+# Printear las frecuencias en Hertz de resonancia obtenidas por cada ajuste
+f_resonancia_libre = w0_fit / (2 * np.pi)
+f_resonancia_phi = w0_phi / (2 * np.pi)
+
+print("")
+print("="*60)
+print("FRECUENCIAS DE RESONANCIA")
+print("="*60)
+print(f"f_resonancia (tau libre) = {f_resonancia_libre:.2f} ± {(err_w0/(2*np.pi)):.2f} Hz")
+print(f"f_resonancia (fase) = {f_resonancia_phi:.2f} ± {(err_w0_phi/(2*np.pi)):.2f} Hz")    
+
+#Hacer un promedio ponderado de las w obtenidss por los ajustes de H y fase
+w_resonancia_ponderada = (w0_fit / err_w0**2 + w0_phi / err_w0_phi**2) / (1 / err_w0**2 + 1 / err_w0_phi**2)
+err_w_resonancia_ponderada = np.sqrt(1 / (1 / err_w0**2 + 1 / err_w0_phi**2))
+
+f_resonancia_ponderada = w_resonancia_ponderada / (2 * np.pi)
+err_f_resonancia_ponderada = err_w_resonancia_ponderada / (2 * np.pi)
+print("")
+print("="*60)
+print("FRECUENCIA DE RESONANCIA PONDERADA")
+print("="*60)
+print(f"f_resonancia ponderada = {f_resonancia_ponderada:.2f} ± {err_f_resonancia_ponderada:.2f} Hz")

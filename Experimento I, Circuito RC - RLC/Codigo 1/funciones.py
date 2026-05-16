@@ -216,7 +216,7 @@ def analizar_bode_final(w, H, err_w, err_H, phi, err_phi, r1, r2, tau0,
     plt.title(titulo, fontsize=16)
     
     # Devolvemos Omegas y R2 para el print principal
-    return w_0, err_w0, w0_fase, err_w0_fase, r2_1, r2_2
+    return w_0, err_w0, w0_fase, err_w0_fase, r2_1, r2_2, tau_fit, err_tau
 
     # --- 1. MODELOS TEÓRICOS PARA ODR ---
 def modelo_fase_r(p, w):
