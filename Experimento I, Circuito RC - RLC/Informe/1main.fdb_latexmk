@@ -1,21 +1,21 @@
 # Fdb version 4
-["biber 1main"] 0 "1main.bcf" "1main.bbl" "1main" 1778945770.22308 -1
-  "1main.bcf" 1778945769 109061 f087382521441d687146d9bbdc6b54e4 "pdflatex"
+["biber 1main"] 0 "1main.bcf" "1main.bbl" "1main" 1778950457.621 -1
+  "1main.bcf" 1778950457 109061 f087382521441d687146d9bbdc6b54e4 "pdflatex"
   "bibliografia.bib" 1777154638 2156 1f6f824a2200f1faaf2cf6d8b5bd8f71 ""
   (generated)
   "1main.bbl"
   "1main.blg"
   (rewritten before read)
-["pdflatex"] 1778945755.38539 "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1778945770.22411 0
+["pdflatex"] 1778950443.02617 "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1778950457.62203 0
   "0librerias.tex" 1777154637 936 a8e548334a223204d6fe6235dd8a95f4 ""
-  "1main.aux" 1778945769 8236 56a85970195fc8dc2557f1d88ff049f3 "pdflatex"
+  "1main.aux" 1778950457 8620 092646bc6f6208fbfbd307ca2128005c "pdflatex"
   "1main.bbl" 1778945350 11420 1f51dd6a96b41033c465d52ed83ac37a "biber 1main"
-  "1main.out" 1778945769 1227 fbf9de7a29357a54da5111b622e3a472 "pdflatex"
-  "1main.run.xml" 1778945769 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
+  "1main.out" 1778950457 1227 fbf9de7a29357a54da5111b622e3a472 "pdflatex"
+  "1main.run.xml" 1778950457 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
   "1main.tex" 1778881332 1515 04ca028e321ca6af3c69f46bbc8f1876 ""
   "2Introducción.tex" 1778083316 3033 f06ba3123c28d004c742b6da96dec426 ""
   "31Métodos.tex" 1778881332 5554 640196ecddeb2505d2c1f035d5656847 ""
-  "4Resultados y discusión.tex" 1778945739 6278 68062867e82e20180ac2bfc8e417f92e ""
+  "4Resultados y discusión.tex" 1778950426 6531 b6268b3a4d58dd1a2f571e58765b0ac1 ""
   "5Conclusiones.tex" 1777154638 2354 1e08b123597f1ec16467a7733cd7e953 ""
   "6Apéndice.tex" 1777154638 3767 218ccf7f2b00212bf459010ac3478a77 ""
   "Amortiguador.jpg" 1777154638 29800 aad2990cab74a8dfa3b9e211b51149c2 ""
@@ -167,7 +167,7 @@
   "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" 1778881332 1515 04ca028e321ca6af3c69f46bbc8f1876 ""
   "gráficos/abstract.png" 1778881332 2951026 b247204367921c8f942cdb7c60456f47 ""
   "gráficos/bode_completo_rc.png" 1778943654 870596 c5066012f4e5282b59b5b19ed7969323 ""
-  "gráficos/bode_completo_rlc.png" 1778940482 635643 179ed4f80678d25d724a400892f3887a ""
+  "gráficos/bode_completo_rlc.png" 1778948592 634617 d12d680200ca8c5e5b390efd462d4881 ""
   "gráficos/circuitoRC.png" 1778881332 759655 b397a2c299df95c310ad48704ee3bada ""
   "gráficos/circuitoRLC.png" 1778881332 805453 c79490daa217612af0f2eaff0a7da57b ""
   "gráficos/nyquist_RC_con_teoria.png" 1778942279 350534 913a9b2285fc0b3292164bfcb26ed3f8 ""
