@@ -71,33 +71,62 @@ err_Re_Hc = np.sqrt((np.cos(phic_) * err_Hc)**2 + (Hc * np.sin(phic_) * err_phic
 err_Im_Hc = np.sqrt((np.sin(phic_) * err_Hc)**2 + (Hc * np.cos(phic_) * err_phic)**2)
 
 
-# --- CREACIÓN DEL GRÁFICO ---
-fig, ax = plt.subplots(figsize=(7, 7))
+# =========================================================
+# GENERACIÓN DE CURVAS TEÓRICAS RC
+# =========================================================
+# Definimos ángulos para las semicircunferencias
+# Pasa-altos: fase de 0 a pi/2 (primer cuadrante)
+theta_altos = np.linspace(0, np.pi, 200) 
+# Pasa-bajos: fase de -pi/2 a 0 (cuarto cuadrante)
+theta_bajos = np.linspace(-np.pi, 0, 200)
 
-# Gráfico Resistencia con barras de error
+radio = 0.5
+centro_x = 0.5
+
+# Parametrización: x = 0.5 + 0.5*cos(theta), y = 0.5*sin(theta)
+x_teorico_altos = centro_x + radio * np.cos(theta_altos)
+y_teorico_altos = radio * np.sin(theta_altos)
+
+x_teorico_bajos = centro_x + radio * np.cos(theta_bajos)
+y_teorico_bajos = radio * np.sin(theta_bajos)
+
+# --- CREACIÓN DEL GRÁFICO ---
+fig, ax = plt.subplots(figsize=(8, 8))
+
+# 1. Graficar Curvas Teóricas (zorder=1 para que queden atrás)
+ax.plot(x_teorico_altos, y_teorico_altos, color='darkorange', ls='-', lw=1.5, 
+        alpha=0.8, label='Curva teórica PA', zorder=1)
+ax.plot(x_teorico_bajos, y_teorico_bajos, color='indigo', ls='-', lw=1.5, 
+        alpha=0.8, label='Curva teórica PB', zorder=1)
+
+# 2. Gráfico Resistencia (Pasa-altos) con tus datos
 ax.errorbar(Re_Hr, Im_Hr, xerr=err_Re_Hr, yerr=err_Im_Hr,
             fmt='o', color='darkorange', ecolor='darkorange',
-            elinewidth=1.5, capsize=3, label='Pasa-altos', markersize=5)
+            elinewidth=1.5, capsize=3, label='Datos PA', markersize=5, zorder=2)
 
-# Gráfico Capacitor con barras de error
+# 3. Gráfico Capacitor (Pasa-bajos) con tus datos
 ax.errorbar(Re_Hc, Im_Hc, xerr=err_Re_Hc, yerr=err_Im_Hc,
             fmt='s', color='indigo', ecolor='indigo',
-            elinewidth=1.5, capsize=3, label='Pasa-bajos', markersize=5)
+            elinewidth=1.5, capsize=3, label='Datos PB', markersize=5, zorder=2)
 
-# Configuraciones visuales
+# --- CONFIGURACIONES VISUALES ---
+ax.set_aspect('equal') # Obligatorio para ver semicírculos y no elipses
 ax.tick_params(axis='both', which='major', labelsize=14)
-ax.set_title("", fontsize=16)
 ax.set_xlabel(r"$Re(H)$", fontsize=16)
 ax.set_ylabel(r"$Im(H)$", fontsize=16)
 
+# Ajuste de límites para ver ambos semicírculos
+ax.set_xlim(-0.1, 1.1)
+ax.set_ylim(-0.6, 0.6)
+
 ax.axhline(0, color='black', linewidth=1, alpha=0.5)
 ax.axvline(0, color='black', linewidth=1, alpha=0.5)
-ax.grid(True, linestyle='--', alpha=0.6)
-ax.legend(fontsize=13, frameon=True, shadow=True)
+ax.grid(True, linestyle='--', alpha=0.4)
+ax.legend(fontsize=11, frameon=True, shadow=True, loc='best')
 
 plt.tight_layout()
-plt.savefig("nyquist_RC.png", dpi=500)
-##plt.show()
+plt.savefig("nyquist_RC_con_teoria.png", dpi=500)
+plt.show()
 
 
 # --- CONFIGURACIÓN MANUAL DE LEYENDAS ---
@@ -134,7 +163,7 @@ w0_c, err_w0_c, r2_c1, r2_c2 = analizar_bode(wc, Hc, err_wc, err_Hc,
 
 plt.tight_layout()
 plt.savefig("rectas_RC.png", dpi=500)
-plt.show()
+#plt.show()
 
 # Prints finales (calculando f_0 a partir de w_0)
 f0_r, ef0_r = w0_r/(2*np.pi), err_w0_r/(2*np.pi)

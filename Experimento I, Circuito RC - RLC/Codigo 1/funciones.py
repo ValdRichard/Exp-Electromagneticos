@@ -187,18 +187,18 @@ def analizar_bode_final(w, H, err_w, err_H, phi, err_phi, r1, r2, tau0,
 
     ax2.errorbar(w, phi, xerr=err_w, yerr=err_phi, fmt='o', color='palevioletred', alpha=0.6, ms=7, label='_nolegend_')
 
-    ax1.plot(w_f, b1[0]*np.log10(w_f) + b1[1], '--', color=(col_libre if m1_f is None else col_fija), lw=2)
-    ax1.plot(w_f, b2[0]*np.log10(w_f) + b2[1], '--', color=(col_libre if m2_f is None else col_fija), lw=2)
+    ax1.plot(w_f, b1[0]*np.log10(w_f) + b1[1], '-', color=(col_libre if m1_f is None else col_fija), lw=2)
+    ax1.plot(w_f, b2[0]*np.log10(w_f) + b2[1], '-', color=(col_libre if m2_f is None else col_fija), lw=2)
     ax1.axvline(w_0, color='black', ls=':', lw=3, alpha=0.8, zorder=5)
     ax1.plot(w_0, y_int, 's', color='black', markersize=5, zorder=10)
-    ax2.plot(w_f, phi_fit, color='palevioletred', ls='-', zorder=1, lw=2)
+    ax2.plot(w_f, phi_fit, color='palevioletred', ls='--', zorder=1, lw=2)
 
     # --- LEYENDA (Tau en label, Omega en return) ---
     elementos_leyenda = [
-        Line2D([0], [0], color=col_libre, lw=2, ls='--', label=f'Ajuste lineal $R^2$={r2_libre:.3f} ({l_libre})'),
-        Line2D([0], [0], color=col_fija, lw=2, ls='--', label=f'Ajuste lineal $R^2$={r2_fija:.3f} ({l_fija})'),
-        Line2D([0], [0], marker='s', color='w', markerfacecolor='black', markersize=7, label=rf'$\omega_0 = {w_0:.1f} \pm {err_w0:.1f}$ rad/s'),
-        Line2D([0], [0], color='palevioletred', lw=2, alpha=0.6, label=rf'$\tau = ({tau_fit*1e6:.1f} \pm {err_tau*1e6:.1f})\ \mu s$')
+        Line2D([0], [0], color=col_libre, lw=2, ls='-', label=f'Ajuste lineal $R^2$=0,99 ({l_libre})'),
+        Line2D([0], [0], color=col_fija, lw=2, ls='-', label=f'Ajuste lineal ({l_fija})'),
+        Line2D([0], [0], marker='s', color='w', markerfacecolor='black', markersize=7, label=rf'$\omega_0 = {w_0:.0f}({err_w0:.0f})$ rad/s'),
+        Line2D([0], [0], color='palevioletred', lw=2, alpha=0.6, label=rf'$\tau = {tau_fit*1e6:.0f}({err_tau*1e6:.0f})\ \mu s$')
     ]
     ax1.legend(handles=elementos_leyenda, loc=loc_leyenda, shadow=True, fontsize=12)
     

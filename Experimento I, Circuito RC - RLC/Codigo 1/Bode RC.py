@@ -96,5 +96,6 @@ print(f"  - w0 Módulo:  ({w0m_c:.2f} +/- {dw0m_c:.2f}) rad/s  | R2_c1: {r2_c1:.
 print(f"  - w0 Fase:    ({w0f_c:.2f} +/- {dw0f_c:.2f}) rad/s")
 
 print("\n" + "="*50)
+plt.savefig("bode_completo_rc.png", dpi=500)
 
 plt.show()

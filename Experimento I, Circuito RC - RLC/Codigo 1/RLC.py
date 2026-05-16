@@ -220,41 +220,42 @@ print(f"{'='*50}")
 # (Ancho=12, Alto=6 para que sea bien apaisado)
 plt.figure(figsize=(7, 7))
 
-# Gráfico de Nyquist: Re en el eje X, Im en el eje Y
+theta_teorico = np.linspace(0, 2*np.pi, 500)
+radio_teorico = A_fit / 2
+x_teorico = radio_teorico + radio_teorico * np.cos(theta_teorico)
+y_teorico = radio_teorico * np.sin(theta_teorico)
+
+# Graficamos la curva teórica primero (detrás de los datos)
+plt.plot(x_teorico, y_teorico, color='crimson', ls='-', lw=2, 
+         label=rf'Curva teórica', alpha=0.8, zorder=1)
+
+# Graficamos los datos experimentales
 plt.errorbar(Re, Im, xerr=errRe, yerr=errIm,
              fmt='o', color='darkslateblue', capsize=3,
-             label='Datos', markersize=5, alpha=0.8)
+             label='Datos experimentales', markersize=5, alpha=0.8, zorder=2)
 
-# --- ESTILO Y ESCALAS AGRANDADAS ---
+# Estética y Ejes
+plt.gca().set_aspect('equal') # Crucial para que se vea circular
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
-
 plt.xlabel(r'$Re(H)$', fontsize=14)
 plt.ylabel(r'$Im(H)$', fontsize=14)
-plt.title('', fontsize=17, pad=15)
 
-# Ajuste de límites para que el semicírculo se vea centrado y claro
-# La parte real va de 0 a 1, la imaginaria de -0.5 a 0
 plt.xlim(-0.1, 1.1)
 plt.ylim(-0.6, 0.6)
 
-# Agregamos la leyenda
-plt.legend(fontsize=13, loc='best', frameon=True, shadow=True)
-
-# Guías visuales
 plt.grid(True, linestyle='--', alpha=0.5)
-plt.axhline(0, color='black', linewidth=1, alpha=0.5) # Eje Real
-plt.axvline(0, color='black', linewidth=1, alpha=0.5) # Eje Imaginario
+plt.axhline(0, color='black', linewidth=1, alpha=0.5)
+plt.axvline(0, color='black', linewidth=1, alpha=0.5)
+plt.legend(fontsize=11, loc='best', frameon=True, shadow=True)
+
 plt.tight_layout()
+plt.savefig("nyquist_RLC_teoria.png", dpi=500, bbox_inches='tight')
+plt.show()
 
-# Guardar en alta resolución para el informe
-plt.savefig("nyquist RLC.png", dpi=500, bbox_inches='tight')
-#plt.show()
-
-# Imprimir los w0 obtenidos en todos los ajustes y pasarlos a hz con su error 
-print(f"Frecuencia de resonancia (tau libre): {w0_fit/(2*np.pi):.2f} ± {err_w0/(2*np.pi):.2f} Hz")
-print(f"Frecuencia de resonancia (tau fijo): {w0_f_fit/(2*np.pi):.2f} ± {err_w0_f/(2*np.pi):.2f} Hz")
-
-# Imprimir los w0 en rad/s con su error
-print(f"Frecuencia de resonancia (tau libre): {w0_fit:.2f} ± {err_w0:.2f} rad/s")
-print(f"Frecuencia de resonancia (tau fijo): {w0_f_fit:.2f} ± {err_w0_f:.2f} rad/s")
+# =========================================================
+# REPORTES FINALES
+# =========================================================
+print(f"Frecuencia resonancia (libre): {w0_fit/(2*np.pi):.2f} ± {err_w0/(2*np.pi):.2f} Hz")
+print(f"Frecuencia resonancia (fijo):  {w0_f_fit/(2*np.pi):.2f} ± {err_w0_f/(2*np.pi):.2f} Hz")
+print(f"Inductancia L (fijo): {1 / (cap * w0_f_fit**2):.6f} H")

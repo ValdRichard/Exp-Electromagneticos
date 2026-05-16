@@ -223,7 +223,7 @@ ax1.errorbar(
     fmt='ko',
     alpha=0.35,
     markersize=7,
-    label='Datos módulo'
+    label='Datos $H$'
 )
 
 w_plot = np.linspace(
@@ -246,13 +246,9 @@ ax1.plot(
     color='crimson',
     lw=2.5,
     label=(
-        r'$H(\omega)$ $\tau_{exp}$'
+        rf'$\tau_{{exp}}$ = {tau_exp*1e6:.0f}({errtau_exp*1e6:.0f}) $\mu$s'
         '\n'
-        + rf'$\tau$ = ({tau_exp*1e4:.2f}$\pm${errtau_exp*1e4:.2f})$\times10^{{-4}}$ s'
-        '\n'
-        + rf'$\omega_0$ = ({w0_fijo:.0f}$\pm${err_w0_fijo:.0f}) rad/s'
-        '\n'
-        + rf'$R^2$ = {r2_fijo:.3f}'
+        + rf'$R^2$ = 0,99'
     )
 )
 
@@ -269,13 +265,9 @@ ax1.plot(
     color='darkslateblue',
     lw=2.5,
     label=(
-        r'$H(\omega)$ $\tau_{ef}$'
+         rf'$\tau_{{ef}}$ = {tau_ef_fit*1e6:.0f}({err_tau_ef*1e6:.0f}) $\mu$s'
         '\n'
-        + rf'$\tau_{{ef}}$ = ({tau_ef_fit*1e4:.2f}$\pm${err_tau_ef*1e4:.2f})$\times10^{{-4}}$ s'
-        '\n'
-        + rf'$\omega_0$ = ({w0_fit:.0f}$\pm${err_w0:.0f}) rad/s'
-        '\n'
-        + rf'$R^2$ = {r2_libre:.3f}'
+        + rf'$R^2$ = 0,99'
     )
 )
 
@@ -285,13 +277,13 @@ ax1.set_xlabel(
 )
 
 ax1.set_ylabel(
-    r'$H(\omega)$',
+    r'$H$',
     fontsize=16
 )
 
 ax1.tick_params(
     axis='both',
-    labelsize=13
+    labelsize=12
 )
 
 # =========================================================
@@ -306,7 +298,7 @@ ax2.errorbar(
     xerr=errw,
     yerr=errphi,
     fmt='o',
-    color='forestgreen',
+    color='palevioletred',
     alpha=0.45,
     markersize=6,
     label='Datos fase'
@@ -318,29 +310,31 @@ ax2.plot(
         [w0_phi, tau_phi],
         w_plot
     ),
-    color='forestgreen',
+    color='palevioletred',
     lw=2.5,
     ls='--',
     label=(
-        r'$\phi(\omega)$'
+         rf'$\tau_{{fase}}$ = {tau_phi*1e6:.0f}({err_tau_phi*1e6:.0f}) $\mu$s'
         '\n'
-        + rf'$\tau$ = ({tau_phi*1e4:.2f}$\pm${err_tau_phi*1e4:.2f})$\times10^{{-4}}$ s'
+        + rf'$\omega_0$ = {w0_phi:.0f}({err_w0_phi:.0f}) rad/s'
         '\n'
-        + rf'$\omega_0$ = ({w0_phi:.0f}$\pm${err_w0_phi:.0f}) rad/s'
-        '\n'
-        + rf'$R^2$ = {r2_phi:.3f}'
+        + rf'$R^2$ = 0,99'
     )
 )
 
 ax2.set_ylabel(
-    r'$\phi$ [rad]',
+    r'Fase $\phi$ [rad]', color='palevioletred',
     fontsize=16
 )
 
 ax2.tick_params(
     axis='y',
-    labelsize=13
+    labelsize=12
 )
+
+# Línea vertical para w0 del ajuste con tau_ef (mismo color 'darkslateblue')
+ax1.axvline(w0_fit, color='darkslateblue', ls='--', lw=2.5, alpha=1, 
+            label=rf'$\omega_{{0}}$ = {w0_fit:.0f}({err_w0:.0f}) rad/s')
 
 # =========================================================
 # LEYENDA
@@ -353,7 +347,7 @@ ax1.legend(
     lines1 + lines2,
     labels1 + labels2,
     fontsize=11,
-    loc='best',
+    loc='upper left',
     frameon=True,
     shadow=True
 )
