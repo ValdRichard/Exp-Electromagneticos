@@ -122,7 +122,7 @@ ax.set_ylim(-0.6, 0.6)
 ax.axhline(0, color='black', linewidth=1, alpha=0.5)
 ax.axvline(0, color='black', linewidth=1, alpha=0.5)
 ax.grid(True, linestyle='--', alpha=0.4)
-ax.legend(fontsize=11, frameon=True, shadow=True, loc='best')
+ax.legend(fontsize=14.5, frameon=True, shadow=True, loc='best')
 
 plt.tight_layout()
 plt.savefig("nyquist_RC_con_teoria.png", dpi=500)

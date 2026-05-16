@@ -200,7 +200,7 @@ def analizar_bode_final(w, H, err_w, err_H, phi, err_phi, r1, r2, tau0,
         Line2D([0], [0], marker='s', color='w', markerfacecolor='black', markersize=7, label=rf'$\omega_0 = {w_0:.0f}({err_w0:.0f})$ rad/s'),
         Line2D([0], [0], color='palevioletred', lw=2, alpha=0.6, label=rf'$\tau = {tau_fit*1e6:.0f}({err_tau*1e6:.0f})\ \mu s$')
     ]
-    ax1.legend(handles=elementos_leyenda, loc=loc_leyenda, shadow=True, fontsize=12)
+    ax1.legend(handles=elementos_leyenda, loc=loc_leyenda, shadow=True, fontsize=14.5)
     
     # Estética final
     ax1.set_xscale('log')

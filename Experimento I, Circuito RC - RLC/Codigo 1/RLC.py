@@ -232,7 +232,7 @@ plt.plot(x_teorico, y_teorico, color='crimson', ls='-', lw=2,
 # Graficamos los datos experimentales
 plt.errorbar(Re, Im, xerr=errRe, yerr=errIm,
              fmt='o', color='darkslateblue', capsize=3,
-             label='Datos experimentales', markersize=5, alpha=0.8, zorder=2)
+             label='Datos', markersize=5, alpha=0.8, zorder=2)
 
 # Estética y Ejes
 plt.gca().set_aspect('equal') # Crucial para que se vea circular
@@ -247,7 +247,7 @@ plt.ylim(-0.6, 0.6)
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.axhline(0, color='black', linewidth=1, alpha=0.5)
 plt.axvline(0, color='black', linewidth=1, alpha=0.5)
-plt.legend(fontsize=11, loc='best', frameon=True, shadow=True)
+plt.legend(fontsize=14.5, loc='best', frameon=True, shadow=True)
 
 plt.tight_layout()
 plt.savefig("nyquist_RLC_teoria.png", dpi=500, bbox_inches='tight')
