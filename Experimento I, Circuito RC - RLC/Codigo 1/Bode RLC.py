@@ -82,8 +82,8 @@ phi, errphi = calcular_phi(
 # TAU EXPERIMENTAL RC
 # =========================================================
 
-tau_exp = 87.73878e-6
-errtau_exp = 2.18809e-6
+tau_exp = 8.82e-5
+errtau_exp = 2.10e-6
 
 # =========================================================
 # AJUSTE H CON TAU LIBRE

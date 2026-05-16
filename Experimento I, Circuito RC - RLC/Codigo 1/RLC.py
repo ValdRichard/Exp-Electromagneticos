@@ -138,7 +138,7 @@ print(f"err tau ef fit {err_tau_ef_fit}")
 
 
 # --- CONFIGURACIÓN DEL SEGUNDO AJUSTE (TAU ESTRICTAMENTE FIJO) ---
-tau_fijo_val = 87.73878e-6  # El valor experimental (tau1) que mencionaste
+tau_fijo_val = 8.82e-5  # El valor experimental (tau1) que mencionaste
 
 def modelo_rlc_solo_w0_A(p, x):
     w0, A = p[0], p[1]
@@ -228,6 +228,10 @@ y_teorico = radio_teorico * np.sin(theta_teorico)
 # Graficamos la curva teórica primero (detrás de los datos)
 plt.plot(x_teorico, y_teorico, color='crimson', ls='-', lw=2, 
          label=rf'Curva teórica', alpha=0.8, zorder=1)
+
+# # Este seria el que tenga el colorcito que quiero jejox
+# plt.plot(x_teorico, y_teorico, color='darkslateblue', ls='-', lw=2, 
+#          label=rf'Curva teórica', alpha=0.8, zorder=1)
 
 # Graficamos los datos experimentales
 plt.errorbar(Re, Im, xerr=errRe, yerr=errIm,

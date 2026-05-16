@@ -69,7 +69,7 @@ res_r = analizar_bode_final(
     r1=slice(0, 4), r2=slice(10, 14), tau0=tau0, 
     m1_f=None, m2_f=0.0, tipo='resistencia', titulo="", ax=ax1, loc_leyenda='center right'
 )
-w0m_r, dw0m_r, w0f_r, dw0f_r, r2_r1, r2_r2 = res_r
+w0m_r, dw0m_r, w0f_r, dw0f_r, r2_r1, r2_r2, tau_r, err_tau_r = res_r
 
 # --- EJECUCIÓN CAPACITOR ---
 res_c = analizar_bode_final(
@@ -77,13 +77,51 @@ res_c = analizar_bode_final(
     r1=slice(0, 5), r2=slice(10, 15), tau0=tau0, 
     m1_f=0.0, m2_f=None, tipo='capacitor', titulo="", ax=ax2, loc_leyenda='center left'
 )
-w0m_c, dw0m_c, w0f_c, dw0f_c, r2_c1, r2_c2 = res_c
+w0m_c, dw0m_c, w0f_c, dw0f_c, r2_c1, r2_c2, tau_c, err_tau_c = res_c
 
 
 # --- BLOQUE DE PRINT (Esto es lo que vas a ver en la terminal) ---
 print("\n" + "="*50)
 print(f"{'RESULTADOS DEL EXPERIMENTO RC':^50}")
 print("="*50)
+
+# Reporte de tau c y tau r con sus errores
+print(f"\n>>> TAU")
+print(f"  - Tau Resistencia: ({tau_r:.2e} +/- {err_tau_r:.2e}) s")
+print(f"  - Tau Capacitor:   ({tau_c:.2e} +/- {err_tau_c:.2e}) s")
+
+# Promedio ponderado
+x_prom = ((1/err_tau_r**2) * tau_r + (1/err_tau_c**2) * tau_c) / ((1/err_tau_r**2) + (1/err_tau_c**2))
+
+# Error del promedio ponderado
+s_prom = np.sqrt(1 / ((1/err_tau_r**2) + (1/err_tau_c**2)))
+
+# Printer promedio ponderado y su error
+print(f"\n>>> PROMEDIO PONDERADO DE TAU")
+print(f"  - Tau Promedio: ({x_prom:.2e} +/- {s_prom:.2e}) s")   
+
+frecuencia_corte = 1/(2*np.pi*x_prom)
+err_frecuencia_corte = frecuencia_corte * (s_prom / x_prom)
+
+frecuencia_promedio_PA_PB = 1718
+err_frecuencia_promedio_PA_PB = 134
+
+# Promedio ponderado de frecuencia de corte entre el promedio ponderado de tau y el promedio de las frecuencias de corte obtenidas por los métodos de PA y PB
+frecuencia_corte_final = ((1/err_frecuencia_corte**2) * frecuencia_corte + (1/err_frecuencia_promedio_PA_PB**2) * frecuencia_promedio_PA_PB) / ((1/err_frecuencia_corte**2) + (1/err_frecuencia_promedio_PA_PB**2))
+err_frecuencia_corte_final = np.sqrt(1 / ((1/err_frecuencia_corte**2) + (1/err_frecuencia_promedio_PA_PB**2)))
+
+#printer frecuencia de corte final con su error
+
+print(f"\n>>> FRECUENCIA DE CORTE FINAL")
+print(f"  - Frecuencia de corte (promedio ponderado): ({frecuencia_corte_final:.2f} +/- {err_frecuencia_corte_final:.2f}) Hz")
+
+# Obtener tau de verdad segun la frecuencia de corte final
+tau_final = 1/(2*np.pi*frecuencia_corte_final)
+err_tau_final = tau_final * (err_frecuencia_corte_final / frecuencia_corte_final)
+print(f"\n>>> TAU FINAL OBTENIDO A PARTIR DE LA FRECUENCIA DE CORTE FINAL")
+print(f"  - Tau final: ({tau_final:.2e} +/- {err_tau_final:.2e}) s")
+
+print(f"  - Frecuencia de corte: ({frecuencia_corte:.2f} +/- {err_frecuencia_corte:.2f}) Hz")
 
 # Reporte Resistencia
 print(f"\n>>> FILTRO PASA-ALTOS (R)")
@@ -98,4 +136,4 @@ print(f"  - w0 Fase:    ({w0f_c:.2f} +/- {dw0f_c:.2f}) rad/s")
 print("\n" + "="*50)
 plt.savefig("bode_completo_rc.png", dpi=500)
 
-plt.show()
+# plt.show()
