@@ -3,26 +3,16 @@ Con el objetivo de determinar la frecuencia de corte $f_0$ de un circuito RC y l
 
 \subsection{Circuito RC}
 
-Para el circuito RC, según se mida en configuración PA o PB, se muestra el diagrama de bode correspondiente en la \autoref{fig:rectasRC}. La $f_0$ se determinó a partir del punto de intersección entre dos rectas, ajustadas con pendiente libre (indicadas en violeta) y con pendiente nula (indicadas en naranja). 
+Para el circuito RC, según se mida en configuración PA o PB, se muestra el diagrama de bode correspondiente en la \autoref{fig:rectasRC}. Se graficó el módulo de $H$ en decibeles y la fase $\phi$ en función de $\omega$, donde $f_0$ se determinó a partir del punto de intersección entre dos rectas, ajustadas con pendiente libre (indicadas en violeta) y con pendiente nula (indicadas en naranja).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{gráficos/rectas_RC.png}
-    \caption{Diagramas tipo Bode para el filtro PA (izq.) y para el filtro pasa-bajos (der.). En naranja, se presentan los datos ajustados por la recta con pendiente $m$ = 0. En violeta, los datos ajustados por la recta con pendiente $m$ libre. El punto de intersección entre las dos rectas se indica en rojo, el cual se asigna a la  frecuencia de corte $f_0$.}
+    \includegraphics[width=1\linewidth]{gráficos/bode_completo_rc.png}
+    \caption{Diagramas de Bode para el filtro PA (izq.) y para el filtro PB (der.). En rosa, se indica el ajuste realizado para la fase. En naranja, se presentan los datos ajustados por la recta con pendiente $m$ = 0. En violeta, los datos ajustados por la recta con pendiente $m$ libre. El punto de intersección entre las dos rectas se indica en negro, el cual se asigna a la  frecuencia de corte $\omega_0$.}
     \label{fig:rectasRC}
 \end{figure}
 
-Para el filtro PA se obtuvo $f_0$ = \SI{1851(176)}{\hertz}, mientras que para el filtro PB, la frecuencia obtenida fue $f_0$ = \SI{1535(207)}{\hertz}. Finalmente, se calculó el promedio ponderado utilizando ambas magnitudes, obteniendo como frecuencia de corte $f_0$ = \SI{1718(134)}{\hertz}.
-
-Con el objetivo de verificar que tan adecuada resulta la determinación de $f_0$ utilizando el método de intersección de rectas, se ajustó una función arcotangente según la relación del ángulo de desfasaje para el filtro pasa-altos \eqref{eq:3} y para el filtro pasa-bajos \eqref{eq:4}, dejando a $\tau $ como parámetro libre  (Ver \autoref{fig:tau_RC.png}). 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{gráficos/tau_RC.png}
-    \caption{Ajustes realizados para la determinación de $\tau$, sobre el filtro PA (izq.) y el filtro PB (der.). En gris se indican los datos experimentales, mientras que en violeta y naranja, el ajuste correspondiente.}
-    \label{fig:tau_RC.png}
-\end{figure}
-Las determinaciones de $\tau$ fueron congruentes entre sí, siendo para el fitro PA de \SI{87.9(3.3)}{\micro\second}, y para el PB de \SI{87.6(2.9)}{\micro\second}. Se calculó el promedio ponderado de los resultados, obteniendo $\tau$ = \SI{87.7 (2.2)}{\micro\second}, lo cual concluye en una frecuencia de corte $f_0 = \frac{1}{2\pi\tau}$ = \SI{1814(45)}{\hertz}. La $f_0$ obtenida resulta compatible con la determinada a través del método de intersección de rectas, lo cual respalda la validez del método de intersección de rectas para la caracterización de sistemas de primer orden. Finalmente, se calculó el promedio ponderado de ambos métodos, obteniendo $f_0$ = \SI{1718(134)}{\hertz}.
+Para el filtro PA se obtuvo $f_0$ = \SI{1851(176)}{\hertz}, mientras que para el filtro PB, la frecuencia obtenida fue $f_0$ = \SI{1535(207)}{\hertz}. Finalmente, se calculó el promedio ponderado utilizando ambas magnitudes, obteniendo como frecuencia de corte $f_0$ = \SI{1718(134)}{\hertz}. Además, con el objetivo de verificar que tan adecuada resulta la determinación de $f_0$ utilizando el método de intersección de rectas, se ajustó una función arcotangente según la relación del ángulo de desfasaje para el filtro PA \eqref{eq:3} y para el filtro PB \eqref{eq:4}, dejando a $\tau$ como parámetro libre. Las determinaciones de $\tau$ fueron congruentes entre sí, siendo para el fitro PA de \SI{87.9(3.3)}{\micro\second}, y para el PB de \SI{87.6(2.9)}{\micro\second}. Se calculó el promedio ponderado de los resultados, obteniendo $\tau$ = \SI{87.7 (2.2)}{\micro\second}, lo cual concluye en una frecuencia de corte $f_0 = \frac{1}{2\pi\tau}$ = \SI{1814(45)}{\hertz}. La $f_0$ obtenida resulta compatible con la determinada a través del método de intersección de rectas, lo cual respalda la validez del método de intersección de rectas para la caracterización de sistemas de primer orden. Finalmente, se calculó el promedio ponderado de ambos métodos, obteniendo $f_0$ = \SI{1718(134)}{\hertz}.
 
 \subsubsection{Circuito RLC}
 
@@ -30,7 +20,7 @@ Para el circuito RLC, se obtuvo la frecuencia de resonancia $f_r$ a partir del a
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{gráficos/tau_RLC.png}
+    \includegraphics[width=0.7\linewidth]{gráficos/bode_completo_rlc.png}
     \caption{Ajustes realizados para la determinación de $f_r$, donde se indica en rojo el ajuste con $\tau_{exp}$ fijo. Por otro lado, en azul se presenta el ajuste con $\tau_{ef}$ como parámetro libre, junto a una línea vertical punteada del mismo color, la cual indica la posición de $f_r$ correspondiente al ajuste con $\tau_{ef}$. Cerca de la línea punteada es posible observar como la curva correspondiente al ajuste de $\tau_{exp}$ se aleja de los datos experimentales.}
     \label{fig:tau_RLC}
 \end{figure}
@@ -44,17 +34,17 @@ Gráficos realizados para los diagramas de Nyquist, donde se grafican las compon
 \centering
 \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth]{gráficos/nyquist_RC.png}
-    \caption{Diagrama de Nyquist realizado para los datos obtenidos con el filtro pasa-altos, indicados en naranja, y con el filtro pasa-bajos, indicados en violeta.}
+    \includegraphics[width=\linewidth]{gráficos/nyquist_RC_con_teoria.png}
+    \caption{Diagramas de Nyquist realizados para los filtros PA y PB. En naranja, se indican los datos obtenidos con el filtro PA, mientras que en violeta se muestran los datos obtenidos con el filtro PB, ambos con su curva teórica correspondiente.}
     \label{fig:nyquist_RC}
 \end{subfigure}
 \hfill
 \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\linewidth]{gráficos/nyquist RLC.png}
+    \includegraphics[width=\linewidth]{gráficos/nyquist_RLC_teoria.png}
     \label{fig:nyquist_RLC}
-    \caption{Diagrama de Nyquist realizado para los datos obtenidos con el circuito RLC.}
+    \caption{Diagrama de Nyquist realizado para los datos obtenidos con el circuito RLC, junto a su curva teórica correspondiente.}
 \end{subfigure}
-\caption{Diagramas de Nyquist realizados para los dos circuitos analizados, se observa en ambos el comportamiento esperado.}
+\caption{Diagramas de Nyquist realizados para los dos circuitos analizados, donde el valor de $\omega$ crece en sentido horario. Se observa en ambos el comportamiento esperado.}
 \label{fig:nyquist}
 \end{figure}

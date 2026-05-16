@@ -316,7 +316,7 @@ ax2.plot(
     label=(
          rf'$\tau_{{fase}}$ = {tau_phi*1e6:.0f}({err_tau_phi*1e6:.0f}) $\mu$s'
         '\n'
-        + rf'$\omega_0$ = {w0_phi:.0f}({err_w0_phi:.0f}) rad/s'
+        + rf'$\omega_{{r}}$ = {w0_phi:.0f}({err_w0_phi:.0f}) rad/s'
         '\n'
         + rf'$R^2$ = 0,99'
     )
@@ -334,7 +334,7 @@ ax2.tick_params(
 
 # Línea vertical para w0 del ajuste con tau_ef (mismo color 'darkslateblue')
 ax1.axvline(w0_fit, color='darkslateblue', ls='--', lw=2.5, alpha=1, 
-            label=rf'$\omega_{{0}}$ = {w0_fit:.0f}({err_w0:.0f}) rad/s')
+            label=rf'$\omega_{{r}}$ = {w0_fit:.0f}({err_w0:.0f}) rad/s')
 
 # =========================================================
 # LEYENDA
