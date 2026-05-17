@@ -1,24 +1,23 @@
 # Fdb version 4
-["biber 1main"] 0 "1main.bcf" "1main.bbl" "1main" 1778950457.621 -1
-  "1main.bcf" 1778950457 109061 f087382521441d687146d9bbdc6b54e4 "pdflatex"
-  "bibliografia.bib" 1777154638 2156 1f6f824a2200f1faaf2cf6d8b5bd8f71 ""
+["biber 1main"] 1778984052.67705 "1main.bcf" "1main.bbl" "1main" 1778990510.99225 0
+  "1main.bcf" 1778990510 109270 2cda4ac762713f3d5ac858c6cede3000 "pdflatex"
+  "bibliografia.bib" 1778984022 2368 08c84ab3752f6b6002d185dbb604e3f8 ""
   (generated)
   "1main.bbl"
   "1main.blg"
   (rewritten before read)
-["pdflatex"] 1778950443.02617 "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1778950457.62203 0
+["pdflatex"] 1778990496.04451 "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1778990510.99332 0
   "0librerias.tex" 1777154637 936 a8e548334a223204d6fe6235dd8a95f4 ""
-  "1main.aux" 1778950457 8620 092646bc6f6208fbfbd307ca2128005c "pdflatex"
-  "1main.bbl" 1778945350 11420 1f51dd6a96b41033c465d52ed83ac37a "biber 1main"
-  "1main.out" 1778950457 1227 fbf9de7a29357a54da5111b622e3a472 "pdflatex"
-  "1main.run.xml" 1778950457 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
+  "1main.aux" 1778990510 8223 b8c7c7009bc6964d894c70d29fff7774 "pdflatex"
+  "1main.bbl" 1778984056 12800 7a52e18e430c2515a39295f108e174e6 "biber 1main"
+  "1main.out" 1778990510 1227 fbf9de7a29357a54da5111b622e3a472 "pdflatex"
+  "1main.run.xml" 1778990510 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
   "1main.tex" 1778881332 1515 04ca028e321ca6af3c69f46bbc8f1876 ""
-  "2Introducción.tex" 1778083316 3033 f06ba3123c28d004c742b6da96dec426 ""
-  "31Métodos.tex" 1778881332 5554 640196ecddeb2505d2c1f035d5656847 ""
-  "4Resultados y discusión.tex" 1778950426 6531 b6268b3a4d58dd1a2f571e58765b0ac1 ""
-  "5Conclusiones.tex" 1777154638 2354 1e08b123597f1ec16467a7733cd7e953 ""
+  "2Introducción.tex" 1778984022 4996 c588b346189456f4b9df855a960b1166 ""
+  "31Métodos.tex" 1778990337 5554 b19cbcf317c642864d6ffd7aa4ba6d95 ""
+  "4Resultados y discusión.tex" 1778990337 6621 8e877f87014220a5a3994158f3591a13 ""
+  "5Conclusiones.tex" 1778990495 2225 70d9c320434b1b536ca6cb7fc476d218 ""
   "6Apéndice.tex" 1777154638 3767 218ccf7f2b00212bf459010ac3478a77 ""
-  "Amortiguador.jpg" 1777154638 29800 aad2990cab74a8dfa3b9e211b51149c2 ""
   "C:/Users/maria/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1777221969 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/maria/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs10.tfm" 1777221973 688 37338d6ab346c2f1466b29e195316aa4 ""
   "C:/Users/maria/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1777215004 13333528 4f574974789692ac3cb9a8a96a17f81b ""
@@ -163,7 +162,6 @@
   "C:/Users/maria/AppData/Local/Programs/MiKTeX/tex/latex/was/upgreek.sty" 1665850770 5794 9054e31be15d93f1e6bd28cca2b6643f ""
   "C:/Users/maria/AppData/Local/Programs/MiKTeX/tex/latex/wrapfig/wrapfig.sty" 1044403200 26220 3701aebf80ccdef248c0c20dd062fea9 ""
   "C:/Users/maria/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "RLC_serie.png" 1777154638 8057 68af78d2ad0b427d00fa80d52b232b6b ""
   "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" 1778881332 1515 04ca028e321ca6af3c69f46bbc8f1876 ""
   "gráficos/abstract.png" 1778881332 2951026 b247204367921c8f942cdb7c60456f47 ""
   "gráficos/bode_completo_rc.png" 1778943654 870596 c5066012f4e5282b59b5b19ed7969323 ""
@@ -171,7 +169,7 @@
   "gráficos/circuitoRC.png" 1778881332 759655 b397a2c299df95c310ad48704ee3bada ""
   "gráficos/circuitoRLC.png" 1778881332 805453 c79490daa217612af0f2eaff0a7da57b ""
   "gráficos/nyquist_RC_con_teoria.png" 1778942279 350534 913a9b2285fc0b3292164bfcb26ed3f8 ""
-  "gráficos/nyquist_RLC_teoria.png" 1778942399 316111 04201e4758d79a8630879405e95c504c ""
+  "gráficos/nyquist_RLC_teoria.png" 1778984022 315417 f09eecec1e7c4e3ab473b3bbc63be758 ""
   (generated)
   "1main.aux"
   "1main.bcf"

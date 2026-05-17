@@ -180,8 +180,8 @@
       \field{labeltitlesource}{title}
       \field{title}{Signals \& systems}
       \field{year}{1997}
-      \field{pages}{451\bibrangedash 452}
-      \range{pages}{2}
+      \field{pages}{488\bibrangedash 451}
+      \range{pages}{-36}
     \endentry
     \entry{VC2002}{misc}{}{}
       \name{author}{1}{}{%
@@ -228,6 +228,40 @@
       \field{note}{Accessed: 2026-04-02}
       \field{title}{TDS 200-Series Digital Real-Time Oscilloscope User Manual}
       \field{year}{2002}
+    \endentry
+    \entry{TiplerMosca}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=943b75d33d2ddaa051f5704fa8676cdd}{%
+           family={Tipler},
+           familyi={T\bibinitperiod},
+           given={Paul\bibnamedelima A.},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=028521cb21b446864a6a4f23dbe0e505}{%
+           family={Mosca},
+           familyi={M\bibinitperiod},
+           given={Gene},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {W.~H.~Freeman}%
+      }
+      \strng{namehash}{3330062ec725dcf3a8c753d3ac4975e2}
+      \strng{fullhash}{3330062ec725dcf3a8c753d3ac4975e2}
+      \strng{fullhashraw}{3330062ec725dcf3a8c753d3ac4975e2}
+      \strng{bibnamehash}{3330062ec725dcf3a8c753d3ac4975e2}
+      \strng{authorbibnamehash}{3330062ec725dcf3a8c753d3ac4975e2}
+      \strng{authornamehash}{3330062ec725dcf3a8c753d3ac4975e2}
+      \strng{authorfullhash}{3330062ec725dcf3a8c753d3ac4975e2}
+      \strng{authorfullhashraw}{3330062ec725dcf3a8c753d3ac4975e2}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Physics for Scientists and Engineers}
+      \field{year}{2007}
     \endentry
     \entry{github}{misc}{}{}
       \name{author}{4}{}{%
