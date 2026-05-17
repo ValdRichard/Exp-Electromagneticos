@@ -2,7 +2,7 @@
 
 %Para el circuito RC se buscó determinar la frecuencia de corte $\omega_c$, definida como aquella para la cual la función de transferencia cumple $|H(\omega_c)|= \frac{1}{\sqrt{2}}$, lo que corresponde a una disminución de la potencia a la mitad, dado que $P\propto |H|^2$. Utilizando el hecho de que en los regímenes de bajas y altas frecuencias la función $H(\omega)$ presenta comportamientos simples (aproximadamente constante en uno de los extremos y proporcional a una potencia de $\omega$ ($\omega$ para el pasa altos y $\omega^{-1}$ para el pasa bajos en el otro), que se traducen en rectas en escala logarítmica,  se representó el $\text{log}(H)$ en función del $\text{log}(\omega)$. Fueron realizados ajustes lineales en las dos regiones diferenciadas, estimando la frecuencia de corte a partir de la intersección de dichas rectas, pues es una buena aproximación al punto donde la función $|H(\omega)|$ alcanza el valor $\frac{1}{\sqrt{2}}$.  
 
- Se estudiaron dos circuitos en serie: un circuito RC y un circuito RLC. Para ambos se utilizó una resistencia comercial de \SI{1,00(5)}{\kilo\ohm}, y un capacitor comercial de \SI{100(10)}{\nano\farad} y, para el caso del circuito RLC, un inductor $L$ de inductancia desconocida (ver \autoref{fig:ambosCircuitos}).
+ Se estudiaron dos circuitos en serie: un circuito RC y un circuito RLC. Para ambos se utilizó una resistencia de \SI{1,00(5)}{\kilo\ohm}, y un capacitor de \SI{100(10)}{\nano\farad} comerciales y, para el caso del circuito RLC, un inductor $L$ de inductancia desconocida (ver \autoref{fig:ambosCircuitos}).
  
  \begin{figure}[H]
     \centering
@@ -19,11 +19,11 @@
         \caption{Circuito RLC en serie.}
         \label{fig:circuitoRLC}
     \end{subfigure}
-    \caption{Esquemas de los circuitos estudiados, $V_s$ indica el lugar donde se midió la señal de salida y su respectiva conexión con el osciloscopio. (a) Circuito RC. (b) Circuito RLC.}
+    \caption{Esquemas de los circuitos estudiados. En (a) circuito RC y en (b) circuito RLC. $V_s$ indica el lugar donde se midió la señal de salida y su respectiva conexión con el osciloscopio.}
     \label{fig:ambosCircuitos}
 \end{figure}
 
-Como señal de entrada se empleó una señal sinusoidal generada mediante un generador de funciones $Sinometer$ modelo VC2002 \cite{VC2002}, manteniendo amplitud constante y variando la frecuencia en el rango [0,1, 50] \SI{}{\kilo\hertz}. La señal de entrada $V_e$ y la señal de salida $V_s$, se registraron simultáneamente utilizando un osciloscopio $Tektronix$ modelo TDS 220 \cite{TDS200}. 
+Como señal de entrada se empleó una señal sinusoidal generada mediante un generador de funciones $Sinometer$ modelo VC2002 \cite{VC2002}, manteniendo amplitud constante y variando la frecuencia en el rango [0.1, 50] \SI{}{\kilo\hertz}. La señal de entrada $V_e$ y la señal de salida $V_s$, se registraron simultáneamente utilizando un osciloscopio $Tektronix$ modelo TDS 220 \cite{TDS200}. 
 
 Para el circuito RC se realizaron dos configuraciones experimentales. En la primera, la señal de salida se midió sobre la resistencia, obteniendo la respuesta correspondiente a un filtro PA. En la segunda, la señal de salida se midió sobre el capacitor, obteniendo entonces la respuesta propia de un filtro PB. Con respecto al circuito RLC, la señal de salida se midió únicamente sobre la resistencia. En cada medición se registraron las amplitudes de las señales de entrada y salida, así como la diferencia temporal $\Delta t$ entre ambas. A partir de estos datos se calculó el desfasaje entre señales mediante la relación $\varphi=2\pi f \Delta t$, donde $f$ es la frecuencia de $V_e$ y $\omega=2\pi f$. Asimismo, se determinó el módulo de la función de transferencia como el cociente entre las amplitudes de salida y entrada, 
 
