@@ -19,29 +19,18 @@
         \caption{Circuito RLC en serie.}
         \label{fig:circuitoRLC}
     \end{subfigure}
-    \caption{Esquemas de los circuitos estudiados. En (a) circuito RC y en (b) circuito RLC. $V_s$ indica el lugar donde se midió la señal de salida y su respectiva conexión con el osciloscopio.}
+    \caption{Esquemas de los circuitos estudiados, en (a) circuito RC y en (b) circuito RLC. Se midió el voltaje de salida $V_s$ respecto del de entrada $V_e$, utilizando un osciloscopio, se señalan sus respectivas conexiones.}
     \label{fig:ambosCircuitos}
 \end{figure}
 
 Como señal de entrada se empleó una señal sinusoidal generada mediante un generador de funciones $Sinometer$ modelo VC2002 \cite{VC2002}, manteniendo amplitud constante y variando la frecuencia en el rango [0.1, 50] \SI{}{\kilo\hertz}. La señal de entrada $V_e$ y la señal de salida $V_s$, se registraron simultáneamente utilizando un osciloscopio $Tektronix$ modelo TDS 220 \cite{TDS200}. 
 
-Para el circuito RC se realizaron dos configuraciones experimentales. En la primera, la señal de salida se midió sobre la resistencia, obteniendo la respuesta correspondiente a un filtro PA. En la segunda, la señal de salida se midió sobre el capacitor, obteniendo entonces la respuesta propia de un filtro PB. Con respecto al circuito RLC, la señal de salida se midió únicamente sobre la resistencia. En cada medición se registraron las amplitudes de las señales de entrada y salida, así como la diferencia temporal $\Delta t$ entre ambas. A partir de estos datos se calculó el desfasaje entre señales mediante la relación $\varphi=2\pi f \Delta t$, donde $f$ es la frecuencia de $V_e$ y $\omega=2\pi f$. Asimismo, se determinó el módulo de la función de transferencia como el cociente entre las amplitudes de salida y entrada, 
+Para el circuito RC se realizaron dos configuraciones experimentales. En la primera, la señal de salida se midió sobre la resistencia, obteniendo la respuesta correspondiente a un filtro PA. En la segunda, la señal de salida se midió sobre el capacitor, obteniendo entonces la respuesta propia de un filtro PB. Con respecto al circuito RLC, la señal de salida se midió únicamente sobre la resistencia. En cada medición se registraron las amplitudes de las señales de entrada y salida, así como la diferencia temporal $\Delta t$ entre ambas. A partir de estos datos se calculó el desfasaje entre señales mediante la relación $\varphi=2\pi f \Delta t$, donde $f$ es la frecuencia de $V_e$ y $\omega=2\pi f$. Asimismo, se determinó el módulo de la función de transferencia como el cociente entre las amplitudes de salida y entrada a partir de la relación dada por \autoref{cociente}. 
 
-\begin{equation}
-    \left| H(\omega) \right| = \frac{V_s}{V_e}
-\label{eq:modulo H}
-\end{equation}
-
-y se construyeron diagramas de $\log\left| H(\omega) \right|$ en función de $\log(\omega)$. 
-
-Para el circuito RC, la frecuencia de corte $\omega_0$ se determinó experimentalmente a partir de la intersección entre los comportamientos asintóticos de baja y alta frecuencia debido a que tanto para la configuración PA como para la configuración PB, la linealización de $\log\left| H(\omega) \right|$ resulta en dos rectas que se intersecan en la frecuencia de corte. Bajo esta condición, para el PB  la recta correspondiente al régimen de bajas frecuencias se representa como una recta horizontal en 0 dB en el diagrama de Bode. Por otro lado, al
+Se construyeron diagramas de Bode, representaciones gráficas de la respuesta en frecuencia del sistema obtenidas mediante la representación del módulo de la función de transferencia en dB y la fase en grados, para ambas configuraciones del circuito RC. Esto se realizó debido a que la frecuencia de corte $\omega_0$ puede determinarse a partir de la intersección entre los comportamientos asintóticos de baja y alta frecuencia, tanto para la configuración PA como para la configuración PB, ya que la linealización de $\log\left| H(\omega) \right|$ resulta en dos rectas que se intersecan en dicha frecuencia. Bajo esta condición, para el PB  la recta correspondiente al régimen de bajas frecuencias se representa como una recta horizontal en 0 dB en el diagrama de Bode. Por otro lado, al
 considerar el régimen de altas frecuencias se consigue una recta con pendiente negativa. Se realizó de manera análoga para el PA, siendo que el régimen de bajas frecuencias se aproxima mediante una recta de pendiente positiva y el de altas frecuencias con una recta a 0 dB . Además, se comparó este resultado con el valor esperado a partir de la condición $\left| H(\omega) \right|=\frac{1}{\sqrt{2}}$. 
 
-En el caso del circuito RLC, se representó el módulo de la función de transferencia en función de la frecuencia angular, identificando la frecuencia de resonancia como aquella para la que $\left| H(\omega) \right|$  alcanza un máximo. La frecuencia de resonancia $\omega_r$ entonces, se obtuvo a partir del ajuste de los datos según 
-\begin{equation}
-    |H(\omega)| = \frac{\omega \tau}{\sqrt{(\omega \tau)^2 + \left(1 - \left(\frac{\omega}{\omega_0}\right)^2\right)^2}}
-\end{equation}
-
-se llevaron a cabo dos ajustes, uno fijando al parámetro $\tau$ al obtenido experimentalmente para el circuito RC, y otro dejando a $\tau$ libre, caracterizando un $\tau_{ef}$ efectivo del sistema. Un vez encontrada $\omega_r$, se determinó la inductancia del circuito mediante la relación $\omega_r=\frac{1}{\sqrt{LC}}$. 
+En el caso del circuito RLC, se representó el módulo de la función de transferencia en función de la frecuencia angular, identificando la frecuencia de resonancia como aquella para la que $\left| H(\omega) \right|$  alcanza un máximo. La frecuencia de resonancia $\omega_r$ entonces, se obtuvo a partir del ajuste de los datos según la función dada por \autoref{eq:moduloRLC}. Se llevaron a cabo dos ajustes, uno fijando al parámetro $\tau$ al obtenido experimentalmente para el circuito RC, y otro dejando a $\tau$ libre, caracterizando un $\tau_{ef}$ efectivo del sistema. Un vez encontrada $\omega_r$, se determinó la inductancia del circuito mediante la relación $\omega_r=\frac{1}{\sqrt{LC}}$. 
 
 Finalmente, para ambas configuraciones se construyeron diagramas de Nyquist, que representan gráficamente la respuesta del sistema según su geometría, a partir de  la parte imaginaria de $H(\omega)$ en función de su parte real. 
+

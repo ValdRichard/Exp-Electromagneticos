@@ -4,10 +4,12 @@
     El circuito RC consiste en una resistencia R y un capacitor C arreglados en serie. Aprovechando su carácter LIT, si se lo alimenta con una señal de corriente alterna sinusoidal \(V_e\) de frecuencia angular \(\omega\), la respuesta del circuito \(V_s\) será de la forma
     \begin{equation}
         V_s = H(\omega) V_e
+        \label{cociente}
     \end{equation}
     donde \(H(\omega)\) es típicamente un número complejo que depende de las caracterísicas del circuito y de la frecuencia de la señal de entrada. A este función se la conoce como función de transferencia del sistema. En el caso del circuito RC, este funciona como un filtro de frecuencias bajas visto desde la resistencia (filtro pasa altos) y como un filtro de frecuencias altas visto desde el capacitor (filtro pasa bajos), lo que implica que la función de transferencia tendrá una forma diferente dependiendo de donde se mida la señal de salida. Si se mide la tensión de salida en la resistencia, el módulo de la función de transferencia tendra la forma \cite{oppenheim1997signals}
     \begin{equation}
         |H(\omega)| = \frac{\omega \tau}{\sqrt{1 + (\omega \tau)^2}} 
+     \label{PA}
     \end{equation}
     y su fase 
     \begin{equation}
@@ -17,6 +19,7 @@
     donde se definió \(\tau = RC\) como la constante de tiempo del circuito\cite{kip1969}. En cambio, si se mide la tensión de salida en el capacitor, el módulo de la función de transferencia tendrá la forma 
     \begin{equation}
         |H(\omega)| = \frac{1}{\sqrt{1 + (\omega \tau)^2}}
+        \label{PB}
     \end{equation}
     y su fase
     \begin{equation}
