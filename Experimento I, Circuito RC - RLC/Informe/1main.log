@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.4.26)  16 MAY 2026 13:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.4.26)  17 MAY 2026 01:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -717,6 +717,16 @@ LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
 (babel)             Reported on input line 16.
+
+
+LaTeX Warning: Label `eq:3' multiply defined.
+
+
+LaTeX Warning: Label `eq:4' multiply defined.
+
+
+LaTeX Warning: Label `eq:moduloRLC' multiply defined.
+
 )
 \openout1 = `1main.aux'.
 
@@ -858,62 +868,51 @@ Package pdftex.def Info: gráficos/abstract.png  used on input line 19.
 (pdftex.def)             Requested size: 328.6279pt x 164.30775pt.
  (2Introducción.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 7.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 7.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 7.
-<Amortiguador.jpg, id=45, 365.11406pt x 267.24844pt>
-File: Amortiguador.jpg Graphic file (type jpg)
-<use Amortiguador.jpg>
-Package pdftex.def Info: Amortiguador.jpg  used on input line 20.
-(pdftex.def)             Requested size: 93.89265pt x 68.72446pt.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
-<RLC_serie.png, id=46, 375.65344pt x 216.05719pt>
-File: RLC_serie.png Graphic file (type png)
-<use RLC_serie.png>
-Package pdftex.def Info: RLC_serie.png  used on input line 27.
-(pdftex.def)             Requested size: 93.89265pt x 54.00096pt.
-) [1
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
+ [1
 
-{C:/Users/maria/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./gráficos/abstract.png>] (31Métodos.tex
-<gráficos/circuitoRC.png, id=65, 1529.715pt x 1035.87pt>
+{C:/Users/maria/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./gráficos/abstract.png>]) (31Métodos.tex
+<gráficos/circuitoRC.png, id=63, 1529.715pt x 1035.87pt>
 File: gráficos/circuitoRC.png Graphic file (type png)
 <use gráficos/circuitoRC.png>
 Package pdftex.def Info: gráficos/circuitoRC.png  used on input line 11.
 (pdftex.def)             Requested size: 211.26028pt x 143.04504pt.
-<gráficos/circuitoRLC.png, id=66, 1375.1375pt x 1152.305pt>
+<gráficos/circuitoRLC.png, id=64, 1375.1375pt x 1152.305pt>
 File: gráficos/circuitoRLC.png Graphic file (type png)
 <use gráficos/circuitoRLC.png>
 Package pdftex.def Info: gráficos/circuitoRLC.png  used on input line 18.
 (pdftex.def)             Requested size: 187.78532pt x 157.3479pt.
- [2 <./Amortiguador.jpg> <./RLC_serie.png> <./gráficos/circuitoRC.png (PNG copy)> <./gráficos/circuitoRLC.png (PNG copy)>]) (4Resultados y discusión.tex
-<gráficos/bode_completo_rc.png, id=81, 1589.94pt x 469.755pt>
+ [2]) (4Resultados y discusión.tex [3 <./gráficos/circuitoRC.png (PNG copy)> <./gráficos/circuitoRLC.png (PNG copy)>]
+<gráficos/bode_completo_rc.png, id=93, 1589.94pt x 469.755pt>
 File: gráficos/bode_completo_rc.png Graphic file (type png)
 <use gráficos/bode_completo_rc.png>
 Package pdftex.def Info: gráficos/bode_completo_rc.png  used on input line 10.
 (pdftex.def)             Requested size: 469.47049pt x 138.70554pt.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 15.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 16.
  (C:\Users\maria\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [3 <./gráficos/bode_completo_rc.png>]
-<gráficos/bode_completo_rlc.png, id=97, 722.7pt x 505.89pt>
+)
+<gráficos/bode_completo_rlc.png, id=99, 722.7pt x 505.89pt>
 File: gráficos/bode_completo_rlc.png Graphic file (type png)
 <use gráficos/bode_completo_rlc.png>
-Package pdftex.def Info: gráficos/bode_completo_rlc.png  used on input line 23.
+Package pdftex.def Info: gráficos/bode_completo_rlc.png  used on input line 22.
 (pdftex.def)             Requested size: 328.6279pt x 230.04135pt.
-<gráficos/nyquist_RC_con_teoria.png, id=99, 578.16pt x 578.16pt>
+ [4 <./gráficos/bode_completo_rc.png>]
+<gráficos/nyquist_RC_con_teoria.png, id=113, 578.16pt x 578.16pt>
 File: gráficos/nyquist_RC_con_teoria.png Graphic file (type png)
 <use gráficos/nyquist_RC_con_teoria.png>
-Package pdftex.def Info: gráficos/nyquist_RC_con_teoria.png  used on input line 37.
+Package pdftex.def Info: gráficos/nyquist_RC_con_teoria.png  used on input line 36.
 (pdftex.def)             Requested size: 211.26028pt x 211.26042pt.
-<gráficos/nyquist_RLC_teoria.png, id=100, 498.22939pt x 485.36533pt>
+<gráficos/nyquist_RLC_teoria.png, id=114, 498.22939pt x 485.36533pt>
 File: gráficos/nyquist_RLC_teoria.png Graphic file (type png)
 <use gráficos/nyquist_RLC_teoria.png>
-Package pdftex.def Info: gráficos/nyquist_RLC_teoria.png  used on input line 44.
+Package pdftex.def Info: gráficos/nyquist_RLC_teoria.png  used on input line 43.
 (pdftex.def)             Requested size: 211.26028pt x 205.80724pt.
-) [4 <./gráficos/bode_completo_rlc.png>] (5Conclusiones.tex) (6Apéndice.tex
+) [5 <./gráficos/bode_completo_rlc.png>] (5Conclusiones.tex) (6Apéndice.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 
@@ -929,7 +928,11 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 2.
 
-[5 <./gráficos/nyquist_RC_con_teoria.png> <./gráficos/nyquist_RLC_teoria.png>]) [6] [7] (1main.aux
+[6 <./gráficos/nyquist_RC_con_teoria.png> <./gráficos/nyquist_RLC_teoria.png>]
+
+LaTeX Warning: Reference `fig:RLC' on page 7 undefined on input line 50.
+
+) [7] [8] (1main.aux
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
@@ -938,6 +941,13 @@ LaTeX Info: Redefining \% on input line 16.
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `1main.out' has not changed.
 (rerunfilecheck)             Checksum: FBF9DE7A29357A54DA5111B622E3A472;1227.
 Package logreq Info: Writing requests to '1main.run.xml'.
@@ -945,17 +955,17 @@ Package logreq Info: Writing requests to '1main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26227 strings out of 467870
- 515100 string characters out of 5418355
- 1330581 words of memory out of 5000000
- 54718 multiletter control sequences out of 15000+600000
- 695320 words of font info for 188 fonts, out of 8000000 for 9000
+ 26206 strings out of 467870
+ 514809 string characters out of 5418355
+ 1327980 words of memory out of 5000000
+ 54694 multiletter control sequences out of 15000+600000
+ 689147 words of font info for 173 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 78i,8n,83p,1625b,2074s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 78i,8n,83p,1453b,2074s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/maria/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 1main.pdf (7 pages, 6529647 bytes).
+Output written on 1main.pdf (8 pages, 6498183 bytes).
 PDF statistics:
- 209 PDF objects out of 1000 (max. 8388607)
- 48 named destinations out of 1000 (max. 500000)
- 118 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 220 PDF objects out of 1000 (max. 8388607)
+ 56 named destinations out of 1000 (max. 500000)
+ 108 words of extra memory for PDF output out of 10000 (max. 10000000)
 
