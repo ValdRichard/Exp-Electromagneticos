@@ -12,7 +12,10 @@
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage[utf8]{inputenc}
-\usepackage[backend=biber]{biblatex}
+\usepackage[backend=biber, 
+            style=numeric,
+            sorting=none
+]{biblatex}
 \addbibresource{bibliografia.bib}
 \usepackage{url}
 \usepackage{hyperref}
@@ -38,5 +41,6 @@
     filecolor=magenta,      
     urlcolor=violet,
 }
+
 
 \addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
