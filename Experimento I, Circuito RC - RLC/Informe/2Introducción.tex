@@ -1,12 +1,12 @@
 \section{Introducción}
-    Los sistemas lineales invariantes en el tiempo (LIT) son fundamentales en la teoría de sistemas y el análisis de señales. Estos sistemas se caracterizan por su linealidad, lo que significa que la respuesta a una combinación lineal de señales de entrada es igual a la combinación lineal de las respuestas individuales, y su invarianza temporal, es decir que sus propiedades no cambian con el tiempo\cite{sistemasLIT}. Analizar la respuesta de estos sistemas en función de la frecuencia de la señal de entrada posee una gran ventaja, esta es que, si se estimulan con una señal sinusoidal, la respuesta será una señal de la misma forma pero con diferente amplitud y fase, siendo la forma en la que se modifica la señal dependiente de la frecuencia y las características del sistema. En particular, los circuitos RC y RLC cumplen estas propiedades.
+    Los sistemas lineales invariantes en el tiempo (LIT) son fundamentales en la teoría de sistemas y el análisis de señales. Estos sistemas se caracterizan por su linealidad, lo que significa que la respuesta a una combinación lineal de señales es igual a la combinación lineal de las respuestas individuales, y su invarianza temporal, es decir que sus propiedades no cambian con el tiempo\cite{sistemasLIT}. Analizar la respuesta de estos sistemas en función de la frecuencia de la señal de entrada posee una gran ventaja, esta es que, si se estimulan con una señal sinusoidal, la respuesta será una señal de la misma forma pero con diferente amplitud y fase, siendo la forma en la que se modifica la señal dependiente de la frecuencia y las características del sistema. En particular, los circuitos RC y RLC cumplen estas propiedades.
 
-    El circuito RC consiste en una resistencia R y un capacitor C arreglados en serie. Aprovechando su carácter LIT, si se lo alimenta con una señal de corriente alterna sinusoidal \(V_e\) de frecuencia angular \(\omega\), la respuesta del circuito \(V_s\) será de la forma
+    En primer lugar, al ser los circuitos RC en serie sistemas LIT, si se lo alimenta con una señal de corriente alterna sinusoidal \(V_e\) de frecuencia angular \(\omega\), la respuesta del circuito \(V_s\) será de la forma
     \begin{equation}
         V_s = H(\omega) V_e
         \label{cociente}
     \end{equation}
-    donde \(H(\omega)\) es típicamente un número complejo que depende de las caracterísicas del circuito y de la frecuencia de la señal de entrada. A este función se la conoce como función de transferencia del sistema. En el caso del circuito RC, este funciona como un filtro de frecuencias bajas visto desde la resistencia (filtro pasa altos) y como un filtro de frecuencias altas visto desde el capacitor (filtro pasa bajos), lo que implica que la función de transferencia tendrá una forma diferente dependiendo de donde se mida la señal de salida. Si se mide la tensión de salida en la resistencia, el módulo de la función de transferencia tendra la forma \cite{oppenheim1997signals}
+    donde \(H(\omega)\) es la función de transferencia del sistema, que depende de la frecuencia de la señal de entrada y las características del circuito. Típicamente, a esta función se la modela como un número complejo, permitiendo así representar tanto la atenuación como el desfasaje de la señal. En el caso del circuito RC, este funciona como un filtro de frecuencias bajas visto desde la resistencia (filtro pasa altos) y como un filtro de frecuencias altas visto desde el capacitor (filtro pasa bajos), lo que implica que la función de transferencia tendrá una forma diferente dependiendo de donde se mida la señal de salida. Si se mide la tensión de salida en la resistencia, el módulo de la función de transferencia tendra la forma \cite{oppenheim1997signals}
     \begin{equation}
         |H(\omega)| = \frac{\omega \tau}{\sqrt{1 + (\omega \tau)^2}} 
      \label{PA}
@@ -27,15 +27,16 @@
         \label{eq:4}
     \end{equation}
     En ambos casos, se puede observar que el módulo de la función de transferencia refleja la característica de filtro de cada componente. En el caso del capacitor, la función de transferencia crece en módulo a medida q la frecuencia de la señal de entrada disminuye, mientras que en el caso de la resistencia, el módulo de la función de transferencia crece a medida que la frecuencia de la señal de entrada aumenta. Además, resulta de interés definir una frecuencia de corte como aquella a la cual la potencia cae a la mitad de su valor máximo, lo que implica que el módulo de la función de transferencia cae a \(1/\sqrt{2}\) de su valor máximo. Al aplicar esta condición a las funciones de transferencia de ambos componentes, se obtiene que la frecuencia de corte es \(\omega_0 = 1/\tau\) en ambos casos.
-    Por otro lado, el circuito RLC consiste en una resistencia R, un inductor L y un capacitor C arreglados en serie. Al igual que el circuito RC, el circuito RLC también es un sistema LIT, por lo que existirá una función de transferencia que caracteriza la señal de salida en función de la frecuencia de la señal de entrada. En este caso, el circuito funciona como un filtro selectivo de frecuencias, es decir, deja pasar frecuencias cercanas a una frecuencia particular, conocida como frecuencia de resonancia \(\omega_r\). Así, el módulo de la función de transferencia del circuito RLC se puede expresar como \cite{oppenheim1997signals}
+
+    Por otro lado, al igual que el circuito RC, el circuito RLC también es un sistema LIT, por lo que existirá una función de transferencia que caracteriza la señal de salida en función de la frecuencia de la señal de entrada. En este caso, el circuito funciona como un filtro selectivo de frecuencias cercanas a la frecuencia de resonancia del sistema \(\omega_r\). De esta manera, el módulo de la función de transferencia del circuito RLC se expresa como \cite{oppenheim1997signals}
     \begin{equation}    
         |H(\omega)| = \frac{\omega \tau}{\sqrt{(1 - LC\omega^2)^2 + (\omega \tau)^2}}
         \label{eq:moduloRLC}
     \end{equation}  
     y su fase
     \begin{equation}
-        \phi = \arctan\left(\frac{1 - LC\omega^2 }{\omega \tau}\right)
+        \phi = \arctan\left(\frac{ LC\omega^2 - 1}{\omega \tau}\right)
     \end{equation}
     donde al encontrar el máximo del módulo de la función de transferencia, se obtiene que la frecuencia de resonancia es \(\omega_r = 1/\sqrt{LC}\). Idealmente, en esta frecuencia el inductor y el capacitor dejan de aportar al circuito y se comportan como cables ideales, dejando a la resistencia como el único elemento del circuito\cite{TiplerMosca}.
 
-    En este trabajo se estudiará la respuesta de circuitos RC y RLC, variando la frecuencia de la señal de entrada, con el objetivo de determinar la frecuencia de corte \(\omega_0\) y la frecuencia de resonancia \(\omega_r\) respectivamente. 
+    Con el objetivo de determinar las constantes características de ambos circuitos y analizar su respuesta en frecuencia, se construyeron diagramas de Bode y Nyquist a partir de medidas de tensión de entrada y salida, y desfasaje entre ambas señales.
