@@ -1,20 +1,20 @@
 # Fdb version 4
-["biber 1main"] 1779139225.50725 "1main.bcf" "1main.bbl" "1main" 1779141690.74733 0
-  "1main.bcf" 1779141690 108336 8d2c7543be3d6afd367a4a9a3ec744e3 "pdflatex"
+["biber 1main"] 1779139225.50725 "1main.bcf" "1main.bbl" "1main" 1779144695.02429 0
+  "1main.bcf" 1779144694 108336 8d2c7543be3d6afd367a4a9a3ec744e3 "pdflatex"
   "bibliografia.bib" 1778984022 2368 08c84ab3752f6b6002d185dbb604e3f8 ""
   (generated)
   "1main.bbl"
   "1main.blg"
   (rewritten before read)
-["pdflatex"] 1779141679.73602 "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1779141690.74841 0
+["pdflatex"] 1779144683.01188 "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1779144695.02542 0
   "0librerias.tex" 1779139149 996 1b48aab76804aad203a81df67724cd9a ""
-  "1main.aux" 1779141690 7434 f486291efc446139b912a270c8a2d606 "pdflatex"
+  "1main.aux" 1779144694 7434 f486291efc446139b912a270c8a2d606 "pdflatex"
   "1main.bbl" 1779139237 12801 b2a9ddbe25eabda31f386759dc6d7b9b "biber 1main"
-  "1main.out" 1779141690 931 5093156d971c6dd6ca3b5e90e62a8f79 "pdflatex"
-  "1main.run.xml" 1779141690 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
+  "1main.out" 1779144694 931 5093156d971c6dd6ca3b5e90e62a8f79 "pdflatex"
+  "1main.run.xml" 1779144694 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
   "1main.tex" 1779139206 1517 017bdd180fdaa9832408344ffce366b2 ""
   "2Introducción.tex" 1779141678 4939 c1af665d761b082865f7650a8014c9ac ""
-  "31Métodos.tex" 1779139149 5522 a525ab830b2ac07ae9c359374ee8111e ""
+  "31Métodos.tex" 1779144680 5531 8346c54a87563f6ad41acdb7c5554060 ""
   "4Resultados y discusión.tex" 1778990337 6621 8e877f87014220a5a3994158f3591a13 ""
   "5Conclusiones.tex" 1778990495 2225 70d9c320434b1b536ca6cb7fc476d218 ""
   "C:/Users/maria/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1777221969 82507 a9eef8696c92627b87e9975edea03b2a ""
