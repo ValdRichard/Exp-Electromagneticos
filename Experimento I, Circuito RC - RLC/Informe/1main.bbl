@@ -18,94 +18,7 @@
 
 
 \refsection{0}
-  \datalist[entry]{nty/global//global/global/global}
-    \entry{refRC}{article}{}{}
-      \name{author}{5}{}{%
-        {{hash=b4bc08b840a4bd4f72484a36587b195c}{%
-           family={Aguedo},
-           familyi={A\bibinitperiod},
-           given={J.},
-           giveni={J\bibinitperiod}}}%
-        {{hash=81c76c38dfe51a9c6e74f76330637fa1}{%
-           family={Lorencova},
-           familyi={L\bibinitperiod},
-           given={L.},
-           giveni={L\bibinitperiod}}}%
-        {{hash=73c8e57f4924505dd066744b007a813a}{%
-           family={Barath},
-           familyi={B\bibinitperiod},
-           given={M.},
-           giveni={M\bibinitperiod}}}%
-        {{hash=23e5cfe8738e8d69ea871090d9d46f58}{%
-           family={Farkas},
-           familyi={F\bibinitperiod},
-           given={P.},
-           giveni={P\bibinitperiod}}}%
-        {{hash=0fc9ee9f5f956836378bdc8da79fb543}{%
-           family={Tkac},
-           familyi={T\bibinitperiod},
-           given={J.},
-           giveni={J\bibinitperiod}}}%
-      }
-      \strng{namehash}{5bf21d7f424fbcf2b380f50e6a251c67}
-      \strng{fullhash}{35eb9a80dfe943709d8455969dda17db}
-      \strng{fullhashraw}{35eb9a80dfe943709d8455969dda17db}
-      \strng{bibnamehash}{5bf21d7f424fbcf2b380f50e6a251c67}
-      \strng{authorbibnamehash}{5bf21d7f424fbcf2b380f50e6a251c67}
-      \strng{authornamehash}{5bf21d7f424fbcf2b380f50e6a251c67}
-      \strng{authorfullhash}{35eb9a80dfe943709d8455969dda17db}
-      \strng{authorfullhashraw}{35eb9a80dfe943709d8455969dda17db}
-      \field{sortinit}{A}
-      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Chemosensors}
-      \field{number}{4}
-      \field{title}{Electrochemical Impedance Spectroscopy on 2D Nanomaterial MXene Modified Interfaces: Application as a Characterization and Transducing Tool}
-      \field{volume}{8}
-      \field{year}{2020}
-      \field{pages}{127}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.3390/chemosensors8040127
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.3390/chemosensors8040127
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.3390/chemosensors8040127
-      \endverb
-    \endentry
-    \entry{kip1969}{book}{}{}
-      \name{author}{1}{}{%
-        {{hash=31434c0af02be1b4ac9ea82c253cfb0f}{%
-           family={Kip},
-           familyi={K\bibinitperiod},
-           given={Arthur\bibnamedelima F.},
-           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {New York}%
-      }
-      \list{publisher}{1}{%
-        {McGraw-Hill}%
-      }
-      \strng{namehash}{31434c0af02be1b4ac9ea82c253cfb0f}
-      \strng{fullhash}{31434c0af02be1b4ac9ea82c253cfb0f}
-      \strng{fullhashraw}{31434c0af02be1b4ac9ea82c253cfb0f}
-      \strng{bibnamehash}{31434c0af02be1b4ac9ea82c253cfb0f}
-      \strng{authorbibnamehash}{31434c0af02be1b4ac9ea82c253cfb0f}
-      \strng{authornamehash}{31434c0af02be1b4ac9ea82c253cfb0f}
-      \strng{authorfullhash}{31434c0af02be1b4ac9ea82c253cfb0f}
-      \strng{authorfullhashraw}{31434c0af02be1b4ac9ea82c253cfb0f}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{2}
-      \field{title}{Fundamentals of Electricity and Magnetism}
-      \field{year}{1969}
-    \endentry
+  \datalist[entry]{none/global//global/global/global}
     \entry{sistemasLIT}{article}{}{}
       \name{author}{2}{}{%
         {{hash=3fba4fb78847ed546db311578ad575b1}{%
@@ -127,8 +40,8 @@
       \strng{authornamehash}{3510b557ca17457a1e2af5cbf58a7fe8}
       \strng{authorfullhash}{3510b557ca17457a1e2af5cbf58a7fe8}
       \strng{authorfullhashraw}{3510b557ca17457a1e2af5cbf58a7fe8}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Universidad Nacional de Rosario}
@@ -174,8 +87,8 @@
       \strng{authornamehash}{6bcb03da22fc9e1873970e922067ff1a}
       \strng{authorfullhash}{6bcb03da22fc9e1873970e922067ff1a}
       \strng{authorfullhashraw}{6bcb03da22fc9e1873970e922067ff1a}
-      \field{sortinit}{O}
-      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Signals \& systems}
@@ -183,51 +96,35 @@
       \field{pages}{488\bibrangedash 451}
       \range{pages}{-36}
     \endentry
-    \entry{VC2002}{misc}{}{}
+    \entry{kip1969}{book}{}{}
       \name{author}{1}{}{%
-        {{hash=41767f8a580fc6968c3c4f6727b2696a}{%
-           family={{Sinometer, Inc.}},
-           familyi={S\bibinitperiod}}}%
+        {{hash=31434c0af02be1b4ac9ea82c253cfb0f}{%
+           family={Kip},
+           familyi={K\bibinitperiod},
+           given={Arthur\bibnamedelima F.},
+           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
       }
-      \strng{namehash}{41767f8a580fc6968c3c4f6727b2696a}
-      \strng{fullhash}{41767f8a580fc6968c3c4f6727b2696a}
-      \strng{fullhashraw}{41767f8a580fc6968c3c4f6727b2696a}
-      \strng{bibnamehash}{41767f8a580fc6968c3c4f6727b2696a}
-      \strng{authorbibnamehash}{41767f8a580fc6968c3c4f6727b2696a}
-      \strng{authornamehash}{41767f8a580fc6968c3c4f6727b2696a}
-      \strng{authorfullhash}{41767f8a580fc6968c3c4f6727b2696a}
-      \strng{authorfullhashraw}{41767f8a580fc6968c3c4f6727b2696a}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill}%
+      }
+      \strng{namehash}{31434c0af02be1b4ac9ea82c253cfb0f}
+      \strng{fullhash}{31434c0af02be1b4ac9ea82c253cfb0f}
+      \strng{fullhashraw}{31434c0af02be1b4ac9ea82c253cfb0f}
+      \strng{bibnamehash}{31434c0af02be1b4ac9ea82c253cfb0f}
+      \strng{authorbibnamehash}{31434c0af02be1b4ac9ea82c253cfb0f}
+      \strng{authornamehash}{31434c0af02be1b4ac9ea82c253cfb0f}
+      \strng{authorfullhash}{31434c0af02be1b4ac9ea82c253cfb0f}
+      \strng{authorfullhashraw}{31434c0af02be1b4ac9ea82c253cfb0f}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://www.sinometer.com/uploadImage/2012-09-27/2012092714544811255546.jpg}}
-      \field{note}{Accessed: 2026-04-11}
-      \field{title}{VC2002 2.0MHz FUNCION GENERATOR}
-      \field{year}{2002}
-    \endentry
-    \entry{TDS200}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=faf90bedddad635e5e8f818adf1328e3}{%
-           family={{Tektronix, Inc.}},
-           familyi={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{faf90bedddad635e5e8f818adf1328e3}
-      \strng{fullhash}{faf90bedddad635e5e8f818adf1328e3}
-      \strng{fullhashraw}{faf90bedddad635e5e8f818adf1328e3}
-      \strng{bibnamehash}{faf90bedddad635e5e8f818adf1328e3}
-      \strng{authorbibnamehash}{faf90bedddad635e5e8f818adf1328e3}
-      \strng{authornamehash}{faf90bedddad635e5e8f818adf1328e3}
-      \strng{authorfullhash}{faf90bedddad635e5e8f818adf1328e3}
-      \strng{authorfullhashraw}{faf90bedddad635e5e8f818adf1328e3}
-      \field{sortinit}{T}
-      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.tek.com/en/oscilloscope/tds210-manual/tds200-series-user-manual}}
-      \field{note}{Accessed: 2026-04-02}
-      \field{title}{TDS 200-Series Digital Real-Time Oscilloscope User Manual}
-      \field{year}{2002}
+      \field{edition}{2}
+      \field{title}{Fundamentals of Electricity and Magnetism}
+      \field{year}{1969}
     \endentry
     \entry{TiplerMosca}{book}{}{}
       \name{author}{2}{}{%
@@ -256,12 +153,58 @@
       \strng{authornamehash}{3330062ec725dcf3a8c753d3ac4975e2}
       \strng{authorfullhash}{3330062ec725dcf3a8c753d3ac4975e2}
       \strng{authorfullhashraw}{3330062ec725dcf3a8c753d3ac4975e2}
-      \field{sortinit}{T}
-      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Physics for Scientists and Engineers}
       \field{year}{2007}
+    \endentry
+    \entry{VC2002}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=41767f8a580fc6968c3c4f6727b2696a}{%
+           family={{Sinometer, Inc.}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{41767f8a580fc6968c3c4f6727b2696a}
+      \strng{fullhash}{41767f8a580fc6968c3c4f6727b2696a}
+      \strng{fullhashraw}{41767f8a580fc6968c3c4f6727b2696a}
+      \strng{bibnamehash}{41767f8a580fc6968c3c4f6727b2696a}
+      \strng{authorbibnamehash}{41767f8a580fc6968c3c4f6727b2696a}
+      \strng{authornamehash}{41767f8a580fc6968c3c4f6727b2696a}
+      \strng{authorfullhash}{41767f8a580fc6968c3c4f6727b2696a}
+      \strng{authorfullhashraw}{41767f8a580fc6968c3c4f6727b2696a}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://www.sinometer.com/uploadImage/2012-09-27/2012092714544811255546.jpg}}
+      \field{note}{Accessed: 2026-04-11}
+      \field{title}{VC2002 2.0MHz FUNCION GENERATOR}
+      \field{year}{2002}
+    \endentry
+    \entry{TDS200}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=faf90bedddad635e5e8f818adf1328e3}{%
+           family={{Tektronix, Inc.}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{faf90bedddad635e5e8f818adf1328e3}
+      \strng{fullhash}{faf90bedddad635e5e8f818adf1328e3}
+      \strng{fullhashraw}{faf90bedddad635e5e8f818adf1328e3}
+      \strng{bibnamehash}{faf90bedddad635e5e8f818adf1328e3}
+      \strng{authorbibnamehash}{faf90bedddad635e5e8f818adf1328e3}
+      \strng{authornamehash}{faf90bedddad635e5e8f818adf1328e3}
+      \strng{authorfullhash}{faf90bedddad635e5e8f818adf1328e3}
+      \strng{authorfullhashraw}{faf90bedddad635e5e8f818adf1328e3}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.tek.com/en/oscilloscope/tds210-manual/tds200-series-user-manual}}
+      \field{note}{Accessed: 2026-04-02}
+      \field{title}{TDS 200-Series Digital Real-Time Oscilloscope User Manual}
+      \field{year}{2002}
     \endentry
     \entry{github}{misc}{}{}
       \name{author}{4}{}{%
@@ -294,14 +237,71 @@
       \strng{authornamehash}{7fab6e792090640029f0ec89b86bcb90}
       \strng{authorfullhash}{3b84befe2b839b23eac2788dcf36d86d}
       \strng{authorfullhashraw}{3b84befe2b839b23eac2788dcf36d86d}
-      \field{sortinit}{V}
-      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://github.com/ValdRichard/Exp-Electromagneticos}}
       \field{note}{Repositorio académico, UNLP}
       \field{title}{Experimentos Electromagnéticos --- 2026}
       \field{year}{2026}
+    \endentry
+    \entry{refRC}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=b4bc08b840a4bd4f72484a36587b195c}{%
+           family={Aguedo},
+           familyi={A\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=81c76c38dfe51a9c6e74f76330637fa1}{%
+           family={Lorencova},
+           familyi={L\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=73c8e57f4924505dd066744b007a813a}{%
+           family={Barath},
+           familyi={B\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=23e5cfe8738e8d69ea871090d9d46f58}{%
+           family={Farkas},
+           familyi={F\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0fc9ee9f5f956836378bdc8da79fb543}{%
+           family={Tkac},
+           familyi={T\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{5bf21d7f424fbcf2b380f50e6a251c67}
+      \strng{fullhash}{35eb9a80dfe943709d8455969dda17db}
+      \strng{fullhashraw}{35eb9a80dfe943709d8455969dda17db}
+      \strng{bibnamehash}{5bf21d7f424fbcf2b380f50e6a251c67}
+      \strng{authorbibnamehash}{5bf21d7f424fbcf2b380f50e6a251c67}
+      \strng{authornamehash}{5bf21d7f424fbcf2b380f50e6a251c67}
+      \strng{authorfullhash}{35eb9a80dfe943709d8455969dda17db}
+      \strng{authorfullhashraw}{35eb9a80dfe943709d8455969dda17db}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Chemosensors}
+      \field{number}{4}
+      \field{title}{Electrochemical Impedance Spectroscopy on 2D Nanomaterial MXene Modified Interfaces: Application as a Characterization and Transducing Tool}
+      \field{volume}{8}
+      \field{year}{2020}
+      \field{pages}{127}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/chemosensors8040127
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.3390/chemosensors8040127
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.3390/chemosensors8040127
+      \endverb
     \endentry
   \enddatalist
 \endrefsection
