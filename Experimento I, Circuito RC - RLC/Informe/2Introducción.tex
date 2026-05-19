@@ -26,7 +26,7 @@
         \phi = -\arctan(\omega \tau)
         \label{eq:4}
     \end{equation}
-    En ambos casos, se puede observar que el módulo de la función de transferencia refleja la característica de filtro de cada componente. En el caso del capacitor, la función de transferencia crece en módulo a medida que la frecuencia de la señal de entrada disminuye mientras que, en el caso de la resistencia, el módulo crece a medida que la frecuencia de la señal de entrada aumenta. Además, resulta de interés definir una frecuencia de corte como aquella a la cual la potencia cae a la mitad de su valor máximo, lo que implica que el módulo de la función de transferencia es \(H(\omega) = \frac{1}{\sqrt{2}}\). Al aplicar esta condición, se obtiene que la frecuencia de corte es \(\omega_0 = \frac{1}{\tau}\) en ambos casos.
+    En ambos casos, se puede observar que el módulo de la función de transferencia refleja la característica de filtro de cada componente. En el caso del capacitor, la función de transferencia crece en módulo a medida que la frecuencia de la señal de entrada disminuye mientras que, en el caso de la resistencia, el módulo crece a medida que la frecuencia de la señal de entrada aumenta. Además, resulta de interés definir una frecuencia de corte como aquella a la cual la potencia cae a la mitad de su valor máximo, lo que implica que el módulo de la función de transferencia es \(H(\omega) = 1/\sqrt{2}\). Al aplicar esta condición, se obtiene que la frecuencia de corte es \(\omega_0 = \frac{1}{\tau}\) en ambos casos.
 
 
 De igual manera, el circuito RLC presenta una función de transferencia que caracteriza la respuesta ante señales de diferente frecuencia. En este caso, el circuito actúa como un filtro selectivo de frecuencias cercanas a la frecuencia de resonancia del sistema \(\omega_r\). De esta manera, el módulo de la función de transferencia del circuito RLC se expresa como \cite{oppenheim1997signals}
@@ -41,4 +41,4 @@ De igual manera, el circuito RLC presenta una función de transferencia que cara
     \end{equation}
     donde al encontrar el máximo del módulo de la función de transferencia, se obtiene que la frecuencia de resonancia es \(\omega_r = \frac{1}{\sqrt{LC}}\). Idealmente, en esta frecuencia el inductor y el capacitor dejan de aportar al circuito y se comportan como cables ideales, dejando a la resistencia como el único elemento del circuito \cite{TiplerMosca}.
 
-    Con el objetivo de determinar las constantes características de ambos circuitos y analizar su respuesta en frecuencia, se construyeron diagramas de Bode y Nyquist a partir de medidas de tensión de entrada y salida, junto al desfasajeentre ambas señales.
+    Con el objetivo de determinar las constantes características de ambos circuitos y analizar su respuesta en frecuencia, se construyeron diagramas de Bode y Nyquist a partir de medidas de tensión de entrada y salida, junto al desfasaje entre ambas señales.
