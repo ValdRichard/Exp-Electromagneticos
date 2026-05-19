@@ -6,7 +6,7 @@
         V_s = H(\omega) V_e
         \label{cociente}
     \end{equation}
-    donde \(H(\omega)\) es la función de transferencia del sistema, que depende de la frecuencia de la señal de entrada y las características del circuito. Típicamente, a esta función se la modela como un número complejo, permitiendo así representar tanto la atenuación como el desfasaje de la señal. En el caso del circuito RC, este funciona como un filtro de frecuencias bajas visto desde la resistencia (filtro PA) y como un filtro de frecuencias altas visto desde el capacitor (filtro PB), lo que implica que la expresión de la función de transferencia será diferente dependiendo de donde se mida la señal de salida. Al medir la tensión de salida en la resistencia, el módulo de \(H(\omega)\) tendra la forma \cite{oppenheim1997signals}
+    donde \(H(\omega)\) es la función de transferencia del sistema, que depende de la frecuencia de la señal de entrada y las características del circuito. Típicamente, a esta función se la modela como un número complejo, permitiendo así representar tanto la atenuación como el desfasaje de la señal. En el caso del circuito RC, este funciona como un filtro de frecuencias bajas visto desde la resistencia (filtro PA) y como un filtro de frecuencias altas visto desde el capacitor (filtro PB), lo que implica que la expresión de la función de transferencia será diferente dependiendo de donde se mida la señal de salida. Al medir la tensión de salida en la resistencia, el módulo de \(H(\omega)\) tendrá la forma \cite{oppenheim1997signals}
     \begin{equation}
         |H(\omega)| = \frac{\omega \tau}{\sqrt{1 + (\omega \tau)^2}} 
      \label{PA}
