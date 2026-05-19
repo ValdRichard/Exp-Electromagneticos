@@ -9,23 +9,23 @@
     \begin{subfigure}[b]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{gráficos/circuitoRC.png}
-        \caption{Circuito RC en serie.}
+        \caption{}
         \label{fig:circuitoRC}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.40\linewidth}
         \centering
         \includegraphics[width=\linewidth]{gráficos/circuitoRLC.png}
-        \caption{Circuito RLC en serie.}
+        \caption{}
         \label{fig:circuitoRLC}
     \end{subfigure}
-    \caption{Esquemas de los circuitos estudiados, en (a) circuito RC y en (b) circuito RLC. Se midió el voltaje de salida $V_s$ respecto del de entrada $V_e$, utilizando un osciloscopio, se señalan sus respectivas conexiones.}
+    \caption{Esquemas de los circuitos estudiados: en (a) se presenta elcircuito RC mientras que en (b) el circuito RLC. Utilizando un osciloscopio, se midió el voltaje de salida $V_s$ respecto del de entrada $V_e$, cuyas conexiones se encuentran señaladas respectivamente.}
     \label{fig:ambosCircuitos}
 \end{figure}
 
 Como señal de entrada se empleó una señal sinusoidal generada mediante un generador de funciones $Sinometer$ modelo VC2002 \cite{VC2002}, manteniendo amplitud constante y variando la frecuencia en el rango [0,1, 50] \SI{}{\kilo\hertz}. La señal de entrada $V_e$ y la señal de salida $V_s$, se registraron simultáneamente utilizando un osciloscopio $Tektronix$ modelo TDS 220 \cite{TDS200}. 
 
-Para el circuito RC se realizaron dos configuraciones experimentales. En la primera, la señal de salida se midió sobre la resistencia, obteniendo la respuesta correspondiente a un filtro PA. En la segunda, la señal de salida se midió sobre el capacitor, obteniendo entonces la respuesta propia de un filtro PB. Con respecto al circuito RLC, la señal de salida se midió únicamente sobre la resistencia. En cada medición se registraron las amplitudes de las señales de entrada y salida, así como la diferencia temporal $\Delta t$ entre ambas. A partir de estos datos se calculó el desfasaje entre señales mediante la relación $\varphi=2\pi f \Delta t$, donde $f$ es la frecuencia de $V_e$ y $\omega=2\pi f$. Asimismo, se determinó el módulo de la función de transferencia como el cociente entre las amplitudes de salida y entrada a partir de la relación dada por la ecuación \eqref{cociente}. 
+Para el circuito RC se realizaron dos configuraciones experimentales variando la señal de salida. En primer lugar se midió sobre la resistencia, obteniendo la respuesta correspondiente a un filtro PA. Posteriormente se midió sobre el capacitor, obteniendo entonces la respuesta propia de un filtro PB. Con respecto al circuito RLC, la salida se midió únicamente sobre la resistencia. En cada medición se registraron las amplitudes de las señales de entrada y salida, así como la diferencia temporal $\Delta t$ entre ellas. A partir de estos datos se calculó el respectivo desfasaje mediante la relación $\varphi=2\pi f \Delta t$, donde $f$ es la frecuencia de $V_e$ y $\omega=2\pi f$. Asimismo, se determinó el módulo de la función de transferencia como el cociente entre las amplitudes de salida y entrada a partir de la relación dada por la ecuación \eqref{cociente}. 
 
 Se construyeron diagramas de Bode, representaciones gráficas de la respuesta en frecuencia del sistema obtenidas mediante la representación del módulo de la función de transferencia en dB y la fase en grados, para ambas configuraciones del circuito RC. Esto se realizó debido a que la frecuencia de corte $\omega_0$ puede determinarse a partir de la intersección entre los comportamientos asintóticos de baja y alta frecuencia, tanto para la configuración PA como para la configuración PB, ya que la linealización de $\log\left| H(\omega) \right|$ resulta en dos rectas que se intersecan en dicha frecuencia. Bajo esta condición, para el PB  la recta correspondiente al régimen de bajas frecuencias se representa como una recta horizontal en 0 dB en el diagrama de Bode. Por otro lado, al
 considerar el régimen de altas frecuencias se consigue una recta con pendiente negativa. Se realizó de manera análoga para el PA, siendo que el régimen de bajas frecuencias se aproxima mediante una recta de pendiente positiva y el de altas frecuencias con una recta a 0 dB . Además, se comparó este resultado con el valor esperado \(\omega_0 = \frac{1}{\tau}\). 
