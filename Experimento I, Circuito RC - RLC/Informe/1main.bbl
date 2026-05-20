@@ -246,63 +246,6 @@
       \field{title}{Experimentos Electromagnéticos --- 2026}
       \field{year}{2026}
     \endentry
-    \entry{refRC}{article}{}{}
-      \name{author}{5}{}{%
-        {{hash=b4bc08b840a4bd4f72484a36587b195c}{%
-           family={Aguedo},
-           familyi={A\bibinitperiod},
-           given={J.},
-           giveni={J\bibinitperiod}}}%
-        {{hash=81c76c38dfe51a9c6e74f76330637fa1}{%
-           family={Lorencova},
-           familyi={L\bibinitperiod},
-           given={L.},
-           giveni={L\bibinitperiod}}}%
-        {{hash=73c8e57f4924505dd066744b007a813a}{%
-           family={Barath},
-           familyi={B\bibinitperiod},
-           given={M.},
-           giveni={M\bibinitperiod}}}%
-        {{hash=23e5cfe8738e8d69ea871090d9d46f58}{%
-           family={Farkas},
-           familyi={F\bibinitperiod},
-           given={P.},
-           giveni={P\bibinitperiod}}}%
-        {{hash=0fc9ee9f5f956836378bdc8da79fb543}{%
-           family={Tkac},
-           familyi={T\bibinitperiod},
-           given={J.},
-           giveni={J\bibinitperiod}}}%
-      }
-      \strng{namehash}{5bf21d7f424fbcf2b380f50e6a251c67}
-      \strng{fullhash}{35eb9a80dfe943709d8455969dda17db}
-      \strng{fullhashraw}{35eb9a80dfe943709d8455969dda17db}
-      \strng{bibnamehash}{5bf21d7f424fbcf2b380f50e6a251c67}
-      \strng{authorbibnamehash}{5bf21d7f424fbcf2b380f50e6a251c67}
-      \strng{authornamehash}{5bf21d7f424fbcf2b380f50e6a251c67}
-      \strng{authorfullhash}{35eb9a80dfe943709d8455969dda17db}
-      \strng{authorfullhashraw}{35eb9a80dfe943709d8455969dda17db}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Chemosensors}
-      \field{number}{4}
-      \field{title}{Electrochemical Impedance Spectroscopy on 2D Nanomaterial MXene Modified Interfaces: Application as a Characterization and Transducing Tool}
-      \field{volume}{8}
-      \field{year}{2020}
-      \field{pages}{127}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.3390/chemosensors8040127
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.3390/chemosensors8040127
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.3390/chemosensors8040127
-      \endverb
-    \endentry
   \enddatalist
 \endrefsection
 \endinput

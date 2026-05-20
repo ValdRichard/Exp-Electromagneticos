@@ -2381,7 +2381,6 @@
     <bcf:citekey order="6" intorder="1">VC2002</bcf:citekey>
     <bcf:citekey order="7" intorder="1">TDS200</bcf:citekey>
     <bcf:citekey order="8" intorder="1">github</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">refRC</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

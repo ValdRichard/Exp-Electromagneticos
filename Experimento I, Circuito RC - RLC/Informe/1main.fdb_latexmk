@@ -1,21 +1,21 @@
 # Fdb version 4
-["biber 1main"] 1779139225.50725 "1main.bcf" "1main.bbl" "1main" 1779152275.01638 0
-  "1main.bcf" 1779152274 108336 8d2c7543be3d6afd367a4a9a3ec744e3 "pdflatex"
+["biber 1main"] 1779233690.39859 "1main.bcf" "1main.bbl" "1main" 1779234940.87589 0
+  "1main.bcf" 1779234940 108276 267f216449d90411f71b3f1863a03641 "pdflatex"
   "bibliografia.bib" 1778984022 2368 08c84ab3752f6b6002d185dbb604e3f8 ""
   (generated)
   "1main.bbl"
   "1main.blg"
   (rewritten before read)
-["pdflatex"] 1779152263.96565 "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1779152275.01744 0
+["pdflatex"] 1779234930.25512 "d:/Exp electromagnéticos/Exp-Electromagneticos/Experimento I, Circuito RC - RLC/Informe/1main.tex" "1main.pdf" "1main" 1779234940.87704 0
   "0librerias.tex" 1779139149 996 1b48aab76804aad203a81df67724cd9a ""
-  "1main.aux" 1779152274 7434 f486291efc446139b912a270c8a2d606 "pdflatex"
-  "1main.bbl" 1779139237 12801 b2a9ddbe25eabda31f386759dc6d7b9b "biber 1main"
-  "1main.out" 1779152274 931 5093156d971c6dd6ca3b5e90e62a8f79 "pdflatex"
-  "1main.run.xml" 1779152274 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
+  "1main.aux" 1779234940 7003 5442fe58d770e642978375b955fb68b4 "pdflatex"
+  "1main.bbl" 1779233693 10539 1be330d5a0816d727f15432b42e38274 "biber 1main"
+  "1main.out" 1779234940 768 aef691ca2b4e10da13ac85998b975a87 "pdflatex"
+  "1main.run.xml" 1779234940 2314 180be71fee82e42e06cc36a58a361f3a "pdflatex"
   "1main.tex" 1779146937 1493 bc1388b93ab5b57165ad2e586b5f5fd5 ""
-  "2Introducción.tex" 1779152262 4821 332f0ec2333e492ad34e731c0747a6a4 ""
-  "31Métodos.tex" 1779152262 5531 55fb8c7ac11635455e2a4dc3857eef05 ""
-  "4Resultados y discusión.tex" 1779146937 6770 9f36d013be6b5b54e75e7331dbfe6fa8 ""
+  "2Introducción.tex" 1779231687 4833 2b5ea078f3def1d3888ff734939f537a ""
+  "31Métodos.tex" 1779230538 5465 8e063bfbf275b81be902d5c941de7e71 ""
+  "4Resultados y discusión.tex" 1779234917 6887 8f685376dddf68b6bb483fa276bfa857 ""
   "5Conclusiones.tex" 1778990495 2225 70d9c320434b1b536ca6cb7fc476d218 ""
   "C:/Users/maria/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1777221969 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/maria/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs10.tfm" 1777221973 688 37338d6ab346c2f1466b29e195316aa4 ""
