@@ -21,3 +21,15 @@ Experimento II, Transporte de Señales/Informe 2/1main.log
 Experimento II, Transporte de Señales/Informe 2/1main.out
 Experimento II, Transporte de Señales/Informe 2/1main.run.xml
 Experimento II, Transporte de Señales/Informe 2/1main.synctex.gz
+# Archivos auxiliares de LaTeX
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.pdf
