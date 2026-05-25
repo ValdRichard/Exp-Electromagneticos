@@ -166,10 +166,12 @@ ds= 4*np.sqrt((((B_fit/es**2)*dB)**2)/mu**2 +((((B_fit**2)/es**3)*des)**2)/mu**2
 
 print(f"sigma = {sigma:.4e} ± {ds:.4e}")
 
-#Puntos sin los de 20. Ajuste con A semifijo y B fijo 
+#Puntos sin los de 20. Muchos ajustes
 
 n = (64*np.pi)/415035
 B_fijo = 0.00759251
+A_fijo = (64*np.pi)/415035
+u = 0.00000123656
 
 #Ajustes
 
@@ -192,28 +194,37 @@ chi2_1 = np.sum(((y-y1)/dy)**2)
 gl1 = len(x)-2
 chi2red1 = chi2_1/gl1
 
-# 2) A=C*n (C libre), N fijo, B fijo
-def expo2(x, C):
+# 2) A=C*n (C libre), N fijo, B=D*u, u fijo D seria raiz de sigma
+
+def expo2(x, C, D):
     A = C*n
-    return A*np.exp(-B_fijo*x)
+    B = D*u
+
+    return A*np.exp(-B*x)
 
 popt2, pcov2 = curve_fit(
-    expo2, x, y,
+    expo2,
+    x, y,
     sigma=dy,
-    absolute_sigma=True
-)
+    absolute_sigma=True,
+     bounds=([0,0],[np.inf,np.inf]))
 
-C2 = popt2[0]
-dC2 = np.sqrt(np.diag(pcov2))[0]
+C2, D2 = popt2
+dC2, dD2 = np.sqrt(np.diag(pcov2))
 
 A2 = C2*n
 dA2 = n*dC2
 
-y2 = expo2(x, C2)
+B2 = D2*u
+dB2 = u*dD2
+
+y2 = expo2(x, C2, D2)
 
 chi2_2 = np.sum(((y-y2)/dy)**2)
-gl2 = len(x)-1
+gl2 = len(x)-2
 chi2red2 = chi2_2/gl2
+
+W= (D2)**2
 
 # 3) A libre, B fijo
 def expo3(x, A):
@@ -234,22 +245,35 @@ chi2_3 = np.sum(((y-y3)/dy)**2)
 gl3 = len(x)-1
 chi2red3 = chi2_3/gl3
 
+# 4) A fijo, B fijo
+def expo4(x):
+    return A_fijo*np.exp(-B_fijo*x)
+
+y4 = expo4(x)
+
+chi2_4 = np.sum(((y-y4)/dy)**2)
+gl4 = len(x)
+chi2red4 = chi2_4/gl4
+
 # Grafico
 x_fit = np.linspace(min(x), max(x), 500)
 
 y_fit1 = expo1(x_fit, A1, B1)
-y_fit2 = expo2(x_fit, C2)
+y_fit2 = expo2(x_fit, C2, D2)
 y_fit3 = expo3(x_fit, A3)
+y_fit4 = expo4(x_fit)
 
 print("AJUSTE 1: A,B libres")
 print(f"A = {A1:.4e} ± {dA1:.4e}")
 print(f"B = {B1:.4e} ± {dB1:.4e}")
 print(f"χ² reducido = {chi2red1:.4f}")
 
-print("AJUSTE 2: A=C*N, B fijo")
+print("AJUSTE 2: A=C*n, B=D*u")
 print(f"C = {C2:.4e} ± {dC2:.4e}")
+print(f"D = {D2:.4e} ± {dD2:.4e}")
 print(f"A = {A2:.4e} ± {dA2:.4e}")
-print(f"B fijo = {B_fijo}")
+print(f"B = {B2:.4e} ± {dB2:.4e}")
+print(f"sigma= {W:e}" )
 print(f"χ² reducido = {chi2red2:.4f}")
 
 print("AJUSTE 3: A libre, B fijo")
@@ -257,13 +281,19 @@ print(f"A = {A3:.4e} ± {dA3:.4e}")
 print(f"B fijo = {B_fijo}")
 print(f"χ² reducido = {chi2red3:.4f}")
 
+print("AJUSTE 4: A fijo, B fijo")
+print(f"A fijo = {A_fijo:.4e}")
+print(f"B fijo = {B_fijo:.4e}")
+print(f"χ² reducido = {chi2red4:.4f}")
+
 plt.figure(figsize=(8,6))
 
 plt.errorbar(x, y, xerr=dx, yerr=dy, fmt='o', color='blue', ecolor='gray', capsize=3, label='Datos experimentales')
 
 plt.plot(x_fit, y_fit1, color='red', linestyle='-', linewidth=2, label='1) A,B libres')
-plt.plot(x_fit, y_fit2, color='yellow', linestyle='--', linewidth=3, label='2) A=C·N, B fijo')
+plt.plot(x_fit, y_fit2, color='yellow', linestyle='--', linewidth=3, label='2) A=C·n, B=D*u')
 plt.plot(x_fit, y_fit3, color='black', linestyle=':', linewidth=3, label='3) A libre, B fijo')
+plt.plot(x_fit, y_fit4, color='green', linestyle='-.', linewidth=3, label='4) A fijo, B fijo')
 
 plt.xlabel(r'$\sqrt{\omega}$', fontsize=14)
 plt.ylabel(r'$\frac{|H|}{\omega}$', fontsize=14)
@@ -286,17 +316,23 @@ def calc_sigma(B, dB, es, des, mu):
 sigma1, ds1 = calc_sigma(B1, dB1, es, des, mu)
 
 #2)
-dB_fijo = 0
-sigma2, ds2 = calc_sigma(B_fijo, dB_fijo, es, des, mu)
+sigma2, ds2 = calc_sigma(B2, dB2, es, des, mu)
 
 #3)
+dB_fijo = 0
 sigma3, ds3 = calc_sigma(B_fijo, dB_fijo, es, des, mu)
+
+#4)
+sigma4, ds4 = calc_sigma(B_fijo, dB_fijo, es, des, mu)
 
 print("AJUSTE 1: A,B libres")
 print(f"sigma = {sigma1:.4e} ± {ds1:.4e}")
 
-print("AJUSTE 2: A=C*N, B fijo")
+print("AJUSTE 2: A=C*N, B=D*u")
 print(f"sigma = {sigma2:.4e} ± {ds2:.4e}")
 
 print("AJUSTE 3: A libre, B fijo")
 print(f"sigma = {sigma3:.4e} ± {ds3:.4e}")
+
+print("AJUSTE 4: A fijo, B fijo")
+print(f"sigma = {sigma4:.4e} ± {ds4:.4e}")
