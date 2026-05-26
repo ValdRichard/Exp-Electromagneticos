@@ -226,20 +226,22 @@ chi2red2 = chi2_2/gl2
 
 W= (D2)**2
 
-# 3) A libre, B fijo
-def expo3(x, A):
-    return A*np.exp(-B_fijo*x)
+# 3) A fijo, B libre
+
+def expo3(x, B):
+    return A_fijo*np.exp(-B*x)
 
 popt3, pcov3 = curve_fit(
-    expo3, x, y,
+    expo3,
+    x, y,
     sigma=dy,
-    absolute_sigma=True
-)
+    absolute_sigma=True,
+    bounds=([0],[np.inf]))
 
-A3 = popt3[0]
-dA3 = np.sqrt(np.diag(pcov3))[0]
+B3 = popt3[0]
+dB3 = np.sqrt(np.diag(pcov3))[0]
 
-y3 = expo3(x, A3)
+y3 = expo3(x, B3)
 
 chi2_3 = np.sum(((y-y3)/dy)**2)
 gl3 = len(x)-1
@@ -260,7 +262,7 @@ x_fit = np.linspace(min(x), max(x), 500)
 
 y_fit1 = expo1(x_fit, A1, B1)
 y_fit2 = expo2(x_fit, C2, D2)
-y_fit3 = expo3(x_fit, A3)
+y_fit3 = expo3(x_fit, B3)
 y_fit4 = expo4(x_fit)
 
 print("AJUSTE 1: A,B libres")
@@ -276,9 +278,9 @@ print(f"B = {B2:.4e} ± {dB2:.4e}")
 print(f"sigma= {W:e}" )
 print(f"χ² reducido = {chi2red2:.4f}")
 
-print("AJUSTE 3: A libre, B fijo")
-print(f"A = {A3:.4e} ± {dA3:.4e}")
-print(f"B fijo = {B_fijo}")
+print("AJUSTE 3: A fijo, B libre")
+print(f"A fijo = {A_fijo:.4e}")
+print(f"B = {B3:.4e} ± {dB3:.4e}")
 print(f"χ² reducido = {chi2red3:.4f}")
 
 print("AJUSTE 4: A fijo, B fijo")
@@ -292,8 +294,8 @@ plt.errorbar(x, y, xerr=dx, yerr=dy, fmt='o', color='blue', ecolor='gray', capsi
 
 plt.plot(x_fit, y_fit1, color='red', linestyle='-', linewidth=2, label='1) A,B libres')
 plt.plot(x_fit, y_fit2, color='yellow', linestyle='--', linewidth=3, label='2) A=C·n, B=D*u')
-plt.plot(x_fit, y_fit3, color='black', linestyle=':', linewidth=3, label='3) A libre, B fijo')
-plt.plot(x_fit, y_fit4, color='green', linestyle='-.', linewidth=3, label='4) A fijo, B fijo')
+plt.plot(x_fit, y_fit3, color='black', linestyle=':', linewidth=4, label='3) A fijo, B libre')
+plt.plot(x_fit, y_fit4, color='green', linestyle='-.', linewidth=2, label='4) A fijo, B fijo')
 
 plt.xlabel(r'$\sqrt{\omega}$', fontsize=14)
 plt.ylabel(r'$\frac{|H|}{\omega}$', fontsize=14)
@@ -319,10 +321,10 @@ sigma1, ds1 = calc_sigma(B1, dB1, es, des, mu)
 sigma2, ds2 = calc_sigma(B2, dB2, es, des, mu)
 
 #3)
-dB_fijo = 0
-sigma3, ds3 = calc_sigma(B_fijo, dB_fijo, es, des, mu)
+sigma3, ds3 = calc_sigma(B3, dB3, es, des, mu)
 
 #4)
+dB_fijo = 0
 sigma4, ds4 = calc_sigma(B_fijo, dB_fijo, es, des, mu)
 
 print("AJUSTE 1: A,B libres")
@@ -331,7 +333,7 @@ print(f"sigma = {sigma1:.4e} ± {ds1:.4e}")
 print("AJUSTE 2: A=C*N, B=D*u")
 print(f"sigma = {sigma2:.4e} ± {ds2:.4e}")
 
-print("AJUSTE 3: A libre, B fijo")
+print("AJUSTE 3: A fijo, B libre")
 print(f"sigma = {sigma3:.4e} ± {ds3:.4e}")
 
 print("AJUSTE 4: A fijo, B fijo")
