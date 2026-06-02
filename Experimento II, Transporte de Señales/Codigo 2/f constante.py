@@ -11,7 +11,7 @@ df = pd.read_csv(url)
 
 Ve = df['Ve'].values
 Vs = df['Vs'].values
-lnH = np.log(df['H'].values)
+logH = 20*np.log10(df['H'].values)
 w = 2 * np.pi * 50.10
 deltat = df['delta t'].values
 phi = w * deltat
@@ -25,17 +25,17 @@ errdeltat = 0.0025/5
 errVe = 0.03 * Ve + 0.1 * 5 + 0.001 
 errVs= 0.03 * Vs + 0.1 * np.array([5] * 2 + [2] * 2 + [1] * 3 + [0.5] * 2 + [0.2] * 1 + [0.1] * 3 + [0.05] * 3) + 0.001
 errH = np.sqrt((errVs / Ve) ** 2 + (Vs * errVe / Ve ** 2) ** 2)
-errlnH = errH / df['H'].values
+errlogH = 20 * errH / (Vs / Ve) / np.log(10)
 errphi = np.sqrt((w * errdeltat) ** 2 + (deltat * errw) ** 2)
 
 #Ajuste lineal para ln(H) vs z
-# pendienteH, err_pendienteH, r_squaredH, varianza_residualH = ajuste_gráfico_curvefit(z, lnH, errlnH, r'$z$ [1]', r'$ln(H)$ [1]', 'ln(H) vs z')
+pendienteH, err_pendienteH, r_squaredH, varianza_residualH = ajuste_gráfico_curvefit(z, logH, errlogH, r'$z$ [1]', r'$log_{10}(H)$ [1]', 'log(H) vs z')
 
 # tauH = 2/w * pendienteH**2
 # errtauH = tauH * 2 * err_pendienteH / np.abs(pendienteH)
 
 # #Ajuste lineal para phi vs z
-# pendientePhi, err_pendientePhi, r_squaredPhi, varianza_residualPhi = ajuste_gráfico_curvefit(z, phi, errphi, r'$z$ [1]', r'$\varphi$ [rad]', 'phi vs z')
+pendientePhi, err_pendientePhi, r_squaredPhi, varianza_residualPhi = ajuste_gráfico_curvefit(z, phi, errphi, r'$z$ [1]', r'$\varphi$ [rad]', 'phi vs z')
 
 # print(err_pendientePhi)
 # print(err_pendienteH)
@@ -56,13 +56,16 @@ errphi = np.sqrt((w * errdeltat) ** 2 + (deltat * errw) ** 2)
 
 # Bode para H y gráfico de phi vs z
 fig, ax1 = plt.subplots(figsize=(12, 6))
-ax1.errorbar(x = z, y = lnH, yerr=errlnH,  color='#a200ed', label=r'Datos experimentales de ln(H)', fmt= 'o', ecolor="#a200ed", elinewidth=1.5, capsize=2.5)
+ax1.errorbar(x = z, y = logH, yerr=errlogH,  color='indigo', label=r'Datos experimentales de $log_{10}(H)$', fmt= 'o', ecolor='indigo', elinewidth=1.5, capsize=2.5)
 ax1.set_xlabel(r'$z $ [1]', size=14)
-ax1.set_ylabel(r'$ln(H)$ [1]', size=14)#, color='#a200ed')
+ax1.set_ylabel(r'$log_{10}(H)$ [1]', size=14)#, color='#a200ed')
+ax1.plot(z, pendienteH * z, color='indigo', label=f'Ajuste lineal: ' r'$log_{10}(H)' f'= {pendienteH:.3f} z $\n' f' $ R^2 = {r_squaredH:.4f} $')
 ax2 = ax1.twinx()
 ax2.errorbar(x = z, y = phi, yerr=errphi, color='darkorange', label=r'Datos experimentales de $\varphi$', fmt= 'o', ecolor='darkorange', elinewidth=1.5, capsize=2.5)
+ax2.plot(z, pendientePhi * z, color='darkorange', label=f'Ajuste lineal: $\\varphi = {pendientePhi:.3f} z $\n' f' $ R^2 = {r_squaredPhi:.4f} $')
 ax2.set_ylabel(r'$\varphi$ [radianes]', size=14)#, color='darkorange')
 ax1.grid(True, linestyle='--', alpha=0.7)
-fig.legend(loc='upper right', bbox_to_anchor=(0.65, 0.85), shadow= True, fontsize=12)
+fig.legend(loc='upper right', bbox_to_anchor=(0.63, 0.887), shadow= True, fontsize=10
+           )
 #plt.savefig(f'Figuras2/Bode_H_phi_z.png', dpi=300, bbox_inches='tight')
 plt.show()

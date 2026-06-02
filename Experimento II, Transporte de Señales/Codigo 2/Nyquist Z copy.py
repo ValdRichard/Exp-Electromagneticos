@@ -32,59 +32,20 @@ errphi = phi * np.sqrt((errdeltat/deltat) ** 2 + (errw/w) ** 2)
 errReZ = Z * np.sqrt((np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2 + (errR/R)**2) * np.cos(phi))**2 + (np.sin(phi) * errphi)**2)
 errImZ = Z * np.sqrt((np.sqrt((errVf/Vf)**2 + (errVr/Vr)**2 + (errR/R)**2) * np.sin(phi))**2 + (np.cos(phi) * errphi)**2)
 
-# Parámetros del circuito
-R = 2700.0          # Resistencia en ohmios
-C = 220e-9          # Capacitancia en faradios (220 nF)
-N = 16              # Número de nodos
 
-# Rango de frecuencias angulares (rad/s)
-omega_min = 1
-omega_max = 6000.0
-num_points = 6000   # Resolución de la curva
-
-omega = np.linspace(omega_min, omega_max, num_points)
-
-# Función para calcular la impedancia de entrada mediante fracción continua
-def Z_ladder_RC(N, R, C, omega):
-    """
-    Calcula la impedancia de entrada Z_in para un arreglo de N secciones RC
-    con resistencias R en serie y condensadores C a tierra.
-    """
-    Z = np.zeros_like(omega, dtype=complex)
-    
-    for i, w in enumerate(omega):
-        s = 1j * w
-        # Empezamos desde el último condensador (nodo N a tierra)
-        Z_current = 1.0 / (s * C)
-        # Iteramos hacia atrás agregando cada sección
-        for _ in range(N):
-            Z_current = R + 1.0 / (s * C + 1.0 / Z_current)
-        Z[i] = Z_current
-    
-    return Z
-
-# Calcular impedancia para todas las frecuencias
-Z = Z_ladder_RC(N, R, C, omega)
-
-# Extraer parte real e imaginaria
-Re_Zteo = np.real(Z)
-Im_Zteo = np.imag(Z)
-
-# --- Diagrama de Nyquist ---
+#print(f"lo que me esta rompiendo las bolas: {np.sqrt((w * errdeltat) ** 2)}")
+#print(f"errphi: {errphi}")
 
 
 
 
 # Gráfico de Nyquist de Z
 fig, ax = plt.subplots(figsize=(10, 6))
-ax.errorbar(ReZ, ImZ, xerr=errReZ, yerr=errImZ, fmt='o', color='darkorange', ecolor='darkorange', elinewidth=1.5, capsize=2.5, label='Datos experimentales de Z')
-ax.plot(Re_Zteo, -Im_Zteo, 'b-', linewidth=2,color='darkblue' , label=f'Curva teórica de Z para 16 nodos')
+ax.errorbar(ReZ, ImZ, xerr=errReZ, yerr=errImZ, fmt='o', color='darkorange', ecolor='darkorange', elinewidth=1.5, capsize=2.5)
 ax.set_xlabel(r'Re($Z$) [Ω]', size=14)
 ax.set_ylabel(r'-Im($Z$) [Ω]', size=14)
-ax.set_xlim(2800, 7000)
-ax.set_ylim(500, 7000)
 ax.grid(True, linestyle='--', alpha=0.7)
-plt.legend()
+
 #plt.savefig(f'Figuras2/Nyquist_Z.png', dpi=300, bbox_inches='tight')
 plt.show()
 
