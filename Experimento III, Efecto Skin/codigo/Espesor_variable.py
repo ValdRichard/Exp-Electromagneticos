@@ -174,3 +174,55 @@ ax1.grid(True, linestyle='--', alpha=0.6)
 
 plt.tight_layout()
 plt.show()
+
+# Gráfico combinado en dB
+
+x_fit = np.linspace(min(es), max(es), 500)
+
+#R**2
+
+H_aj = modelo_H(es, A_H, B_H)
+phi_aj = modelo_phi(es, phi0_fit, B_phi)
+
+SS_res_H = np.sum((H - H_aj)**2)
+SS_tot_H = np.sum((H - np.mean(H))**2)
+R2_H = 1 - SS_res_H/SS_tot_H
+
+SS_res_phi = np.sum((phi - phi_aj)**2)
+SS_tot_phi = np.sum((phi - np.mean(phi))**2)
+R2_phi = 1 - SS_res_phi/SS_tot_phi
+
+#Conversión a dB 
+
+H_dB = 20*np.log10(H)
+dH_dB = 20/(np.log(10)*H)*dH
+H_fit_dB = 20*np.log10(modelo_H(x_fit, A_H, B_H))
+
+
+fig, ax1 = plt.subplots(figsize=(9,6))
+
+ax1.errorbar(es, H_dB, xerr=des, yerr=dH_dB, fmt='o', color='maroon', alpha=0.9, capsize=3, markersize=8, label=r'Datos $|H|$ [dB]')
+ax1.plot(x_fit, H_fit_dB, '-', color='maroon', linewidth=2, label=fr'Ajuste |H| [dB], $\delta=16.1(7)$ mm ($R^2={R2_H:.4f}$)')
+
+ax1.set_xlabel(r'$z$ (mm)', fontsize=14)
+ax1.set_ylabel(r'$20\log_{10}(|H|)$ [dB]', fontsize=14, color='maroon')
+ax1.tick_params(axis='x', labelsize=13)
+ax1.tick_params(axis='y', labelsize=13, labelcolor='maroon')
+
+ax2 = ax1.twinx()
+
+ax2.errorbar(es, phi, xerr=des, yerr=dphi, fmt='o', color='purple', alpha=0.5, capsize=3, markersize=7, label=r'Datos $\varphi$')
+ax2.plot(x_fit, modelo_phi(x_fit, phi0_fit, B_phi), '-', color='purple', linewidth=2, label=fr'Ajuste $\varphi$, $\delta=10.75(9)$ mm ($R^2={R2_phi:.4f}$)')
+
+ax2.set_ylabel(r'$\varphi$ (rad)', fontsize=14, color='purple')
+
+ax2.tick_params(axis='y', labelsize=13, labelcolor='purple')
+
+lines1, labels1 = ax1.get_legend_handles_labels()
+lines2, labels2 = ax2.get_legend_handles_labels()
+ax1.legend(lines1 + lines2, labels1 + labels2, loc='upper center', bbox_to_anchor=(0.5,0.999), handlelength=2, fontsize=11)
+
+ax1.grid(True, linestyle='--', alpha=0.6)
+
+plt.tight_layout()
+plt.show()

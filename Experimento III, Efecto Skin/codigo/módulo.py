@@ -320,6 +320,74 @@ plt.legend(loc='upper center', bbox_to_anchor=(0.5,1), framealpha=0.9)
 plt.tight_layout()
 plt.show()
 
+# Teorico vs ajuste en dB
+
+plt.figure(figsize=(8,6))
+
+# Conversión a dB
+y_dB = 20*np.log10(y)
+dy_dB = 20/(np.log(10)*y)*dy
+
+y_fit2_dB = 20*np.log10(y_fit2)
+y_fit4_dB = 20*np.log10(y_fit4)
+
+#R**2
+
+SS_res_2 = np.sum((y - y2)**2)
+SS_tot = np.sum((y - np.mean(y))**2)
+
+R2_2 = 1 - SS_res_2/SS_tot
+
+
+plt.errorbar(
+    x, y_dB,
+    xerr=dx,
+    yerr=dy_dB,
+    fmt='o',
+    color='maroon',
+    alpha=1,
+    ecolor='maroon',
+    capsize=3,
+    label=r'Datos $\frac{|H|}{\omega}$'
+)
+
+plt.plot(
+    x_fit,
+    y_fit2_dB,
+    color='maroon',
+    linestyle='-',
+    linewidth=3,
+    label=fr'Ajuste $\frac{{|H|}}{{\omega}}$ [dB] ($R^2={R2_2:.4f}$)'
+)
+
+plt.plot(
+    x_fit,
+    y_fit4_dB,
+    color='purple',
+    linestyle='--',
+    linewidth=3,
+    label='Curva teórica'
+)
+
+plt.xlabel(r'$\sqrt{\omega}\,$ $[\mathrm{Hz}^{1/2}]$', fontsize=14)
+
+plt.ylabel(
+    r'$20\log_{10}\left(\frac{|H|}{\omega}\right)$ [dB]',
+    fontsize=14
+)
+
+plt.grid(True, linestyle='--', alpha=0.6)
+
+plt.legend(
+    loc='upper center',
+    bbox_to_anchor=(0.5,1),
+    framealpha=0.9
+)
+
+plt.tight_layout()
+plt.show()
+
+
 #Sigmas
 def calc_sigma(B, dB, es, des, mu):
 
@@ -429,38 +497,58 @@ print(f"Chi-cuadrado reducido = {chi2_red:.4f}")
 print(f"R² = {r2:.4f}")
 
 
-# Gráfico combinado
+#Gráfico combinado
 
 fig, ax1 = plt.subplots(figsize=(9,6))
 
+#Paso a dB
 
+y_H = v_s/(v_p*2*np.pi*f)
+dy_H = (1/(2*np.pi*v_p*f))*np.sqrt((dv_s)**2 + ((v_s*dv_p)/v_p)**2 + ((df*v_s)/f)**2)
+
+y_H_dB = 20*np.log10(y_H)
+dy_H_dB = 20/(np.log(10)*y_H)*dy_H
+
+x_fit = np.linspace(min(x), max(x), 500)
 x1_fit = np.linspace(min(x)-0.5, max(x)+0.5, 500)
-ax1.errorbar(x, y, xerr=dx, yerr=dy, fmt='o', color='purple', alpha=0.5, capsize=1, label=r'Datos $\varphi$')
-ax1.plot(x1_fit, lineal(x1_fit, m, b), '-', color='purple', linewidth=2, label=r'Ajuste lineal $\varphi$')
-ax1.set_xlabel(r'$\sqrt{\omega}$', fontsize=14)
-ax1.set_ylabel(r'$\varphi$', color='purple', fontsize=14)
-ax1.tick_params(axis='y', labelcolor='purple')
+
+# R**2
+y_H_aj = expo(x, A_fit, B_fit)
+
+SS_res_H = np.sum((y_H - y_H_aj)**2)
+SS_tot_H = np.sum((y_H - np.mean(y_H))**2)
+
+R2_H = 1 - SS_res_H/SS_tot_H
+
+y_phi_aj = lineal(x, m, b)
+
+SS_res_phi = np.sum((y - y_phi_aj)**2)
+SS_tot_phi = np.sum((y - np.mean(y))**2)
+R2_phi = 1 - SS_res_phi/SS_tot_phi
+
+ax1.errorbar(x, y_H_dB, xerr=dx, yerr=dy_H_dB, fmt='o', color='maroon', capsize=3, markersize=7, label=r'Datos $(|H|/\omega)$ [dB]')
+ax1.plot(x_fit, 20*np.log10(expo(x_fit, A_fit, B_fit)), '-', color='maroon', linewidth=2, label=fr'Ajuste $(|H|/\omega)$ [dB], $\sigma=8(1)e^8$ s/m ($R^2={R2_H:.4f}$)')
+ax1.set_xlabel(r'$\sqrt{\omega}\,[\mathrm{Hz}^{1/2}]$', fontsize=14)
+
+ax1.set_ylabel(r'$20\log_{10}\left(\frac{|H|}{\omega}\right)$ [dB]', color='maroon', fontsize=14)
+
+ax1.tick_params(axis='x', labelsize=13)
+ax1.tick_params(axis='y', labelsize=13, labelcolor='maroon')
 
 ax2 = ax1.twinx()
-x2_fit = np.linspace(min(x), max(x), 500)
+ax2.errorbar(x,y,xerr=dx,yerr=dy,fmt='o',color='purple',alpha=0.6,capsize=1,markersize=6,label=r'Datos $\varphi$')
 
-# recalcular y_H y dy_H para no pisar variables, pq como le puse a todo x e y se rompía todo jeje 
-y_H = v_s/(v_p*2*np.pi*f)
-dy_H = (1/(2*np.pi*v_p*f))*np.sqrt((dv_s)**2+ ((v_s*dv_p)/v_p)**2 + ((df*v_s)/f)**2)
+ax2.plot(x1_fit,lineal(x1_fit, m, b),'-',color='purple',linewidth=2,label=fr'Ajuste $\varphi$, $\sigma=4(2)e^7$ s/m ($R^2={R2_phi:.4f}$)')
+ax2.set_ylabel(r'$\varphi$ [rad]',color='purple',fontsize=14)
 
-ax2.errorbar(x, y_H, xerr=dx, yerr=dy_H, fmt='o', color='maroon', capsize=3, alpha=0.9, label=r'Datos $|H|/\omega$')
-
-ax2.plot(x2_fit, expo(x2_fit, A_fit, B_fit), '-', color='maroon', linewidth=2, label=r'Ajuste exponencial $|H|/\omega$')
-
-ax2.set_ylabel(r'$\frac{|H|}{\omega}$', color='maroon', fontsize=14)
-ax2.tick_params(axis='y', labelcolor='maroon')
+ax2.tick_params(axis='y', labelsize=13, labelcolor='purple')
 
 lines1, labels1 = ax1.get_legend_handles_labels()
 lines2, labels2 = ax2.get_legend_handles_labels()
+ax1.legend(lines1 + lines2, labels1 + labels2,loc='upper center',bbox_to_anchor=(0.35,0.23), ncol=1, fontsize=10, handlelength=3)
 
-ax1.legend(lines1 + lines2, labels1 + labels2, loc='upper center', bbox_to_anchor=(0.5,1), framealpha=0.9, ncol=2)
 ax1.grid(True, linestyle='--', alpha=0.6)
-
 
 plt.tight_layout()
 plt.show()
+
