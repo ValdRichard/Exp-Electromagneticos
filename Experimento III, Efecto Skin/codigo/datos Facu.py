@@ -705,7 +705,7 @@ plt.show()
 # ============================================================================
 
 B_fase = m_phi
-n_fase = 0.6899
+n_fase = 0.9415
 
 def modelo_corregido(f, A):
     omega = 2*np.pi*f
