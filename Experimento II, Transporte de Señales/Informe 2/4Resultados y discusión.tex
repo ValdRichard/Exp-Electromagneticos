@@ -57,27 +57,48 @@ Como se observa en la \autoref{fig:Coaxial_infinito}, para el caso de resistenci
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{Figuras2/R_infinita.png}
-    \caption{Respuesta del cable coaxial con impedancia infinita (circuito abierto). Se observa que la señal reflejada tiene la misma polaridad que la señal incidente, indicando una reflexión total.}
-    \label{fig:Coaxial_infinito}
+
+    % Parámetros editables
+    \def\anchosubfigura{0.40\textwidth}
+    \def\separacionvertical{0.2cm}
+
+    % Fila superior
+    \begin{subfigure}[b]{\anchosubfigura}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras2/R_infinita.png}
+        \caption{}
+        \label{fig:Coaxial_infinito}
+    \end{subfigure}
+
+    \vspace{\separacionvertical}
+
+    % Fila inferior
+    \begin{subfigure}[b]{\anchosubfigura}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras2/R_0.png}
+        \caption{}
+        \label{fig:Coaxial_nulo}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{\anchosubfigura}
+        \centering
+        \includegraphics[width=\linewidth]{gráficos/R_Z0.png}
+        \caption{}
+        \label{fig:Coaxial_50}
+    \end{subfigure}
+
+    \caption{Respuesta del cable coaxial bajo distintas condiciones de impedancia. En los tres casos, el canal 1 mide el pulso incidente, así como un segundo pulso que carece de información importante para esta experiencia, y el canal 2 mide la suma del pulso incidente y el reflejado. En la figura (a) se muestra la respuesta para una impedancia infinita, en la figura (b) la respuesta para una impedancia nula, y en la figura (c) la respuesta para una impedancia igual a la característica del cable.}
+    \label{fig:Coaxial_comparacion}
 \end{figure}
+
+%Respuesta del cable coaxial bajo distintas condiciones de impedancia. En la figura (a) se muestra la respuesta para una impedancia infinita,en la figura (b) se muestra la respuesta para una impedancia nula, y en la figura (c) se muestra la respuesta para una impedancia igual a la característica del cable.
 
 En el caso de resistencia nula, se advierte la presencia de una señal que presenta una polaridad opuesta a la señal incidente en el canal de entrada. Este pulso invertido indica la existencia de una reflexión en el extremos del cable, característica de una terminación en cortocircuito, como se observa en la \autoref{fig:Coaxial_nulo}. La diferencia temporal entre ambas señales corresponde al tiempo de propagación de ida y vuelta en la línea. 
 Bajo esta condición, la onda se refleja completamente hacia la fuente, pero con una inversión de fase de 180 grados, lo que resulta en una señal reflejada con polaridad opuesta a la señal incidente. Al igual que en el caso anterior, la amplitud de la señal reflejada no coincide exactamente con la señal incidente debido a las pérdidas energeticas en el cable. Este comportamiento concuerda con un coeficiente de reflexión igual a -1.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{Figuras2/R_0.png}
-    \caption{Respuesta del cable coaxial con impedancia nula (cortocircuito). Se observa que la señal reflejada tiene polaridad opuesta a la señal incidente, indicando una reflexión total con inversión de fase.}
-    \label{fig:Coaxial_nulo}
-\end{figure}
+
 
 Finalmente, cuando la impedancia de la terminación es igual a la característica del cable (\(Z_C = 50(3)\) $\Omega$), no se observa señal reflejada. En esta condición, toda la energía de la onda incidente es absorbida, minimizando las reflexiones, como se puede ver en la \autoref{fig:Coaxial_50}. Idealmente, para este caso, el coeficiente de reflexión es nulo. 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{gráficos/R_Z0.png}
-    \caption{Respuesta del cable coaxial con impedancia igual a la característica del cable. Se observa que no hay señal reflejada, indicando una absorción total de la onda incidente.}
-    \label{fig:Coaxial_50}
-\end{figure}
+
 
 En última instancia, se calculó la velocidad de propagación de la señal en el cable coaxial a partir del desfasaje temporal entre el pulso de entrada y el reflejado. Para el caso de impedancia infinita, se obtuvo una velocidad de propagación de \(v_{\infty} = 2.13(12) \times 10^8\) \si{\meter\per\second}, mientras que para el caso de impedancia nula se obtuvo \(v_0 = 2.08(11) \times 10^8\) \si{\meter\per\second}. Estos valores son consistentes entre sí y con la velocidad de propagación brindada por el fabricante, siendo esta de \(v_{\text{ref}} = 1.98(09) \times 10^8\) \si{\meter\per\second}, es decir el $66\%$ de la velocidad de la luz en el vacío.
