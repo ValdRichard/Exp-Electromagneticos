@@ -52,30 +52,26 @@ Con el objetivo de comprobar el comportamiento del circuito RC en escalera, se c
 
 \subsection{Cable coaxial}
 
-En esta parte del experimento se analizó la propagación de pulsos en un cable coaxial bajo distintas condiciones de impedancia: Impedancia nula (cortocircuito), impedancia infinita (circuito abierto) e impedancia igual a la característica del cable. Las mediciones se realizaron con un osciloscopio, donde la señal superior corresponde a la señal de entrada (onda incidente) y la inferior a la señal de salida (onda reflejada).
-Como se observa en la \autoref{fig:Coaxial_infinito}, para el caso de resistencia infinita, la señal reflejada presenta la misma polaridad que la señal incidente. Es decir, el pulso reflejado coincide en forma con el pulso de entrada. Esto indica que el extremo del cable se comporta como un circuito abierto, donde no circula corriente. Bajo esta condición, la energía de la onda no puede disiparse, por lo que refleja completamente hacia la fuente idealmente con la misma amplitud, cosa que no es así pues el cable no es un elemento ideal y genera una disipación de energía. Este comportamiento es consistente con un coeficiente de reflexión igual a 1.
+En base a la expresión para el coeficiente de reflexión \(\Gamma = \frac{Z_L - Z_C}{Z_L + Z_C}\), donde \(Z_L\) es la impedancia de carga y \(Z_C\) es la impedancia característica del cable, se analizó la respuesta del cable coaxial bajo tres condiciones de impedancia diferentes: impedancia nula (cortocircuito), impedancia infinita (circuito abierto) e impedancia igual a la característica del cable. En el primer caso se espera un coeficiente de reflexión de \(\Gamma = -1\), lo que implica una reflexión total con polaridad invertida, mientras que en el segundo caso se espera un coeficiente de reflexión de \(\Gamma = 1\), lo que implica una reflexión total igual al pulso de entrada. Finalmente, en el tercer caso se espera un coeficiente de reflexión de \(\Gamma = 0\), lo que implica la ausencia de reflexión.
+
+En la \autoref{fig:Coaxial_comparacion} se presentan las formas de onda obtenidas para cada una de las condiciones de impedancia, donde el canal 1 corresponde al pulso incidente y el canal 2 corresponde a la suma del pulso incidente y el reflejado. En el caso de impedancia infinita (ver \autoref{fig:Coaxial_infinito}), se observa que el canal 2 muestra un pulso igual al doble del pulso incidente, esto indica que la señal reflejada tiene la misma amplitud y polaridad que la señal incidente, comportamiento que es consistente con un coeficiente de reflexión de \(\Gamma = 1\). En el caso de impedancia nula (ver \autoref{fig:Coaxial_nulo}), no se aprecia ninguna señal como respuesta, es decir que la señal reflejada es de igual amplitud pero de polaridad opuesta a la señal de entrada, lo que es consistente con un coeficiente de reflexión de \(\Gamma = -1\). Finalmente, en el caso de impedancia igual a la característica del cable \(Z_C=50(3)\Omega\) (ver \autoref{fig:Coaxial_50}), se ve una señal en la salida igual al pulso incidente, por ende la señal reflejada es nula, consistente con un coeficiente de reflexión de \(\Gamma = 0\).
 
 \begin{figure}[H]
     \centering
 
-    % Parámetros editables
-    \def\anchosubfigura{0.40\textwidth}
-    \def\separacionvertical{0.2cm}
+    
+    \def\anchosubfigura{0.3\textwidth}
 
-    % Fila superior
     \begin{subfigure}[b]{\anchosubfigura}
         \centering
-        \includegraphics[width=\linewidth]{Figuras2/R_infinita.png}
+        \includegraphics[width=\linewidth]{gráficos/R_infinita.png}
         \caption{}
         \label{fig:Coaxial_infinito}
     \end{subfigure}
-
-    \vspace{\separacionvertical}
-
-    % Fila inferior
+    \hfill
     \begin{subfigure}[b]{\anchosubfigura}
         \centering
-        \includegraphics[width=\linewidth]{Figuras2/R_0.png}
+        \includegraphics[width=\linewidth]{gráficos/R_0.png}
         \caption{}
         \label{fig:Coaxial_nulo}
     \end{subfigure}
@@ -87,17 +83,10 @@ Como se observa en la \autoref{fig:Coaxial_infinito}, para el caso de resistenci
         \label{fig:Coaxial_50}
     \end{subfigure}
 
-    \caption{Respuesta del cable coaxial bajo distintas condiciones de impedancia. En los tres casos, el canal 1 mide el pulso incidente, así como un segundo pulso que carece de información importante para esta experiencia, y el canal 2 mide la suma del pulso incidente y el reflejado. En la figura (a) se muestra la respuesta para una impedancia infinita, en la figura (b) la respuesta para una impedancia nula, y en la figura (c) la respuesta para una impedancia igual a la característica del cable.}
+    \caption{Respuesta del cable coaxial bajo distintas condiciones de impedancia. En los tres casos, el canal 1 mide el pulso incidente, mientras que el canal 2 mide la suma del pulso incidente y el reflejado. En la figura (a) se muestra la respuesta para una impedancia infinita, en la figura (b) la respuesta para una impedancia nula, y en la figura (c) la respuesta para una impedancia igual a la característica del cable.}
     \label{fig:Coaxial_comparacion}
 \end{figure}
 
-%Respuesta del cable coaxial bajo distintas condiciones de impedancia. En la figura (a) se muestra la respuesta para una impedancia infinita,en la figura (b) se muestra la respuesta para una impedancia nula, y en la figura (c) se muestra la respuesta para una impedancia igual a la característica del cable.
-
-En el caso de resistencia nula, se advierte la presencia de una señal que presenta una polaridad opuesta a la señal incidente en el canal de entrada. Este pulso invertido indica la existencia de una reflexión en el extremos del cable, característica de una terminación en cortocircuito, como se observa en la \autoref{fig:Coaxial_nulo}. La diferencia temporal entre ambas señales corresponde al tiempo de propagación de ida y vuelta en la línea. 
-Bajo esta condición, la onda se refleja completamente hacia la fuente, pero con una inversión de fase de 180 grados, lo que resulta en una señal reflejada con polaridad opuesta a la señal incidente. Al igual que en el caso anterior, la amplitud de la señal reflejada no coincide exactamente con la señal incidente debido a las pérdidas energeticas en el cable. Este comportamiento concuerda con un coeficiente de reflexión igual a -1.
-
-
-Finalmente, cuando la impedancia de la terminación es igual a la característica del cable (\(Z_C = 50(3)\) $\Omega$), no se observa señal reflejada. En esta condición, toda la energía de la onda incidente es absorbida, minimizando las reflexiones, como se puede ver en la \autoref{fig:Coaxial_50}. Idealmente, para este caso, el coeficiente de reflexión es nulo. 
 
 
 
