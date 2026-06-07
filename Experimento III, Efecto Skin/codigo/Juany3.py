@@ -738,9 +738,13 @@ plt.show()
 B_fase = m_phi
 n_fase = 0.5635
 
-def modelo_corregido(f, A):
+R=40.1 #Omh
+dR=2
+N=3200 # número de espiras
+L=0.207 #H 
+def modelo_general(f, A, n, B):
     omega = 2*np.pi*f
-    return A * omega**(-n_fase) * np.exp(-B_fase*np.sqrt(omega))
+    return A *((mu*N)/R*L)* omega**(-n) *np.exp(-np.sqrt((B*mu)/2)*es*np.sqrt(omega))
 
 popt_corr, pcov_corr = curve_fit(
     modelo_corregido,

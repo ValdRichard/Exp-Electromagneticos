@@ -18,72 +18,7 @@
 
 
 \refsection{0}
-  \datalist[entry]{nty/global//global/global/global}
-    \entry{Bobowski_2021}{article}{}{}
-      \name{author}{1}{}{%
-        {{hash=aeb865d66285b5239925689626c151f6}{%
-           family={Bobowski},
-           familyi={B\bibinitperiod},
-           given={J.\bibnamedelimi S.},
-           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {American Association of Physics Teachers (AAPT)}%
-      }
-      \strng{namehash}{aeb865d66285b5239925689626c151f6}
-      \strng{fullhash}{aeb865d66285b5239925689626c151f6}
-      \strng{fullhashraw}{aeb865d66285b5239925689626c151f6}
-      \strng{bibnamehash}{aeb865d66285b5239925689626c151f6}
-      \strng{authorbibnamehash}{aeb865d66285b5239925689626c151f6}
-      \strng{authornamehash}{aeb865d66285b5239925689626c151f6}
-      \strng{authorfullhash}{aeb865d66285b5239925689626c151f6}
-      \strng{authorfullhashraw}{aeb865d66285b5239925689626c151f6}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issn}{1943-2909}
-      \field{journaltitle}{American Journal of Physics}
-      \field{month}{1}
-      \field{number}{1}
-      \field{title}{Modeling and measuring the non-ideal characteristics of transmission lines}
-      \field{volume}{89}
-      \field{year}{2021}
-      \field{pages}{96\bibrangedash 104}
-      \range{pages}{9}
-      \verb{doi}
-      \verb 10.1119/10.0001896
-      \endverb
-      \verb{urlraw}
-      \verb http://dx.doi.org/10.1119/10.0001896
-      \endverb
-      \verb{url}
-      \verb http://dx.doi.org/10.1119/10.0001896
-      \endverb
-    \endentry
-    \entry{RG58Cable}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=6c336f3f22d6fa21daecbbcd274788ad}{%
-           family={{Farnell}},
-           familyi={F\bibinitperiod}}}%
-      }
-      \strng{namehash}{6c336f3f22d6fa21daecbbcd274788ad}
-      \strng{fullhash}{6c336f3f22d6fa21daecbbcd274788ad}
-      \strng{fullhashraw}{6c336f3f22d6fa21daecbbcd274788ad}
-      \strng{bibnamehash}{6c336f3f22d6fa21daecbbcd274788ad}
-      \strng{authorbibnamehash}{6c336f3f22d6fa21daecbbcd274788ad}
-      \strng{authornamehash}{6c336f3f22d6fa21daecbbcd274788ad}
-      \strng{authorfullhash}{6c336f3f22d6fa21daecbbcd274788ad}
-      \strng{authorfullhashraw}{6c336f3f22d6fa21daecbbcd274788ad}
-      \field{sortinit}{F}
-      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.farnell.com/datasheets/2095749.pdf}}
-      \field{note}{Accessed: 2026-05-06}
-      \field{title}{RG58 Coaxial Cable Datasheet}
-      \field{year}{2015}
-    \endentry
+  \datalist[entry]{none/global//global/global/global}
     \entry{pozar2012}{book}{}{}
       \name{author}{1}{}{%
         {{hash=d24f273bc6b8cfcfddb47e3a592f97de}{%
@@ -103,8 +38,8 @@
       \strng{authornamehash}{d24f273bc6b8cfcfddb47e3a592f97de}
       \strng{authorfullhash}{d24f273bc6b8cfcfddb47e3a592f97de}
       \strng{authorfullhashraw}{d24f273bc6b8cfcfddb47e3a592f97de}
-      \field{sortinit}{P}
-      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Microwave Engineering}
@@ -136,14 +71,192 @@
       \strng{authornamehash}{a61ebf63cb0a75ccdb1512bf207a0e4e}
       \strng{authorfullhash}{a61ebf63cb0a75ccdb1512bf207a0e4e}
       \strng{authorfullhashraw}{a61ebf63cb0a75ccdb1512bf207a0e4e}
-      \field{sortinit}{P}
-      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{The Art of Experimental Physics}
       \field{year}{1991}
       \field{pages}{43\bibrangedash 54}
       \range{pages}{12}
+    \endentry
+    \entry{neuron2}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=0e77aebcc1c2be7d0deb592457b47561}{%
+           family={Mindlin},
+           familyi={M\bibinitperiod},
+           given={Cátedra\bibnamedelima G.},
+           giveni={C\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{0e77aebcc1c2be7d0deb592457b47561}
+      \strng{fullhash}{0e77aebcc1c2be7d0deb592457b47561}
+      \strng{fullhashraw}{0e77aebcc1c2be7d0deb592457b47561}
+      \strng{bibnamehash}{0e77aebcc1c2be7d0deb592457b47561}
+      \strng{authorbibnamehash}{0e77aebcc1c2be7d0deb592457b47561}
+      \strng{authornamehash}{0e77aebcc1c2be7d0deb592457b47561}
+      \strng{authorfullhash}{0e77aebcc1c2be7d0deb592457b47561}
+      \strng{authorfullhashraw}{0e77aebcc1c2be7d0deb592457b47561}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Universidad de Buenos Aires}
+      \field{title}{Modelo de membrana Celular- Potencial de membrana}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://materias.df.uba.ar/f1bygba2017c2/files/2012/07/Modelo_celula_pot_accion-2.pdf
+      \endverb
+      \verb{url}
+      \verb https://materias.df.uba.ar/f1bygba2017c2/files/2012/07/Modelo_celula_pot_accion-2.pdf
+      \endverb
+    \endentry
+    \entry{neuron}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=cf7ad486b4f99810cd77061e24c668da}{%
+           family={Dabrowski},
+           familyi={D\bibinitperiod},
+           given={Katie\bibnamedelima M},
+           giveni={K\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=cfc56c323ea574e811278c951dcb3f49}{%
+           family={Castaño},
+           familyi={C\bibinitperiod},
+           given={Diego\bibnamedelima J},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=772322da3a7361f738160c3fd36dd658}{%
+           family={Tartar},
+           familyi={T\bibinitperiod},
+           given={Jaime\bibnamedelima L},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{8d3ccb866144833c92d0bc835717c93d}
+      \strng{fullhash}{8d3ccb866144833c92d0bc835717c93d}
+      \strng{fullhashraw}{8d3ccb866144833c92d0bc835717c93d}
+      \strng{bibnamehash}{8d3ccb866144833c92d0bc835717c93d}
+      \strng{authorbibnamehash}{8d3ccb866144833c92d0bc835717c93d}
+      \strng{authornamehash}{8d3ccb866144833c92d0bc835717c93d}
+      \strng{authorfullhash}{8d3ccb866144833c92d0bc835717c93d}
+      \strng{authorfullhashraw}{8d3ccb866144833c92d0bc835717c93d}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Undergraduate Neuroscience Education}
+      \field{title}{Basic Neuron Model Electrical Equivalent Circuit: An Undergraduate Laboratory Exercise}
+      \field{year}{2013}
+      \verb{urlraw}
+      \verb https://pmc.ncbi.nlm.nih.gov/articles/PMC3852871/
+      \endverb
+      \verb{url}
+      \verb https://pmc.ncbi.nlm.nih.gov/articles/PMC3852871/
+      \endverb
+    \endentry
+    \entry{Hayat2004StokesSP}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=a079ec579f9738981ed5a4d614ffb673}{%
+           family={Hayat},
+           familyi={H\bibinitperiod},
+           given={Tasawar},
+           giveni={T\bibinitperiod}}}%
+        {{hash=fbae11454b42aa8c7239557b774dcec4}{%
+           family={Asghar},
+           familyi={A\bibinitperiod},
+           given={Saleem},
+           giveni={S\bibinitperiod}}}%
+        {{hash=8c8b9aab23ce95929a3422878f6b72d0}{%
+           family={Siddiqui},
+           familyi={S\bibinitperiod},
+           given={Abdul\bibnamedelima Majeed},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{d7476f03e5e8db845e9e3389ddd89849}
+      \strng{fullhash}{d7476f03e5e8db845e9e3389ddd89849}
+      \strng{fullhashraw}{d7476f03e5e8db845e9e3389ddd89849}
+      \strng{bibnamehash}{d7476f03e5e8db845e9e3389ddd89849}
+      \strng{authorbibnamehash}{d7476f03e5e8db845e9e3389ddd89849}
+      \strng{authornamehash}{d7476f03e5e8db845e9e3389ddd89849}
+      \strng{authorfullhash}{d7476f03e5e8db845e9e3389ddd89849}
+      \strng{authorfullhashraw}{d7476f03e5e8db845e9e3389ddd89849}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Appl. Math. Comput.}
+      \field{title}{Stokes second problem for a Johnson-Segalman fluid}
+      \field{volume}{148}
+      \field{year}{2004}
+      \field{pages}{697\bibrangedash 706}
+      \range{pages}{10}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:13143703
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:13143703
+      \endverb
+    \endentry
+    \entry{RG58Cable}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=7891b931232358f637fcfa5055398214}{%
+           family={{FS Cables}},
+           familyi={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{7891b931232358f637fcfa5055398214}
+      \strng{fullhash}{7891b931232358f637fcfa5055398214}
+      \strng{fullhashraw}{7891b931232358f637fcfa5055398214}
+      \strng{bibnamehash}{7891b931232358f637fcfa5055398214}
+      \strng{authorbibnamehash}{7891b931232358f637fcfa5055398214}
+      \strng{authornamehash}{7891b931232358f637fcfa5055398214}
+      \strng{authorfullhash}{7891b931232358f637fcfa5055398214}
+      \strng{authorfullhashraw}{7891b931232358f637fcfa5055398214}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.fscables.com/sites/admin/plugins/elfinder/files/fscables/Datasheets/390058H-E00.pdf}}
+      \field{note}{Revision 1.1, accessed: 2026-05-06}
+      \field{title}{RG 58 C/U 50 Ohm Coaxial Cable LSHF Black Technical Datasheet}
+      \field{year}{2023}
+    \endentry
+    \entry{Bobowski_2021}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=aeb865d66285b5239925689626c151f6}{%
+           family={Bobowski},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Association of Physics Teachers (AAPT)}%
+      }
+      \strng{namehash}{aeb865d66285b5239925689626c151f6}
+      \strng{fullhash}{aeb865d66285b5239925689626c151f6}
+      \strng{fullhashraw}{aeb865d66285b5239925689626c151f6}
+      \strng{bibnamehash}{aeb865d66285b5239925689626c151f6}
+      \strng{authorbibnamehash}{aeb865d66285b5239925689626c151f6}
+      \strng{authornamehash}{aeb865d66285b5239925689626c151f6}
+      \strng{authorfullhash}{aeb865d66285b5239925689626c151f6}
+      \strng{authorfullhashraw}{aeb865d66285b5239925689626c151f6}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1943-2909}
+      \field{journaltitle}{American Journal of Physics}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{Modeling and measuring the non-ideal characteristics of transmission lines}
+      \field{volume}{89}
+      \field{year}{2021}
+      \field{pages}{96\bibrangedash 104}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1119/10.0001896
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1119/10.0001896
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1119/10.0001896
+      \endverb
     \endentry
     \entry{VC2002}{misc}{}{}
       \name{author}{1}{}{%
@@ -159,8 +272,8 @@
       \strng{authornamehash}{41767f8a580fc6968c3c4f6727b2696a}
       \strng{authorfullhash}{41767f8a580fc6968c3c4f6727b2696a}
       \strng{authorfullhashraw}{41767f8a580fc6968c3c4f6727b2696a}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://www.sinometer.com/uploadImage/2012-09-27/2012092714544811255546.jpg}}
@@ -182,8 +295,8 @@
       \strng{authornamehash}{faf90bedddad635e5e8f818adf1328e3}
       \strng{authorfullhash}{faf90bedddad635e5e8f818adf1328e3}
       \strng{authorfullhashraw}{faf90bedddad635e5e8f818adf1328e3}
-      \field{sortinit}{T}
-      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://www.tek.com/en/oscilloscope/tds210-manual/tds200-series-user-manual}}

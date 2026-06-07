@@ -721,10 +721,13 @@ plt.show()
 # MODELO GENERAL
 # y = A * omega^(-n) * exp(-B*sqrt(omega))
 # ============================================================================
-
+R=40.1 #Omh
+dR=2
+N=3200 # número de espiras
+L=0.207 #H 
 def modelo_general(f, A, n, B):
     omega = 2*np.pi*f
-    return A * omega**(-n) * np.exp(-B*np.sqrt(omega))
+    return A *((mu*N)/R*L)* omega**(-n) *np.exp(-np.sqrt((B*mu)/2)*es*np.sqrt(omega))
 
 popt, pcov = curve_fit(
     modelo_general,
