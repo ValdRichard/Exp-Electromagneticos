@@ -9,8 +9,8 @@ De acuerdo con la ecuación \eqref{eq:voltajePulso}, la amplitud de la señal de
 
 \subsubsection{Medidas a frecuencia constante}
 
- En la figura \ref{fig:bode_z} se presenta el diagrama de Bode obtenido al variar el nodo a una frecuencia fija, así como los ajustes lineales realizados sobre los datos. Se observa que $20\log_{10}(H)$ decrece linealmente
-     con el nodo $z$, mientras que la fase $\varphi$ aumenta de forma lineal. Este comportamiento es coherente con el esperado para un circuito RC en escalera, a pesar de que es notable que, para los nodos superiores los puntos se desvían del comportamiento lineal esperado. Esto se debe a que al llegar a los últimos nodos del circuito, la aproximación de que el circuito es infinito deja de ser válida, lo que resulta en un aumento de la pendiente del ajuste lineal.
+ En la \autoref{fig:bode_z} se presenta el diagrama de Bode obtenido al variar el nodo a una frecuencia fija, así como los ajustes lineales realizados sobre los datos. Se observa que $20\log_{10}(H)$ decrece linealmente
+     con el nodo $z$, mientras que la fase $\varphi$ aumenta de forma lineal, lo que es coherente con lo esperado para un circuito RC en escalera. Sin embargo, se puede observar una tendencia, en los nodos superiores, a alejarse del comportamiento predicho debido a una falla en la aproximación del circuito RC como escalera infinita, resultando en un aumento de la pendiente del ajuste.
      Mediante ajustes lineales se obtuvo una pendiente $m_H= -0.307(4)$ para el módulo y una pendiente $m_\varphi = 0.302(6)$ para la fase. Utilizando estas pendientes se calculó una constante de tiempo $\tau_H = 6.0(2)\times 10^{-4}$ \si{\second} y
       $\tau_{\varphi}=6.2(2)\times 10^{-4}$\si{\second} consistentes con el valor teórico calculado a partir de los componentes del circuito,
        $\tau_{\text{ref}} = \text{RC} = 5.9(4) \times 10^{-4}$ \si{\second}.  
@@ -23,9 +23,9 @@ De acuerdo con la ecuación \eqref{eq:voltajePulso}, la amplitud de la señal de
 \end{figure}
 
 
-\subsubsection{Medidas a nodo fijo}
+\subsubsection{Medidas en un punto fijo del circuito}
 
-Se presenta en la figura \ref{fig:bode_w} el diagrama de Bode obtenido a partir de dejar un nodo fijo $z=6$ y variar la frecuencia, tanto como el ajuste lineal realizado sobre los datos. Nuevamente se observa un comportamiento lineal tanto para el módulo como para la fase. Los ajustes lineales permitieron obtener $\tau_H=6.7(9)\times 10^{-4}$\si{\second} y $\tau_{\varphi}=5.4(7)\times 10^{-4}$\si{\second}. Estos valores son consistentes con el valor teórico, lo que refuerza la validez del modelo utilizado para describir el comportamiento del circuito RC en escalera. En este caso, las incertidumbres asociadas a las medidas son mayores que en el caso de las medidas a frecuencia constante, lo cual puede deberse deberse a errores experimentales relacionados con la medición de la fase para las distitas frecuencias.
+Se presenta en la \autoref{fig:bode_w} el diagrama de Bode construido a partir de tomar la tensión en un nodo fijo $z=6$ y variar la frecuencia, tanto como el ajuste realizado sobre los datos obtenidos. Nuevamente se observa un comportamiento lineal en los datos del módulo y la fase. A partir de las pendientes de los ajustes se obtuvieron los valores $\tau_H=6.7(9)\times 10^{-4}$\si{\second} y $\tau_{\varphi}=5.4(7)\times 10^{-4}$\si{\second}. Estos valores son consistentes con el valor teórico, lo que refuerza la validez del modelo utilizado para describir el comportamiento del circuito RC en escalera. En este caso, las incertidumbres asociadas a las medidas son mayores que en el caso de las medidas a frecuencia constante, lo cual puede deberse a errores experimentales relacionados con la medición de la fase para las distitas frecuencias.
 
 \begin{figure}[H]
     \centering
@@ -40,13 +40,12 @@ Finalmente, se realizó un promedio ponderado con los valores obtenidos de $\tau
 \subsubsection{Impedancia Z del sistema}
 
 Con el objetivo de comprobar el comportamiento del circuito RC en escalera, se construyó un diagrama de Nyquist a partir de las medidas 
-    realizadas sobre el primer nodo, variando la frecuencia en el mismo rango que las medidas realizadas en el nodo 6. Asimismo, se calculó de manera analíticala curva teórica de la impedancia para el caso de un circuito RC en escalera de 16 nodos. Como se observa en la 
-    figura \ref{fig:Nyquist}, los puntos experimentales tienden a seguir un comportamiento lineal, lo que resulta consistente con lo esperado teóricamente para este tipo de sistema. Sin embargo, al ser comparado con la recta teórica se puede ver que el modelo tiende a alejarse de los datos experimentales obtenidos para frecuencias altas, mientras que a frecuencias bajas presenta el mismo comportamiento que el circuito real. 
+    realizadas, de la misma manera que para el nodo 6, en el primer nodo. Asimismo, se calculó de manera analítica la curva teórica de la impedancia para el caso de un circuito RC en escalera de 16 nodos. En la \autoref{fig:Nyquist} se presentan ambos diagramas. Es posible observar que a frecuencias bajas la curva teórica predice el comportamiento real del circuito, mientras que a frecuencias altas pierde precisión. 
 
     \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{gráficos/Nyquist_Z.png}
-    \caption{Diagrama de Nyquist obtenido a partir de las medidas experimentales para el circuito RC en escalera junto con la curva teórica. En naranja se muestran los datos experimentales, mientras que en azul se presenta la curva teórica. Se observa que a frecuencias bajas la curva teórica pasa por todos los puntos experimentales, mientras que a frecuencias altas parece tener una tendencia a alejarse de los mismos.}
+    \caption{Diagrama de Nyquist obtenido a partir de las medidas experimentales para el circuito RC en escalera junto con la curva teórica. En naranja se muestran los datos experimentales, mientras que en azul se presenta la curva teórica. Se observa que a frecuencias bajas la curva teórica pasa por todos los puntos experimentales, mientras que a frecuencias altas tiende a alejarse de los mismos.}
     \label{fig:Nyquist}
 \end{figure}
 
