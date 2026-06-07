@@ -717,82 +717,10 @@ plt.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 
-
-
 # ============================================================================
-# MODELO CORREGIDO:
-#
-# y = A * omega^{-n} * exp(-B*sqrt(omega))
-#
-# con B fijado al obtenido por la fase
+# MODELO GENERAL
+# y = A * omega^(-n) * exp(-B*sqrt(omega))
 # ============================================================================
-
-B_fase = m_phi
-n_fase = 0.5635
-
-def modelo_corregido(f, A):
-    omega = 2*np.pi*f
-    return A * omega**(-n_fase) * np.exp(-B_fase*np.sqrt(omega))
-
-popt_corr, pcov_corr = curve_fit(
-    modelo_corregido,
-    f,
-    y,
-    sigma=dy,
-    absolute_sigma=True,
-    bounds=([0],[np.inf])
-)
-
-A_corr = popt_corr[0]
-dA_corr = np.sqrt(np.diag(pcov_corr))[0]
-
-y_corr = modelo_corregido(f, A_corr)
-
-chi2_corr = chi2_reducido(
-    y,
-    y_corr,
-    dy,
-    n_params=1
-)
-
-R2_corr = R2(y, y_corr)
-
-print("\n--- MODELO CORREGIDO ---")
-print(f"A = {A_corr:.6e} ± {dA_corr:.6e}")
-print(f"B fijo = {B_fase:.6e}")
-print(f"n fijo = {n_fase:.4f}")
-print(f"χ² reducido = {chi2_corr:.4f}")
-print(f"R² = {R2_corr:.6f}")
-
-# gráfico
-
-omega_fit = np.linspace(f.min(), f.max(), 500)
-
-plt.figure(figsize=(8,6))
-
-plt.errorbar(
-    f,
-    y,
-    yerr=dy,
-    fmt='o',
-    capsize=3,
-    label='Datos'
-)
-
-plt.plot(
-    omega_fit,
-    modelo_corregido(omega_fit, A_corr),
-    '-',
-    linewidth=2,
-    label='Modelo corregido'
-)
-
-plt.xlabel('f [Hz]')
-plt.ylabel(r'$V_s/(V_p\omega)$')
-plt.grid(True)
-plt.legend()
-plt.tight_layout()
-plt.show()
 
 def modelo_general(f, A, n, B):
     omega = 2*np.pi*f
@@ -818,8 +746,61 @@ sigma_fit, dsigma_fit = calc_sigma(
     mu
 )
 
+y_fit = modelo_general(f, A_fit, n_fit, B_fit)
+
+chi2_fit = chi2_reducido(
+    y,
+    y_fit,
+    dy,
+    n_params=3
+)
+
+R2_fit = R2(y, y_fit)
+
 print("\n--- MODELO GENERAL ---")
 print(f"A = {A_fit:.6e} ± {dA_fit:.6e}")
 print(f"n = {n_fit:.4f} ± {dn_fit:.4f}")
 print(f"B = {B_fit:.6e} ± {dB_fit:.6e}")
 print(f"sigma = {sigma_fit:.4e} ± {dsigma_fit:.4e}")
+print(f"χ² reducido = {chi2_fit:.4f}")
+print(f"R² = {R2_fit:.6f}")
+# ============================================================================
+# GRÁFICO DEL MODELO GENERAL
+# ============================================================================
+
+f_fit = np.linspace(f.min(), f.max(), 1000)
+
+plt.figure(figsize=(8,6))
+
+plt.errorbar(
+    f,
+    y,
+    yerr=dy,
+    fmt='o',
+    capsize=3,
+    label='Datos experimentales'
+)
+
+plt.plot(
+    f_fit,
+    modelo_general(f_fit, A_fit, n_fit, B_fit),
+    linewidth=2,
+    label=(
+        fr'Ajuste general'
+        '\n'
+        fr'$A=({A_fit:.2e}\pm{dA_fit:.2e})$'
+        '\n'
+        fr'$n={n_fit:.3f}\pm{dn_fit:.3f}$'
+        '\n'
+        fr'$B=({B_fit:.3e}\pm{dB_fit:.3e})$'
+        '\n'
+        fr'$R^2={R2_fit:.4f}$'
+    )
+)
+
+plt.xlabel('f [Hz]')
+plt.ylabel(r'$V_s/(V_p\omega)$')
+plt.grid(True, alpha=0.3)
+plt.legend()
+plt.tight_layout()
+plt.show()
