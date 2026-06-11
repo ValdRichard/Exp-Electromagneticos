@@ -19,15 +19,26 @@ La destacable discrepancia para el módulo motivó a comparar el ajuste experime
 
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.7\linewidth]{Figuras 3/comparacion.png}
-    \caption{Comparación entre los datos experimentales y su curva de ajuste (en rojo) y la respuesta teórica esperada para el sistema (en violeta).}
+    \includegraphics[width=0.9\linewidth]{Figuras 3/comparacionResiduos.png}
+    \caption{(izq) Comparación entre los datos experimentales y su curva de ajuste (en rojo) y la respuesta teórica esperada para el sistema (en violeta). (der) Gráfico de los residuos relativos en escala logaritmica, se ajusta una recta para comprobar si existe una tendencia no considerada en el modelo utilizado.}
     \label{fig:comparacion}
 \end{figure}
 
 Se observa que la curva teórica presenta una atenuación considerablemente mayor que la observada experimentalmente. Como consecuencia, el ajuste experimental requiere una profundidad de penetración efectiva menor y conduce a una sobreestimación de la conductividad eléctrica.
 
 Las diferencias observadas pueden atribuirse a diversas limitaciones del modelo teórico utilizado. La expresión empleada supone una geometría unidimensional ideal y un conductor semiinfinito, hipótesis que no se cumplen estrictamente sobre el sistema. La geometría finita de la placa y de las bobinas produce distribuciones no uniformes del campo magnético. Por otro lado, la geometría propia del arreglo experimental genera que parte del flujo magnético producido por el circuito primario no permanezca completamente confinado en el núcleo, existiendo flujo disperso y líneas de campo que atraviesan regiones de aire antes de alcanzar la bobina secundaria, modificando la amplitud de la señal inducida en el bobinado secundario y generando contribuciones no contempladas en el modelo teórico. En consecuencia, la determinación de la conductividad a partir del módulo resulta particularmente sensible a efectos geométricos e instrumentales, lo que podría explicar la discrepancia observada en comparación a su homólogo obtenido con la fase.
- 
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Figuras 3/modeloPropuesto.png}
+    \caption{Ajuste realizado del modelo agregando una dependencia fenomenológica de $\omega^n$ no considerada en el marco teórico. Se observa que el valor obtenido del $\sigma$ bajo un orden de magnitud en comparación con el modelo original y resulta congruente con el valor de referencia ( ni idea jaja).}
+    \label{fig:modeloPropuesto}
+\end{figure}
+
+Debido a la tendencia significativa de los residuos en la figura \autoref{fig:comparacion} se propone un modelo fenomonelógico que no está considerada en el marco teórico utilizado. Para ello, se propuso ajustar los datos una dependencia $\omega^{-n}$ dejando $n$ como parametro libre y poder determinar la potencia ignorada en el modelo (ver \autoref{fig:modeloPropuesto}). De esto, se obtuvo que el ajuste mejora significativamente. No se que mas poner acá, pero entiendo que puedo comparar el R2 o el sigma...
+
+
+
 
 \subsection{Espesor variable}
 
