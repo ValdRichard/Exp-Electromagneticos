@@ -711,5 +711,6 @@ plt.xlabel('f [Hz]')
 plt.ylabel(r'$V_s/(V_p\omega)$')
 plt.grid(True, alpha=0.3)
 plt.legend()
+
 plt.tight_layout()
 plt.show()
