@@ -104,8 +104,28 @@ fig, (ax_left, ax_right) = plt.subplots(1, 2, figsize=(14, 6))
 
 # ── Panel izquierdo: ajuste vs teórico en dB ──────────────────────────────────
 
-y_dB   = 20 * np.log10(y)
-dy_dB  = 20 / (np.log(10) * y) * dy
+#y_dB   = 20 * np.log10(y)
+#dy_dB  = 20 / (np.log(10) * y) * dy
+
+# Normalizar según el punto de menor frecuencia
+idx0 = np.argmin(f)
+x0 = x[idx0]
+
+# Valores de referencia de cada curva
+y0_exp = y[idx0]
+y0_fit = expo_reparametrizado(x0, C2, D2)
+y0_teo = A_fijo * np.exp(-B_fijo * x0)
+
+# Datos experimentales normalizados
+y_norm = y / y0_exp
+dy_norm = dy / y0_exp
+
+y_dB  = 20*np.log10(y_norm)
+dy_dB = 20/(np.log(10)*y_norm) * dy_norm
+
+# Curvas normalizadas
+y_fit_norm = expo_reparametrizado(x_fit, C2, D2) / y0_fit
+y_teo_norm = (A_fijo*np.exp(-B_fijo*x_fit)) / y0_teo
 
 def R2(y_obs, y_mod):
     ss_res = np.sum((y_obs - y_mod)**2)
@@ -116,19 +136,30 @@ R2_aj2 = R2(y, expo_reparametrizado(x, C2, D2))
 
 ax_left.errorbar(x, y_dB, xerr=dx, yerr=dy_dB,
                  fmt='o', color='maroon', ecolor='maroon', capsize=3,
-                 label=r'Datos $|H|/\omega$ [dB]')
-ax_left.plot(x_fit, 20 * np.log10(expo_reparametrizado(x_fit, C2, D2)),
-             '-', color='maroon', linewidth=2,
-             label=fr'Ajuste ($R^2={R2_aj2:.4f}$)')
-ax_left.plot(x_fit, 20 * np.log10(
-                 np.vectorize(lambda xv: A_fijo * np.exp(-B_fijo * xv))(x_fit)),
-             '--', color='purple', linewidth=2,
-             label='Curva teórica')
+                 label=r'$\left[\frac{|H|/\omega}{(|H|/\omega)_0}\right]$ [dB]')
+
+ax_left.plot(
+    x_fit,
+    20*np.log10(y_fit_norm),
+    '-',
+    color='maroon',
+    linewidth=2,
+    label=fr'Ajuste ($R^2={R2_aj2:.4f}$)'
+)
+
+ax_left.plot(
+    x_fit,
+    20*np.log10(y_teo_norm),
+    '--',
+    color='purple',
+    linewidth=2,
+    label='Curva teórica'
+)
 ax_left.set_xlabel(r'$\sqrt{\omega}\;[\mathrm{Hz}^{1/2}]$', fontsize=13)
-ax_left.set_ylabel(r'$20\log_{10}(|H|/\omega)$ [dB]', fontsize=13)
+ax_left.set_ylabel(r'$20\log_{10}\!\left[\frac{|H|/\omega}{(|H|/\omega)_0}\right]$ [dB]', fontsize=13)
 ax_left.grid(True, linestyle='--', alpha=0.6)
 ax_left.legend(loc='upper right', fontsize=10)
-ax_left.set_title("Ajuste vs curva teórica (escala logarítmica)")
+#ax_left.set_title("Ajuste vs curva teórica (escala logarítmica)")
 
 # ── Panel derecho: ln(dato/modelo) vs ln(omega) ───────────────────────────────
 
@@ -143,7 +174,7 @@ ax_right.set_xlabel(r'$\ln(\omega)$', fontsize=13)
 ax_right.set_ylabel(r'$\ln\left[\mathrm{dato}/\mathrm{modelo}\right]$', fontsize=13)
 ax_right.grid(True, linestyle='--', alpha=0.6)
 ax_right.legend(fontsize=10)
-ax_right.set_title(r"Dependencia residual en $\omega$")
+#ax_right.set_title(r"Dependencia residual en $\omega$")
 
 plt.tight_layout()
 plt.show()

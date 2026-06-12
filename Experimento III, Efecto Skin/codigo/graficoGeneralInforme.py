@@ -134,7 +134,7 @@ plt.xlabel(r'$\sqrt{\omega}\;[\mathrm{Hz}^{1/2}]$', fontsize=13)
 plt.ylabel(r'$20\log_{10}(|H|/\omega)$ [dB]', fontsize=13)
 plt.grid(True, linestyle='--', alpha=0.6)
 plt.legend(loc='upper right', fontsize=10)
-plt.title("Modelo general – ajuste (ODR)")
+#plt.title("Modelo general – ajuste (ODR)")
 
 plt.tight_layout()
 plt.show()

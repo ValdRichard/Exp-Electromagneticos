@@ -525,7 +525,7 @@ ax1.legend(lines1 + lines2, labels1 + labels2,
            ncol=1, fontsize=10, handlelength=3)
 
 ax1.grid(True, linestyle='--', alpha=0.6)
-plt.title("Módulo y fase – comparación de ajustes")
+#plt.title("Módulo y fase – comparación de ajustes")
 plt.tight_layout()
 plt.show()
 print(B2)
