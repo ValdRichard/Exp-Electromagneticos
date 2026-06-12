@@ -31,6 +31,16 @@ u      = 0.00000123656
 A_fijo = n_geom
 B_fijo = 0.00759251
 
+mask = f != 819.7
+
+v_p  = v_p[mask]
+v_s  = v_s[mask]
+f    = f[mask]
+dv_p = dv_p[mask]
+dv_s = dv_s[mask]
+df   = df[mask]
+dt = dt[mask]
+t= t[mask]
 x   = np.sqrt(f * 2 * np.pi)
 y   = v_s / (v_p * 2 * np.pi * f)
 dx  = np.sqrt((np.pi / 2) * (df**2 / f))

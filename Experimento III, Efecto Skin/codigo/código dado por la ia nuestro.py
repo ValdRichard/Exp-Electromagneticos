@@ -103,6 +103,16 @@ df = np.array([1.055, 6.07, 10.94, 15.99, 21.01, 26.065, 31.415, 50.95, 61.2, 75
 dt= np.array([0.005, 0.001, 0.0005, 0.0005, 0.00025, 0.00025, 0.0001, 0.0001, 0.00005, 0.00005, 0.00005, 0.0025, 0.001, 0.001, 0.0001])
 dt/=5
 
+mask = f != 819.7
+
+v_p  = v_p[mask]
+v_s  = v_s[mask]
+f    = f[mask]
+dv_p = dv_p[mask]
+dv_s = dv_s[mask]
+df   = df[mask]
+dt = dt[mask]
+t= t[mask]
 # Variables del ajuste del módulo: x = sqrt(omega), y = |H|/omega
 x1   = np.sqrt(f * 2 * np.pi)
 y1   = v_s / (v_p * 2 * np.pi * f)
@@ -183,6 +193,17 @@ df = np.array([6.07, 10.94, 15.99, 21.01, 26.065, 31.415, 50.95, 61.2, 75.3, 95.
 dt= np.array([0.001, 0.0005, 0.0005, 0.00025, 0.00025, 0.0001, 0.0001, 0.00005, 0.00005, 0.00005, 0.001, 0.0001, 0.001])
 dt/=5
 
+
+mask = f != 819.7
+
+v_p  = v_p[mask]
+v_s  = v_s[mask]
+f    = f[mask]
+dv_p = dv_p[mask]
+dv_s = dv_s[mask]
+df   = df[mask]
+dt = dt[mask]
+t= t[mask]
 # Variables del ajuste del módulo
 x    = np.sqrt(f * 2 * np.pi)
 y    = v_s / (v_p * 2 * np.pi * f)

@@ -28,12 +28,22 @@ dv_s = np.array([0.6546, 0.6177, 0.291, 0.2745, 0.2625, 0.2538, 0.0849, 0.08061,
 df = np.array([6.07, 10.94, 15.99, 21.01, 26.065, 31.415, 50.95, 61.2, 75.3, 95.65, 4.0325, 40.985, 2.4975])
 
 
+mask = f != 819.7
+
+v_p  = v_p[mask]
+v_s  = v_s[mask]
+f    = f[mask]
+dv_p = dv_p[mask]
+dv_s = dv_s[mask]
+df   = df[mask]
+
 x   = np.sqrt(f * 2 * np.pi)
 y   = v_s / (v_p * 2 * np.pi * f)
 dx  = np.sqrt((np.pi / 2) * (df**2 / f))
 dy  = (1 / (2 * np.pi * v_p * f)) * np.sqrt(
     dv_s**2 + (v_s * dv_p / v_p)**2 + (df * v_s / f)**2
 )
+
 
 # ─── Auxiliares ──────────────────────────────────────────────────────────────
 
@@ -116,7 +126,7 @@ plt.plot(x_fit, yfit_dB,
                 '\n'
                 fr'$n={n_fit:.3f}\pm{dn_fit:.3f}$'
                 '\n'
-                fr'$B=({B_fit:.3e}\pm{dB_fit:.3e})$'
+                fr'$\sigma=({B_fit:.3e}\pm{dB_fit:.3e})$'
                 '\n'
                 fr'$R^2={R2_fit:.4f}$'))
 
