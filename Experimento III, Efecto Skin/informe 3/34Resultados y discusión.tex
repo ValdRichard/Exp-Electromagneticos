@@ -20,28 +20,32 @@ La destacable discrepancia para el módulo motivó a comparar el ajuste experime
 \begin{figure} [H]
     \centering
     \includegraphics[width=0.9\linewidth]{Figuras 3/comparacionResiduos.png}
-    \caption{(izq) Comparación entre los datos experimentales y su curva de ajuste (en rojo) y la respuesta teórica esperada para el sistema (en violeta). (der) Gráfico de los residuos relativos en escala logaritmica, se ajusta una recta para comprobar si existe una tendencia no considerada en el modelo utilizado.}
+    \caption{(izq) Comparación entre los datos experimentales normalizados según el punto de menor frecuencia y su curva de ajuste (rojo). En violeta se muestra la respuesta teórica predicha para el sistema. (der) Residuos relativos representaods en escala logaritmica junto con un ajuste lineal utilizado para analizar posibles dependencias no contempladas en el modelo.}
     \label{fig:comparacion}
 \end{figure}
 
-Se observa que la curva teórica presenta una atenuación considerablemente mayor que la observada experimentalmente. Como consecuencia, el ajuste experimental requiere una profundidad de penetración efectiva menor y conduce a una sobreestimación de la conductividad eléctrica.
+Se observa que la atenuación experimental del módulo aumenta con la frecuencia de manera significativamente más rápida que la predicha por el modelo teórico. Como consencuencia, el ajuste del módulo conduce a una profundidad de penetración efectiva menor a la esperada y, por ende, a una estimación de la conductividad significativamente superior al valor tabulado. La discrepancia crece sistematicamente al aumentar $\omega$, lo que sugiere que no puede atribuirse únicamente a factores instrumentales o a errores de medición, sino que evidencia limitaciones en el modelo teórico utilizado. 
 
-Las diferencias observadas pueden atribuirse a diversas limitaciones del modelo teórico utilizado. La expresión empleada supone una geometría unidimensional ideal y un conductor semiinfinito, hipótesis que no se cumplen estrictamente sobre el sistema. La geometría finita de la placa y de las bobinas produce distribuciones no uniformes del campo magnético. Por otro lado, la geometría propia del arreglo experimental genera que parte del flujo magnético producido por el circuito primario no permanezca completamente confinado en el núcleo, existiendo flujo disperso y líneas de campo que atraviesan regiones de aire antes de alcanzar la bobina secundaria, modificando la amplitud de la señal inducida en el bobinado secundario y generando contribuciones no contempladas en el modelo teórico. En consecuencia, la determinación de la conductividad a partir del módulo resulta particularmente sensible a efectos geométricos e instrumentales, lo que podría explicar la discrepancia observada en comparación a su homólogo obtenido con la fase.
+La expresión empleada supone una geometría unidimensional en un conductor semiinfinito ideal, hipótesis que no se cumplen de manera estricta sobre el sistema. La geometría finita de la placa y la presencia de las bobinas producen distribuciones no uniformes del campo magnético, además de que la geometría propia del arreglo experimental genera que parte del flujo magnético producido por el circuito primario no permanezca completamente confinado en el núcleo. Existe entonces un flujo disperso y líneas de campo que atraviesan regiones de aire antes de alcanzar la bobina secundaria, modificando la amplitud de la señal inducida y generando contribuciones no contempladas en el modelo teórico. En consecuencia, la determinación de la conductividad a partir del módulo resulta particularmente sensible a efectos geométricos e instrumentales, lo que podría explicar la discrepancia observada en comparación a su homólogo obtenido con la fase.
 
 \begin{figure} [H]
     \centering
     \includegraphics[width=0.7\linewidth]{Figuras 3/modeloPropuesto.png}
-    \caption{Ajuste realizado del modelo agregando una dependencia fenomenológica de $\omega^n$ no considerada en el marco teórico. Se observa que el valor obtenido del $\sigma$ bajo un orden de magnitud en comparación con el modelo original y resulta congruente con el valor de referencia ( ni idea jaja).}
+    \caption{Ajuste realizado del modelo agregando una dependencia fenomenológica de $\omega^n$ no considerada en el marco teórico. Se observa que la incorporación de la dependencia fenomenológica mejora notablemente la concordancia con los datos experimentales. El valor obtenido de $\sigma=1.6(7)\times10^7$ S/m, resulta compatible con el valor tabulado para el aluminio.}
     \label{fig:modeloPropuesto}
 \end{figure}
 
-Como se observa en la figura \autoref{fig:comparacion}, el gráfico de los residuos muestra una relación lineal decreciente con la frecuencia, indicando una dependencia con la frecuencia que no está siendo contemplada en el modelo teórico utilizado. Por esto, se propuso un modelo fenomenológico que incorpora una dependencia con una potencia $n$ de la frecuencia como parámetro libre de la forma
+Como se observa en la figura \autoref{fig:comparacion}, el carácter lineal de los residuos en escala logarítmica ($R^2=0.998$)  indica que  la diferencia entre los datos y el modelo posee, una dependencia de una potencia con la frecuencia que no está siendo contemplada en el modelo empleado. Debido a esto, se propone un modelo fenomenológico que incorpora una dependencia con una potencia $n$ de $\omega$ como parámetro libre de la forma
+
 \begin{equation}
     |H|/\omega = A \omega^{-n} \exp\left(-\frac{\sqrt{B\mu_0\omega}z}{2}\right)
 \end{equation}
+
 donde $A$ y $B$ son también parámetros libres, siendo este último la conductividad eléctrica. 
 
-En la figura \autoref{fig:modeloPropuesto} se muestra el ajuste realizado con este nuevo modelo, observándose una mejora significativa en la concordancia entre los datos experimentales y la curva de ajuste. Esto puede verse en la mejora de la bondad del ajuste $R^2$. El valor obtenido para la conductividad eléctrica a partir de este nuevo modelo es $\sigma=1.6(7)\times10^7$ S/m, valor compatible con el tabulado para el aluminio de un orden de magnitud menor al obtenido con el modelo teórico original.
+En la figura \autoref{fig:modeloPropuesto} se muestra el ajuste realizado con este nuevo modelo, donde se observa una mejora significativa en la concordancia entre los datos experimentales y la curva de ajuste. Esto puede verse en la mejora de la bondad del ajuste, con un $R^2=0.998$. El valor obtenido para la conductividad eléctrica a partir de este nuevo modelo es $\sigma=1.6(7)\times10^7$ S/m, valor compatible con el tabulado para el aluminio y de un orden de magnitud menor al obtenido con el modelo teórico original. 
+
+Además, la concordancia entre el valor de conductividad obtenido a partir de la fase y el obtenido mediante el modelo fenomenológico refuerza la hipótesis de que la discrepancia observada en el ajuste del módulo se origina principalmente en limitaciones del modelo utilizado y no en errores sistemáticos significativos de las mediciones.
 
 
 % Debido a la tendencia significativa de los residuos en la figura \autoref{fig:comparacion} se propone un modelo fenomenológico que no está considerada en el marco teórico utilizado. Para ello, se propuso ajustar los datos una dependencia $\omega^{-n}$ dejando $n$ como parametro libre y poder determinar la potencia ignorada en el modelo (ver \autoref{fig:modeloPropuesto}). De esto, se obtuvo que el ajuste mejora significativamente. No se que mas poner acá, pero entiendo que puedo comparar el R2 o el sigma...
