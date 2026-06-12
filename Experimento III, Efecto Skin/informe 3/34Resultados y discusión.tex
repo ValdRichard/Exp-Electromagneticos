@@ -20,7 +20,8 @@ La destacable discrepancia para el módulo motivó a comparar el ajuste experime
 \begin{figure} [H]
     \centering
     \includegraphics[width=0.9\linewidth]{Figuras 3/comparacionResiduos.png}
-    \caption{(izq) Comparación entre los datos experimentales normalizados según el punto de menor frecuencia y su curva de ajuste (rojo). En violeta se muestra la respuesta teórica predicha para el sistema. (der) Residuos relativos representaods en escala logaritmica junto con un ajuste lineal utilizado para analizar posibles dependencias no contempladas en el modelo.}
+    \caption{
+    Comparación entre los datos experimentales normalizados según el punto de menor frecuencia y su curva de ajuste indicada en rojo, mientras que en violeta se muestra la respuesta teórica predicha para el sistema (izq.). Residuos relativos representados en escala logarítmica junto con un ajuste lineal utilizado para analizar posibles dependencias no contempladas en el modelo (der.).}
     \label{fig:comparacion}
 \end{figure}
 
@@ -35,13 +36,13 @@ La expresión empleada supone una geometría unidimensional en un conductor semi
     \label{fig:modeloPropuesto}
 \end{figure}
 
-Como se observa en la figura \autoref{fig:comparacion}, el carácter lineal de los residuos en escala logarítmica ($R^2=0.998$)  indica que  la diferencia entre los datos y el modelo posee, una dependencia de una potencia con la frecuencia que no está siendo contemplada en el modelo empleado. Debido a esto, se propone un modelo fenomenológico que incorpora una dependencia con una potencia $n$ de $\omega$ como parámetro libre de la forma
+Como se observa en la \autoref{fig:comparacion}, el carácter lineal de los residuos en escala logarítmica indica una dependencia de una potencia con la frecuencia que no está siendo contemplada en el modelo empleado. Debido a esto, se propone un modelo fenomenológico de la forma
 
 \begin{equation}
     |H|/\omega = A \omega^{-n} \exp\left(-\frac{\sqrt{B\mu_0\omega}z}{2}\right)
 \end{equation}
 
-donde $A$ y $B$ son también parámetros libres, siendo este último la conductividad eléctrica. 
+donde $n$, $A$ y $B$ son parámetros libres, siendo este último la conductividad eléctrica. 
 
 En la figura \autoref{fig:modeloPropuesto} se muestra el ajuste realizado con este nuevo modelo, donde se observa una mejora significativa en la concordancia entre los datos experimentales y la curva de ajuste. Esto puede verse en la mejora de la bondad del ajuste, con un $R^2=0.998$. El valor obtenido para la conductividad eléctrica a partir de este nuevo modelo es $\sigma=1.6(7)\times10^7$ S/m, valor compatible con el tabulado para el aluminio y de un orden de magnitud menor al obtenido con el modelo teórico original. 
 
