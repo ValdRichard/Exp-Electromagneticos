@@ -656,3 +656,166 @@ def verificar_ciclos(res):
     ax1.legend()
 
     plt.show()
+
+def ajuste_recta(x, y, sy):
+    """
+    Ajuste lineal ponderado:
+        y = a + b x
+
+    Parámetros
+    ----------
+    x, y : arrays
+    sy   : errores de y
+
+    Retorna
+    -------
+    a, sa, b, sb
+    """
+
+    w = 1 / sy**2
+
+    S    = np.sum(w)
+    Sx   = np.sum(w * x)
+    Sy   = np.sum(w * y)
+    Sxx  = np.sum(w * x**2)
+    Sxy  = np.sum(w * x * y)
+
+    Delta = S * Sxx - Sx**2
+
+    a = (Sxx * Sy - Sx * Sxy) / Delta
+    b = (S * Sxy - Sx * Sy) / Delta
+
+    sa = np.sqrt(Sxx / Delta)
+    sb = np.sqrt(S / Delta)
+
+    return a, sa, b, sb
+
+def extraer_coercividad(ch1, ch2, n_puntos=3):
+
+    # ==========================
+    # Tomar solo media histéresis
+    # ==========================
+
+    mitad = len(ch1) // 2
+
+    H = ch1[mitad:]
+    M = ch2[mitad:]
+
+    # ==========================
+    # Solo H positivos
+    # ==========================
+
+    mask = H > 0
+
+    H = H[mask]
+    M = M[mask]
+
+    # ==========================
+    # Puntos más cercanos a M=0
+    # ==========================
+
+    idx = np.argsort(np.abs(M))[:n_puntos]
+
+    H_fit = H[idx]
+    M_fit = M[idx]
+
+    # ==========================
+    # Ajuste lineal
+    # ==========================
+
+    sy = 0.05 * np.abs(M_fit)
+    sy[sy == 0] = 1
+
+    a, sa, b, sb = ajuste_recta(H_fit, M_fit, sy)
+
+    Hc = -a / b
+
+    return Hc, H_fit, M_fit
+
+def graficar_coercividad(ch1, ch2, n_puntos=3):
+
+    mitad = len(ch1) // 2
+
+    H = ch1[mitad:]
+    M = ch2[mitad:]
+
+    mask = H > 0
+
+    H = H[mask]
+    M = M[mask]
+
+    idx = np.argsort(np.abs(M))[:n_puntos]
+
+    H_fit = H[idx]
+    M_fit = M[idx]
+
+    sy = 0.05 * np.abs(M_fit)
+    sy[sy == 0] = 1
+
+    a, sa, b, sb = ajuste_recta(H_fit, M_fit, sy)
+
+    Hc = -a / b
+
+    H_recta = np.linspace(
+        H_fit.min() - 5,
+        H_fit.max() + 5,
+        100
+    )
+
+    M_recta = a + b * H_recta
+
+    plt.figure(figsize=(7,5))
+
+    # Histéresis completa
+    plt.scatter(
+        ch1,
+        ch2,
+        s=10,
+        alpha=0.3,
+        label="Histéresis completa"
+    )
+
+    # Media histéresis utilizada
+    plt.scatter(
+        H,
+        M,
+        s=15,
+        label="Datos usados"
+    )
+
+    # Puntos del ajuste
+    plt.scatter(
+        H_fit,
+        M_fit,
+        s=100,
+        label="Puntos seleccionados"
+    )
+
+    plt.plot(
+        H_recta,
+        M_recta,
+        linewidth=2,
+        label="Ajuste lineal"
+    )
+
+    plt.axvline(
+        Hc,
+        linestyle="--",
+        label=fr"$H_c={Hc:.2f}$"
+    )
+
+    plt.axhline(
+        0,
+        color="black",
+        linewidth=0.8
+    )
+
+    plt.xlabel("CH1 ∝ H")
+    plt.ylabel("CH2 ∝ M")
+
+    plt.legend()
+    plt.grid()
+
+    plt.show()
+
+    return Hc
