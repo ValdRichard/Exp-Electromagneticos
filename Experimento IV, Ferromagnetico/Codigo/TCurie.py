@@ -94,73 +94,6 @@ a, sa, b, sb = ajuste_recta(x, y, sy)
 
 print(f"a = {a:.2f} ± {sa:.2f}")
 print(f"b = {b:.2f} ± {sb:.2f}")
-
-# =============================================================================
-# COMPOSICION Mn/Zn A PARTIR DE Tc
-# =============================================================================
-
-def composicion_mn(tc, stc, a, sa, b, sb):
-
-    x = (tc - a) / b
-
-    sx = np.sqrt(
-        (stc / b)**2 +
-        (sa  / b)**2 +
-        (x * sb / b)**2
-    )
-
-    return x, sx
-
-
-print("\n===== COMPOSICION ESTIMADA =====\n")
-
-x1, sx1 = composicion_mn(
-    resTc1.beta[1],
-    resTc1.sd_beta[1],
-    a, sa,
-    b, sb
-)
-
-x2, sx2 = composicion_mn(
-    resTc2.beta[1],
-    resTc2.sd_beta[1],
-    a, sa,
-    b, sb
-)
-
-# =============================================================================
-# COMPOSICION Mn/Zn A PARTIR DE Tc
-# =============================================================================
-
-def composicion_mn(tc, stc, a, sa, b, sb):
-
-    x = (tc - a) / b
-
-    sx = np.sqrt(
-        (stc / b)**2 +
-        (sa  / b)**2 +
-        (x * sb / b)**2
-    )
-
-    return x, sx
-
-
-print("\n===== COMPOSICION ESTIMADA =====\n")
-
-x1, sx1 = composicion_mn(
-    resTc1.beta[1],
-    resTc1.sd_beta[1],
-    a, sa,
-    b, sb
-)
-
-x2, sx2 = composicion_mn(
-    resTc2.beta[1],
-    resTc2.sd_beta[1],
-    a, sa,
-    b, sb
-)
-
 # =============================================================================
 # COMPOSICION Mn/Zn A PARTIR DE Tc
 # =============================================================================
@@ -173,7 +106,7 @@ def composicion_mn(tc, stc, a, sa, b, sb):
 
     sx = np.sqrt(
         (stc / b)**2 +
-        (sa  / b)**2 +
+        (sa / b)**2 +
         (x * sb / b)**2
     )
 
@@ -182,19 +115,41 @@ def composicion_mn(tc, stc, a, sa, b, sb):
 
 print("\n===== COMPOSICION ESTIMADA =====\n")
 
-x1, sx1 = composicion_mn(
+# =============================================================================
+# PROMEDIO PESADO DE Tc
+# =============================================================================
+
+Tc_vals = np.array([
     resTc1.beta[1],
+    resTc2.beta[1]
+])
+
+sTc_vals = np.array([
     resTc1.sd_beta[1],
+    resTc2.sd_beta[1]
+])
+
+pesos = 1 / sTc_vals**2
+
+Tc_prom = np.sum(pesos * Tc_vals) / np.sum(pesos)
+
+sTc_prom = np.sqrt(
+    1 / np.sum(pesos)
+)
+
+x_prom, sx_prom = composicion_mn(
+    Tc_prom,
+    sTc_prom,
     a, sa,
     b, sb
 )
 
-x2, sx2 = composicion_mn(
-    resTc2.beta[1],
-    resTc2.sd_beta[1],
-    a, sa,
-    b, sb
-)
+print("\n===== TEMPERATURA DE CURIE PROMEDIO =====\n")
+print(f"Tc = {Tc_prom:.2f} ± {sTc_prom:.2f} °C")
+
+print("\n===== COMPOSICION PROMEDIO =====\n")
+print(f"Mn = {x_prom:.5f} ± {sx_prom:.5f}")
+print(f"Zn = {1-x_prom:.5f} ± {sx_prom:.5f}")
 
 # =============================================================================
 # GRAFICO CALIBRACION Tc vs COMPOSICION
@@ -218,7 +173,6 @@ eb = ax.errorbar(
     label='Datos de calibración'
 )
 
-# Barras de error más transparentes
 for barra in eb[2]:
     barra.set_alpha(0.4)
 
@@ -234,45 +188,33 @@ ax.plot(
     label=r'$T_c(x)=45+255x$'
 )
 
-# Temperatura de Curie - Serie 1
+# Resultado final (promedio pesado)
 ax.errorbar(
-    x1,
-    resTc1.beta[1],
-    xerr=sx1,
-    yerr=resTc1.sd_beta[1],
-    fmt='s',
-    ms=8,
+    x_prom,
+    Tc_prom,
+    xerr=sx_prom,
+    yerr=sTc_prom,
+    fmt='D',
+    ms=9,
     color='#1f4e79',
     ecolor='#1f4e79',
-    capsize=3,
-    label='Temperatura de Curie, serie 1'
+    capsize=4,
+    label='Temperatura de Curie promedio'
 )
 
-# Temperatura de Curie - Serie 2
-ax.errorbar(
-    x2,
-    resTc2.beta[1],
-    xerr=sx2,
-    yerr=resTc2.sd_beta[1],
-    fmt='^',
-    ms=8,
-    color='#4f81bd',
-    ecolor='#4f81bd',
-    capsize=3,
-    label='Temperatura de Curie, serie 2'
-)
-
-# Líneas de texto extra para la leyenda
+# Texto adicional en la leyenda
 extra_labels = [
     Line2D(
-        [], [],
+        [],
+        [],
         linestyle='None',
-        label=rf'Porcentaje serie 1: Mn = {100*x1:.1f} ± {100*sx1:.1f}%'
+        label=rf'Composición obtenida: ({100*x_prom:.1f} ± {100*sx_prom:.1f})% Mn'
     ),
     Line2D(
-        [], [],
+        [],
+        [],
         linestyle='None',
-        label=rf'Porcentaje serie 2: Mn = {100*x2:.1f} ± {100*sx2:.1f}%'
+        label=rf'({100*(1-x_prom):.1f} ± {100*sx_prom:.1f})% Zn'
     )
 ]
 
@@ -292,18 +234,12 @@ plt.show()
 # RESULTADOS
 # =============================================================================
 
-print("Serie 1")
-print(f"Mn = {x1:.5f} ± {sx1:.5f}")
-print(f"Zn = {1-x1:.5f} ± {sx1:.5f}")
+print("\n===== RESULTADO FINAL =====\n")
 
-print()
+print(f"Tc = {Tc_prom:.2f} ± {sTc_prom:.2f} °C")
+print(f"Mn = {x_prom:.5f} ± {sx_prom:.5f}")
+print(f"Zn = {1-x_prom:.5f} ± {sx_prom:.5f}")
 
-print("Serie 2")
-print(f"Mn = {x2:.5f} ± {sx2:.5f}")
-print(f"Zn = {1-x2:.5f} ± {sx2:.5f}")
+ratio_prom = x_prom / (1 - x_prom)
 
-ratio1 = x1 / (1 - x1)
-ratio2 = x2 / (1 - x2)
-
-print(f"Mn:Zn ≈ {ratio1:.5f}:1")
-print(f"Mn:Zn ≈ {ratio2:.5f}:1")
+print(f"Mn:Zn ≈ {ratio_prom:.5f}:1")
