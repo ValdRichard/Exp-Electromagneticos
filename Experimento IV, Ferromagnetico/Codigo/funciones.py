@@ -98,9 +98,14 @@ def ajustarMagnetizacionTc(
 def graficarAjusteTc(
     serie,
     resultado,
-    titulo,
-    mostrar=False
+    nombre_serie,
+    ax=None
 ):
+
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(8, 5))
+    else:
+        fig = ax.figure
 
     A, Tc, beta = resultado.beta
     sA, sTc, sBeta = resultado.sd_beta
@@ -112,43 +117,50 @@ def graficarAjusteTc(
     sy = 0.05 * Ch2
 
     Tcurva = np.linspace(T.min(), Tc * 0.999, 400)
-
     ycurva = A * (1 - Tcurva / Tc) ** beta
 
-    fig, ax = plt.subplots(figsize=(8, 5))
-
-    ax.errorbar(
+    eb = ax.errorbar(
         T,
         Ch2,
         xerr=sx,
         yerr=sy,
         fmt="o",
+        ms=5,
+        color="0.25",
+        ecolor="0.25",
+        elinewidth=1,
         capsize=3,
+        label="Puntos experimentales"
     )
 
+    for barra in eb[2]:
+        barra.set_alpha(0.4)
+
+    for cap in eb[1]:
+        cap.set_alpha(0.4)
+
     label = (
-        rf"$A={A:.2f}\pm{sA:.2f}$"
-        "\n"
+        f"Ajuste {nombre_serie}\n"
         rf"$T_c={Tc:.2f}\pm{sTc:.2f}$"
         "\n"
         rf"$\beta={beta:.4f}\pm{sBeta:.4f}$"
     )
 
-    ax.plot(Tcurva, ycurva, lw=2, label=label)
+    ax.plot(
+        Tcurva,
+        ycurva,
+        lw=2.5,
+        color="#ff7700",
+        label=label
+    )
 
-    ax.set_xlabel("T [°C]")
-    ax.set_ylabel("Ch2 [mV]")
+    ax.set_xlabel(r"$T$ [°C]")
+    ax.set_ylabel(r"$M \propto V$ [mV]")
 
-    ax.legend()
-    ax.grid(True)
+    ax.grid(True, alpha=0.3)
+    ax.legend(fontsize=9)
 
-    fig.suptitle(titulo)
-
-    if mostrar:
-        plt.show()
-
-    return fig
-
+    return fig, ax
 
 # =============================================================================
 # BLOCH FIJO

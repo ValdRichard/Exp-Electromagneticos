@@ -60,19 +60,29 @@ print("Serie 2")
 print(f"A     = {resTc2.beta[0]:.4f} ± {resTc2.sd_beta[0]:.4f}")
 print(f"Tc    = {resTc2.beta[1]:.4f} ± {resTc2.sd_beta[1]:.4f}")
 print(f"beta  = {resTc2.beta[2]:.4f} ± {resTc2.sd_beta[2]:.4f}")
+
+fig, axs = plt.subplots(
+    1, 2,
+    figsize=(12, 5),
+    sharey=True
+)
+
 graficarAjusteTc(
     serie1Tc,
     resTc1,
-    "Serie 1 - Ajuste crítico"
+    "serie 1",
+    ax=axs[0]
 )
-plt.show()
+
 graficarAjusteTc(
     serie2Tc,
     resTc2,
-    "Serie 2 - Ajuste crítico"
+    "serie 2",
+    ax=axs[1]
 )
-plt.show()
 
+plt.tight_layout()
+plt.show()
 
 x = np.array([0, 1])
 
@@ -117,6 +127,60 @@ x2, sx2 = composicion_mn(
     a, sa,
     b, sb
 )
+
+# =============================================================================
+# GRAFICO CALIBRACION Tc vs COMPOSICION
+# =============================================================================
+
+x_recta = np.linspace(-0.1, 1.1, 200)
+y_recta = a + b * x_recta
+
+plt.figure(figsize=(8,6))
+
+# puntos usados para la calibración
+plt.errorbar(
+    x, y,
+    yerr=sy,
+    fmt='o',
+    label='Datos de calibración'
+)
+
+# recta ajustada
+plt.plot(
+    x_recta,
+    y_recta,
+    label=f'Ajuste: Tc = ({a:.1f}) + ({b:.1f}) x'
+)
+
+# muestra 1
+plt.errorbar(
+    x1,
+    resTc1.beta[1],
+    xerr=sx1,
+    yerr=resTc1.sd_beta[1],
+    fmt='s',
+    markersize=8,
+    label='Serie 1'
+)
+
+# muestra 2
+plt.errorbar(
+    x2,
+    resTc2.beta[1],
+    xerr=sx2,
+    yerr=resTc2.sd_beta[1],
+    fmt='^',
+    markersize=8,
+    label='Serie 2'
+)
+
+plt.xlabel("Fracción de Mn")
+plt.ylabel(r"$T_c$ (°C)")
+plt.title("Estimación de composición a partir de $T_c$")
+plt.grid(True)
+plt.legend()
+
+plt.show()
 
 print("Serie 1")
 print(f"Mn = {x1:.5f} ± {sx1:.5f}")
