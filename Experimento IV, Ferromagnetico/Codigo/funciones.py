@@ -166,6 +166,72 @@ def graficarAjusteTc(
 # BLOCH FIJO
 # =============================================================================
 
+def graficarAjusteBlochFijo(
+    serie,
+    resultado,
+    nombre_serie,
+    ax=None
+):
+
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(8, 5))
+    else:
+        fig = ax.figure
+
+    A, Tc = resultado.beta
+    sA, sTc = resultado.sd_beta
+
+    T = serie["T"].values
+    Ch2 = serie["Ch2"].values
+
+    sx = 0.05 * T
+    sy = 0.05 * Ch2
+
+    Tcurva = np.linspace(T.min(), T.max(), 400)
+    ycurva = A * (1 - (Tcurva / Tc) ** (3/2))
+
+    eb = ax.errorbar(
+        T,
+        Ch2,
+        xerr=sx,
+        yerr=sy,
+        fmt="o",
+        ms=5,
+        color="0.25",
+        ecolor="0.25",
+        elinewidth=1,
+        capsize=3,
+        label="Puntos experimentales"
+    )
+
+    for barra in eb[2]:
+        barra.set_alpha(0.4)
+
+    for cap in eb[1]:
+        cap.set_alpha(0.4)
+
+    label = (
+        f"Ajuste {nombre_serie}\n"
+        rf"$T_c={Tc:.2f}\pm{sTc:.2f}$"
+        "\n"
+        rf"$n=1.5$ fijo"
+    )
+
+    ax.plot(
+        Tcurva,
+        ycurva,
+        lw=2.5,
+        color="#FF9101",
+        label=label
+    )
+
+    ax.set_xlabel(r"$T$ [°C]")
+    ax.set_ylabel(r"$M \propto V$ [mV]")
+
+    ax.grid(True, alpha=0.3)
+    ax.legend(fontsize=9)
+
+    return fig, ax
 def ajustarMagnetizacionBlochFijo(
     serie,
     beta0=(75.0, 150.0)
@@ -191,62 +257,6 @@ def ajustarMagnetizacionBlochFijo(
     )
 
     return resultado
-
-
-def graficarAjusteBlochFijo(
-    serie,
-    resultado,
-    titulo,
-    mostrar=False
-):
-
-    A, Tc = resultado.beta
-    sA, sTc = resultado.sd_beta
-
-    T = serie["T"].values
-    Ch2 = serie["Ch2"].values
-
-    sx = 0.05 * T
-    sy = 0.05 * Ch2
-
-    Tcurva = np.linspace(T.min(), T.max(), 400)
-
-    ycurva = A * (1 - (Tcurva / Tc) ** (3 / 2))
-
-    fig, ax = plt.subplots(figsize=(8, 5))
-
-    ax.errorbar(
-        T,
-        Ch2,
-        xerr=sx,
-        yerr=sy,
-        fmt="o",
-        capsize=3,
-    )
-
-    label = (
-        rf"$A={A:.2f}\pm{sA:.2f}$"
-        "\n"
-        rf"$T_c={Tc:.2f}\pm{sTc:.2f}$"
-        "\n"
-        rf"$n=1.5$ fijo"
-    )
-
-    ax.plot(Tcurva, ycurva, lw=2, label=label)
-
-    ax.set_xlabel("T [°C]")
-    ax.set_ylabel("Ch2 [mV]")
-
-    ax.legend()
-    ax.grid(True)
-
-    fig.suptitle(titulo)
-
-    if mostrar:
-        plt.show()
-
-    return fig
-
 
 # =============================================================================
 # BLOCH LIBRE
@@ -514,8 +524,8 @@ def graficar_histeresis(*resultados):
             label=f'{res["temperatura"]} °C'
         )
 
-    plt.xlabel("CH1 (∝ H)")
-    plt.ylabel("CH2 (∝ M)")
+    plt.xlabel("$H \propto V [mV]$")
+    plt.ylabel("$M \propto V [mV]$")
     plt.title("Ciclos de histéresis promediados")
     plt.grid(True)
     plt.legend()

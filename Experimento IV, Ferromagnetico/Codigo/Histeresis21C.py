@@ -42,28 +42,28 @@ res141 = analizar_histeresis(
     frecuencia= 699.998
 )
 
-for r in [res21,res61,res81,res101,res121,res141]:
+# for r in [res21,res61,res81,res101,res121,res141]:
 
-    Hc, Hfit, Mfit = extraer_coercividad(
-        r["ch1_prom"],
-        r["ch2_prom"]
-    )
-    Hc21 = graficar_coercividad(
-    r["ch1_prom"],
-    r["ch2_prom"]
-)
-    print(r["temperatura"], Hc)
-
-
-print(Hc21)
-# graficar_histeresis(
-#     res21,
-#     res61,
-#     res81,
-#     res101,
-#     res121,
-#     res141
+#     Hc, Hfit, Mfit = extraer_coercividad(
+#         r["ch1_prom"],
+#         r["ch2_prom"]
+#     )
+#     Hc21 = graficar_coercividad(
+#     r["ch1_prom"],
+#     r["ch2_prom"]
 # )
+#     print(r["temperatura"], Hc)
+
+
+# print(Hc21)
+graficar_histeresis(
+    res21,
+    res61,
+    res81,
+    res101,
+    res121,
+    res141
+)
 
 # graficar_histeresis_error(
 #     res21,

@@ -129,58 +129,168 @@ x2, sx2 = composicion_mn(
 )
 
 # =============================================================================
+# COMPOSICION Mn/Zn A PARTIR DE Tc
+# =============================================================================
+
+def composicion_mn(tc, stc, a, sa, b, sb):
+
+    x = (tc - a) / b
+
+    sx = np.sqrt(
+        (stc / b)**2 +
+        (sa  / b)**2 +
+        (x * sb / b)**2
+    )
+
+    return x, sx
+
+
+print("\n===== COMPOSICION ESTIMADA =====\n")
+
+x1, sx1 = composicion_mn(
+    resTc1.beta[1],
+    resTc1.sd_beta[1],
+    a, sa,
+    b, sb
+)
+
+x2, sx2 = composicion_mn(
+    resTc2.beta[1],
+    resTc2.sd_beta[1],
+    a, sa,
+    b, sb
+)
+
+# =============================================================================
+# COMPOSICION Mn/Zn A PARTIR DE Tc
+# =============================================================================
+
+from matplotlib.lines import Line2D
+
+def composicion_mn(tc, stc, a, sa, b, sb):
+
+    x = (tc - a) / b
+
+    sx = np.sqrt(
+        (stc / b)**2 +
+        (sa  / b)**2 +
+        (x * sb / b)**2
+    )
+
+    return x, sx
+
+
+print("\n===== COMPOSICION ESTIMADA =====\n")
+
+x1, sx1 = composicion_mn(
+    resTc1.beta[1],
+    resTc1.sd_beta[1],
+    a, sa,
+    b, sb
+)
+
+x2, sx2 = composicion_mn(
+    resTc2.beta[1],
+    resTc2.sd_beta[1],
+    a, sa,
+    b, sb
+)
+
+# =============================================================================
 # GRAFICO CALIBRACION Tc vs COMPOSICION
 # =============================================================================
 
 x_recta = np.linspace(-0.1, 1.1, 200)
 y_recta = a + b * x_recta
 
-plt.figure(figsize=(8,6))
+fig, ax = plt.subplots(figsize=(8, 6))
 
-# puntos usados para la calibración
-plt.errorbar(
-    x, y,
+# Datos de calibración
+eb = ax.errorbar(
+    x,
+    y,
     yerr=sy,
     fmt='o',
+    ms=6,
+    color='0.25',
+    ecolor='0.25',
+    capsize=3,
     label='Datos de calibración'
 )
 
-# recta ajustada
-plt.plot(
+# Barras de error más transparentes
+for barra in eb[2]:
+    barra.set_alpha(0.4)
+
+for cap in eb[1]:
+    cap.set_alpha(0.4)
+
+# Recta de calibración
+ax.plot(
     x_recta,
     y_recta,
-    label=f'Ajuste: Tc = ({a:.1f}) + ({b:.1f}) x'
+    lw=2.5,
+    color='#355C7D',
+    label=r'$T_c(x)=45+255x$'
 )
 
-# muestra 1
-plt.errorbar(
+# Temperatura de Curie - Serie 1
+ax.errorbar(
     x1,
     resTc1.beta[1],
     xerr=sx1,
     yerr=resTc1.sd_beta[1],
     fmt='s',
-    markersize=8,
-    label='Serie 1'
+    ms=8,
+    color='#1f4e79',
+    ecolor='#1f4e79',
+    capsize=3,
+    label='Temperatura de Curie, serie 1'
 )
 
-# muestra 2
-plt.errorbar(
+# Temperatura de Curie - Serie 2
+ax.errorbar(
     x2,
     resTc2.beta[1],
     xerr=sx2,
     yerr=resTc2.sd_beta[1],
     fmt='^',
-    markersize=8,
-    label='Serie 2'
+    ms=8,
+    color='#4f81bd',
+    ecolor='#4f81bd',
+    capsize=3,
+    label='Temperatura de Curie, serie 2'
 )
 
-plt.xlabel("Fracción de Mn")
-plt.ylabel(r"$T_c$ (°C)")
-plt.title("Estimación de composición a partir de $T_c$")
-plt.grid(True)
-plt.legend()
+# Líneas de texto extra para la leyenda
+extra_labels = [
+    Line2D(
+        [], [],
+        linestyle='None',
+        label=rf'Porcentaje serie 1: Mn = {100*x1:.1f} ± {100*sx1:.1f}%'
+    ),
+    Line2D(
+        [], [],
+        linestyle='None',
+        label=rf'Porcentaje serie 2: Mn = {100*x2:.1f} ± {100*sx2:.1f}%'
+    )
+]
 
+handles, labels = ax.get_legend_handles_labels()
+handles.extend(extra_labels)
+
+ax.set_xlabel('Fracción de Mn')
+ax.set_ylabel(r'$T_c$ [°C]')
+
+ax.grid(True, alpha=0.3)
+ax.legend(handles=handles)
+
+plt.tight_layout()
 plt.show()
+
+# =============================================================================
+# RESULTADOS
+# =============================================================================
 
 print("Serie 1")
 print(f"Mn = {x1:.5f} ± {sx1:.5f}")
