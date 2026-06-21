@@ -109,7 +109,7 @@ def graficarAjusteTc(
 
     A, Tc, beta = resultado.beta
     sA, sTc, sBeta = resultado.sd_beta
-
+    chi2_red = resultado.res_var
     T = serie["T"].values
     Ch2 = serie["Ch2"].values
 
@@ -144,6 +144,8 @@ def graficarAjusteTc(
         rf"$T_c={Tc:.2f}\pm{sTc:.2f}$"
         "\n"
         rf"$\beta={beta:.4f}\pm{sBeta:.4f}$"
+        "\n"
+        rf"$\chi^2_\nu={chi2_red:.3f}$"
     )
 
     ax.plot(
@@ -181,6 +183,8 @@ def graficarAjusteBlochFijo(
     A, Tc = resultado.beta
     sA, sTc = resultado.sd_beta
 
+    chi2_red = resultado.res_var
+
     T = serie["T"].values
     Ch2 = serie["Ch2"].values
 
@@ -215,6 +219,8 @@ def graficarAjusteBlochFijo(
         rf"$T_c={Tc:.2f}\pm{sTc:.2f}$"
         "\n"
         rf"$n=1.5$ fijo"
+        "\n"
+        rf"$\chi^2_\nu={chi2_red:.3f}$"
     )
 
     ax.plot(
@@ -526,7 +532,7 @@ def graficar_histeresis(*resultados):
 
     plt.xlabel("$H \propto V [mV]$")
     plt.ylabel("$M \propto V [mV]$")
-    plt.title("Ciclos de histéresis promediados")
+    
     plt.grid(True)
     plt.legend()
 
@@ -551,7 +557,6 @@ def graficar_histeresis_error(*resultados):
 
     plt.xlabel("CH1 (∝ H)")
     plt.ylabel("CH2 (∝ M)")
-    plt.title("Ciclos de histéresis promediados")
     plt.grid(True)
     plt.legend()
 
