@@ -177,3 +177,19 @@ print(f"Mn = {x_heis:.5f} ± {sx_heis:.5f}")
 
 print("\nBloch")
 print(f"Mn = {x_bloch:.5f} ± {sx_bloch:.5f}")
+
+# ==========================================
+# RELACION Mn:Zn Y PROPAGACION DE ERRORES
+# ==========================================
+
+def relacion_mn_zn(x, sx):
+    R = x/(1 - x)
+    sR = sx/(1 - x)**2
+    return R, sR
+
+R_heis, sR_heis = relacion_mn_zn(x_heis, sx_heis)
+R_bloch, sR_bloch = relacion_mn_zn(x_bloch, sx_bloch)
+
+print("\nRelación Mn:Zn")
+print(f"Heisenberg = {R_heis:.3f} ± {sR_heis:.3f}")
+print(f"Bloch      = {R_bloch:.3f} ± {sR_bloch:.3f}")
