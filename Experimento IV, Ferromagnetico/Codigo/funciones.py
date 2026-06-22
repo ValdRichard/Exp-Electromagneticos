@@ -141,7 +141,7 @@ def graficarAjusteTc(
 
     label = (
         f"Ajuste {nombre_serie}\n"
-        rf"$T_c={Tc:.2f}\pm{sTc:.2f}$"
+        rf"$T_c={Tc:.2f}\pm{sTc:.2f}$ °C"
         "\n"
         rf"$\beta={beta:.4f}\pm{sBeta:.4f}$"
         "\n"
@@ -156,9 +156,9 @@ def graficarAjusteTc(
         label=label
     )
 
-    ax.set_xlabel(r"$T$ [°C]")
-    ax.set_ylabel(r"$M \propto V$ [mV]")
-
+    ax.set_xlabel(r"$T$ [°C]", fontsize=13)
+    ax.set_ylabel(r"$M \propto V$ [mV]", fontsize=13)
+    ax.tick_params(axis='both', which='major', labelsize=12)
     ax.grid(True, alpha=0.3)
     ax.legend(fontsize=9)
 
@@ -216,9 +216,7 @@ def graficarAjusteBlochFijo(
 
     label = (
         f"Ajuste {nombre_serie}\n"
-        rf"$T_c={Tc:.2f}\pm{sTc:.2f}$"
-        "\n"
-        rf"$n=1.5$ fijo"
+        rf"$T_c={Tc:.2f}\pm{sTc:.2f}$ °C"
         "\n"
         rf"$\chi^2_\nu={chi2_red:.3f}$"
     )
@@ -231,9 +229,9 @@ def graficarAjusteBlochFijo(
         label=label
     )
 
-    ax.set_xlabel(r"$T$ [°C]")
-    ax.set_ylabel(r"$M \propto V$ [mV]")
-
+    ax.set_xlabel(r"$T$ [°C]", fontsize=13)
+    ax.set_ylabel(r"$M \propto V$ [mV]", fontsize=13)
+    ax.tick_params(axis='both', which='major', labelsize=12)
     ax.grid(True, alpha=0.3)
     ax.legend(fontsize=9)
 
