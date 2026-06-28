@@ -435,13 +435,7 @@ def ajustar_cpe_df(
     return resultado, df_fit
 
 def graficar_bode_impedancia(df):
-    """
-    Grafica el Diagrama de Bode modificado: 
-    Eje Y izquierdo: Impedancia Z (Escala Logarítmica)
-    Eje Y derecho: Fase phi (Escala Lineal)
-    Eje X: Frecuencia angular omega (Escala Logarítmica)
-    Incluye barras de error para todas las variables.
-    """
+    
     # Creamos la figura y el primer eje (Izquierdo - Impedancia)
     fig, ax1 = plt.subplots(figsize=(10, 6))
     
@@ -454,7 +448,7 @@ def graficar_bode_impedancia(df):
     ax1.errorbar(
         df["w"], df["Z"], 
         xerr=df["err_w"], yerr=df["err_Z"], 
-        fmt='o', color=color_Z, edgecolor='black', markersize=5,
+        fmt='o', color=color_Z, markeredgecolor=None, markersize=5,
         capsize=3, elinewidth=1.2, label=r'$|Z|$'
     )
     ax1.tick_params(axis='y', labelcolor=color_Z)
@@ -472,7 +466,7 @@ def graficar_bode_impedancia(df):
     ax2.errorbar(
         df["w"], df["phi"], 
         xerr=df["err_w"], yerr=df["err_phi"], 
-        fmt='s', color=color_phi, edgecolor='black', markersize=5,
+        fmt='s', color=color_phi, markeredgecolor=None, markersize=5,
         capsize=3, elinewidth=1.2, label=r'$\phi$'
     )
     ax2.tick_params(axis='y', labelcolor=color_phi)
@@ -481,6 +475,7 @@ def graficar_bode_impedancia(df):
     # --- DETALLES FINALES ---
     plt.title('Diagrama de Bode: Impedancia y Fase en función de $\omega$', fontsize=14, pad=15)
     fig.tight_layout() # Evita que se solapen las etiquetas de los ejes
+    ax1.set_xlim(50, 100000)
     
     # Mostramos el gráfico
     plt.show()

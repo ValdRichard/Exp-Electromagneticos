@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from funciones import asignar_errores, graficar_datos, ajustar_cpe_df
+from funciones import asignar_errores, graficar_datos, ajustar_cpe_df, graficar_bode_impedancia
 
 # =========================================================================
 # DATOS
@@ -56,7 +56,8 @@ df = pd.DataFrame({
     "f": f,
     "Ve": Ve,
     "Vs": Vs,
-    "dt": dt
+    "dt": dt,
+    "err_dt": err_dt
 })
 
 
@@ -171,3 +172,5 @@ resultado_cpe, df_cpe = ajustar_cpe_df(
     anotar=True,
     mostrar_todos=True
 )
+
+graficar_bode_impedancia(df)
