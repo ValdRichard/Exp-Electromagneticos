@@ -5,7 +5,7 @@ from funciones import asignar_errores
 # =========================================================================
 # DATOS
 # =========================================================================
-
+R = 62
 f = np.array([10, 24.94, 74.85, 100, 200, 500, 750.8, 1002, 2503, 5003,
               7496, 9980, 17.01, 35.09, 59.95, 82.92, 90.09, 133,
               175.7, 133, 90.09, 133.2, 3003, 4000, 6017, 8013,
@@ -75,10 +75,6 @@ configs = {
 # =========================================================================
 # ASIGNACIÓN DE ERRORES
 # =========================================================================
-
-df = asignar_errores(df, configs)
-
-
 # # =========================================================================
 # # SI QUERÉS VOLVER A ARRAYS DE NUMPY
 # # =========================================================================
@@ -88,23 +84,18 @@ df = asignar_errores(df, configs)
 # errVs = df["err_Vs"].to_numpy()
 
 
-# =========================================================================
-# VISTA PREVIA DE CONTROL
-# =========================================================================
+df = asignar_errores(df, configs)
 
-print(
-    f"{'fecha':>8} | {'f [Hz]':>10} | {'err_f':>8} | "
-    f"{'Ve [V]':>8} | {'err_Ve':>8} | {'Vs [V]':>8} | {'err_Vs':>8}"
-)
-print("-" * 82)
+df["w"] = 2*np.pi*df["f"]
+df["H"] = df["Vs"] / df["Ve"]
+df["Z"] = (df["Ve"] / df["Vs"]) * R
+df["phi"] = df["w"] * df["dt"]
+df["ReZ"] = df["Z"] * np.cos(df["phi"])
+df["ImZ"] = df["Z"] * np.sin(df["phi"])
 
-for i in [0, 2, 4, 5, 7, 9, 11]:
-    print(
-        f"{df.loc[i, 'fecha']:>8} | "
-        f"{df.loc[i, 'f']:10.2f} | "
-        f"{df.loc[i, 'err_f']:8.2f} | "
-        f"{df.loc[i, 'Ve']:8.2f} | "
-        f"{df.loc[i, 'err_Ve']:8.3f} | "
-        f"{df.loc[i, 'Vs']:8.4f} | "
-        f"{df.loc[i, 'err_Vs']:8.3f}"
-    )
+df["err_w"] = 2*np.pi*df["err_f"]
+df["err_H"] = df["H"] * np.sqrt( (df["err_Ve"]/df["Ve"])**2 + (df["err_Vs"]/df["Vs"])**2)
+df["err_Z"] = df["Z"] * R * np.sqrt( (df["err_Ve"]/df["Ve"])**2 + (df["err_Vs"]/df["Vs"])**2)
+df["err_phi"] = df["phi"] * np.sqrt( (df["err_w"]/df["w"])**2 + (df["err_dt"]/df["dt"])**2 )
+df["err_ReZ"] = df["ReZ"] * np.sqrt( (df["err_Z"]/df["Z"])**2 + (np.tan(df["phi"])*df["err_phi"])**2 )
+df["err_ImZ"] = df["ImZ"] * np.sqrt( (df["err_Z"]/df["Z"])**2 + ((1/np.tan(df["phi"]))*df["err_phi"])**2 )

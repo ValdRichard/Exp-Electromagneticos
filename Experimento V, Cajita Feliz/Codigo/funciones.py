@@ -33,7 +33,7 @@ def asignar_errores(df, configs, col_fecha="fecha", col_f="f"):
         df.loc[mask_fecha, "err_f"] = rangos.map(dict(zip(labels, err_f))).astype(float)
         df.loc[mask_fecha, "err_Ve"] = rangos.map(dict(zip(labels, err_Ve))).astype(float)
         df.loc[mask_fecha, "err_Vs"] = rangos.map(dict(zip(labels, err_Vs))).astype(float)
-
+    df["idx_dia"] = df.index
     return df
 
 
