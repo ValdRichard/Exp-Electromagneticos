@@ -433,3 +433,54 @@ def ajustar_cpe_df(
     print(df_fit[[col_fecha, col_idx, col_re, col_im, col_sre, col_sim]])
 
     return resultado, df_fit
+
+def graficar_bode_impedancia(df):
+    """
+    Grafica el Diagrama de Bode modificado: 
+    Eje Y izquierdo: Impedancia Z (Escala Logarítmica)
+    Eje Y derecho: Fase phi (Escala Lineal)
+    Eje X: Frecuencia angular omega (Escala Logarítmica)
+    Incluye barras de error para todas las variables.
+    """
+    # Creamos la figura y el primer eje (Izquierdo - Impedancia)
+    fig, ax1 = plt.subplots(figsize=(10, 6))
+    
+    # --- GRÁFICO DE IMPEDANCIA (Z) ---
+    color_Z = 'tab:blue'
+    ax1.set_xlabel(r'$\omega$ [rad/s]', fontsize=12)
+    ax1.set_ylabel(r'Impedancia $|Z|$ [$\Omega$]', color=color_Z, fontsize=12)
+    
+    # errorbar grafica los puntos y sus incertezas al mismo tiempo
+    ax1.errorbar(
+        df["w"], df["Z"], 
+        xerr=df["err_w"], yerr=df["err_Z"], 
+        fmt='o', color=color_Z, edgecolor='black', markersize=5,
+        capsize=3, elinewidth=1.2, label=r'$|Z|$'
+    )
+    ax1.tick_params(axis='y', labelcolor=color_Z)
+    ax1.set_xscale('log')
+    ax1.set_yscale('log') # Impedancia en escala logarítmica
+    ax1.grid(True, which="both", ls="--", alpha=0.5)
+
+    # --- GRÁFICO DE FASE (phi) ---
+    # twinx() crea un segundo eje Y que comparte el mismo eje X logarítmico
+    ax2 = ax1.twinx()  
+    
+    color_phi = 'tab:red'
+    ax2.set_ylabel(r'Fase $\phi$ [rad]', color=color_phi, fontsize=12)
+    
+    ax2.errorbar(
+        df["w"], df["phi"], 
+        xerr=df["err_w"], yerr=df["err_phi"], 
+        fmt='s', color=color_phi, edgecolor='black', markersize=5,
+        capsize=3, elinewidth=1.2, label=r'$\phi$'
+    )
+    ax2.tick_params(axis='y', labelcolor=color_phi)
+    # La fase queda en escala lineal por defecto
+
+    # --- DETALLES FINALES ---
+    plt.title('Diagrama de Bode: Impedancia y Fase en función de $\omega$', fontsize=14, pad=15)
+    fig.tight_layout() # Evita que se solapen las etiquetas de los ejes
+    
+    # Mostramos el gráfico
+    plt.show()
