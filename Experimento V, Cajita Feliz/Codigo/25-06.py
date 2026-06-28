@@ -26,7 +26,8 @@ df = pd.DataFrame({
     "f": f,
     "Ve": Ve,
     "Vs": Vs,
-    "dt": dt
+    "dt": dt,
+    "err_dt": err_dt
 })
 
 
@@ -64,7 +65,7 @@ df["Z"] = (df["Ve"] / df["Vs"]) * R
 df["phi"] = -df["w"] * df["dt"]
 df["ReZ"] = df["Z"] * np.cos(df["phi"])
 df["ImZ"] = df["Z"] * np.sin(df["phi"])
-df["err_dt"] = 0.01 * df["dt"]
+
 
 df["err_w"] = 2*np.pi*df["err_f"]
 df["err_H"] = np.abs(df["H"]) * np.sqrt( (df["err_Ve"]/df["Ve"])**2 + (df["err_Vs"]/df["Vs"])**2)
