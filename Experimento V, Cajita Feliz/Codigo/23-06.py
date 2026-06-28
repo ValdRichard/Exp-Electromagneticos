@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from funciones import asignar_errores
+from funciones import asignar_errores, graficar_datos, ajustar_cpe_df
 
 # =========================================================================
 # DATOS
@@ -89,13 +89,82 @@ df = asignar_errores(df, configs)
 df["w"] = 2*np.pi*df["f"]
 df["H"] = df["Vs"] / df["Ve"]
 df["Z"] = (df["Ve"] / df["Vs"]) * R
-df["phi"] = df["w"] * df["dt"]
+df["phi"] = -df["w"] * df["dt"]
 df["ReZ"] = df["Z"] * np.cos(df["phi"])
 df["ImZ"] = df["Z"] * np.sin(df["phi"])
+df["err_dt"] = 0.01 * df["dt"]
 
 df["err_w"] = 2*np.pi*df["err_f"]
-df["err_H"] = df["H"] * np.sqrt( (df["err_Ve"]/df["Ve"])**2 + (df["err_Vs"]/df["Vs"])**2)
-df["err_Z"] = df["Z"] * R * np.sqrt( (df["err_Ve"]/df["Ve"])**2 + (df["err_Vs"]/df["Vs"])**2)
-df["err_phi"] = df["phi"] * np.sqrt( (df["err_w"]/df["w"])**2 + (df["err_dt"]/df["dt"])**2 )
-df["err_ReZ"] = df["ReZ"] * np.sqrt( (df["err_Z"]/df["Z"])**2 + (np.tan(df["phi"])*df["err_phi"])**2 )
-df["err_ImZ"] = df["ImZ"] * np.sqrt( (df["err_Z"]/df["Z"])**2 + ((1/np.tan(df["phi"]))*df["err_phi"])**2 )
+df["err_H"] = np.abs(df["H"]) * np.sqrt( (df["err_Ve"]/df["Ve"])**2 + (df["err_Vs"]/df["Vs"])**2)
+df["err_Z"] = np.abs(df["Z"]) * np.sqrt( (df["err_Ve"]/df["Ve"])**2 + (df["err_Vs"]/df["Vs"])**2)
+df["err_phi"] = np.abs(df["phi"]) * np.sqrt( (df["err_w"]/df["w"])**2 + (df["err_dt"]/df["dt"])**2 )
+df["err_ReZ"] = np.sqrt( (np.cos(df["phi"]) * df["err_Z"])**2 + (df["Z"] * np.sin(df["phi"]) * df["err_phi"])**2 )
+df["err_ImZ"] = np.sqrt( (np.sin(df["phi"]) * df["err_Z"])**2 + (df["Z"] * np.cos(df["phi"]) * df["err_phi"])**2 )
+
+# graficar_datos(
+#     df,
+#     x="f",
+#     y="H",
+#     xerr="err_f",
+#     yerr="err_H",
+#     xlabel="f [Hz]",
+#     ylabel="H = Vs/Ve",
+#     titulo="Transferencia H(f)",
+#     escala_x="log"
+# )
+df["-ImZ"] = -df["ImZ"]
+# Nyquist 
+graficar_datos(
+    df,
+    x="ReZ",
+    y="-ImZ",
+    xerr="err_ReZ",
+    yerr="err_ImZ",
+    xlabel="Re(Z) [$\Omega$]",
+    ylabel="Im(Z) [$\Omega$]",
+    titulo="Plano complejo de impedancia"
+)
+
+
+# w vs Z
+graficar_datos(
+    df,
+    x="w",
+    y="Z",
+    xerr="err_w",
+    yerr="err_Z",
+    xlabel="w [1/s]",
+    ylabel="Z [$\Omega$]",
+    titulo="Impedancia en función de la frecuencia",
+    escala_x="log",
+    escala_y="log"
+)
+
+
+# w vs fase 
+graficar_datos(
+    df,
+    x="w",
+    y="phi",
+    xerr="err_w",
+    yerr="err_phi",
+    xlabel="w [1/s]",
+    ylabel=r"$\phi$ [rad]",
+    titulo="Fase en función de la frecuencia",
+    escala_x="log"
+)
+
+resultado_cpe, df_cpe = ajustar_cpe_df(
+    df,
+    re_min=1000,
+    re_max=2500,
+    col_re="ReZ",
+    col_im="-ImZ",
+    col_sre="err_ReZ",
+    col_sim="err_ImZ",
+    con_ordenada=True,
+    n0=0.8,
+    b0=0.0,
+    anotar=True,
+    mostrar_todos=True
+)
