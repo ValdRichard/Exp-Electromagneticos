@@ -95,7 +95,8 @@ df["Z"] = (df["Ve"] / df["Vs"]) * R
 df["phi"] = -df["w"] * df["dt"]
 df["ReZ"] = df["Z"] * np.cos(df["phi"])
 df["ImZ"] = df["Z"] * np.sin(df["phi"])
-df["err_dt"] = 0.01 * df["dt"]
+df["ReH"] = df["H"] * np.cos(df["phi"])
+df["ImH"] = df["H"] * np.sin(df["phi"])
 
 df["err_w"] = 2*np.pi*df["err_f"]
 df["err_H"] = np.abs(df["H"]) * np.sqrt( (df["err_Ve"]/df["Ve"])**2 + (df["err_Vs"]/df["Vs"])**2)
@@ -103,6 +104,8 @@ df["err_Z"] = np.abs(df["Z"]) * np.sqrt( (df["err_Ve"]/df["Ve"])**2 + (df["err_V
 df["err_phi"] = np.abs(df["phi"]) * np.sqrt( (df["err_w"]/df["w"])**2 + (df["err_dt"]/df["dt"])**2 )
 df["err_ReZ"] = np.sqrt( (np.cos(df["phi"]) * df["err_Z"])**2 + (df["Z"] * np.sin(df["phi"]) * df["err_phi"])**2 )
 df["err_ImZ"] = np.sqrt( (np.sin(df["phi"]) * df["err_Z"])**2 + (df["Z"] * np.cos(df["phi"]) * df["err_phi"])**2 )
+df["err_ReH"] = np.sqrt( (np.cos(df["phi"]) * df["err_H"])**2 + (df["H"] * np.sin(df["phi"]) * df["err_phi"])**2 )
+df["err_ImH"] = np.sqrt( (np.sin(df["phi"]) * df["err_H"])**2 + (df["H"] * np.cos(df["phi"]) * df["err_phi"])**2 )
 
 # graficar_datos(
 #     df,
@@ -174,3 +177,14 @@ resultado_cpe, df_cpe = ajustar_cpe_df(
 )
 
 graficar_bode_impedancia(df)
+
+# graficar_datos(
+#     df,
+#     x="ReH",
+#     y="-ImH",
+#     xerr="err_ReH",
+#     yerr="err_ImH",
+#     xlabel="Re(H) [$\Omega$]",
+#     ylabel="-Im(H) [$\Omega$]",
+#     titulo="Plano complejo de H",
+# )
