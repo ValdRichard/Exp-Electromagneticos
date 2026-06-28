@@ -3,6 +3,42 @@ from scipy.odr import ODR, RealData, Model
 import matplotlib.pyplot as plt
 import pandas as pd
 
+def filtrar_puntos(
+    df,
+    ignorar=None,
+    col_fecha="fecha",
+    col_idx="idx_dia"
+):
+    df = df.copy()
+
+    if ignorar is None:
+        return df
+
+    if len(ignorar) == 0:
+        return df
+
+    # Caso varios días:
+    # ignorar = [("23/06", 4), ("25/06", 7)]
+    if isinstance(ignorar[0], tuple):
+        mask = pd.Series(True, index=df.index)
+
+        for fecha, idx in ignorar:
+            mask &= ~(
+                (df[col_fecha] == fecha) &
+                (df[col_idx] == idx)
+            )
+
+        return df.loc[mask].copy()
+
+    # Caso un solo día:
+    # ignorar = [4, 7, 12]
+    return df.loc[~df[col_idx].isin(ignorar)].copy()
+
+
+# =========================================================================
+# ASIGNAR ERRORES
+# =========================================================================
+
 def asignar_errores(df, configs, col_fecha="fecha", col_f="f"):
     df = df.copy()
 
@@ -19,8 +55,6 @@ def asignar_errores(df, configs, col_fecha="fecha", col_f="f"):
         err_Ve_rel = cfg["err_Ve"]
         err_Vs_rel = cfg["err_Vs"]
 
-        # Bins tipo:
-        # [0, lim1], (lim1, lim2], ..., (lim6, infinito)
         bins = [0] + limites + [np.inf]
         labels = range(len(bins) - 1)
 
@@ -32,12 +66,10 @@ def asignar_errores(df, configs, col_fecha="fecha", col_f="f"):
             right=True
         )
 
-        # Primero asigno el porcentaje correspondiente a cada fila
         porcentaje_f = rangos.map(dict(zip(labels, err_f_rel))).astype(float)
         porcentaje_Ve = rangos.map(dict(zip(labels, err_Ve_rel))).astype(float)
         porcentaje_Vs = rangos.map(dict(zip(labels, err_Vs_rel))).astype(float)
 
-        # Después convierto a error absoluto multiplicando por el valor medido
         df.loc[mask_fecha, "err_f"] = porcentaje_f * df.loc[mask_fecha, "f"]
         df.loc[mask_fecha, "err_Ve"] = porcentaje_Ve * df.loc[mask_fecha, "Ve"]
         df.loc[mask_fecha, "err_Vs"] = porcentaje_Vs * df.loc[mask_fecha, "Vs"]
@@ -45,6 +77,11 @@ def asignar_errores(df, configs, col_fecha="fecha", col_f="f"):
     df["idx_dia"] = df.groupby(col_fecha).cumcount()
 
     return df
+
+
+# =========================================================================
+# GRAFICAR DATOS
+# =========================================================================
 
 def graficar_datos(
     df,
@@ -62,12 +99,18 @@ def graficar_datos(
     titulo=None,
     figsize=(8, 5),
     capsize=3,
-    ms=5
+    ms=5,
+    ignorar=None
 ):
+    df = filtrar_puntos(
+        df,
+        ignorar=ignorar,
+        col_fecha=col_fecha,
+        col_idx=col_idx
+    )
+
     fig, ax = plt.subplots(figsize=figsize)
 
-    # Grafica separando por fecha.
-    # Cada fecha queda con un color distinto automáticamente.
     for fecha, grupo in df.groupby(col_fecha):
 
         ax.errorbar(
@@ -81,7 +124,6 @@ def graficar_datos(
             linestyle="none"
         )
 
-        # Anota cada punto como fecha:idx_dia
         if anotar:
             for _, fila in grupo.iterrows():
                 etiqueta = f"{int(fila[col_idx])}"
@@ -114,20 +156,16 @@ def graficar_datos(
     return fig, ax
 
 
+# =========================================================================
+# MODELOS CPE
+# =========================================================================
+
 def modelo_cpe(beta, re_z):
-    """
-    Modelo CPE sin ordenada:
-        Im(Z) = - Re(Z) tan(n pi/2)
-    """
     n = beta[0]
     return re_z * np.tan(np.pi*n/2)
 
 
 def modelo_cpe_ordenada(beta, re_z):
-    """
-    Modelo CPE con ordenada:
-        Im(Z) = - Re(Z) tan(n pi/2) + b
-    """
     n, b = beta
     return re_z * np.tan(np.pi*n/2) + b
 
@@ -212,6 +250,11 @@ def ajustar_n_cpe_ordenada(
 
     return odr.run()
 
+
+# =========================================================================
+# AJUSTE CPE DESDE DATAFRAME
+# =========================================================================
+
 def ajustar_cpe_df(
     df,
     re_min=1000,
@@ -227,23 +270,17 @@ def ajustar_cpe_df(
     b0=0.0,
     anotar=True,
     mostrar_todos=True,
+    ignorar=None,
     ax=None
 ):
-    """
-    Filtra un DataFrame en un rango de ReZ y ajusta un modelo CPE.
+    df_original = df.copy()
 
-    Modelo sin ordenada:
-        ImZ = -ReZ tan(n pi/2)
-
-    Modelo con ordenada:
-        ImZ = -ReZ tan(n pi/2) + b
-    """
-
-    df = df.copy()
-
-    # ============================================================
-    # FILTRO POR RANGO DE ReZ
-    # ============================================================
+    df = filtrar_puntos(
+        df,
+        ignorar=ignorar,
+        col_fecha=col_fecha,
+        col_idx=col_idx
+    )
 
     mask_rango = (
         (df[col_re] >= re_min) &
@@ -252,7 +289,6 @@ def ajustar_cpe_df(
 
     df_fit = df.loc[mask_rango].copy()
 
-    # Me quedo solo con valores finitos
     columnas = [col_re, col_im, col_sre, col_sim]
 
     mask_finitos = np.ones(len(df_fit), dtype=bool)
@@ -260,7 +296,6 @@ def ajustar_cpe_df(
     for col in columnas:
         mask_finitos &= np.isfinite(df_fit[col].to_numpy())
 
-    # Además los errores deben ser positivos
     mask_finitos &= df_fit[col_sre].to_numpy() > 0
     mask_finitos &= df_fit[col_sim].to_numpy() > 0
 
@@ -269,18 +304,10 @@ def ajustar_cpe_df(
     if len(df_fit) < 2:
         raise ValueError("Hay menos de 2 puntos en el rango elegido. No se puede ajustar.")
 
-    # ============================================================
-    # ARRAYS PARA EL AJUSTE
-    # ============================================================
-
     re_z = df_fit[col_re].to_numpy()
     im_z = df_fit[col_im].to_numpy()
     sre_z = df_fit[col_sre].to_numpy()
     sim_z = df_fit[col_sim].to_numpy()
-
-    # ============================================================
-    # AJUSTE
-    # ============================================================
 
     if con_ordenada:
         resultado = ajustar_n_cpe_ordenada(
@@ -309,31 +336,25 @@ def ajustar_cpe_df(
         b = 0.0
         sb = 0.0
 
-    # ============================================================
-    # GRÁFICO
-    # ============================================================
-
     if ax is None:
         fig, ax = plt.subplots(figsize=(7, 6))
     else:
         fig = ax.figure
 
-    # Graficar todos los datos de fondo, si querés
     if mostrar_todos:
         ax.errorbar(
-            df[col_re],
-            df[col_im],
-            xerr=df[col_sre],
-            yerr=df[col_sim],
+            df_original[col_re],
+            df_original[col_im],
+            xerr=df_original[col_sre],
+            yerr=df_original[col_sim],
             fmt="o",
             ms=4,
             capsize=2,
-            alpha=0.25,
+            alpha=0.20,
             linestyle="none",
             label="Todos los datos"
         )
 
-    # Graficar los datos usados en el ajuste
     ax.errorbar(
         re_z,
         im_z,
@@ -346,7 +367,6 @@ def ajustar_cpe_df(
         label=rf"Datos ajustados: {re_min} $\leq$ ReZ $\leq$ {re_max}"
     )
 
-    # Anotar índices del día
     if anotar:
         for _, fila in df_fit.iterrows():
             etiqueta = f"{int(fila[col_idx])}"
@@ -359,7 +379,6 @@ def ajustar_cpe_df(
                 fontsize=8
             )
 
-    # Curva ajustada
     xfit = np.linspace(np.min(re_z), np.max(re_z), 500)
 
     if con_ordenada:
@@ -397,10 +416,6 @@ def ajustar_cpe_df(
     plt.tight_layout()
     plt.show()
 
-    # ============================================================
-    # IMPRESIÓN DE RESULTADOS
-    # ============================================================
-
     print("===================================")
     print("Ajuste CPE")
     print("===================================")
@@ -418,4 +433,3 @@ def ajustar_cpe_df(
     print(df_fit[[col_fecha, col_idx, col_re, col_im, col_sre, col_sim]])
 
     return resultado, df_fit
-

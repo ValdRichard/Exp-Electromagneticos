@@ -122,7 +122,8 @@ graficar_datos(
     yerr="err_ImZ",
     xlabel="Re(Z) [$\Omega$]",
     ylabel="Im(Z) [$\Omega$]",
-    titulo="Plano complejo de impedancia"
+    titulo="Plano complejo de impedancia",
+     ignorar=[19]
 )
 
 
