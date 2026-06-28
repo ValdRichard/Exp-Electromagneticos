@@ -3,6 +3,39 @@ from scipy.odr import ODR, RealData, Model
 import matplotlib.pyplot as plt
 import pandas as pd
 
+def asignar_errores(df, configs, col_fecha="fecha", col_f="f"):
+    df = df.copy()
+
+    df["err_f"] = np.nan
+    df["err_Ve"] = np.nan
+    df["err_Vs"] = np.nan
+
+    for fecha, cfg in configs.items():
+        mask_fecha = df[col_fecha] == fecha
+
+        limites = cfg["limites"]
+        err_f = cfg["err_f"]
+        err_Ve = cfg["err_Ve"]
+        err_Vs = cfg["err_Vs"]
+
+        # Armo bins tipo: [0, lim1], (lim1, lim2], ..., (lim6, inf)
+        bins = [0] + limites + [np.inf]
+        labels = range(len(bins) - 1)
+
+        rangos = pd.cut(
+            df.loc[mask_fecha, col_f],
+            bins=bins,
+            labels=labels,
+            include_lowest=True,
+            right=True
+        )
+
+        df.loc[mask_fecha, "err_f"] = rangos.map(dict(zip(labels, err_f))).astype(float)
+        df.loc[mask_fecha, "err_Ve"] = rangos.map(dict(zip(labels, err_Ve))).astype(float)
+        df.loc[mask_fecha, "err_Vs"] = rangos.map(dict(zip(labels, err_Vs))).astype(float)
+
+    return df
+
 
 def cargar_impedancia_csv(
     archivo,
