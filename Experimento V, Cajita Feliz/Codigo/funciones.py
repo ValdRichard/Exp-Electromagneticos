@@ -3,6 +3,56 @@ from scipy.odr import ODR, RealData, Model
 import matplotlib.pyplot as plt
 import pandas as pd
 
+def armar_df_medicion(fecha, f, Ve, Vs, dt, err_dt, R, configs):
+    df = pd.DataFrame({
+        "fecha": fecha,
+        "f": f,
+        "Ve": Ve,
+        "Vs": Vs,
+        "dt": dt,
+        "err_dt": err_dt
+    })
+
+    df = asignar_errores(df, configs)
+
+    df["w"] = 2*np.pi*df["f"]
+    df["H"] = df["Vs"] / df["Ve"]
+    df["Z"] = (df["Ve"] / df["Vs"]) * R
+    df["phi"] = -df["w"] * df["dt"]
+
+    df["ReZ"] = df["Z"] * np.cos(df["phi"])
+    df["ImZ"] = df["Z"] * np.sin(df["phi"])
+    df["-ImZ"] = -df["ImZ"]
+
+    df["err_w"] = 2*np.pi*df["err_f"]
+
+    df["err_H"] = np.abs(df["H"]) * np.sqrt(
+        (df["err_Ve"]/df["Ve"])**2 +
+        (df["err_Vs"]/df["Vs"])**2
+    )
+
+    df["err_Z"] = np.abs(df["Z"]) * np.sqrt(
+        (df["err_Ve"]/df["Ve"])**2 +
+        (df["err_Vs"]/df["Vs"])**2
+    )
+
+    df["err_phi"] = np.abs(df["phi"]) * np.sqrt(
+        (df["err_w"]/df["w"])**2 +
+        (df["err_dt"]/df["dt"])**2
+    )
+
+    df["err_ReZ"] = np.sqrt(
+        (np.cos(df["phi"]) * df["err_Z"])**2 +
+        (df["Z"] * np.sin(df["phi"]) * df["err_phi"])**2
+    )
+
+    df["err_ImZ"] = np.sqrt(
+        (np.sin(df["phi"]) * df["err_Z"])**2 +
+        (df["Z"] * np.cos(df["phi"]) * df["err_phi"])**2
+    )
+
+    return df
+
 def filtrar_puntos(
     df,
     ignorar=None,
