@@ -139,6 +139,7 @@ df = pd.concat(
 # )
 df["-ImZ"] = -df["ImZ"]
 # Nyquist 
+# ignorar=[("25/06", 4)]
 graficar_datos(
     df,
     x="ReZ",
