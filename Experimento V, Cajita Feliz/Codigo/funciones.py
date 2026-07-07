@@ -1456,3 +1456,686 @@ def impedancia_modelo_R_RpCp_CPE_Cs(w, Rs, Rp, Cp, Q, n, Cs):
     Z_total = Z_Rs + Z_RpCp + Z_CPE + Z_Cs
 
     return Z_total
+
+def ajustar_modelo_R_RpCp_CPE_Cs_ReIm(
+    df,
+    w_min,
+    w_max,
+    col_w="w",
+    col_re="ReZ",
+    col_im="ImZ",
+    col_sre="err_ReZ",
+    col_sim="err_ImZ",
+    col_fecha="fecha",
+    col_idx="idx_dia",
+    ignorar=None,
+    p0=None,
+    n_fijo=None,
+    graficar=True,
+    separar_por_fecha=True,
+    anotar=True
+):
+    """
+    Ajusta el modelo:
+
+        Rs -- (Rp || Cp) -- CPE -- Cs
+
+    usando simultáneamente ReZ e ImZ.
+
+    El ajuste minimiza:
+
+        (ReZ_modelo - ReZ_exp)/err_ReZ
+        (ImZ_modelo - ImZ_exp)/err_ImZ
+
+    en el rango:
+
+        w_min <= omega <= w_max
+
+    IMPORTANTE:
+    - El ajuste se hace con ImZ.
+    - El gráfico se muestra como ReZ vs -ImZ para verlo estilo Nyquist.
+    """
+
+    # ---------------------------------------------------------------------
+    # 1) Filtrado por puntos ignorados
+    # ---------------------------------------------------------------------
+    df = filtrar_puntos(
+        df,
+        ignorar=ignorar,
+        col_fecha=col_fecha,
+        col_idx=col_idx
+    )
+
+    # ---------------------------------------------------------------------
+    # 2) Filtrado por omega
+    # ---------------------------------------------------------------------
+    mask_rango = (
+        (df[col_w] >= w_min) &
+        (df[col_w] <= w_max)
+    )
+
+    df_fit = df.loc[mask_rango].copy()
+
+    # ---------------------------------------------------------------------
+    # 3) Sacar NaN, inf y errores nulos
+    # ---------------------------------------------------------------------
+    columnas = [col_w, col_re, col_im, col_sre, col_sim]
+
+    mask_finitos = np.ones(len(df_fit), dtype=bool)
+
+    for col in columnas:
+        mask_finitos &= np.isfinite(df_fit[col].to_numpy())
+
+    mask_finitos &= df_fit[col_sre].to_numpy() > 0
+    mask_finitos &= df_fit[col_sim].to_numpy() > 0
+
+    df_fit = df_fit.loc[mask_finitos].copy()
+
+    if len(df_fit) < 5:
+        raise ValueError("Hay pocos puntos para ajustar este modelo.")
+
+    # ---------------------------------------------------------------------
+    # 4) Arrays experimentales
+    # ---------------------------------------------------------------------
+    w = df_fit[col_w].to_numpy()
+
+    ReZ_exp = df_fit[col_re].to_numpy()
+    ImZ_exp = df_fit[col_im].to_numpy()
+
+    err_ReZ = df_fit[col_sre].to_numpy()
+    err_ImZ = df_fit[col_sim].to_numpy()
+
+    # ---------------------------------------------------------------------
+    # 5) Valores iniciales automáticos
+    # ---------------------------------------------------------------------
+    w_med = np.exp(np.mean(np.log(w)))
+
+    Z_abs = np.sqrt(ReZ_exp**2 + ImZ_exp**2)
+    Z_med = np.median(Z_abs)
+
+    Rs0 = max(1e-9, np.min(ReZ_exp))
+    Rp0 = max(1e-9, np.max(ReZ_exp) - Rs0)
+
+    if Rp0 <= 0:
+        Rp0 = max(1.0, Z_med)
+
+    Cp0 = 1 / (w_med * Rp0)
+
+    if n_fijo is None:
+        n0 = 0.8
+    else:
+        n0 = n_fijo
+
+    Q0 = 1 / (Z_med * w_med**n0)
+    Cs0 = 1 / (w_med * Z_med)
+
+    params0 = {
+        "Rs": Rs0,
+        "Rp": Rp0,
+        "Cp": Cp0,
+        "Q": Q0,
+        "n": n0,
+        "Cs": Cs0
+    }
+
+    if p0 is not None:
+        params0.update(p0)
+
+    if n_fijo is not None:
+        params0["n"] = n_fijo
+
+    # ---------------------------------------------------------------------
+    # 6) Parámetros libres
+    # ---------------------------------------------------------------------
+    parametros_positivos = ["Rs", "Rp", "Cp", "Q", "Cs"]
+    parametros_libres = ["Rs", "Rp", "Cp", "Q", "Cs"]
+
+    if n_fijo is None:
+        parametros_libres.append("n")
+
+    def params_a_vector(params):
+        u = []
+
+        for nombre in parametros_libres:
+            if nombre in parametros_positivos:
+                u.append(np.log(params[nombre]))
+            else:
+                u.append(params[nombre])
+
+        return np.array(u, dtype=float)
+
+    def vector_a_params(u):
+        params = params0.copy()
+
+        for valor, nombre in zip(u, parametros_libres):
+            if nombre in parametros_positivos:
+                params[nombre] = np.exp(valor)
+            else:
+                params[nombre] = valor
+
+        if n_fijo is not None:
+            params["n"] = n_fijo
+
+        return params
+
+    u0 = params_a_vector(params0)
+
+    # ---------------------------------------------------------------------
+    # 7) Límites del ajuste
+    # ---------------------------------------------------------------------
+    lower = []
+    upper = []
+
+    for nombre in parametros_libres:
+
+        if nombre == "Rs":
+            lower.append(np.log(1e-12))
+            upper.append(np.log(1e12))
+
+        elif nombre == "Rp":
+            lower.append(np.log(1e-12))
+            upper.append(np.log(1e12))
+
+        elif nombre == "Cp":
+            lower.append(np.log(1e-15))
+            upper.append(np.log(1e1))
+
+        elif nombre == "Q":
+            lower.append(np.log(1e-15))
+            upper.append(np.log(1e1))
+
+        elif nombre == "Cs":
+            lower.append(np.log(1e-15))
+            upper.append(np.log(1e1))
+
+        elif nombre == "n":
+            lower.append(0.0)
+            upper.append(1.0)
+
+    lower = np.array(lower, dtype=float)
+    upper = np.array(upper, dtype=float)
+
+    # ---------------------------------------------------------------------
+    # 8) Residuales complejos: ReZ e ImZ
+    # ---------------------------------------------------------------------
+    def residuales(u):
+        params = vector_a_params(u)
+
+        Z_modelo = impedancia_modelo_R_RpCp_CPE_Cs(
+            w,
+            Rs=params["Rs"],
+            Rp=params["Rp"],
+            Cp=params["Cp"],
+            Q=params["Q"],
+            n=params["n"],
+            Cs=params["Cs"]
+        )
+
+        ReZ_modelo = np.real(Z_modelo)
+        ImZ_modelo = np.imag(Z_modelo)
+
+        r_re = (ReZ_modelo - ReZ_exp) / err_ReZ
+        r_im = (ImZ_modelo - ImZ_exp) / err_ImZ
+
+        return np.concatenate([r_re, r_im])
+
+    # ---------------------------------------------------------------------
+    # 9) Ajuste
+    # ---------------------------------------------------------------------
+    resultado = least_squares(
+        residuales,
+        u0,
+        bounds=(lower, upper),
+        x_scale="jac",
+        max_nfev=20000
+    )
+
+    params_fit = vector_a_params(resultado.x)
+
+    residuos = residuales(resultado.x)
+
+    chi2 = np.sum(residuos**2)
+    dof = len(residuos) - len(resultado.x)
+    chi2_red = chi2 / dof if dof > 0 else np.nan
+
+    # ---------------------------------------------------------------------
+    # 10) Errores aproximados
+    # ---------------------------------------------------------------------
+    errores = {}
+
+    try:
+        J = resultado.jac
+        cov_u = np.linalg.pinv(J.T @ J) * chi2_red
+        err_u = np.sqrt(np.diag(cov_u))
+
+        for nombre, err_nombre_u in zip(parametros_libres, err_u):
+            if nombre in parametros_positivos:
+                errores[nombre] = params_fit[nombre] * err_nombre_u
+            else:
+                errores[nombre] = err_nombre_u
+
+    except Exception:
+        for nombre in parametros_libres:
+            errores[nombre] = np.nan
+
+    if n_fijo is not None:
+        errores["n"] = 0.0
+
+    # ---------------------------------------------------------------------
+    # 11) Gráfico del ajuste
+    # ---------------------------------------------------------------------
+    if graficar:
+        w_curva = np.logspace(np.log10(np.min(w)), np.log10(np.max(w)), 800)
+
+        Z_curva = impedancia_modelo_R_RpCp_CPE_Cs(
+            w_curva,
+            Rs=params_fit["Rs"],
+            Rp=params_fit["Rp"],
+            Cp=params_fit["Cp"],
+            Q=params_fit["Q"],
+            n=params_fit["n"],
+            Cs=params_fit["Cs"]
+        )
+
+        Re_curva = np.real(Z_curva)
+        mIm_curva = -np.imag(Z_curva)
+
+        fig, ax = plt.subplots(figsize=(7, 6))
+
+        if separar_por_fecha:
+            for fecha, grupo in df_fit.groupby(col_fecha):
+                ax.errorbar(
+                    grupo[col_re],
+                    -grupo[col_im],
+                    xerr=grupo[col_sre],
+                    yerr=grupo[col_sim],
+                    fmt="o",
+                    ms=6,
+                    capsize=3,
+                    linestyle="none",
+                    label=f"Datos {fecha}"
+                )
+        else:
+            ax.errorbar(
+                df_fit[col_re],
+                -df_fit[col_im],
+                xerr=df_fit[col_sre],
+                yerr=df_fit[col_sim],
+                fmt="o",
+                ms=6,
+                capsize=3,
+                linestyle="none",
+                label="Datos ajustados"
+            )
+
+        ax.plot(
+            Re_curva,
+            mIm_curva,
+            "-",
+            label=(
+                "Modelo ajustado\n"
+                rf"$\chi^2_\nu = {chi2_red:.3f}$"
+            )
+        )
+
+        if anotar:
+            for _, fila in df_fit.iterrows():
+                ax.annotate(
+                    f"{int(fila[col_idx])}",
+                    (fila[col_re], -fila[col_im]),
+                    textcoords="offset points",
+                    xytext=(5, 5),
+                    fontsize=8
+                )
+
+        ax.set_xlabel(r"$\mathrm{Re}(Z)$ [$\Omega$]")
+        ax.set_ylabel(r"$-\mathrm{Im}(Z)$ [$\Omega$]")
+        ax.set_title(
+            rf"Ajuste modelo: ${w_min} \leq \omega \leq {w_max}$"
+        )
+        ax.grid(True, alpha=0.4)
+        ax.legend()
+
+        plt.tight_layout()
+        plt.show()
+
+    # ---------------------------------------------------------------------
+    # 12) Imprimir resultados
+    # ---------------------------------------------------------------------
+    print("===================================")
+    print("Ajuste modelo Rs + (Rp || Cp) + CPE + Cs")
+    print("===================================")
+    print(f"Rango usado: {w_min} <= omega <= {w_max}")
+    print(f"Número de puntos usados: {len(df_fit)}")
+    print(f"chi2_red = {chi2_red:.6f}")
+    print("-----------------------------------")
+
+    print(f"Rs = {params_fit['Rs']:.6e} ± {errores.get('Rs', np.nan):.6e} ohm")
+    print(f"Rp = {params_fit['Rp']:.6e} ± {errores.get('Rp', np.nan):.6e} ohm")
+    print(f"Cp = {params_fit['Cp']:.6e} ± {errores.get('Cp', np.nan):.6e} F")
+    print(f"Q  = {params_fit['Q']:.6e} ± {errores.get('Q', np.nan):.6e}")
+    print(f"n  = {params_fit['n']:.6f} ± {errores.get('n', np.nan):.6f}")
+    print(f"Cs = {params_fit['Cs']:.6e} ± {errores.get('Cs', np.nan):.6e} F")
+
+    print("===================================")
+
+    print("Puntos usados:")
+    print(df_fit[[col_fecha, col_idx, col_w, col_re, col_im, col_sre, col_sim]])
+
+    return {
+        "params": params_fit,
+        "errores": errores,
+        "chi2_red": chi2_red,
+        "resultado": resultado,
+        "df_fit": df_fit,
+        "parametros_libres": parametros_libres
+    }
+
+def impedancia_modelo_R_RpCp_CPEparCs(w, Rs, Rp, Cp, Q, n, Cs):
+    w = np.asarray(w, dtype=float)
+    jw = 1j * w
+
+    Z_Rs = Rs
+
+    Z_RpCp = 1 / (1/Rp + jw*Cp)
+
+    Z_CPE = 1 / (Q * jw**n)
+    Z_Cs = 1 / (jw * Cs)
+
+    Z_CPEparCs = 1 / (1/Z_CPE + 1/Z_Cs)
+
+    Z_total = Z_Rs + Z_RpCp + Z_CPEparCs
+
+    return Z_total
+
+def ajustar_modelo_R_RpCp_CPEparCs_ReIm(
+    df,
+    w_min,
+    w_max,
+    col_w="w",
+    col_re="ReZ",
+    col_im="ImZ",
+    col_sre="err_ReZ",
+    col_sim="err_ImZ",
+    col_fecha="fecha",
+    col_idx="idx_dia",
+    ignorar=None,
+    p0=None,
+    n_fijo=None,
+    graficar=True,
+    separar_por_fecha=True,
+    anotar=True
+):
+    df = filtrar_puntos(
+        df,
+        ignorar=ignorar,
+        col_fecha=col_fecha,
+        col_idx=col_idx
+    )
+
+    mask_rango = (df[col_w] >= w_min) & (df[col_w] <= w_max)
+    df_fit = df.loc[mask_rango].copy()
+
+    columnas = [col_w, col_re, col_im, col_sre, col_sim]
+
+    mask_finitos = np.ones(len(df_fit), dtype=bool)
+
+    for col in columnas:
+        mask_finitos &= np.isfinite(df_fit[col].to_numpy())
+
+    mask_finitos &= df_fit[col_sre].to_numpy() > 0
+    mask_finitos &= df_fit[col_sim].to_numpy() > 0
+
+    df_fit = df_fit.loc[mask_finitos].copy()
+
+    if len(df_fit) < 5:
+        raise ValueError("Hay pocos puntos para ajustar este modelo.")
+
+    w = df_fit[col_w].to_numpy()
+
+    ReZ_exp = df_fit[col_re].to_numpy()
+    ImZ_exp = df_fit[col_im].to_numpy()
+
+    err_ReZ = df_fit[col_sre].to_numpy()
+    err_ImZ = df_fit[col_sim].to_numpy()
+
+    w_med = np.exp(np.mean(np.log(w)))
+    Z_abs = np.sqrt(ReZ_exp**2 + ImZ_exp**2)
+    Z_med = np.median(Z_abs)
+
+    Rs0 = max(1e-9, np.min(ReZ_exp))
+    Rp0 = max(1e-9, np.max(ReZ_exp) - Rs0)
+
+    if Rp0 <= 0:
+        Rp0 = max(1.0, Z_med)
+
+    Cp0 = 1 / (w_med * Rp0)
+
+    if n_fijo is None:
+        n0 = 0.8
+    else:
+        n0 = n_fijo
+
+    Q0 = 1 / (Z_med * w_med**n0)
+    Cs0 = 1 / (w_med * Z_med)
+
+    params0 = {
+        "Rs": Rs0,
+        "Rp": Rp0,
+        "Cp": Cp0,
+        "Q": Q0,
+        "n": n0,
+        "Cs": Cs0
+    }
+
+    if p0 is not None:
+        params0.update(p0)
+
+    if n_fijo is not None:
+        params0["n"] = n_fijo
+
+    parametros_positivos = ["Rs", "Rp", "Cp", "Q", "Cs"]
+    parametros_libres = ["Rs", "Rp", "Cp", "Q", "Cs"]
+
+    if n_fijo is None:
+        parametros_libres.append("n")
+
+    def params_a_vector(params):
+        u = []
+
+        for nombre in parametros_libres:
+            if nombre in parametros_positivos:
+                u.append(np.log(params[nombre]))
+            else:
+                u.append(params[nombre])
+
+        return np.array(u, dtype=float)
+
+    def vector_a_params(u):
+        params = params0.copy()
+
+        for valor, nombre in zip(u, parametros_libres):
+            if nombre in parametros_positivos:
+                params[nombre] = np.exp(valor)
+            else:
+                params[nombre] = valor
+
+        if n_fijo is not None:
+            params["n"] = n_fijo
+
+        return params
+
+    u0 = params_a_vector(params0)
+
+    lower = []
+    upper = []
+
+    for nombre in parametros_libres:
+
+        if nombre in ["Rs", "Rp"]:
+            lower.append(np.log(1e-12))
+            upper.append(np.log(1e12))
+
+        elif nombre in ["Cp", "Q", "Cs"]:
+            lower.append(np.log(1e-15))
+            upper.append(np.log(1e1))
+
+        elif nombre == "n":
+            lower.append(0.0)
+            upper.append(1.0)
+
+    lower = np.array(lower, dtype=float)
+    upper = np.array(upper, dtype=float)
+
+    def residuales(u):
+        params = vector_a_params(u)
+
+        Z_modelo = impedancia_modelo_R_RpCp_CPEparCs(
+            w,
+            Rs=params["Rs"],
+            Rp=params["Rp"],
+            Cp=params["Cp"],
+            Q=params["Q"],
+            n=params["n"],
+            Cs=params["Cs"]
+        )
+
+        ReZ_modelo = np.real(Z_modelo)
+        ImZ_modelo = np.imag(Z_modelo)
+
+        r_re = (ReZ_modelo - ReZ_exp) / err_ReZ
+        r_im = (ImZ_modelo - ImZ_exp) / err_ImZ
+
+        return np.concatenate([r_re, r_im])
+
+    resultado = least_squares(
+        residuales,
+        u0,
+        bounds=(lower, upper),
+        x_scale="jac",
+        max_nfev=20000
+    )
+
+    params_fit = vector_a_params(resultado.x)
+
+    residuos = residuales(resultado.x)
+    chi2 = np.sum(residuos**2)
+    dof = len(residuos) - len(resultado.x)
+    chi2_red = chi2 / dof if dof > 0 else np.nan
+
+    errores = {}
+
+    try:
+        J = resultado.jac
+        cov_u = np.linalg.pinv(J.T @ J) * chi2_red
+        err_u = np.sqrt(np.diag(cov_u))
+
+        for nombre, err_nombre_u in zip(parametros_libres, err_u):
+            if nombre in parametros_positivos:
+                errores[nombre] = params_fit[nombre] * err_nombre_u
+            else:
+                errores[nombre] = err_nombre_u
+
+    except Exception:
+        for nombre in parametros_libres:
+            errores[nombre] = np.nan
+
+    if n_fijo is not None:
+        errores["n"] = 0.0
+
+    if graficar:
+        w_curva = np.logspace(np.log10(np.min(w)), np.log10(np.max(w)), 800)
+
+        Z_curva = impedancia_modelo_R_RpCp_CPEparCs(
+            w_curva,
+            Rs=params_fit["Rs"],
+            Rp=params_fit["Rp"],
+            Cp=params_fit["Cp"],
+            Q=params_fit["Q"],
+            n=params_fit["n"],
+            Cs=params_fit["Cs"]
+        )
+
+        Re_curva = np.real(Z_curva)
+        mIm_curva = -np.imag(Z_curva)
+
+        fig, ax = plt.subplots(figsize=(7, 6))
+
+        if separar_por_fecha:
+            for fecha, grupo in df_fit.groupby(col_fecha):
+                ax.errorbar(
+                    grupo[col_re],
+                    -grupo[col_im],
+                    xerr=grupo[col_sre],
+                    yerr=grupo[col_sim],
+                    fmt="o",
+                    ms=6,
+                    capsize=3,
+                    linestyle="none",
+                    label=f"Datos {fecha}"
+                )
+        else:
+            ax.errorbar(
+                df_fit[col_re],
+                -df_fit[col_im],
+                xerr=df_fit[col_sre],
+                yerr=df_fit[col_sim],
+                fmt="o",
+                ms=6,
+                capsize=3,
+                linestyle="none",
+                label="Datos ajustados"
+            )
+
+        ax.plot(
+            Re_curva,
+            mIm_curva,
+            "-",
+            label=rf"Modelo ajustado, $\chi^2_\nu = {chi2_red:.3f}$"
+        )
+
+        if anotar:
+            for _, fila in df_fit.iterrows():
+                ax.annotate(
+                    f"{int(fila[col_idx])}",
+                    (fila[col_re], -fila[col_im]),
+                    textcoords="offset points",
+                    xytext=(5, 5),
+                    fontsize=8
+                )
+
+        ax.set_xlabel(r"$\mathrm{Re}(Z)$ [$\Omega$]")
+        ax.set_ylabel(r"$-\mathrm{Im}(Z)$ [$\Omega$]")
+        ax.set_title(
+            rf"Ajuste modelo: $R_s + (R_p||C_p) + (\mathrm{{CPE}}||C_s)$"
+        )
+        ax.grid(True, alpha=0.4)
+        ax.legend()
+
+        plt.tight_layout()
+        plt.show()
+
+    print("===================================")
+    print("Ajuste modelo Rs + (Rp || Cp) + (CPE || Cs)")
+    print("===================================")
+    print(f"Rango usado: {w_min} <= omega <= {w_max}")
+    print(f"Número de puntos usados: {len(df_fit)}")
+    print(f"chi2_red = {chi2_red:.6f}")
+    print("-----------------------------------")
+
+    print(f"Rs = {params_fit['Rs']:.6e} ± {errores.get('Rs', np.nan):.6e} ohm")
+    print(f"Rp = {params_fit['Rp']:.6e} ± {errores.get('Rp', np.nan):.6e} ohm")
+    print(f"Cp = {params_fit['Cp']:.6e} ± {errores.get('Cp', np.nan):.6e} F")
+    print(f"Q  = {params_fit['Q']:.6e} ± {errores.get('Q', np.nan):.6e}")
+    print(f"n  = {params_fit['n']:.6f} ± {errores.get('n', np.nan):.6f}")
+    print(f"Cs = {params_fit['Cs']:.6e} ± {errores.get('Cs', np.nan):.6e} F")
+    print("===================================")
+
+    return {
+        "params": params_fit,
+        "errores": errores,
+        "chi2_red": chi2_red,
+        "resultado": resultado,
+        "df_fit": df_fit,
+        "parametros_libres": parametros_libres
+    }
