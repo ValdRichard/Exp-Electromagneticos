@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from funciones import asignar_errores, graficar_datos, ajustar_cpe_df, graficar_bode_impedancia, armar_df_medicion
+from funciones import *
 
 # =========================================================================
 # DATOS 23/06
@@ -44,8 +44,7 @@ dt_23 = np.array([0.0212, 0.00676, 0.00136, 0.00092, 0.0004, 0.000156,
                0.000008, 0.0000042, 0.000044, 0.000104, 0.000098,
                0.000072, 0.000064])  # s
 
-err_dt_23 = 0.01*dt_23
-#np.array([1e-3, 2e-4, 1e-4, 1e-4, 2.5e-5, 1e-5, 1e-5, 1e-5, 2e-6, 1e-6, 2e-7, 2e-7, 5e-4, 2e-4, 1e-4, 5e-5, 5e-5, 2e-5, 2e-5, 5e-5, 1e-4, 5e-5, 2e-6, 5e-7, 2e-7, 2e-7, 1e-7, 2e-7, 1e-6, 2e-6, 5e-6, 2e-5, 1e-5, 1e-3, 1e-3, 5e-4, 5e-4, 2e-4, 2e-4, 2e-4, 1e-4, 1e-4, 2e-5, 1e-5, 5e-6, 5e-6, 2e-6, 2e-6, 1e-6, 2e-6, 1e-6, 1e-5, 2e-7, 5e-6, 2e-5, 1e-5]) 
+err_dt_23 = np.array([1e-3, 2e-4, 1e-4, 1e-4, 2.5e-5, 1e-5, 1e-5, 1e-5, 2e-6, 1e-6, 2e-7, 2e-7, 5e-4, 2e-4, 1e-4, 5e-5, 5e-5, 2e-5, 2e-5, 5e-5, 1e-4, 5e-5, 2e-6, 5e-7, 2e-7, 2e-7, 1e-7, 2e-7, 1e-6, 2e-6, 5e-6, 2e-5, 1e-5, 1e-3, 1e-3, 5e-4, 5e-4, 2e-4, 2e-4, 2e-4, 1e-4, 1e-4, 2e-5, 1e-5, 5e-6, 5e-6, 2e-6, 2e-6, 1e-6, 2e-6, 1e-6, 1e-5, 2e-7, 5e-6, 2e-5, 1e-5]) 
 
 # =========================================================================
 # DATOS 25/06
@@ -59,8 +58,7 @@ Vs_25 = np.array([0.01913, 0.5689, 0.1747, 0.1693, 0.1827, 0.1885, 0.1908, 0.198
 
 dt_25 = np.array([0.0302, 0.000104, 0.000086, 0.000107, 0.000084, 0.000075, 0.0000676, 0.0000628, 0.0000576, 0.0324, 0.0274, 0.0219, 0.0252, 0.0284, 0.024, 0.0222, 0.034, 0.0211, 0.0192, 0.0183, 0.0176, 0.00876, 0.00496, 0.0033, 0.0024, 0.0158, 0.0136, 0.01156, 0.01012, 0.00696, 0.00612])  # s
 
-err_dt_25 = 0.01*dt_25
-#np.array([2e-3, 2e-5, 1e-5, 4e-6, 1e-5, 1e-5, 4e-6, 4e-6, 4e-6, 6e-3, 3e-3, 4e-3, 8e-3, 4e-3, 4e-3, 3e-3, 4e-3, 1.5e-3, 1.5e-3, 1e-3, 1.5e-3, 4e-4, 4e-4, 2e-4, 2e-4, 2e-3, 1e-3, 4e-4, 4e-4, 6e-4, 3e-4]) 
+err_dt_25 = np.array([2e-3, 2e-5, 1e-5, 4e-6, 1e-5, 1e-5, 4e-6, 4e-6, 4e-6, 6e-3, 3e-3, 4e-3, 8e-3, 4e-3, 4e-3, 3e-3, 4e-3, 1.5e-3, 1.5e-3, 1e-3, 1.5e-3, 4e-4, 4e-4, 2e-4, 2e-4, 2e-3, 1e-3, 4e-4, 4e-4, 6e-4, 3e-4]) 
 
 # =========================================================================
 # DATOS 25/06
@@ -99,7 +97,6 @@ configs = {
     }
 }
 
-
 df_23 = armar_df_medicion(
     fecha="23/06",
     f=f_23,
@@ -122,24 +119,21 @@ df_25 = armar_df_medicion(
     configs=configs
 )
 
+df_30 = armar_df_medicion(
+    fecha="30/06",
+    f=f_30,
+    Ve=Ve_30,
+    Vs=Vs_30.ravel(),
+    dt=dt_30,
+    err_dt=err_dt_30,
+    R=R,
+    configs=configs
+)
+
 df = pd.concat(
-    [df_23, df_25],
+    [df_23, df_25, df_30],
     ignore_index=True
 )
-# graficar_datos(
-#     df,
-#     x="f",
-#     y="H",
-#     xerr="err_f",
-#     yerr="err_H",
-#     xlabel="f [Hz]",
-#     ylabel="H = Vs/Ve",
-#     titulo="Transferencia H(f)",
-#     escala_x="log"
-# )
-df["-ImZ"] = -df["ImZ"]
-# Nyquist 
-# ignorar=[("25/06", 4)]
 graficar_datos(
     df,
     x="ReZ",
@@ -151,60 +145,33 @@ graficar_datos(
     titulo="Plano complejo de impedancia",
      ignorar=[19]
 )
-
-
-# w vs Z
-graficar_datos(
+resultado_cpe, df_cpe = ajustar_cpe_nyquist_omega(
     df,
-    x="w",
-    y="Z",
-    xerr="err_w",
-    yerr="err_Z",
-    xlabel="w [1/s]",
-    ylabel="Z [$\Omega$]",
-    titulo="Impedancia en función de la frecuencia",
-    escala_x="log",
-    escala_y="log"
+    w_min=800,
+    w_max=12000,
+    separar_por_fecha=True,
+    anotar=True
 )
 
-
-# w vs fase 
-graficar_datos(
+resultado_fase = ajustar_cpe_fase_omega(
     df,
-    x="w",
-    y="phi",
-    xerr="err_w",
-    yerr="err_phi",
-    xlabel="w [1/s]",
-    ylabel=r"$\phi$ [rad]",
-    titulo="Fase en función de la frecuencia",
-    escala_x="log"
+    w_min=800,
+    w_max=12000,
+    separar_por_fecha=True,
+    anotar=True
 )
-
-resultado_cpe, df_cpe = ajustar_cpe_df(
-    df,
-    re_min=1000,
-    re_max=2500,
-    col_re="ReZ",
-    col_im="-ImZ",
-    col_sre="err_ReZ",
-    col_sim="err_ImZ",
-    con_ordenada=True,
-    n0=0.8,
-    b0=0.0,
-    anotar=True,
-    mostrar_todos=True
-)
-
 graficar_bode_impedancia(df)
 
-# graficar_datos(
-#     df,
-#     x="ReH",
-#     y="-ImH",
-#     xerr="err_ReH",
-#     yerr="err_ImH",
-#     xlabel="Re(H) [$\Omega$]",
-#     ylabel="-Im(H) [$\Omega$]",
-#     titulo="Plano complejo de H",
-# )
+print("===================================")
+print("Comparación de n")
+print("===================================")
+
+print(
+    f"n desde fase   = {resultado_fase['n']:.6f} "
+    f"± {resultado_fase['err_n']:.6f}"
+)
+
+print(
+    f"n desde Nyquist = {resultado_cpe.beta[0]:.6f} "
+    f"± {resultado_cpe.sd_beta[0]:.6f}"
+)
