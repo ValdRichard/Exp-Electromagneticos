@@ -16,16 +16,18 @@ for i in range(1, 61):
         skiprows=4
     )
 
+rango = range(1,61)
+
 espectro_ch1 = promediar_amplitudes_desde_fft(
     resultados,
     canal="ch1",
-    archivos=range(31, 32)
+    archivos=rango
 )
 
 espectro_ch2 = promediar_amplitudes_desde_fft(
     resultados,
     canal="ch2",
-    archivos=range(31, 32)
+    archivos=rango
 )
 
 freq_ch1 = espectro_ch1["freq"]
@@ -65,6 +67,27 @@ mask = freq_ch1 > 0
 
 plt.figure(figsize=(8, 5))
 plt.plot(freq_ch1[mask], respuesta_amp[mask])
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("CH2 / CH1")
+plt.title("Respuesta en frecuencia usando amplitud")
+plt.grid(True, which="both", alpha=0.4)
+plt.tight_layout()
+plt.show()
+
+respuesta_amp = promediar_cociente_amplitudes_desde_fft(
+    resultados,
+    entrada="ch1",
+    salida="ch2",
+    archivos=rango
+)
+
+freq = respuesta_amp["freq"]
+cociente_prom = respuesta_amp["cociente_prom"]
+
+mask = freq > 0
+
+plt.figure(figsize=(8, 5))
+plt.plot(freq[mask], cociente_prom[mask])
 plt.xlabel("Frecuencia [Hz]")
 plt.ylabel("CH2 / CH1")
 plt.title("Respuesta en frecuencia usando amplitud")

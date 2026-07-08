@@ -254,3 +254,75 @@ def promediar_amplitudes_desde_fft(resultados, canal="ch2", archivos=None):
     }
 
     return resultado_prom
+
+########### DE ACA ES PRUEBA 
+
+def promediar_cociente_amplitudes_desde_fft(
+    resultados,
+    entrada="ch1",
+    salida="ch2",
+    archivos=None,
+    eps=1e-12
+):
+    if archivos is None:
+        archivos = sorted(resultados.keys())
+
+    if entrada == "ch1":
+        key_amp_entrada = "amp_ch1"
+        key_freq = "freq_ch1"
+    elif entrada == "ch2":
+        key_amp_entrada = "amp_ch2"
+        key_freq = "freq_ch2"
+    else:
+        raise ValueError("entrada debe ser 'ch1' o 'ch2'.")
+
+    if salida == "ch1":
+        key_amp_salida = "amp_ch1"
+    elif salida == "ch2":
+        key_amp_salida = "amp_ch2"
+    else:
+        raise ValueError("salida debe ser 'ch1' o 'ch2'.")
+
+    archivo_ref = archivos[0]
+    freq_ref = resultados[archivo_ref][key_freq]
+
+    cocientes = []
+
+    for i in archivos:
+        amp_entrada = resultados[i][key_amp_entrada]
+        amp_salida = resultados[i][key_amp_salida]
+        freq = resultados[i][key_freq]
+
+        if len(freq) != len(freq_ref):
+            raise ValueError(f"El archivo {i} tiene distinta cantidad de frecuencias.")
+
+        cociente_i = np.divide(
+            amp_salida,
+            amp_entrada,
+            out=np.full_like(amp_salida, np.nan, dtype=float),
+            where=amp_entrada > eps
+        )
+
+        cocientes.append(cociente_i)
+
+    cocientes = np.array(cocientes)
+
+    cociente_prom = np.nanmean(cocientes, axis=0)
+
+    if len(archivos) > 1:
+        cociente_std = np.nanstd(cocientes, axis=0, ddof=1)
+    else:
+        cociente_std = np.zeros_like(cociente_prom)
+
+    resultado = {
+        "entrada": entrada,
+        "salida": salida,
+        "archivos": archivos,
+        "cantidad_archivos": len(archivos),
+        "freq": freq_ref,
+        "cocientes": cocientes,
+        "cociente_prom": cociente_prom,
+        "cociente_std": cociente_std
+    }
+
+    return resultado
