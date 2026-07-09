@@ -157,10 +157,12 @@ extra_labels = [
 handles, labels = ax.get_legend_handles_labels()
 handles.extend(extra_labels)
 
-ax.legend(handles=handles)
+ax.legend(handles=handles, fontsize=12)
 
-ax.set_xlabel('Fracción de Mn')
-ax.set_ylabel(r'$T_c$ [°C]')
+ax.set_xlabel('Fracción de Mn', fontsize=14)
+ax.set_ylabel(r'$T_c$ [°C]', fontsize=14)
+
+ax.tick_params(axis='both', labelsize=12)
 
 ax.grid(True, alpha=0.3)
 
