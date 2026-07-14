@@ -6,20 +6,20 @@ from matplotlib.lines import Line2D
 # PEGAR ACA LOS Tc PROMEDIO
 # ==========================================================
 
-Tc_heis  = 129.57
-sTc_heis = 0.33
+Tc_heis  = 402.72
+sTc_heis = 0.32
 
-Tc_bloch  = 167.63
-sTc_bloch = 0.9
-
-
+Tc_bloch  = 469.99
+sTc_bloch = 2.34
+# 197(2)
+# 129.6(3)
 # ==========================================================
 # CALIBRACION
 # ==========================================================
 
 x_cal = np.array([0, 1])
 
-Tc_cal = np.array([45, 300])
+Tc_cal = np.array([45+273.15, 300+273.15])
 
 sTc_cal = 0.05 * Tc_cal
 
@@ -160,7 +160,7 @@ handles.extend(extra_labels)
 ax.legend(handles=handles, fontsize=12)
 
 ax.set_xlabel('Fracción de Mn', fontsize=14)
-ax.set_ylabel(r'$T_c$ [°C]', fontsize=14)
+ax.set_ylabel(r'$T_c$ [K]', fontsize=14)
 
 ax.tick_params(axis='both', labelsize=12)
 

@@ -84,8 +84,8 @@ for numero_archivo in archivos:
 
 respuesta = analizar_cocientes_amplitud(
     resultados,
-    entrada="ch1",
-    salida="ch2",
+    entrada="ch2",
+    salida="ch1",
     archivos=archivos,
     eps=1e-12
 )

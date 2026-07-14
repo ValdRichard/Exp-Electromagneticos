@@ -18,7 +18,7 @@ def graficarDatos(
     fig, ax1 = plt.subplots(figsize=(8, 5))
     fig.suptitle(titulo, fontsize=13)
 
-    ax1.set_xlabel("T [°C]")
+    ax1.set_xlabel("T [K]")
     ax1.set_ylabel("Ch1 [V]", color=color_ch1)
 
     ax1.plot(
@@ -70,7 +70,7 @@ def graficarDatos(
 
 def ajustarMagnetizacionTc(
     serie,
-    beta0=(75.0, 150.0, 0.3)
+    beta0=(75.0, 150.0+273.15, 0.3)
 ):
 
     T = serie["T"].values
@@ -141,7 +141,7 @@ def graficarAjusteTc(
 
     label = (
         f"Ajuste {nombre_serie}\n"
-        rf"$T_c={Tc:.2f}\pm{sTc:.2f}$ °C"
+        rf"$T_c={Tc:.2f}\pm{sTc:.2f}$ K"
         "\n"
         rf"$\beta={beta:.4f}\pm{sBeta:.4f}$"
         "\n"
@@ -156,7 +156,7 @@ def graficarAjusteTc(
         label=label
     )
 
-    ax.set_xlabel(r"$T$ [°C]", fontsize=13)
+    ax.set_xlabel(r"$T$ [K]", fontsize=13)
     ax.set_ylabel(r"$M \propto V$ [mV]", fontsize=13)
     ax.tick_params(axis='both', which='major', labelsize=12)
     ax.grid(True, alpha=0.3)
@@ -216,7 +216,7 @@ def graficarAjusteBlochFijo(
 
     label = (
         f"Ajuste {nombre_serie}\n"
-        rf"$T_c={Tc:.2f}\pm{sTc:.2f}$ °C"
+        rf"$T_c={Tc:.2f}\pm{sTc:.2f}$ K"
         "\n"
         rf"$\chi^2_\nu={chi2_red:.3f}$"
     )
@@ -229,7 +229,7 @@ def graficarAjusteBlochFijo(
         label=label
     )
 
-    ax.set_xlabel(r"$T$ [°C]", fontsize=13)
+    ax.set_xlabel(r"$T$ [K]", fontsize=13)
     ax.set_ylabel(r"$M \propto V$ [mV]", fontsize=13)
     ax.tick_params(axis='both', which='major', labelsize=12)
     ax.grid(True, alpha=0.3)
@@ -334,7 +334,7 @@ def graficarAjusteBlochLibre(
 
     ax.plot(Tcurva, ycurva, lw=2, label=label)
 
-    ax.set_xlabel("T [°C]")
+    ax.set_xlabel("T [K]")
     ax.set_ylabel("Ch2 [mV]")
 
     ax.legend()
@@ -408,7 +408,7 @@ def analizar_histeresis(
     N_ciclos = N_total // N_periodo
     N_util = N_ciclos * N_periodo
 
-    print(f"\n===== {temperatura} °C =====")
+    print(f"\n===== {temperatura} K =====")
     print(f"Frecuencia = {frecuencia:.3f} Hz")
     print(f"Muestras por período = {N_periodo}")
     print(f"Ciclos completos = {N_ciclos}")
@@ -494,7 +494,7 @@ def analizar_histeresis(
             label=f"{N_ciclos} ciclos promediados"
         )
 
-        plt.title(f"Histéresis promedio - {temperatura} °C")
+        plt.title(f"Histéresis promedio - {temperatura} K")
         plt.xlabel("CH1")
         plt.ylabel("CH2")
         plt.grid(True)
@@ -525,7 +525,7 @@ def graficar_histeresis(*resultados):
             res["ch1_prom"],
             res["ch2_prom"],
             s=10,
-            label=f'{res["temperatura"]} °C'
+            label=f'{res["temperatura"]} K'
         )
 
     plt.xlabel("$H \propto V [mV]$")
@@ -550,7 +550,7 @@ def graficar_histeresis_error(*resultados):
             fmt='o',
             ms=3,
             capsize=2,
-            label=f'{res["temperatura"]} °C'
+            label=f'{res["temperatura"]} K'
         )
 
     plt.xlabel("CH1 (∝ H)")
@@ -573,7 +573,7 @@ def graficar_histeresis_no_scatter(*resultados):
             'o-',
             ms=2,
             linewidth=1,
-            label=f'{res["temperatura"]} °C'
+            label=f'{res["temperatura"]} K'
         )
 
     plt.xlabel("CH1 (∝ H)")
@@ -599,7 +599,7 @@ def graficar_ciclo_individual(res, ciclo=0):
     plt.xlabel("CH1 (∝ H)")
     plt.ylabel("CH2 (∝ M)")
     plt.title(
-        f'{res["temperatura"]} °C - ciclo {ciclo}'
+        f'{res["temperatura"]} K - ciclo {ciclo}'
     )
 
     plt.grid(True)
@@ -622,7 +622,7 @@ def graficar_todos_los_ciclos(res):
     plt.xlabel("CH1 (∝ H)")
     plt.ylabel("CH2 (∝ M)")
     plt.title(
-        f'{res["temperatura"]} °C - todos los ciclos'
+        f'{res["temperatura"]} K - todos los ciclos'
     )
 
     plt.grid(True)
@@ -641,7 +641,7 @@ def verificar_periodo(res):
         )
 
     plt.title(
-        f'{res["temperatura"]} °C - CH1 de los primeros ciclos'
+        f'{res["temperatura"]} K - CH1 de los primeros ciclos'
     )
 
     plt.xlabel("Índice dentro del período")

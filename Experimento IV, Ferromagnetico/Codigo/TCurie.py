@@ -41,8 +41,12 @@ serie1 = serie1[:-5]
 # AJUSTE CRITICO
 # =============================================================================
 
-serie1Tc = serie1.iloc[9:-1]
-serie2Tc = serie2.iloc[6:-5]
+serie1Tc = serie1.iloc[9:-1].copy()
+serie2Tc = serie2.iloc[6:-5].copy()
+
+# Celsius -> Kelvin para aplicar el modelo crítico
+serie1Tc.loc[:, "T"] = serie1Tc["T"] + 273.15
+serie2Tc.loc[:, "T"] = serie2Tc["T"] + 273.15
 
 resTc1 = ajustarMagnetizacionTc(serie1Tc)
 resTc2 = ajustarMagnetizacionTc(serie2Tc)
@@ -86,7 +90,7 @@ plt.show()
 
 x = np.array([0, 1])
 
-y = np.array([45, 300])
+y = np.array([45+273.15, 300+273.15])
 
 sy = 0.05 * y
 
@@ -145,7 +149,7 @@ x_prom, sx_prom = composicion_mn(
 )
 
 print("\n===== TEMPERATURA DE CURIE PROMEDIO =====\n")
-print(f"Tc = {Tc_prom:.2f} ± {sTc_prom:.2f} °C")
+print(f"Tc = {Tc_prom:.2f} ± {sTc_prom:.2f} K")
 
 print("\n===== COMPOSICION PROMEDIO =====\n")
 print(f"Mn = {x_prom:.5f} ± {sx_prom:.5f}")
@@ -222,7 +226,7 @@ handles, labels = ax.get_legend_handles_labels()
 handles.extend(extra_labels)
 
 ax.set_xlabel('Fracción de Mn')
-ax.set_ylabel(r'$T_c$ [°C]')
+ax.set_ylabel(r'$T_c$ [K]')
 
 ax.grid(True, alpha=0.3)
 ax.legend(handles=handles)
@@ -236,7 +240,7 @@ plt.show()
 
 print("\n===== RESULTADO FINAL =====\n")
 
-print(f"Tc = {Tc_prom:.2f} ± {sTc_prom:.2f} °C")
+print(f"Tc = {Tc_prom:.2f} ± {sTc_prom:.2f} K")
 print(f"Mn = {x_prom:.5f} ± {sx_prom:.5f}")
 print(f"Zn = {1-x_prom:.5f} ± {sx_prom:.5f}")
 
