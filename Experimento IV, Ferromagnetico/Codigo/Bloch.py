@@ -42,8 +42,12 @@ serie1 = serie1[:-5]
 # BLOCH FIJO
 # =============================================================================
 
-serie1Bloch = serie1.iloc[:-12]
-serie2Bloch = serie2.iloc[:-13]
+serie1Bloch = serie1.iloc[:-12].copy()
+serie2Bloch = serie2.iloc[:-13].copy()
+
+# Convertir la temperatura de grados Celsius a Kelvin
+serie1Bloch.loc[:, "T"] = serie1Bloch["T"] + 273.15
+serie2Bloch.loc[:, "T"] = serie2Bloch["T"] + 273.15
 
 resBlochFijo1 = ajustarMagnetizacionBlochFijo(
     serie1Bloch
@@ -94,7 +98,7 @@ plt.show()
 
 x = np.array([0, 1])
 
-y = np.array([45, 300])
+y = np.array([45+273.15, 300+273.15])
 
 sy = 0.05 * y
 
@@ -147,7 +151,7 @@ sTc_prom = np.sqrt(
 )
 
 print("\n===== Tc PROMEDIO (BLOCH) =====\n")
-print(f"Tc = {Tc_prom:.2f} ± {sTc_prom:.2f} °C")
+print(f"Tc = {Tc_prom:.2f} ± {sTc_prom:.2f} K")
 
 
 # =============================================================================
@@ -236,7 +240,7 @@ handles, labels = ax.get_legend_handles_labels()
 handles.extend(extra_labels)
 
 ax.set_xlabel('Fracción de Mn')
-ax.set_ylabel(r'$T_c$ [°C]')
+ax.set_ylabel(r'$T_c$ [K]')
 
 ax.grid(True, alpha=0.3)
 ax.legend(handles=handles)
