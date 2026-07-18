@@ -193,17 +193,17 @@ resultado_modelo = ajustar_modelo_R_RpCp_CPE_Cs_ReIm(
 )
 
 
-resultado_modelo_par = ajustar_modelo_R_RpCp_CPEparCs_ReIm(
-    df,
-    w_min=0,
-    w_max=120000,
-    col_w="w",
-    col_re="ReZ",
-    col_im="ImZ",
-    col_sre="err_ReZ",
-    col_sim="err_ImZ",
-    n_fijo=resultado_fase["n"],
-    graficar=True,
-    separar_por_fecha=True,
-    anotar=True
-)
+# resultado_modelo_par = ajustar_modelo_R_RpCp_CPEparCs_ReIm(
+#     df,
+#     w_min=0,
+#     w_max=120000,
+#     col_w="w",
+#     col_re="ReZ",
+#     col_im="ImZ",
+#     col_sre="err_ReZ",
+#     col_sim="err_ImZ",
+#     n_fijo=resultado_fase["n"],
+#     graficar=True,
+#     separar_por_fecha=True,
+#     anotar=True
+# )
