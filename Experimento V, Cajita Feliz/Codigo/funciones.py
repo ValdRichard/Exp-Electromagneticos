@@ -525,7 +525,7 @@ def graficar_bode_impedancia(df):
     # --- DETALLES FINALES ---
     plt.title('Diagrama de Bode: Impedancia y Fase en función de $\omega$', fontsize=14, pad=15)
     fig.tight_layout() # Evita que se solapen las etiquetas de los ejes
-    ax1.set_xlim(50, 100000)
+    ax1.set_xlim(39, 150000)
     
     # Mostramos el gráfico
     plt.show()
