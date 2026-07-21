@@ -135,6 +135,14 @@ df = pd.concat(
     [df_23, df_25, df_30],
     ignore_index=True
 )
+df = filtrar_puntos(
+    df,
+    ignorar=[
+        ("25/06", 1),
+        ("25/06", 11),
+        ("23/06", 19),
+        ]
+)
 graficar_datos(
     df,
     x="ReZ",
@@ -144,7 +152,6 @@ graficar_datos(
     xlabel="Re(Z) [$\Omega$]",
     ylabel="-Im(Z) [$\Omega$]",
     titulo="Plano complejo de impedancia",
-     ignorar=[19]
 )
 resultado_cpe, df_cpe = ajustar_cpe_nyquist_omega(
     df,
