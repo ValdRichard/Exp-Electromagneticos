@@ -30,7 +30,23 @@ En base a las observaciones realizadas sobre los diagramas de Bode y Nyquist, se
 \end{figure}
 
 A partir del ajuste, fue posible determinar los valores de los distintos elementos que componen el circuito, los cuales se presentan en la \autoref{tabla-elementos}.
-
+\begin{table}[H]
+\centering
+\caption{Parámetros obtenidos del ajuste del circuito equivalente $R_s + (R_p \parallel C_p) + \mathrm{CPE} + C_s$.}
+\label{tab:parametros-ajuste}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Componente} & \textbf{Valor} & \textbf{Unidad} \\
+\midrule
+$R_s$ & $711.1 \pm 9.9$ & $\Omega$ \\
+$R_p$ & $1022.6 \pm 23.9$ & $\Omega$ \\
+$C_p$ & $249.4 \pm 7.1$ & nF \\
+$Q$   & $180.9 \pm 8.0$ & $\mu\mathrm{s}^{\,n}/\Omega$ \\
+$n$   & $0.2954 \pm 0.0000$ & -- \\
+$C_s$ & $1.546 \pm 0.015$ & $\mu$F \\
+\bottomrule
+\end{tabular}
+\end{table}
 \subsection{Determinación de \texorpdfstring{$\tau$}{tau} utilizando pulsos cuadrados}
 Se registró la respuesta del circuito frente a la propagación de pulsos de onda cuadrada, con el objetivo de determinar las constantes de tiempo involucradas en el mismo. Se realizaron mediciones de la tensión de salida en función del tiempo, para diferentes frecuencias de la señal de entrada (Ver \autoref{pulsos}). 
 
