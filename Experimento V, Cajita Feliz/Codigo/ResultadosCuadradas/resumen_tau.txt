@@ -1,17 +1,17 @@
 Archivo: "444Hz___100KSs(1).txt"
-tau: 114.436 us
-err_tau: 1.301 us
-rmse_mV: 280.572 mV
+tau: 63.459 us
+err_tau: 0.551 us
+rmse_mV: 68.899 mV
 
 Archivo: "444Hz___100KSs(2).txt"
-tau: 115.310 us
-err_tau: 1.305 us
-rmse_mV: 277.188 mV
+tau: 64.633 us
+err_tau: 0.595 us
+rmse_mV: 72.756 mV
 
 Archivo: "444Hz___100KSs(3).txt"
-tau: 114.768 us
-err_tau: 1.291 us
-rmse_mV: 275.635 mV
+tau: 65.164 us
+err_tau: 0.576 us
+rmse_mV: 70.676 mV
 
 Archivo: "1_132kHz___500KSs(1).txt"
 tau: 78.700 us
@@ -119,32 +119,32 @@ err_tau: 488.808 us
 rmse_mV: 261.115 mV
 
 Archivo: "95Hz___25KSs(1).txt"
-tau: 580.316 us
-err_tau: 15.596 us
-rmse_mV: 492.521 mV
+tau: 85.727 us
+err_tau: 1.000 us
+rmse_mV: 94.432 mV
 
 Archivo: "95Hz___25KSs(2).txt"
-tau: 497.077 us
-err_tau: 13.357 us
-rmse_mV: 517.804 mV
+tau: 84.466 us
+err_tau: 0.966 us
+rmse_mV: 99.812 mV
 
 Archivo: "95Hz___25KSs(3).txt"
-tau: 552.865 us
-err_tau: 14.773 us
-rmse_mV: 500.038 mV
+tau: 85.998 us
+err_tau: 0.990 us
+rmse_mV: 95.551 mV
 
 Archivo: "143Hz___50KSs(1).txt"
-tau: 267.103 us
-err_tau: 6.219 us
-rmse_mV: 459.188 mV
+tau: 74.010 us
+err_tau: 0.697 us
+rmse_mV: 82.318 mV
 
 Archivo: "143Hz___50KSs(2).txt"
-tau: 283.353 us
-err_tau: 6.591 us
-rmse_mV: 448.287 mV
+tau: 75.217 us
+err_tau: 0.799 us
+rmse_mV: 89.456 mV
 
 Archivo: "143Hz___50KSs(3).txt"
-tau: 270.891 us
-err_tau: 6.304 us
-rmse_mV: 459.022 mV
+tau: 74.053 us
+err_tau: 0.693 us
+rmse_mV: 81.349 mV
 
