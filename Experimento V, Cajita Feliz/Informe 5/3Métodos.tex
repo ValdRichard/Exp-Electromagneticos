@@ -1,16 +1,16 @@
 \section{Métodos}
 
-Se estudió un circuito RC de distribución desconcida, con el objetivo de modelar su composición en función de su comportamiento, para ello se realizaron diferentes experimentos. El arreglo experimental (\autoref{1}) consistió en un una fuente de tensión alterna conectada en serie a una caja negra cuya composición se quiere conocer y a una resistencia sobre la cual se midió la señal de salida. La señal de entrada y la señal de salida se registraron simultáneamente utilizando un osciloscopio.
+Se estudió un circuito RC de distribución desconcida, con el objetivo de modelar su composición en función de su comportamiento, para ello se realizaron diferentes experimentos. El arreglo experimental (\autoref{fig:arreglo}) consistió en un una fuente de tensión alterna conectada en serie a una caja negra cuya composición se quiere conocer y a una resistencia sobre la cual se midió la señal de salida. La señal de entrada y la señal de salida se registraron simultáneamente utilizando un osciloscopio.
 
 \begin{figure} [H]
     \centering
     \includegraphics[width=0.5\linewidth]{Figuras/esquema.png}
     \caption{Arreglo experimental utilizado para estudiar el circuito RC de distribución desconocida. La señal de entrada $V_{in}$ y la señal de salida $V_{out}$ se midieron simultáneamente utilizando un osciloscopio.}
-    \label{1}
+    \label{fig:arreglo}
     
 \end{figure}
 
-Un experimento consisitió en variar la frecuencia de la señal sinusoidal de entrada, dada por un generador de ondas $Sinometer$ modelo VC2002 \cite{VC2002} o un generador de ondas $OWON$ modelo DG31000 cite{DGE1000}, manteniendo la amplitud constante y variando la frecuencia $f$ en el rango [0,01; 60] \SI{}{\kilo\hertz}. La señal de entrada $V_{in}$ y la señal de salida $V_{out}$, se registraron simultáneamente utilizando un osciloscopio $Tektronix$ modelo TDS 220 \cite{TDS200}. A partir de estos datos se calculó la impedancia del sistema como el cociente entre las amplitudes de entrada y salida. Además en cada medición se registró la diferencia temporal $\Delta t$ entre ellas. A partir de estos datos se calculó el respectivo desfasaje mediante la relación $\varphi=2\pi f \Delta t$, donde $f$ es la frecuencia de $V_{in}$ y $\omega=2\pi f$. 
+Un experimento consisitió en variar la frecuencia de la señal sinusoidal de entrada, dada por un generador de ondas $Sinometer$ modelo VC2002 \cite{VC2002} o un generador de ondas $OWON$ modelo DG31000 \cite{DGE1000}, manteniendo la amplitud constante y variando la frecuencia $f$ en el rango [0,01; 60] \SI{}{\kilo\hertz}. La señal de entrada $V_{in}$ y la señal de salida $V_{out}$, se registraron simultáneamente utilizando un osciloscopio $Tektronix$ modelo TDS 220 \cite{TDS200}. A partir de estos datos se calculó la impedancia del sistema como el cociente entre las amplitudes de entrada y salida. Además en cada medición se registró la diferencia temporal $\Delta t$ entre ellas. A partir de estos datos se calculó el respectivo desfasaje mediante la relación $\varphi=2\pi f \Delta t$, donde $f$ es la frecuencia de $V_{in}$ y $\omega=2\pi f$. 
 
 Se realizaron entonces diagramas de Bode mediante el gráfico del módulo de la impedancia y la fase a fin de obtener información sobre la composición del circuito. También se construyeron diagramas de Nyquist, ya que representan gráficamente la respuesta del sistema según su geometría, a partir de  la parte imaginaria de la impedancia en función de su parte real. A partir de estos gráficos fue posible modelar el circuito y aproximar los valores de los distintos elementos que lo componen.
 
