@@ -1,0 +1,350 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{Faulkner}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=fb2d76fb5684bce57029d2780192d230}{%
+           family={Bard},
+           familyi={B\bibinitperiod},
+           given={Allen\bibnamedelima J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=5b4a8fac30606d30220e8a335d924716}{%
+           family={Faulkner},
+           familyi={F\bibinitperiod},
+           given={Larry\bibnamedelima R.},
+           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=6fe351f324f71b6e80e2cbad8b8cee7e}{%
+           family={White},
+           familyi={W\bibinitperiod},
+           given={Henry\bibnamedelima S.},
+           giveni={H\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley}%
+      }
+      \strng{namehash}{5ccb0ae89789ae569a2021cda47d1208}
+      \strng{fullhash}{5ccb0ae89789ae569a2021cda47d1208}
+      \strng{fullhashraw}{5ccb0ae89789ae569a2021cda47d1208}
+      \strng{bibnamehash}{5ccb0ae89789ae569a2021cda47d1208}
+      \strng{authorbibnamehash}{5ccb0ae89789ae569a2021cda47d1208}
+      \strng{authornamehash}{5ccb0ae89789ae569a2021cda47d1208}
+      \strng{authorfullhash}{5ccb0ae89789ae569a2021cda47d1208}
+      \strng{authorfullhashraw}{5ccb0ae89789ae569a2021cda47d1208}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Electrochemical Methods: Fundamentals and Applications}
+      \field{year}{2022}
+    \endentry
+    \entry{Tutorial}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b16c894f5bf08147fad46db023e76f9e}{%
+           family={Lazanas},
+           familyi={L\bibinitperiod},
+           given={Alexandros\bibnamedelima Ch.},
+           giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=053b2aa8e4ef2d9b74bc359eda4f868b}{%
+           family={Prodromidis},
+           familyi={P\bibinitperiod},
+           given={Mamas\bibnamedelima I.},
+           giveni={M\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \strng{namehash}{8bf41b688b48599aaaebbbe5b980defc}
+      \strng{fullhash}{8bf41b688b48599aaaebbbe5b980defc}
+      \strng{fullhashraw}{8bf41b688b48599aaaebbbe5b980defc}
+      \strng{bibnamehash}{8bf41b688b48599aaaebbbe5b980defc}
+      \strng{authorbibnamehash}{8bf41b688b48599aaaebbbe5b980defc}
+      \strng{authornamehash}{8bf41b688b48599aaaebbbe5b980defc}
+      \strng{authorfullhash}{8bf41b688b48599aaaebbbe5b980defc}
+      \strng{authorfullhashraw}{8bf41b688b48599aaaebbbe5b980defc}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACS Measurement Science Au}
+      \field{number}{3}
+      \field{title}{Electrochemical Impedance Spectroscopy: A Tutorial}
+      \field{volume}{3}
+      \field{year}{2023}
+      \field{pages}{162\bibrangedash 193}
+      \range{pages}{32}
+    \endentry
+    \entry{modeling}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=35f5cb9f14cba2b1fb2aeacbf3bddc76}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Woosung},
+           giveni={W\bibinitperiod}}}%
+        {{hash=17f18ff3f1f0d52fbea9debdc9f98ab3}{%
+           family={Shin},
+           familyi={S\bibinitperiod},
+           given={Heon-Cheol},
+           giveni={H\bibinithyphendelim C\bibinitperiod}}}%
+        {{hash=2ac2cb294e12630847af6c4b72350543}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Ji\bibnamedelima Man},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=6da028b37d9e4c1f08f490194440f10e}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Jae-Young},
+           giveni={J\bibinithyphendelim Y\bibinitperiod}}}%
+        {{hash=800917c83e6675f4dd9d1a961f093756}{%
+           family={Yoon},
+           familyi={Y\bibinitperiod},
+           given={Won-Sub},
+           giveni={W\bibinithyphendelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed7e8c9263680e0077500ce3cb0f78ea}
+      \strng{fullhash}{79605f9028ed396c9b7d274dec42ae83}
+      \strng{fullhashraw}{79605f9028ed396c9b7d274dec42ae83}
+      \strng{bibnamehash}{ed7e8c9263680e0077500ce3cb0f78ea}
+      \strng{authorbibnamehash}{ed7e8c9263680e0077500ce3cb0f78ea}
+      \strng{authornamehash}{ed7e8c9263680e0077500ce3cb0f78ea}
+      \strng{authorfullhash}{79605f9028ed396c9b7d274dec42ae83}
+      \strng{authorfullhashraw}{79605f9028ed396c9b7d274dec42ae83}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Electrochemical Science and Technology}
+      \field{number}{1}
+      \field{title}{Modeling and Applications of Electrochemical Impedance Spectroscopy for Lithium-Ion Batteries}
+      \field{volume}{11}
+      \field{year}{2020}
+      \field{pages}{1\bibrangedash 13}
+      \range{pages}{13}
+    \endentry
+    \entry{warburg}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=19b3518045bf0c033f87f0ff7751b90c}{%
+           family={Warburg},
+           familyi={W\bibinitperiod},
+           given={Emil},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{19b3518045bf0c033f87f0ff7751b90c}
+      \strng{fullhash}{19b3518045bf0c033f87f0ff7751b90c}
+      \strng{fullhashraw}{19b3518045bf0c033f87f0ff7751b90c}
+      \strng{bibnamehash}{19b3518045bf0c033f87f0ff7751b90c}
+      \strng{authorbibnamehash}{19b3518045bf0c033f87f0ff7751b90c}
+      \strng{authornamehash}{19b3518045bf0c033f87f0ff7751b90c}
+      \strng{authorfullhash}{19b3518045bf0c033f87f0ff7751b90c}
+      \strng{authorfullhashraw}{19b3518045bf0c033f87f0ff7751b90c}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annalen der Physik}
+      \field{number}{3}
+      \field{title}{Ueber das Verhalten sogenannter unpolarisirbarer Elektroden gegen Wechselstrom}
+      \field{volume}{303}
+      \field{year}{1899}
+      \field{pages}{493\bibrangedash 499}
+      \range{pages}{7}
+    \endentry
+    \entry{cpe}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=0d6de241a6106307ed0a2ead7762ddfa}{%
+           family={Gateman},
+           familyi={G\bibinitperiod},
+           given={Samantha\bibnamedelima Michelle},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=43f30bff6c0a86ec82d1ad0797d9cccf}{%
+           family={Gharbi},
+           familyi={G\bibinitperiod},
+           given={Oumaïma},
+           giveni={O\bibinitperiod}}}%
+        {{hash=6403c8b84662c38f11a381195a4ce43b}{%
+           family={Melo},
+           familyi={M\bibinitperiod},
+           given={Hercílio\bibnamedelima Gomes},
+           giveni={H\bibinitperiod\bibinitdelim G\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=7501e1514a5660d4ba7a16c9387b9dfb}{%
+           family={Ngo},
+           familyi={N\bibinitperiod},
+           given={Kieu},
+           giveni={K\bibinitperiod}}}%
+        {{hash=d89ba42a27b74baddcae0caee222fb1a}{%
+           family={Turmine},
+           familyi={T\bibinitperiod},
+           given={Mirelle},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dc19a918dd99be2ce467f65e8246e92a}{%
+           family={Vivier},
+           familyi={V\bibinitperiod},
+           given={Vincent},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{b1e6498fadcf3cbceb179d41a0fe1b22}
+      \strng{fullhash}{d3294f224f60eb40f1f8f2e94fb492bf}
+      \strng{fullhashraw}{d3294f224f60eb40f1f8f2e94fb492bf}
+      \strng{bibnamehash}{b1e6498fadcf3cbceb179d41a0fe1b22}
+      \strng{authorbibnamehash}{b1e6498fadcf3cbceb179d41a0fe1b22}
+      \strng{authornamehash}{b1e6498fadcf3cbceb179d41a0fe1b22}
+      \strng{authorfullhash}{d3294f224f60eb40f1f8f2e94fb492bf}
+      \strng{authorfullhashraw}{d3294f224f60eb40f1f8f2e94fb492bf}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Current Opinion in Electrochemistry}
+      \field{title}{On the Use of a Constant Phase Element in Electrochemistry}
+      \field{volume}{36}
+      \field{year}{2022}
+      \field{pages}{101133}
+      \range{pages}{1}
+    \endentry
+    \entry{VC2002}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=c352c379438fd6ea6933c6ecc98b8c2b}{%
+           family={{Sinometer}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{c352c379438fd6ea6933c6ecc98b8c2b}
+      \strng{fullhash}{c352c379438fd6ea6933c6ecc98b8c2b}
+      \strng{fullhashraw}{c352c379438fd6ea6933c6ecc98b8c2b}
+      \strng{bibnamehash}{c352c379438fd6ea6933c6ecc98b8c2b}
+      \strng{authorbibnamehash}{c352c379438fd6ea6933c6ecc98b8c2b}
+      \strng{authornamehash}{c352c379438fd6ea6933c6ecc98b8c2b}
+      \strng{authorfullhash}{c352c379438fd6ea6933c6ecc98b8c2b}
+      \strng{authorfullhashraw}{c352c379438fd6ea6933c6ecc98b8c2b}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{VC2002 2.0 MHz Function Generator}
+      \field{urlday}{21}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{year}{2002}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb http://www.sinometer.com/uploadImage/2012-09-27/2012092714544811255546.jpg
+      \endverb
+      \verb{url}
+      \verb http://www.sinometer.com/uploadImage/2012-09-27/2012092714544811255546.jpg
+      \endverb
+    \endentry
+    \entry{DGE1000}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=e9aa57e2fe64f73d900fd186f65af103}{%
+           family={{OWON}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{fullhash}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{fullhashraw}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{bibnamehash}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{authorbibnamehash}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{authornamehash}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{authorfullhash}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{authorfullhashraw}{e9aa57e2fe64f73d900fd186f65af103}
+      \field{extraname}{1}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{DGE1000 Series Single Channel Arbitrary Function Generator}
+      \field{urlday}{21}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://files.owon.com.cn/probook/DGE1000_Waveform_Generator_user_manual.pdf
+      \endverb
+      \verb{url}
+      \verb https://files.owon.com.cn/probook/DGE1000_Waveform_Generator_user_manual.pdf
+      \endverb
+    \endentry
+    \entry{TDS200}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=5b7cebd92f48f197e31d10ea605e9ba4}{%
+           family={{Tektronix}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{5b7cebd92f48f197e31d10ea605e9ba4}
+      \strng{fullhash}{5b7cebd92f48f197e31d10ea605e9ba4}
+      \strng{fullhashraw}{5b7cebd92f48f197e31d10ea605e9ba4}
+      \strng{bibnamehash}{5b7cebd92f48f197e31d10ea605e9ba4}
+      \strng{authorbibnamehash}{5b7cebd92f48f197e31d10ea605e9ba4}
+      \strng{authornamehash}{5b7cebd92f48f197e31d10ea605e9ba4}
+      \strng{authorfullhash}{5b7cebd92f48f197e31d10ea605e9ba4}
+      \strng{authorfullhashraw}{5b7cebd92f48f197e31d10ea605e9ba4}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{TDS 200-Series Digital Real-Time Oscilloscope User Manual}
+      \field{urlday}{21}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{year}{2002}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.tek.com/en/oscilloscope/tds210-manual/tds200-series-user-manual
+      \endverb
+      \verb{url}
+      \verb https://www.tek.com/en/oscilloscope/tds210-manual/tds200-series-user-manual
+      \endverb
+    \endentry
+    \entry{VDS3104}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=e9aa57e2fe64f73d900fd186f65af103}{%
+           family={{OWON}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{fullhash}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{fullhashraw}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{bibnamehash}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{authorbibnamehash}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{authornamehash}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{authorfullhash}{e9aa57e2fe64f73d900fd186f65af103}
+      \strng{authorfullhashraw}{e9aa57e2fe64f73d900fd186f65af103}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{VDS3104 Digital Oscilloscope}
+      \field{urlday}{21}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{year}{2016}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://datasheet.octopart.com/VDS3104-Owon-datasheet-155923051.pdf
+      \endverb
+      \verb{url}
+      \verb https://datasheet.octopart.com/VDS3104-Owon-datasheet-155923051.pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

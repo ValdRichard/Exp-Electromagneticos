@@ -744,3 +744,125 @@ def guardar_resumen_txt(resultados, ruta_salida):
                 f'{resultado["rmse_mV"]:.3f} mV\n'
             )
             archivo_txt.write("\n")
+
+def promediar_por_frecuencia(resultados):
+    """
+    Agrupa las mediciones que tienen la misma frecuencia y calcula:
+
+        - promedio de tau
+        - desviación estándar entre repeticiones
+        - error estándar del promedio
+        - propagación de los errores individuales
+
+    Para los ajustes biexponenciales hace lo mismo con tau2.
+    """
+
+    df = pd.DataFrame(resultados).copy()
+
+    filas_promedio = []
+
+    for frecuencia, grupo in df.groupby("frecuencia_Hz"):
+        cantidad = len(grupo)
+
+        # =============================================================
+        # TAU 1
+        # =============================================================
+
+        tau = grupo["tau_us"].dropna()
+        errores_tau = grupo.loc[
+            tau.index,
+            "error_tau_us"
+        ]
+
+        tau_promedio = tau.mean()
+
+        if len(tau) > 1:
+            tau_desviacion = tau.std(ddof=1)
+            tau_error_media = (
+                tau_desviacion / np.sqrt(len(tau))
+            )
+        else:
+            tau_desviacion = np.nan
+            tau_error_media = np.nan
+
+        # Propagación de los errores individuales en un promedio:
+        #
+        # sigma_prom = sqrt(sum(sigma_i^2)) / N
+
+        tau_error_propagado = (
+            np.sqrt(np.sum(errores_tau**2))
+            / len(errores_tau)
+        )
+
+        # =============================================================
+        # TAU 2
+        # =============================================================
+
+        tau2 = grupo["tau2_us"].dropna()
+
+        if len(tau2) > 0:
+            errores_tau2 = grupo.loc[
+                tau2.index,
+                "error_tau2_us"
+            ]
+
+            tau2_promedio = tau2.mean()
+
+            if len(tau2) > 1:
+                tau2_desviacion = tau2.std(ddof=1)
+                tau2_error_media = (
+                    tau2_desviacion
+                    / np.sqrt(len(tau2))
+                )
+            else:
+                tau2_desviacion = np.nan
+                tau2_error_media = np.nan
+
+            tau2_error_propagado = (
+                np.sqrt(np.sum(errores_tau2**2))
+                / len(errores_tau2)
+            )
+
+        else:
+            tau2_promedio = np.nan
+            tau2_desviacion = np.nan
+            tau2_error_media = np.nan
+            tau2_error_propagado = np.nan
+
+        # =============================================================
+        # RMSE
+        # =============================================================
+
+        rmse_promedio = grupo["rmse_mV"].mean()
+
+        filas_promedio.append(
+            {
+                "frecuencia_Hz": frecuencia,
+                "cantidad_mediciones": cantidad,
+                "modelo": grupo["modelo"].iloc[0],
+
+                "tau_promedio_us": tau_promedio,
+                "tau_desviacion_us": tau_desviacion,
+                "tau_error_media_us": tau_error_media,
+                "tau_error_propagado_us": tau_error_propagado,
+
+                "tau2_promedio_us": tau2_promedio,
+                "tau2_desviacion_us": tau2_desviacion,
+                "tau2_error_media_us": tau2_error_media,
+                "tau2_error_propagado_us": (
+                    tau2_error_propagado
+                ),
+
+                "rmse_promedio_mV": rmse_promedio,
+            }
+        )
+
+    resumen_promedios = pd.DataFrame(
+        filas_promedio
+    )
+
+    resumen_promedios = resumen_promedios.sort_values(
+        "frecuencia_Hz"
+    ).reset_index(drop=True)
+
+    return resumen_promedios

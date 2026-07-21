@@ -5,7 +5,8 @@ import pandas as pd
 from funcionesCuadradas import (
     buscar_archivo,
     procesar_archivo,
-    guardar_resumen_txt
+    guardar_resumen_txt,
+    promediar_por_frecuencia
 )
 
 
@@ -157,6 +158,38 @@ def main():
 
     if resultados:
         resumen = pd.DataFrame(resultados)
+        resumen_promedios = promediar_por_frecuencia(
+            resultados
+        )
+
+        ruta_promedios = (
+            CARPETA_SALIDA
+            / "resumen_tau_promedios.csv"
+        )
+
+        resumen_promedios.to_csv(
+            ruta_promedios,
+            index=False,
+        )
+
+        print(
+            "\nPromedios por frecuencia guardados en:\n"
+            f"{ruta_promedios}"
+        )
+
+        print("\nPromedios obtenidos:")
+        print(
+            resumen_promedios[
+                [
+                    "frecuencia_Hz",
+                    "cantidad_mediciones",
+                    "tau_promedio_us",
+                    "tau_error_media_us",
+                    "tau2_promedio_us",
+                    "tau2_error_media_us",
+                ]
+            ].to_string(index=False)
+        )
 
         ruta_csv = (
             CARPETA_SALIDA
