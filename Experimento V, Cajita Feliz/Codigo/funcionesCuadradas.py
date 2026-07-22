@@ -866,3 +866,372 @@ def promediar_por_frecuencia(resultados):
     ).reset_index(drop=True)
 
     return resumen_promedios
+
+from matplotlib.lines import Line2D
+
+# =============================================================================
+# GRÁFICO PARA PRESENTACIÓN: CH1 Y CH2
+# =============================================================================
+
+def graficar_ajuste_presentacion(
+    datos,
+    segmentos,
+    nombre_archivo,
+    salida,
+    tau,
+    error_tau=None,
+    tau2=None,
+    error_tau2=None,
+):
+    """
+    Figura para presentación:
+
+    - CH2 arriba, con ajuste y recuadro del modelo.
+    - CH1 abajo.
+    - Líneas punteadas verticales para separar los tramos ajustados.
+    - Todo el ajuste con un solo color.
+    """
+
+    salida = Path(salida)
+    salida.parent.mkdir(parents=True, exist_ok=True)
+
+    t = datos["t_s"].to_numpy()
+    ch1_v = datos["CH1_mV"].to_numpy() / 1000.0
+    ch2_v = datos["CH2_mV"].to_numpy() / 1000.0
+
+    # -------------------------------------------------------------------------
+    # Recorte automático: desde el primer tramo ajustado hasta el último
+    # -------------------------------------------------------------------------
+    inicio_global = segmentos[0]["inicio"]
+    fin_global = segmentos[-1]["fin"] - 1
+
+    if len(t) > 1:
+        dt = float(np.median(np.diff(t)))
+    else:
+        dt = 0.0
+
+    margen = 3 * dt
+
+    t_min = max(t[0], t[inicio_global] - margen)
+    t_max = min(t[-1], t[fin_global] + margen)
+
+    mascara = (t >= t_min) & (t <= t_max)
+
+    # -------------------------------------------------------------------------
+    # Estilo visual
+    # -------------------------------------------------------------------------
+    plt.rcParams.update({
+        "font.size": 12,
+        "axes.titlesize": 14,
+        "axes.labelsize": 14,
+        "legend.fontsize": 11,
+    })
+
+    figura, (ax_ch2, ax_ch1) = plt.subplots(
+        2, 1,
+        figsize=(10.8, 7.2),
+        sharex=True,
+        gridspec_kw={"height_ratios": [1.4, 1.0]}
+    )
+
+    # =========================================================================
+    # CH2 ARRIBA
+    # =========================================================================
+
+    ax_ch2.plot(
+        t[mascara] * 1e3,
+        ch2_v[mascara],
+        ".",
+        markersize=3.2,
+        color="tab:blue",
+        alpha=0.95,
+        label="CH2",
+    )
+
+    # Todo el ajuste en un mismo color
+    color_ajuste = "tab:orange"
+
+    for j, segmento in enumerate(segmentos):
+        inicio = segmento["inicio"]
+
+        t_absoluto = (
+            datos["t_s"].iloc[inicio]
+            + segmento["t_rel_s"]
+        )
+
+        etiqueta = "Ajuste" if j == 0 else None
+
+        ax_ch2.plot(
+            t_absoluto * 1e3,
+            segmento["modelo_mV"] / 1000.0,
+            linewidth=2.2,
+            color=color_ajuste,
+            label=etiqueta,
+        )
+
+    # -------------------------------------------------------------------------
+    # Líneas verticales punteadas para marcar cada tramo ajustado
+    # -------------------------------------------------------------------------
+    limites_segmentos_ms = []
+
+    for segmento in segmentos:
+        t_inicio = datos["t_s"].iloc[segmento["inicio"]] * 1e3
+        limites_segmentos_ms.append(t_inicio)
+
+    # Agregamos también el final del último segmento
+    t_fin_ultimo = datos["t_s"].iloc[segmentos[-1]["fin"] - 1] * 1e3
+    limites_segmentos_ms.append(t_fin_ultimo)
+
+    for x in limites_segmentos_ms:
+        ax_ch2.axvline(
+            x=x,
+            color="black",
+            linestyle="--",
+            linewidth=1.0,
+            alpha=0.9,
+        )
+
+    # -------------------------------------------------------------------------
+    # Texto con el modelo
+    # -------------------------------------------------------------------------
+    if tau2 is None:
+        if error_tau is None or np.isnan(error_tau):
+            texto_tau = (
+                rf"$\tau = {tau * 1e6:.2f}\,\mu s$"
+            )
+        else:
+            texto_tau = (
+                rf"$\tau = ({tau * 1e6:.2f} \pm {error_tau * 1e6:.2f})\,\mu s$"
+            )
+
+        texto_modelo = (
+            "Modelo ajustado:\n"
+            r"$V_i(t)=A_i + B_i \exp\left[-\frac{t-t_{0,i}}{\tau}\right]$" "\n"
+            + texto_tau
+        )
+
+    else:
+        if error_tau is None or np.isnan(error_tau):
+            texto_tau1 = rf"$\tau_1 = {tau * 1e6:.2f}\,\mu s$"
+        else:
+            texto_tau1 = (
+                rf"$\tau_1 = ({tau * 1e6:.2f} \pm {error_tau * 1e6:.2f})\,\mu s$"
+            )
+
+        if error_tau2 is None or np.isnan(error_tau2):
+            texto_tau2 = rf"$\tau_2 = {tau2 * 1e6:.2f}\,\mu s$"
+        else:
+            texto_tau2 = (
+                rf"$\tau_2 = ({tau2 * 1e6:.2f} \pm {error_tau2 * 1e6:.2f})\,\mu s$"
+            )
+
+        texto_modelo = (
+            "Modelo ajustado:\n"
+            r"$V_i(t)=A_i + B_{1,i}\exp\left[-\frac{t-t_{0,i}}{\tau_1}\right]$" "\n"
+            r"$\qquad\quad + B_{2,i}\exp\left[-\frac{t-t_{0,i}}{\tau_2}\right]$" "\n"
+            + texto_tau1 + "\n" + texto_tau2
+        )
+
+    ax_ch2.text(
+        0.80,
+        0.95,
+        texto_modelo,
+        transform=ax_ch2.transAxes,
+        fontsize=18,
+        va="top",
+        ha="center",
+        bbox=dict(
+            boxstyle="round,pad=0.4",
+            facecolor="white",
+            edgecolor="0.75",
+            alpha=0.95,
+        ),
+    )
+
+    leyenda_personalizada = [
+        Line2D(
+            [0], [0],
+            marker=".",
+            linestyle="None",
+            markersize=8,
+            color="tab:blue",
+            label="CH2",
+        ),
+        Line2D(
+            [0], [0],
+            linestyle="-",
+            linewidth=2.2,
+            color="tab:orange",
+            label="Ajuste",
+        ),
+    ]
+
+    ax_ch2.set_ylabel("CH2 (V)")
+    ax_ch2.set_title(nombre_archivo)
+    ax_ch2.grid(True, alpha=0.30)
+    ax_ch2.legend(
+        handles=leyenda_personalizada,
+        loc="lower left",
+        frameon=True,
+    )
+
+    # =========================================================================
+    # CH1 ABAJO
+    # =========================================================================
+
+    ax_ch1.plot(
+        t[mascara] * 1e3,
+        ch1_v[mascara],
+        color="tab:blue",
+        linewidth=1.6,
+    )
+
+    for x in limites_segmentos_ms:
+        ax_ch1.axvline(
+            x=x,
+            color="gray",
+            linestyle="--",
+            linewidth=1.0,
+            alpha=0.7,
+        )
+
+    ax_ch1.set_xlim(t_min * 1e3, t_max * 1e3)
+    ax_ch1.set_xlabel("Tiempo (ms)")
+    ax_ch1.set_ylabel("CH1 (V)")
+    ax_ch1.grid(True, alpha=0.30)
+
+    figura.tight_layout()
+
+    figura.savefig(
+        salida,
+        dpi=240,
+        bbox_inches="tight",
+    )
+
+    plt.close(figura)
+
+    if not salida.is_file():
+        raise OSError(
+            f"No se pudo guardar la imagen:\n{salida}"
+        )
+# =============================================================================
+# PROCESAR ARCHIVO SOLO PARA PRESENTACIÓN
+# =============================================================================
+
+def procesar_archivo_presentacion(ruta, carpeta_salida):
+    """
+    Procesa un archivo y guarda solamente la imagen de presentación.
+    """
+
+    ruta = Path(ruta)
+    carpeta_salida = Path(carpeta_salida)
+
+    fs = extraer_fs_desde_nombre(ruta.name)
+    frecuencia_hz = extraer_frecuencia_excitacion(ruta.name)
+
+    datos = cargar_osciloscopio(
+        ruta,
+        fs=fs,
+    )
+
+    flancos = detectar_flancos(
+        datos["CH1_mV"]
+    )
+
+    frecuencias_dos_tau = {
+        95.0,
+        143.0,
+        444.0,
+    }
+
+    usar_dos_tau = any(
+        np.isclose(
+            frecuencia_hz,
+            frecuencia_objetivo,
+            rtol=0,
+            atol=0.1,
+        )
+        for frecuencia_objetivo in frecuencias_dos_tau
+    )
+
+    if usar_dos_tau:
+        (
+            tau1,
+            error_tau1,
+            tau2,
+            error_tau2,
+            rmse,
+            segmentos,
+        ) = ajustar_dos_tau_compartidas(
+            datos,
+            flancos,
+            fs=fs,
+        )
+
+        ruta_imagen = (
+            carpeta_salida
+            / f"{ruta.stem}_presentacion.png"
+        )
+
+        graficar_ajuste_presentacion(
+            datos=datos,
+            segmentos=segmentos,
+            nombre_archivo=ruta.name,
+            salida=ruta_imagen,
+            tau=tau1,
+            error_tau=error_tau1,
+            tau2=tau2,
+            error_tau2=error_tau2,
+        )
+
+        return {
+            "archivo": ruta.name,
+            "ruta": str(ruta),
+            "frecuencia_Hz": frecuencia_hz,
+            "modelo": "doble exponencial",
+            "tau1_us": tau1 * 1e6,
+            "error_tau1_us": error_tau1 * 1e6,
+            "tau2_us": tau2 * 1e6,
+            "error_tau2_us": error_tau2 * 1e6,
+            "imagen": str(ruta_imagen),
+            "rmse_mV": rmse,
+        }
+
+    else:
+        (
+            tau,
+            error_tau,
+            rmse,
+            segmentos,
+        ) = ajustar_tau_compartida(
+            datos,
+            flancos,
+            fs=fs,
+        )
+
+        ruta_imagen = (
+            carpeta_salida
+            / f"{ruta.stem}_presentacion.png"
+        )
+
+        graficar_ajuste_presentacion(
+            datos=datos,
+            segmentos=segmentos,
+            nombre_archivo=ruta.name,
+            salida=ruta_imagen,
+            tau=tau,
+            error_tau=error_tau,
+            tau2=None,
+            error_tau2=None,
+        )
+
+        return {
+            "archivo": ruta.name,
+            "ruta": str(ruta),
+            "frecuencia_Hz": frecuencia_hz,
+            "modelo": "exponencial simple",
+            "tau_us": tau * 1e6,
+            "error_tau_us": error_tau * 1e6,
+            "imagen": str(ruta_imagen),
+            "rmse_mV": rmse,
+        }
