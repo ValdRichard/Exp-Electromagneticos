@@ -1055,7 +1055,7 @@ def graficar_ajuste_presentacion(
             linestyle="None",
             markersize=8,
             color="tab:blue",
-            label="CH2",
+            label="Datos experimentales",
         ),
         Line2D(
             [0], [0],
@@ -1066,8 +1066,8 @@ def graficar_ajuste_presentacion(
         ),
     ]
 
-    ax_ch2.set_ylabel("CH2 (V)")
-    ax_ch2.set_title(nombre_archivo)
+    ax_ch2.set_ylabel("Vs [Volts]")
+    
     ax_ch2.grid(True, alpha=0.30)
     ax_ch2.legend(
         handles=leyenda_personalizada,
@@ -1097,7 +1097,7 @@ def graficar_ajuste_presentacion(
 
     ax_ch1.set_xlim(t_min * 1e3, t_max * 1e3)
     ax_ch1.set_xlabel("Tiempo (ms)")
-    ax_ch1.set_ylabel("CH1 (V)")
+    ax_ch1.set_ylabel("Ve [Volts]")
     ax_ch1.grid(True, alpha=0.30)
 
     figura.tight_layout()
