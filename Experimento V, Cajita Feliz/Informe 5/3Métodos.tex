@@ -4,15 +4,17 @@ Se estudió un circuito RC de distribución desconocida (\autoref{fig:arreglo}) 
 
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.6\linewidth]{Figuras/esquema.png}
+    \includegraphics[width=0.55\linewidth]{Figuras/esquema.png}
     \caption{Arreglo experimental utilizado para estudiar el circuito RC de distribución desconocida. La señal de entrada $V_{in}$ y la señal de salida $V_{out}$ se midieron simultáneamente utilizando un osciloscopio.}
     \label{fig:arreglo}
     
 \end{figure}
 
-Otra de las experiencias consitió en aplicar una señal de entrada cuadrada, con el objetivo de estudiar la carga de los posibles capacitores que componen el circuito. Para ello se utilizó un generador de ondas $Sinometer$ modelo VC2002 \cite{VC2002} y un osciloscopio $OWON$ modelo VDS3104 \cite{VDS3104}. Se registró la señal de entrada y de salida, para determinadas frecuencias dentro del rango ya barrido en el experimento anterior y se estudió el comportamiento de la señal de salida en función del tiempo. A partir de estos datos se calcularon las constantes de tiempo $\tau$ que caracterizan la carga de los capacitores que componen el circuito. Por cada frecuencia, se registraron tres series que contengan al menos 6 pulsos que fueron ajustados según la ecuación \eqref{ajustepulsoscuadrados}, donde $i$ indica el número de pulso que se muestra en la pantalla. 
+Otra de las experiencias consitió en aplicar una señal de entrada cuadrada, con el objetivo de estudiar la carga de los posibles capacitores que componen el circuito. Para ello se utilizó un generador de ondas $Sinometer$ modelo VC2002 \cite{VC2002} y un osciloscopio $OWON$ modelo VDS3104 \cite{VDS3104}. Se registró la señal de entrada y de salida, para determinadas frecuencias dentro del rango ya barrido en el experimento anterior y se estudió el comportamiento de la señal de salida en función del tiempo. A partir de estos datos se calcularon las constantes de tiempo $\tau$ que caracterizan la carga de los posibles capacitores que componen el circuito. Por cada frecuencia, se registraron tres series que contengan al menos 6 pulsos que fueron ajustados según la ecuación \eqref{ajustepulsoscuadrados}, donde $i$ indica el número de pulso que se muestra en la pantalla, $j$ indica el número de capacitor que se está cargando, $C_i$ y $A_{ij}$ son constantes de ajuste y $t_{0i}$ es el tiempo inicial del pulso $i$. 
 
 \begin{equation}
-    V(t) = C_i + A_i e^{-t/\tau}
+    V(t)=C_i+\sum_{j}^{n}A_{ij}e^{-{\frac{t-t_{0i}}{\tau}}}
     \label{ajustepulsoscuadrados}
 \end{equation}
+
+Para el error de la frecuencia de la señal de entrada, en ambas experiencias, se consideró la variación de la medida en los diferentes rangos dados por el generador; se tomaron las cotas del rango y se extendió como media logaritmica.
