@@ -5,6 +5,7 @@ import pandas as pd
 from scipy.optimize import least_squares
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes, mark_inset
 import matplotlib.ticker as ticker
+from pathlib import Path
 
 def armar_df_medicion(fecha, f, Ve, Vs, dt, err_dt, R, configs):
     df = pd.DataFrame({
@@ -251,7 +252,10 @@ def graficar_datos(
     ax.grid(True, which="both", alpha=0.4)
     ax.legend(loc="upper right", fontsize=10)
 
-    plt.tight_layout()
+    #plt.tight_layout()
+    ruta = Path(__file__).resolve().parent.parent / "Informe 5" / "Figuras" / "Nyquist.png"
+
+    plt.savefig(ruta, bbox_inches='tight', pad_inches=0.05, dpi=300)
     plt.show()
 
     return fig, ax
@@ -401,16 +405,33 @@ def graficar_bode_impedancia(
     # Correcto: labelsize en lugar de fontsize
     ax2.tick_params(axis='y', labelcolor=color_phi, labelsize=fontsize_ticks)
 
+# --- LÍNEAS DE REGIÓN DE FASE CONSTANTE ---
+    line_fase = ax1.vlines(
+        x=[800, 12000], 
+        ymin=6000, 
+        ymax=10000, 
+        colors='black', 
+        linestyles='--', 
+        linewidth=2, 
+        alpha=1,
+        zorder=3,
+        label=r'$\phi$ constante [130, 1910] Hz'
+    )
+
     # --- LEYENDA UNIFICADA ---
-    lines = [line1, line2]
+    lines = [line1, line2, line_fase]
     labels = [l.get_label() for l in lines]
     ax1.legend(lines, labels, loc='center right', fontsize=fontsize_legend)
 
     # --- DETALLES FINALES ---
     #plt.title(r'Diagrama de Bode: Impedancia y Fase en función de $\omega$', fontsize=14, pad=15)
     ax1.set_xlim(39, 150000)
+    ax1.set_ylim(800, 19000)
     
     fig.tight_layout()
+    ruta = Path(__file__).resolve().parent.parent / "Informe 5" / "Figuras" / "Bode.png"
+    
+    plt.savefig(ruta, bbox_inches='tight', pad_inches=0.05, dpi=300)
     plt.show()
 
 def ajustar_cpe_nyquist_omega(
@@ -501,7 +522,7 @@ def ajustar_cpe_nyquist_omega(
         b = 0.0
         sb = 0.0
 
-    fig, ax = plt.subplots(figsize=(7, 6))
+    fig, ax = plt.subplots(figsize=(10, 6))
 
  # =========================================================================
     # GRAFICAR DATOS USADOS EN EL AJUSTE
@@ -589,6 +610,9 @@ def ajustar_cpe_nyquist_omega(
 
 
     plt.tight_layout()
+    ruta = Path(__file__).resolve().parent.parent / "Informe 5" / "Figuras" / "Ajuste-CPE.png"
+    
+    plt.savefig(ruta, bbox_inches='tight', pad_inches=0.05, dpi=300)
     plt.show()
 
     print("===================================")
@@ -981,7 +1005,7 @@ def ajustar_modelo_R_RpCp_CPE_Cs_ReIm(
                     f"{int(fila[col_idx])}",
                     (fila[col_re], -fila[col_im]),
                     textcoords="offset points",
-                    xytext=(5, 5),
+                    xytext=(6, 6),
                     fontsize=8
                 )
 
@@ -993,6 +1017,9 @@ def ajustar_modelo_R_RpCp_CPE_Cs_ReIm(
         ax.legend(fontsize=11, loc="lower right")
 
         plt.tight_layout()
+        ruta = Path(__file__).resolve().parent.parent / "Informe 5" / "Figuras" / "Nyquist-modelo.png"
+        
+        plt.savefig(ruta, bbox_inches='tight', pad_inches=0.05, dpi=500)
         plt.show()
 
     # ---------------------------------------------------------------------
