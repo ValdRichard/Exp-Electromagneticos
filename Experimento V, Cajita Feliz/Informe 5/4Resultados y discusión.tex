@@ -6,8 +6,8 @@ En primera instancia, se graficó el módulo de la impedancia $|Z|$ y la fase $\
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.5\textwidth]{Figuras/Bode.png}
-            \caption{}
+            \includegraphics[width=0.8\textwidth]{Figuras/Bode.png}
+            \caption{Diagrama de Bode realizado sobre la impedancia del circuito. En celeste se presentan los datos del módulo de la impedancia $Z$, mientras que en rojo los datos correspondientes a la diferencia de fase $\phi$, ambos en función de la frecuencia $\omega$.}
             \label{Bode}
         \end{figure}
 
@@ -15,47 +15,75 @@ Paralelamente, se graficó la impedancia en el plano complejo, obteniendo el dia
 
 \begin{figure}[H]
     \centering
-     \includegraphics[width=0.5\textwidth]{Figuras/Nyquist.png}
-            \caption{}
+     \includegraphics[width=0.8\textwidth]{Figuras/Nyquist.png}
+            \caption{Digrama de Nyquist realizado sobre la impedancia $Z$ del circuito. En el, es posible notar regiones las cuales se asemejan a distintos diagramas característicos de circutos RC. En particular, se destaca el rango $0 \leq Re(Z) \leq 2500$, donde se distingue una fracción de semicircunferencia seguido por una recta.}
             \label{Nyquist}
 \end{figure}
 
-En base a las observaciones realizadas sobre los diagramas de Bode y Nyquist, se propuso un modelo equivalente para el circuito presentado en la \autoref{arreglo}, el cual fue ajustado a los datos experimentales representados en el diagrama de Nyquist (Ver figura \ref{Nyquist-modelo}). 
+Tanto en el diagrama de Bode (Ver \autoref{Bode}) como en el de Nyquist (Ver \autoref{Nyquist}) resulta destacable la región de [160, 1700] \si{\hertz}, donde la fase se mantiene constante. Utilizando el diagrama de Nyquist, se realizó un ajuste a partir de la ecuación \eqref{CPE-ajuste}, en busca de determinar el exponente $n$ asociado a este CPE \eqref{CPE}. Tal ajuste se presenta en la \autoref{Ajuste-CPE}.
+\begin{equation}
+    -Im(Z) = Re(z)\tan\left(\frac{n \pi}{2}\right) + b
+    \label{CPE-ajuste}
+\end{equation}
 
 \begin{figure}[H]
     \centering
-     \includegraphics[width=0.5\textwidth]{Figuras/Nyquist-modelo.png}
-            \caption{}
-            \label{Nyquist-modelo}
+    \includegraphics[width=0.8\textwidth]{Figuras/Ajuste-CPE.png}
+    \caption{Ajuste realizado para determinar el exponente $n$ del CPE sobre el diagrama de Nyquist. Se muestran los datos experimentales en celeste, mientras que en rojo, la línea correspondiente al ajuste.}
+    \label{Ajuste-CPE}
 \end{figure}
 
-A partir del ajuste, fue posible determinar los valores de los distintos elementos que componen el circuito, los cuales se presentan en la \autoref{tabla-elementos}.\begin{table}[H]
-\centering
-\caption{Parámetros obtenidos del ajuste del circuito equivalente
-$R_s + (R_p \parallel C_p) + \mathrm{CPE} + C_s$.}
-\label{tab:parametros-ajuste}
-\begin{tabular}{lcc}
-\toprule
-\textbf{Componente} & \textbf{Valor} & \textbf{Unidad} \\
-\midrule
-$R_s$ & $762.2 \pm 7.2$ & $\Omega$ \\
-$R_p$ & $988.6 \pm 22.6$ & $\Omega$ \\
-$C_p$ & $239.7 \pm 6.1$ & $\mathrm{nF}$ \\
-$Q$   & $117.3 \pm 4.7$ & $\mu\mathrm{S}\,\mathrm{s}^{n}$ \\
-$n$   & $0.3587 \pm 0.0060$ & -- \\
-$C_s$ & $1.612 \pm 0.017$ & $\mu\mathrm{F}$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-\subsection{Determinación de \texorpdfstring{$\tau$}{tau} utilizando pulsos cuadrados}
-Se registró la respuesta del circuito frente a la propagación de pulsos de onda cuadrada, con el objetivo de determinar las constantes de tiempo involucradas en el mismo. Se realizaron mediciones de la tensión de salida en función del tiempo, para diferentes frecuencias de la señal de entrada (Ver \autoref{pulsos}). 
+El exponente $n$ = 0,359(6) que se obtuvo a partir del ajuste resulta menor al exponente de un elemento de Warburg de $n$ = 0,5, por lo que el CPE determinado tiene un comportamiento más resistivo que capacitivo. (capaz esto va en conclu)
 
-%Por cada frecuencia, se registraron tres series que contengan al menos 6 pulsos, los cuales se ajustaron según la ecuación (acá o en métodos), 
-%\begin{equation}
-   % V(t) = C_i + A_i e^{-t/\tau}
-  %  \label{ajuste-pulsoscuadrados}
-%\end{equation}
-%donde i indica el número de pulso que se muestra en la pantalla 
+
+En base a las observaciones realizadas sobre los diagramas de Bode y Nyquist, se propuso un modelo equivalente para el circuito presentado en la \autoref{Circuito-modelo}, cuya impedancia en función de la frecuencia viene dada por la suma de una impedancia de una resistencia equivalente $Z_{R}$ (donde se encuentra incluida la resistencia conocida de 62 \si{\ohm}), una impedancia de un circuito RC en paralelo $Z_{RC_p}$, una de un elemento de fase constante $Z_{CPE}$ y una de un capacitor equivalente $Z_{C}$. Por lo que
+\begin{equation}
+    Z(t) = Z_R + Z_{RC_p} + Z_{CPE} + Z_C,
+    \label{modelo}
+\end{equation}
+donde todas las impedancias se encuentran sumadas ya que el modelo propuesto es en serie, y sus expresiones son descritas en el apéndice (Ver ).
+
+Para realizar el ajuste del modelo, se tomó la parte real e imaginaria de \eqref{modelo}, cuya dependencia es únicamente de $\omega$. De esta manera, dejando como parámetros libres cada elemento del circuito, fue posible realizar el ajuste presentado en \autoref{Nyquist-modelo}, cuyos parámetros obtenidos se presentan en la \autoref{tab:parametros-ajuste}.
+
+\begin{figure}[H]
+        \begin{subfigure}[b]{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figuras/Circuitomodelo.drawio.png} 
+        \caption{Esquema del circuito propuesto como modelo de la cajita feliz.}
+        \label{Circuito-modelo}
+        \end{subfigure}
+        \hfill
+    \begin{subfigure}[b]{0.75\textwidth}
+        \centering
+         \includegraphics[width=0.5\textwidth]{Figuras/Nyquist-modelo.png}
+        \caption{Ajuste del modelo propuesto sobre los datos representados en el plano complejo. Los datos experimentales se presentan en celeste, mientras que la línea roja representa el ajuste del modelo.}
+        \label{Nyquist-modelo}
+    \end{subfigure}  
+    \caption{}   
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Parámetros obtenidos del ajuste del circuito equivalente}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Parámetro} & \textbf{Valor} \\ \hline
+$R_s$ & 762(7) [$\Omega$] \\ \hline
+$R_p$ & 988(22) [$\Omega$] \\ \hline
+$C_p$ & 239(6) [$\mathrm{nF}$] \\ \hline
+$Q$ & 117(5) [$\mu\mathrm{S}\,\mathrm{s}^{n}$] \\ \hline
+$C_s$ & 1.61(2) [$\mu\mathrm{F}$] \\ \hline
+\end{tabular}
+\label{tab:parametros-ajuste}
+\end{table}
+El parámetro $n$ = 0,359(6) obtenido a partir del ajuste \eqref{CPE-ajuste} fue fijado en el modelo.
+
+
+\subsection{Determinación de \texorpdfstring{$\tau$}{tau} utilizando pulsos cuadrados}
+Se registró la respuesta del circuito frente a la propagación de pulsos de onda cuadrada, con el objetivo de determinar las constantes de tiempo $\tau = RC$ involucradas en el mismo. Se realizaron mediciones de la tensión de salida en función del tiempo, para diferentes frecuencias de la señal de entrada. Para el voltaje de la señal de salida, se realizó un ajuste utilizando la ecuación \eqref{ajustepulsoscuadrados}, donde i representa el número del pulso, mientras que n se fijó según la cantidad de $\tau$'s necesarios para obtener una buena calidad de ajuste que represente la curva de carga o descarga de el o los capacitores en una determinada frecuencia. En todas las medidas, fijando n = 1 o n = 2 fue suficiente para que el modelo decriba adecuadamente la tendencia experimental. 
+
+En la \autoref{pulsos} se presenta la respuesta temporal del circuito frente a una señal de entrada cuadrada $V_e$ de $444\ \mathrm{Hz}$, junto con su correspondiente ajuste mediante una suma de dos exponenciales (n = 2). Es posible apreciar cómo la tensión de salida $V_s$ experimenta picos abruptos en las transiciones de la señal de entrada seguidos de una relajación hacia cero, comportamiento atribuible a los procesos transitorios de carga y descarga de los elementos capacitivos del sistema.
+
 
 \begin{figure}[H]
     \centering
@@ -64,38 +92,23 @@ Se registró la respuesta del circuito frente a la propagación de pulsos de ond
     \label{pulsos}
 \end{figure}
 
+Finalmente, en la \autoref{tab:constantes-tiempo-cuadradas} se presentan los promedios (ponderados?) de los valores de las constantes de tiempo obtenidas con diferentes frecuencias como señal de entrada.
+
 \begin{table}[H]
 \centering
 \caption{Constantes de tiempo obtenidas a partir del ajuste de la respuesta temporal para distintas frecuencias de excitación.}
 \label{tab:constantes-tiempo-cuadradas}
-\begin{tabular}{cc}
-\toprule
-\textbf{Frecuencia} & \textbf{Constante de tiempo $\tau$ [$\mu$s]} \\
-\midrule
-$12\ \mathrm{Hz}$ 
-& $3032 \pm 11$ \\
-
-$25\ \mathrm{Hz}$ 
-& $2662 \pm 61$ \\
-
-$95\ \mathrm{Hz}$ 
-& $\tau_1 = 85.4 \pm 0.5,\quad \tau_2 = 1946 \pm 18$ \\
-
-$143\ \mathrm{Hz}$ 
-& $\tau_1 = 74.4 \pm 0.4,\quad \tau_2 = 1218 \pm 9$ \\
-
-$444\ \mathrm{Hz}$ 
-& $\tau_1 = 64.4 \pm 0.5,\quad \tau_2 = 589 \pm 13$ \\
-
-$1.132\ \mathrm{kHz}$ 
-& $78.59 \pm 0.13$ \\
-
-$3.170\ \mathrm{kHz}$ 
-& $68.5 \pm 0.6$ \\
-
-$6.703\ \mathrm{kHz}$ 
-& $77.2 \pm 3.8$ \\
-\bottomrule
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Frecuencia} & \textbf{Constante de tiempo $\tau$ [$\mu$s]} \\ \hline
+$12\ \mathrm{Hz}$ & 3032(11) \\ \hline
+$25\ \mathrm{Hz}$ & 2662(61) \\ \hline
+$95\ \mathrm{Hz}$ & $\tau_1 = 85{,}4(5),\quad \tau_2 = 1946(18)$ \\ \hline
+$143\ \mathrm{Hz}$ & $\tau_1 = 74{,}4(4),\quad \tau_2 = 1218(9)$ \\ \hline
+$444\ \mathrm{Hz}$ & $\tau_1 = 64{,}4(5),\quad \tau_2 = 589(13)$ \\ \hline
+$1{,}132\ \mathrm{kHz}$ & 78{,}59(13) \\ \hline
+$3{,}170\ \mathrm{kHz}$ & 68{,}5(6) \\ \hline
+$6{,}703\ \mathrm{kHz}$ & 77{,}2(38) \\ \hline
 \end{tabular}
 \end{table}
 % Las que no aparecen, que son las de 38KHz y 700KHz es porque no se nota nada y ajusta un valor altisimo de error, esto porque basicamente son rectas y no las va a ajustar bien con una exponencial. 

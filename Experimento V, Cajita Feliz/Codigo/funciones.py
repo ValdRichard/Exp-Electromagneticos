@@ -315,10 +315,11 @@ def ajustar_cpe_df(
     col_sim="err_ImZ",
     col_fecha="fecha",
     col_idx="idx_dia",
+    color_puntos="tab:blue",
     con_ordenada=True,
     n0=0.8,
     b0=0.0,
-    anotar=True,
+    anotar=False,
     mostrar_todos=True,
     ignorar=None,
     ax=None
