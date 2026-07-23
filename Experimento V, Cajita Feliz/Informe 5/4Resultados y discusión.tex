@@ -7,11 +7,11 @@ En primera instancia, se graficó el módulo de la impedancia $|Z|$ y la fase $\
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Figuras/Bode.png}
-            \caption{Diagrama de Bode realizado sobre la impedancia del circuito. En celeste se presentan los datos del módulo de la impedancia $Z$, mientras que en rojo los datos correspondientes a la diferencia de fase $\phi$, ambos en función de la frecuencia $\omega$.}
+            \caption{Diagrama de Bode realizado sobre la impedancia del circuito. En celeste se presentan los datos del módulo de la impedancia $Z$, mientras que en rojo los datos correspondientes a la diferencia de fase $\phi$, ambos en función de la frecuencia $\omega$. Se indica con línea punteada la región donde $\phi$ es constante.}
             \label{Bode}
         \end{figure}
 
-Paralelamente, se graficó la impedancia en el plano complejo, obteniendo el diagrama de Nyquist que se presenta en la \autoref{Nyquist}. Se observa que el gráfico inicia en el eje real, donde la impedancia es puramente resistiva, con un valor de apróximadamente \SI{1}{\kilo\ohm}. Luego, a medida que disminuye la frecuencia, el valor del eje imaginario aumenta, de manera que el digrama se curva formando una fracción de circunferencia, lo que indica un comportamiento similar al de un circuito RC en paralelo. No obstante, el diagrama no forma un semicirculo perfecto, sino que es interrumpido por una semirrectalu, la cual resulta característica de un elemento de fase constante. Finalmente, a frecuencias suficientemente bajas, los datos experimentales crecen abruptamente sobre el eje imaginario, lo que indica un comportamiento capacitivo predominante.
+Paralelamente, se graficó la impedancia en el plano complejo, obteniendo el diagrama de Nyquist que se presenta en la \autoref{Nyquist}. Se observa que el gráfico inicia en el eje real, donde la impedancia es puramente resistiva, con un valor de apróximadamente \SI{1}{\kilo\ohm}. Luego, a medida que disminuye la frecuencia, el valor del eje imaginario aumenta, de manera que el digrama se curva formando una fracción de circunferencia, lo que indica un comportamiento similar al de un circuito RC en paralelo. No obstante, el diagrama no forma un semicirculo perfecto, sino que es interrumpido por una semirrecta, la cual resulta característica de un elemento de fase constante. Finalmente, a frecuencias menores de 130 \si{\hertz}, los datos experimentales crecen abruptamente sobre el eje imaginario, lo que indica un comportamiento capacitivo predominante.
 
 \begin{figure}[H]
     \centering
@@ -82,8 +82,8 @@ En la \autoref{pulsos} se presenta la respuesta temporal del circuito frente a u
 
 \begin{figure}[H]
     \centering
-     \includegraphics[width=0.5\textwidth]{Figuras/pulsos.png}
-    \caption{}
+     \includegraphics[width=0.8\textwidth]{Figuras/pulsos.png}
+    \caption{En color celeste se presentan los datos de la señal de entrada de una onda cuadrada $V_e$ a 444 \si{\hertz} junto a los de la señal de salida $V_s$, donde resulta apreciable la atenuación de la señal debido a la carga y descarga de los capacitores. El ajuste realizado sobre la señal de salida $V_s$ se indica en naranja, en el cual se utiliza la suma de dos exponenciales, determinando así el valor de $\tau_1$ y $\tau_2$.}
     \label{pulsos}
 \end{figure}
 
