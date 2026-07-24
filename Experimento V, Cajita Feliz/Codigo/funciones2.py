@@ -360,8 +360,8 @@ import matplotlib.pyplot as plt
 
 def graficar_bode_impedancia(
     df,
-    fontsize_labels=13,
-    fontsize_ticks=11,
+    fontsize_labels=15,
+    fontsize_ticks=13,
     fontsize_legend=11
 ):
     # Creamos la figura y el primer eje (Izquierdo - Impedancia)
@@ -601,9 +601,9 @@ def ajustar_cpe_nyquist_omega(
         label=label_fit
     )
 
-    ax.set_xlabel(r"$\mathrm{Re}(Z)$ [$\Omega$]", fontsize=13)
-    ax.set_ylabel(r"$-\mathrm{Im}(Z)$ [$\Omega$]", fontsize=13)
-    ax.tick_params(axis='both', which='major', labelsize=12)
+    ax.set_xlabel(r"$\mathrm{Re}(Z)$ [$\Omega$]", fontsize=15)
+    ax.set_ylabel(r"$-\mathrm{Im}(Z)$ [$\Omega$]", fontsize=15)
+    ax.tick_params(axis='both', which='major', labelsize=14)
   
     ax.grid(True, alpha=0.4)
     ax.legend(fontsize=11)
@@ -1009,9 +1009,9 @@ def ajustar_modelo_R_RpCp_CPE_Cs_ReIm(
                     fontsize=8
                 )
 
-        ax.set_xlabel(r"$\mathrm{Re}(Z)$ [$\Omega$]", fontsize=12)
-        ax.set_ylabel(r"$-\mathrm{Im}(Z)$ [$\Omega$]", fontsize=12)
-        ax.tick_params(axis='both', which='major', labelsize=11)
+        ax.set_xlabel(r"$\mathrm{Re}(Z)$ [$\Omega$]", fontsize=13)
+        ax.set_ylabel(r"$-\mathrm{Im}(Z)$ [$\Omega$]", fontsize=13)
+        ax.tick_params(axis='both', which='major', labelsize=12)
 
         ax.grid(True, alpha=0.4)
         ax.legend(fontsize=11, loc="lower right")
