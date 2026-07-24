@@ -1,8 +1,8 @@
 \section{Resultados y discusión}
-Con el objetivo de caracterizar el circuito incógnita, se realizaron mediciones de la tensión de entrada y salida a diferentes frecuencias, junto al desfasaje entre ambas señales, utilizando como señal de entrada una sinusoidal. Se estudió la respuesta del sistema en función de la frecuencia, en un rango de 10 \si{Hz} a 60 \si{\kilo\hertz}, realizando diagramas de Bode y de Nyquist para la impedancia del circuito, los cuales perimitieron determinar los distintos elementos que lo componen. Además, se propagaron pulsos de onda cuadrada a través del circuito, con el fin de estudiar su respuesta temporal y determinar las constantes de tiempo involucradas en el mismo. 
+Con el objetivo de caracterizar el circuito incógnita, se realizaron mediciones de la tensión de entrada y salida a diferentes frecuencias, junto al desfasaje entre ambas señales, utilizando como señal de entrada una sinusoidal. Se estudió la respuesta del sistema en función de la frecuencia, en un rango de 10 \si{Hz} a 60 \si{\kilo\hertz}, realizando diagramas de Bode y de Nyquist para la impedancia del circuito, los cuales perimitieron determinar los distintos elementos que lo componen. Además, se propagaron ondas cuadradas a través del circuito, con el fin de estudiar su respuesta temporal y determinar las constantes de tiempo involucradas en el mismo. 
 
 \subsection{Impedancia del sistema}
-En primera instancia, se graficó el módulo de la impedancia $|Z|$ y la fase $\phi$ en función de la frecuencia $\omega$, obteniendo el diagrama de Bode que se presenta en la \autoref{Bode}. En el, es posible observar que el módulo de la impedancia disminuye al aumentar la frecuencia, al igual que el desfasaje entre las señales, lo que indica que el circuito se compone de elementos capacitivos. Además, se observa una región de fase constante indicada con línea punteada entre los [120, 1900] \si{\hertz}, cuyo comportamiento se identificó como un elemento CPE. 
+Se graficó el módulo de la impedancia $|Z|$ y la fase $\phi$ en función de la frecuencia $\omega$, obteniendo el diagrama de Bode que se presenta en la \autoref{Bode}. En el, es posible observar que el módulo de la impedancia disminuye al aumentar la frecuencia, al igual que el desfasaje entre las señales, lo que indica que el circuito se compone de elementos capacitivos. Además, se observa una región de fase constante indicada con línea punteada entre los [130, 1900] \si{\hertz}, cuyo comportamiento se identificó como un elemento CPE. 
 
         \begin{figure}[H]
             \centering
@@ -11,12 +11,12 @@ En primera instancia, se graficó el módulo de la impedancia $|Z|$ y la fase $\
             \label{Bode}
         \end{figure}
 
-Paralelamente, se graficó la impedancia en el plano complejo, obteniendo el diagrama de Nyquist que se presenta en la \autoref{Nyquist}. Se observa que el gráfico inicia en el eje real, donde la impedancia es puramente resistiva, con un valor de apróximadamente \SI{1}{\kilo\ohm}. Luego, a medida que disminuye la frecuencia, el valor del eje imaginario aumenta, de manera que el digrama se curva formando una fracción de circunferencia, lo que indica un comportamiento similar al de un circuito RC en paralelo. No obstante, el diagrama no forma un semicirculo perfecto, sino que es interrumpido por una semirrecta, la cual resulta característica de un elemento de fase constante. Finalmente, a frecuencias menores de 130 \si{\hertz}, los datos experimentales crecen abruptamente sobre el eje imaginario, lo que indica un comportamiento capacitivo predominante.
+Paralelamente, se graficó la impedancia en el plano complejo, obteniendo el diagrama de Nyquist que se presenta en la \autoref{Nyquist}. Se observa que el gráfico inicia en el eje real, donde la impedancia es puramente resistiva, con un valor de apróximadamente \SI{1}{\kilo\ohm}. Luego, a medida que disminuye la frecuencia, el valor de la parte imaginaria aumenta, de manera que el diagrama se curva formando una fracción de circunferencia, lo que indica un comportamiento similar al de un circuito RC en paralelo. No obstante, el gráfico no forma un semicirculo perfecto, sino que es interrumpido por una semirrecta, la cual resulta característica de un elemento de fase constante. Finalmente, a frecuencias menores de 130 \si{\hertz}, los datos experimentales crecen abruptamente sobre el eje imaginario, lo que indica un comportamiento capacitivo predominante.
 
 \begin{figure}[H]
     \centering
      \includegraphics[width=0.8\textwidth]{Figuras/Nyquist.png}
-            \caption{Digrama de Nyquist realizado sobre la impedancia $Z$ del circuito. En el, es posible notar regiones las cuales se asemejan a distintos diagramas característicos de circutos RC. En particular, se destaca el rango $0 \leq Re(Z) \leq 2500$, donde se distingue una fracción de semicircunferencia seguido por una recta.}
+            \caption{Diagrama de Nyquist realizado sobre la impedancia $Z$ del circuito. En el, es posible notar regiones las cuales se asemejan a distintos diagramas característicos de circutos RC. En particular, se destaca el rango $0 \leq Re(Z) \leq 2500$, donde se distingue una fracción de semicircunferencia seguido por una recta.}
             \label{Nyquist}
 \end{figure}
 
@@ -35,7 +35,7 @@ Tanto en el diagrama de Bode (Ver \autoref{Bode}) como en el de Nyquist (Ver \au
 
 En base a las observaciones realizadas sobre los diagramas de Bode y Nyquist, se propuso un modelo para el circuito incógnita representado en la \autoref{Circuito-modelo}, cuya impedancia en función de la frecuencia viene dada por la suma de una impedancia de una resistencia equivalente $Z_{R}$ (donde se encuentra incluida la resistencia conocida de 62 \si{\ohm}), una impedancia de un circuito RC en paralelo $Z_{RC_p}$, una de un elemento de fase constante $Z_{CPE}$ y una de un capacitor equivalente $Z_{C}$. Por lo que
 \begin{equation}
-    Z(t) = Z_R + Z_{RC_p} + Z_{CPE} + Z_C.
+    Z = Z_R + Z_{RC_p} + Z_{CPE} + Z_C.
     \label{modelo}
 \end{equation}
 
@@ -61,7 +61,7 @@ Para realizar el ajuste del modelo, se tomó la parte real e imaginaria de \eqre
 \begin{table}[H]
 \centering
 \caption{Parámetros obtenidos del ajuste del circuito equivalente}
-\begin{tabular}{|l|c|}
+\begin{tabular}{|c|c|}
 \hline
 \textbf{Parámetro} & \textbf{Valor} \\ \hline
 $R_s$ & 762(7) [$\Omega$] \\ \hline
@@ -75,9 +75,9 @@ $C_s$ & 1.61(2) [$\mu\mathrm{F}$] \\ \hline
 
 
 \subsection{Determinación de \texorpdfstring{$\tau$}{tau} utilizando pulsos cuadrados}
-Se registró la respuesta del circuito frente a la propagación de pulsos de onda cuadrada, con el objetivo de determinar las constantes de tiempo $\tau = RC$ involucradas en el mismo. Se realizaron mediciones de la tensión de salida en función del tiempo, para diferentes frecuencias de la señal de entrada. Para el voltaje de la señal de salida, se realizó un ajuste utilizando la ecuación \eqref{ajustepulsoscuadrados}, donde $i$ representa el número del pulso, mientras que $n$ se fijó según la cantidad de $\tau$'s necesarios para obtener una buena calidad de ajuste que represente la curva de carga o descarga de el o los capacitores en una determinada frecuencia. En todas las medidas, fijando $n$ = 1 o $n$ = 2 fue suficiente para que el modelo decriba adecuadamente la tendencia experimental. 
+Se registró la respuesta del circuito frente a la propagación de ondas cuadradas, con el objetivo de determinar las constantes de tiempo $\tau = RC$ involucradas en el mismo. Se realizaron mediciones de la tensión de salida en función del tiempo, para diferentes frecuencias de la señal de entrada. Para el voltaje de la señal de salida, se realizó un ajuste utilizando la ecuación \eqref{ajustepulsoscuadrados}, donde $i$ representa el número del pulso, mientras que $n$ se fijó según la cantidad de $\tau$'s necesarios para obtener una buena calidad de ajuste que represente la curva de carga o descarga de el o los capacitores en una determinada frecuencia. En todas las medidas, fijando $n$ = 1 o $n$ = 2 fue suficiente para que el modelo describa adecuadamente la tendencia experimental. 
 
-En la \autoref{pulsos} se presenta la respuesta temporal del circuito frente a una señal de entrada cuadrada $V_e$ de 444 $\mathrm{Hz}$, junto con su correspondiente ajuste mediante una suma de dos exponenciales ($n$ = 2). Es posible apreciar cómo la tensión de salida $V_s$ experimenta picos abruptos en las transiciones de la señal de entrada seguidos de una relajación hacia cero, comportamiento atribuible a los procesos transitorios de carga y descarga de los elementos capacitivos del sistema.
+En la \autoref{pulsos} se presenta la respuesta temporal del circuito frente a una señal de entrada cuadrada $V_e$ de 444 $\mathrm{Hz}$, junto con su correspondiente ajuste mediante una suma de dos exponenciales ($n$ = 2). Se aprecia en la tensión de salida $V_s$ unos picos abruptos en las transiciones de la señal de entrada seguidos de una relajación hacia cero, comportamiento atribuible a los procesos transitorios de carga y descarga de los elementos capacitivos del sistema. Finalmente, en la \autoref{tab:constantes-tiempo-cuadradas} se presentan los promedios ponderados de los valores de las constantes de tiempo obtenidas con diferentes frecuencias como señal de entrada.
 
 
 \begin{figure}[H]
@@ -87,7 +87,6 @@ En la \autoref{pulsos} se presenta la respuesta temporal del circuito frente a u
     \label{pulsos}
 \end{figure}
 
-Finalmente, en la \autoref{tab:constantes-tiempo-cuadradas} se presentan los promedios ponderados de los valores de las constantes de tiempo obtenidas con diferentes frecuencias como señal de entrada.
 
 \begin{table}[H]
 \centering
